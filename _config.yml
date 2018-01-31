@@ -1,2 +1,3 @@
 name: Jeffrey Overmeer
 markdown: kramdown
+permalink: /blog/:year/:month/:day/:title
