@@ -1,5 +1,12 @@
 language: ruby
 rvm:
- - 2.2
- - jruby
- - rbx-3
+- 2.2
+- jruby
+- rbx-3
+sudo: enabled
+notifications:
+  email:
+    recipients:
+    - jeffrey.overmeer@gmail.com
+    on_success: change
+    on_failure: always
