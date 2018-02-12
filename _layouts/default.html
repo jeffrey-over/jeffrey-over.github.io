@@ -2,29 +2,146 @@
 	<html>
 		<head>
 			<title>{{ page.title }}</title>
-			<!-- link to main stylesheet -->
-			<link rel="stylesheet" type="text/css" href="/css/main.css">
+
+			
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+		
+			<!-- Stylesheets
+			============================================= -->
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400italic,600,700,900|Playfair+Display:400,700" rel="stylesheet" type="text/css" />
+			<link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
+			<link rel="stylesheet" href="css/style.css" type="text/css" />
+			<link rel="stylesheet" href="css/dark.css" type="text/css" />
+		
+			<!-- Resume Specific Stylesheet -->
+			<link rel="stylesheet" href="css/resume.css" type="text/css" />
+			<link rel="stylesheet" href="css/fonts.css" type="text/css" />
+			<!-- / -->
+		
+			<link rel="stylesheet" href="css/font-icons.css" type="text/css" />
+			<link rel="stylesheet" href="css/animate.css" type="text/css" />
+			<link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
+		
+			<link rel="stylesheet" href="css/responsive.css" type="text/css" />
+			<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+			<link rel="stylesheet" href="css/colors.css?color=7B6ED6" type="text/css" />
+					
 		</head>
-		<body>
-			<nav>
-	    		<ul>
-	        		<li><a href="/">Home</a></li>
-		        	<li><a href="/about">About</a></li>
-	        		<li><a href="/cv">Resume</a></li>
-	        		<li><a href="/blog">Blog</a></li>
-	    		</ul>
-			</nav>
-			<div class="container">
-			
-			{{ content }}
-			
-			</div><!-- /.container -->
-			<footer>
-	    		<ul>
-	        		<li><a href="mailto:hello@jeffreyovermeer.com">email</a></li>
-				</ul>
-			</footer>
-			
+
+
+
+
+
+		<body class="stretched sticky-responsive-menu">
+
+			<!-- Document Wrapper
+			============================================= -->
+			<div id="wrapper" class="clearfix">
+		
+				<!-- Header
+				============================================= -->
+				<header id="header" class="transparent-header sticky-transparent static-sticky">
+		
+					<div id="header-wrap">
+		
+						<div class="container clearfix">
+		
+							<div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
+		
+							<!-- Logo
+							============================================= -->
+							<div id="logo">
+								<a href="index.html" class="standard-logo" style="line-height: 90px;">jeffreyovermeer.com</a>
+								<a href="index.html" class="retina-logo" style="line-height: 90px;">jeffreyovermeer.com</a>
+							</div><!-- #logo end -->
+		
+							<!-- Primary Navigation
+							============================================= -->
+							<nav id="primary-menu">
+		
+								<ul class="one-page-menu" data-easing="easeInOutExpo" data-speed="1250" data-offset="0">
+									<li class="current"><a href="#" data-href="#wrapper"><i class="icon-line2-home"></i><div>Intro</div></a></li>
+									<li><a href="#" data-href="#section-skills"><i class="icon-line2-star"></i><div>Skills</div></a></li>
+									<li><a href="#" data-href="#section-about"><i class="icon-line2-user"></i><div>About</div></a></li>
+									<li><a href="#" data-href="#section-works"><i class="icon-line2-grid"></i><div>Portfolio</div></a></li>
+									<li><a href="#" data-href="#section-articles"><i class="icon-line2-pencil"></i><div>Articles</div></a></li>
+									<li><a href="#" data-href="#footer"><i class="icon-line2-envelope"></i><div>Contact</div></a></li>
+								</ul>
+		
+							</nav><!-- #primary-menu end -->
+		
+						</div>
+		
+					</div>
+		
+				</header><!-- #header end -->
+		
+				{{ content }}
+		
+				<!-- Footer
+				============================================= -->
+				<footer id="footer" class="page-section dark noborder nopadding clearfix" style="background-color: #1C1C1C;">
+		
+					<div class="container clearfix">
+		
+						<!-- Footer Widgets
+						============================================= -->
+	
+					<!-- Copyrights
+					============================================= -->
+					<div id="copyrights" style="background-color: #111;">
+		
+						<div class="container clearfix">
+		
+							<div class="col_full center nobottommargin">
+								Copyrights &copy; 2018. Jeffrey Overmeer<br>
+								
+							</div>
+		
+						</div>
+		
+					</div><!-- #copyrights end -->
+		
+				</footer><!-- #footer end -->
+		
+			</div><!-- #wrapper end -->
+		
+			<!-- Go To Top
+			============================================= -->
+			<div id="gotoTop" class="icon-angle-up"></div>
+		
+			<!-- External JavaScripts
+			============================================= -->
+			<script src="js/jquery.js"></script>
+			<script src="js/plugins.js"></script>
+		
+			<!-- Footer Scripts
+			============================================= -->
+			<script src="js/functions.js"></script>
+		
+			<script>
+				jQuery(window).scroll(function() {
+					var pixs = jQuery(window).scrollTop(),
+						opacity = pixs / 650,
+						element = jQuery( '.blurred-img' ),
+						elementHeight = element.outerHeight(),
+						elementNextHeight = jQuery('.content-wrap').find('.page-section').first().outerHeight();
+					if( ( elementHeight + elementNextHeight + 50 ) > pixs ) {
+						element.addClass('blurred-image-visible');
+						element.css({ 'opacity': opacity });
+					} else {
+						element.removeClass('blurred-image-visible');
+					}
+				});
+			</script>
+		
 			{% include google-analytics.html %}
+
 		</body>
+
+
+
+
 	</html>

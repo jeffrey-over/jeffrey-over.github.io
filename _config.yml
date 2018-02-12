@@ -1,4 +1,4 @@
 name: Jeffrey Overmeer
 markdown: kramdown
-permalink: /blog/:year/:month/:day/:title
 exclude: [node_modules, Gruntfile.js, package.json]
+future: true
