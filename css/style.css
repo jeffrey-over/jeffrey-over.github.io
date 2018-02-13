@@ -3764,7 +3764,7 @@ body:not(.device-touch) .portfolio {
 .portfolio-item .portfolio-image img {
 	display: block;
 	width: 100%;
-	height: auto;
+	height: 160px;
 }
 
 body:not(.device-touch):not(.device-sm):not(.device-xs) .portfolio-notitle .portfolio-image img {
@@ -4892,7 +4892,7 @@ body.device-touch.device-xs .portfolio-notitle .portfolio-overlay { display: non
 	display: block;
 	position: relative;
 	width: 100%;
-	height: auto;
+	height: 160px;
 }
 
 .entry-image iframe { display: block; }
