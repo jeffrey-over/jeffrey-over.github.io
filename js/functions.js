@@ -1713,15 +1713,7 @@ var SEMICOLON = SEMICOLON || {};
 			$sliderElement.find('.slider-caption:not(.custom-caption-pos)').each(function(){
 				var scapHeight = $(this).outerHeight();
 				var scapSliderHeight = $sliderElement.outerHeight();
-				if( $(this).parents('#slider').prev('#header').hasClass('transparent-header') && ( $body.hasClass('device-xl') || $body.hasClass('device-lg') ) ) {
-					if( $(this).parents('#slider').prev('#header').hasClass('floating-header') ) {
-						$(this).css({ top: ( scapSliderHeight + 160 - scapHeight ) / 2 + 'px' });
-					} else {
-						$(this).css({ top: 200 + 'px' });
-					}
-				} else {
-					$(this).css({ top: ( scapSliderHeight - scapHeight ) / 2 + 'px' });
-				}
+
 			});
 		},
 
