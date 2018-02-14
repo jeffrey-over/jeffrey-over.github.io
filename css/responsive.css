@@ -199,7 +199,7 @@
 	#header.sticky-style-2,
 	#header.sticky-style-3,
 	#header.sticky-style-2 #header-wrap,
-	#header.sticky-style-3 #header-wrap { height: auto !important; }
+	#header.sticky-style-3 #header-wrap { height: 0 !important; }
 
 	#header.sticky-style-2 #header-wrap,
 	#header.sticky-style-3 #header-wrap { min-height: 60px; }
@@ -265,7 +265,7 @@
 	#primary-menu-trigger {
 		opacity: 1;
 		pointer-events: auto;
-		top: 25px;
+		top: 0px;
 		margin-top: 0;
 		left: 0;
 		z-index: 1;
@@ -641,7 +641,7 @@
 	-----------------------------------------------------------------*/
 
 	.sticky-responsive-menu #header {
-		min-height: 100px;
+		min-height: 50px;
 		-webkit-transition: min-height .4s ease;
 		-o-transition: min-height .4s ease;
 		transition: min-height .4s ease;
