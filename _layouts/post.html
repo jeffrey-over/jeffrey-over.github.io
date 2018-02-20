@@ -1,9 +1,27 @@
 ---
-layout: default
+layout: subpage
 ---
-<h1>{{ page.title }}</h1>
-<p class="meta">{{ page.date | date_to_string }}</p>
+<div style="max-width:730px;margin:auto;">
+    <div class="">
+        <div class="heading-block">
+          <img src="/{{page.thumbnail}}" class="thumbnail_post">
+          <h2 class="" style="display: inline-block">{{ page.title }}</h2>
+
+        </div>
+      </div>
+      <ul class="entry-meta clearfix" style="padding: 0 !important;margin-bottom:20px;">
+          <li><i class="icon-calendar3"></i> {{ page.date | date_to_string }}</li>
+          <li><a href="#"><i class="icon-user"></i> Jeffrey</a></li>
+          <li><i class="icon-folder-open"></i>{{ page.tags }}</li>
+        </ul>
+
+        
+        <div class="clear"></div>
 
 <div class="post">
   {{ content }}
+</div>
+
+
+<a href="/blog" class="button button-small button-border button-black button-dark topmargin-sm noleftmargin"><i class="icon-line-stack-2"></i> Bekijk alle artikelen</a>
 </div>

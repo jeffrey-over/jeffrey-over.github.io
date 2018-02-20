@@ -1,11 +1,40 @@
 ---
-layout: default
-title: Jeffrey's Blog
+layout: subpage
+title: 
 ---
-	<h1>{{ page.title }}</h1>
-	<ul class="posts">
 
-	  {% for post in site.posts %}
-	    <li><span>{{ post.date | date_to_string }}</span> » <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></li>
-	  {% endfor %}
-	</ul>
+<div class="">
+	<div class="heading-block">
+		<h2 class="font-secondary">{{ page.title }}</h2>
+
+	</div>
+</div>
+
+<div id="posts" class="post-grid grid-3 clearfix" style="margin-bottom:20px;">
+
+{% for post in site.posts  %}
+<div class="entry nobottomborder nobottompadding clearfix">
+	<div class="entry-box-shadow">
+		<div class="entry-image nobottommargin">
+			<a href="{{ post.url }}" data-lightbox="image"><img class="image_fade" src="/{{ post.thumbnail }}" alt="{{ post.title }}"></a>
+		</div>
+		<div class="entry-meta-wrapper">
+			<div class="entry-meta nomargin clearfix">
+				<a href="#" class="text-muted">{{ post.date | date_to_string }}</a>
+			</div>
+			<div class="entry-title clearfix">
+				<h2><a href="#" style="">{{ post.title }}.</a></h2>
+			</div>
+			<div class="entry-content clearfix">
+				<p>{{ post.content | truncate: 100, "" }}...</p>
+				<a href="{{ post.url }}" title="{{ post.title }}" class="noleftmargin">Lees verder</a>
+			</div>
+		</div>
+	</div>
+</div>
+{% endfor %}
+
+<div class="clear"></div>
+
+
+</div>

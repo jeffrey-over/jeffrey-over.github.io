@@ -3773,7 +3773,14 @@ body:not(.device-touch):not(.device-sm):not(.device-xs) .portfolio-notitle .port
 	transition: all .2s ease-in-out;
 }
 
-
+.thumbnail_post {
+display: inline-block;
+width: 42px;
+height: 42px;
+border-radius: 50%;
+margin-right: 10px;
+border: 2px solid #FFF;
+}
 /* Portfolio - Item Title
 -----------------------------------------------------------------*/
 

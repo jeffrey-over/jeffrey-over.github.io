@@ -7,4 +7,16 @@ published: true
 thumbnail: "images/blog/2017-2018.jpg"
 ---
 
-2017 was een fantastich jaar!
+2017 was een bewogen en fantastich jaar! Hieronder een samenvatting wat ik hierin hebt bereikt op technisch gebied. 
+
+### Wat ik heb geleerd in 2017
+- Commandline
+- Jekyll en Liquid
+- Markdown
+- Grunt
+- NodeJS
+- SASS
+- GitHub
+
+### 108 Commits op GitHub
+![alt text](/images/blog/commits_2017.png "Commits in 2017")
