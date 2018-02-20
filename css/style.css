@@ -10452,10 +10452,14 @@ blockquote.float-right {
 
 .highlight {
 	padding: 2px 5px;
-	background-color: #444;
-	color: #FFF;
+	background-color: #333;
+	color: #D5D5C9;
 	border-radius: 2px;
+	font-size:12px;
 }
+
+code,pre {color:#e83e8c !important;background-color:#e3e3e3;font-size:14px;}
+pre {padding:10px;}
 
 /* ----------------------------------------------------------------
 	Text Rotater

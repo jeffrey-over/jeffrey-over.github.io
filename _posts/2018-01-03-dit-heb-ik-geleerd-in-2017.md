@@ -7,7 +7,7 @@ published: true
 thumbnail: "images/blog/2017-2018.jpg"
 ---
 
-2017 was een bewogen en fantastich jaar! Hieronder een samenvatting wat ik hierin hebt bereikt op technisch gebied. 
+2017 was een bewogen en fantastich jaar! Hieronder een samenvatting wat ik hierin heb bereikt op technisch gebied. 
 
 ### Wat ik heb geleerd in 2017
 - Commandline
