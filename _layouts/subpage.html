@@ -10,7 +10,7 @@
 			<!-- Stylesheets
 			============================================= -->
 			<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400italic,600,700,900|Playfair+Display:400,700" rel="stylesheet" type="text/css" />
-			<link rel="stylesheet" href="/css/bootstrap.css" type="text/css" />
+			<link  rel="preload" rel="stylesheet" href="/css/bootstrap.css" type="text/css" />
 			<link rel="stylesheet" href="/css/style.css" type="text/css" />
 			<link rel="stylesheet" href="/css/dark.css" type="text/css" />
 		
@@ -131,12 +131,12 @@
 		
 			<!-- External JavaScripts
 			============================================= -->
-			<script src="js/jquery.js"></script>
-			<script src="js/plugins.js"></script>
+			<script rel="preload" async src="js/jquery.js"></script>
+			<script async src="js/plugins.js"></script>
 		
 			<!-- Footer Scripts
 			============================================= -->
-			<script src="js/functions.js"></script>
+			<script async src="js/functions.js"></script>
 		
 
 			{% include google-analytics.html %}
