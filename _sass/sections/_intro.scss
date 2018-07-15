@@ -11,6 +11,12 @@
     
 }
 
+@media only screen and (max-width: 800px) {
+    #intro {
+    height: 90vh;
+}
+}
+
 #intro-post {
     min-height: 400px;
     background: #2c2d30;
