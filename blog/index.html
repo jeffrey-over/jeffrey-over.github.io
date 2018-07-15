@@ -19,7 +19,7 @@ layout: default
 					<a href="" class="date_added"><time>{{ post.date | date: "%b %-d, %Y" }}</time></a>
 					<h4>{{ post.title }}</h4>
 					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. In provident ipsa voluptates odio.
+							{{ post.content | truncate: 100, "" }}...
 					</p>
 					<a href="{{ post.url | prepend: site.baseurl }}">Lees meer</a>
 				</div>
