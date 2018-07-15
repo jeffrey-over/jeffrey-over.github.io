@@ -1,0 +1,35 @@
+#dark {
+    background: rgba(0,0,0,0.9);
+}
+
+#light {
+    background: #ffffff;
+    border-top: 1px solid #efefef;        
+}
+
+#light h5 {color: rgba(0,0,0,0.88);}
+
+#dark button {
+    margin-left: 10px;
+    background: #f03434;
+    border-color: #f03434;
+}
+
+#light button {
+    margin-left: 10px;
+    background: #E5E5E5;
+    border-color: #E5E5E5;
+    color: #000;
+}
+
+
+
+footer input, footer button {
+    height: 50px;
+    width: auto !important;
+    float: left;
+    border-radius: 3px;
+    margin: 0 0 0 3px;        
+}
+
+

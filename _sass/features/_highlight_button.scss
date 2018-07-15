@@ -1,0 +1,17 @@
+
+.button-highlight {
+  margin: 5rem 0 0 0;
+  padding: 1.5rem 1.5rem 1.5rem 4rem;
+  -webkit-transition: .1s ease-in-out;
+  transition: .1s ease-in-out;
+  -webkit-box-shadow: 0 0 3px 0 rgba(48,214,180,.6);
+  box-shadow: 0 0 3px 0 rgba(48,214,180,.6);
+  -webkit-animation: pulse 1.5s infinite cubic-bezier(0.66, 0, 0, 1);
+  -moz-animation: pulse 1.5s infinite cubic-bezier(0.66, 0, 0, 1);
+  -ms-animation: pulse 1.5s infinite cubic-bezier(0.66, 0, 0, 1);
+  animation: pulse 1.5s infinite cubic-bezier(0.66, 0, 0, 1);
+}
+
+.button-hightlight:hover {
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.3);  
+}

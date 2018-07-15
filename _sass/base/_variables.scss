@@ -1,0 +1,171 @@
+// Imports
+//@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+// Sizing
+$mobile: 600px;
+$tablet-portrait: 800px;
+$desktop: 1000px;
+$widescreen: 1200px;
+$fullhd: 1800px; 
+
+// Global coloring
+$base-color: #E5E5E5;
+$secondary-color: #636e72;
+$accent-color: #dfe6e9;
+$background-color: #ffffff;
+$background-color-secondary: #f6f9fc;
+$font-color: #4D4D4D;
+$font-color-secondary: #666666;
+$link-color: #0070c9;
+$highlight-color: #ffeea8;
+$default-box-shadow: 0 1px 1px 0 rgba(10,16,64,.2);
+$default-border: 1px solid rgba(10,10,10,0.1);
+
+// Grid & Layout
+$default-margin: 1.5rem;
+$default-padding: 1.5rem;
+$basic-elements-margin: 0 0 $default-margin 0; //p,ol,ul,dl,table
+$container-padding: 0 1rem;
+$column-padding: 1rem;
+$column-margin-bottom: 0;
+$section-padding: 6rem 0 0 0;
+$mark-padding: 0 0.4rem;
+
+// Typography
+$font-family: 'Lato' ,-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$font-size: 1.6rem;
+$font-size-small: 1.5rem;
+$line-height: 1.6;
+$heading-font-weight: 700;
+$heading-font-color:  rgba(0,0,0,0.88);
+$heading-line-height: 1.25;
+$heading-margin: 2rem 0 $default-margin;
+$heading-letter-spacing: auto;
+$h1: 4.2rem;
+$h2: 3.4rem;
+$h3: 2.4rem;
+$h4: 2rem;
+$h5: 1.6rem;
+$h6: 1.4rem;
+
+// Forms
+$label-font-weight: 600;
+$label-margin: 2rem 0 1rem;
+$input-border-radius: 5px;
+$input-padding: 1rem;
+$input-line-height: 1;
+$input-focus-box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+$input-focus-border: 1px solid rgba(81, 203, 238, 1);
+$input-select-height: 4.6rem;
+$input-valid-box-shadow: 0 0 5px #55efc4;
+$input-valid-border: 1px solid #55efc4;
+$input-invalid-box-shadow: 0 0 5px #D63131;
+$input-invalid-border: 1px solid #D63131;
+
+// Secondary styling
+$secondary-background: $secondary-color;
+$secondary-background-hover: darken($secondary-background, 10%);
+$secondary-border: 1px solid $secondary-color;
+$secondary-border-hover: 1px solid darken($secondary-color, 10%);
+$secondary-font-color: #ffffff;
+$outline-font-color-hover: #ffffff;
+
+// Outlined styling
+$outline-border: 1px solid $accent-color;
+$outline-border-hover: 1px solid darken($accent-color, 30%);
+$outline-background: transparent;
+$outline-background-hover: transparent;
+$outline-font-color: darken($accent-color, 50%);
+$outline-font-color-hover: darken($accent-color, 50%);
+
+// Buttons 
+$button-background: $base-color;
+$button-background-hover: darken($button-background, 10%);
+$button-font-color: #fff;
+$button-font-weight: 400;
+$button-font-family: $font-family;
+$button-font-size: 1.5rem;
+$button-border-width: 1px;
+$button-border-style: solid;
+$button-border-color: $button-background;
+$button-border-radius: 3px;
+$button-text-transform: none;
+$button-padding: 1.5rem;
+$button-margin: 2rem 0 0.5rem 0;
+
+// Cards
+$card-padding: 0;
+$card-margin: 1rem 0;
+$card-font-size: 1.4rem;
+$card-heading-margin: 1.6rem 0;
+$card-box-shadow: 0px 1px 35px 0px rgba(0, 0, 0, 0.3);
+
+// Table
+$table-caption-font-style: italic;
+$table-heading-font-color: $heading-font-color;
+$table-footer-font-weight: 600;
+$table-row-hover-background: $background-color-secondary;
+$table-cell-padding: 1.2rem 1.5rem;
+$table-cell-border: 1px solid rgba(10, 10, 10, 0.1);
+$table-cell-margin: 0;
+$table-cell-background: transparent;
+
+// Lists
+$dd-margin: 0;
+$dd-padding: 0 0 0.5em 0;
+
+// Blockqoute
+$blockqoute-font: 14px/22px normal $font-family;
+$blockqoute-margin: 10px 0 10px 50px;
+$blockqoute-padding: 0 0 0 15px;
+$blockqoute-border: 2px solid rgba(10, 10, 10, 0.1);
+
+// HR
+$hr-color: #444444;
+$hr-margin: 2rem 0;
+$hr-border: 2px solid $hr-color;
+
+// Pre
+$pre-margin: 1.5rem 0;
+$pre-padding: 1rem;
+$pre-font-size: 14px;
+$pre-background-color: #f8f8f8;
+$pre-font-color: $font-color;
+$pre-border-radius: 5px;
+
+// Code
+$code-background-color: #f8f8f8;
+$code-font-color: #d63131;
+$code-line-height: inherit;
+$code-padding: 0 .6rem;
+$code-text-shadow: 0;
+$code-font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+
+// Navigation
+$navigation-height: 60px;
+$navigation-background-color: transparent;
+$navigation-mobile-background-color: transparent;
+$navigation-padding-mobile: 0;
+$navigation-padding-desktop: 0;
+$navigation-font-color: $font-color;
+$navigation-link-color: rgba(0,0,0,0.88);
+$navigation-mobile-link-color: #000;
+$navigation-link-hover-color: #3c41ff;
+$navigation-link-padding: 0 30px;
+$navigation-mobile-link-padding: 0 40px;
+$navigation-font-size: 1.4rem;
+$navigation-heading-font-color: #fff;
+$navigation-line-height: $navigation-height;
+$navigation-mobile-nav-hover-color: $background-color-secondary;
+$logo-font-color: #fff;
+$logo-font-size: $navigation-font-size;
+
+// Footer
+$footer-background-color: #272a34;
+$footer-padding-mobile: 2rem 0;
+$footer-padding-desktop: 5rem 0;
+$footer-font-color: #a1a7b9;
+$footer-link-color: #a1a7b9;
+$footer-font-size: 1.5rem;
+$footer-heading-font-color: #ffffff;
+$footer-line-height: 3rem;

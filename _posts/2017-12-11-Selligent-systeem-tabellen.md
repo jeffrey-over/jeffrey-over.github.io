@@ -2,6 +2,7 @@
 layout: post
 title: "Selligent systeem tabellen"
 date: 2017-12-11
+category: learning
 tags: Selligent Marketing Cloud, Data
 published: true
 thumbnail: "images/blog/sim-tables.jpg"

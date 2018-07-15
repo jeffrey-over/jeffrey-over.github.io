@@ -1,6 +1,14 @@
-name: Jeffrey Overmeer
-markdown: kramdown
-exclude: [node_modules, Gruntfile.js, package.json]
-future: true
-plugins:
-  - jekyll-sitemap
+# Site Settings
+title: Jeffrey Overmeer
+email: hello@jeffreyovermeer.com
+description: >
+  A personal website about me.
+baseurl: ""
+url: "https://www.jeffreyovermeer.com"
+github_username:  jeffrey-over
+# Build Settings
+sass:
+  sass_dir: _sass
+include: ['_pages']
+kramdown:
+  input: GFM

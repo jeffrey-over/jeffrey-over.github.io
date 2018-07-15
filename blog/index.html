@@ -1,40 +1,40 @@
 ---
-layout: subpage
-title: 
+layout: default
 ---
 
-<div class="">
-	<div class="heading-block">
-		<h2 class="font-secondary">{{ page.title }}</h2>
 
+
+
+<div class="has-full-width" id="articles">
+
+	<div class="container">
+		<section>
+			<h2 class="is-serif">Artikelen</h2>
+			<h3 class="is-subtitle">Soms schrijf ik. </h3>
+
+			{% for post in site.posts %}
+			<div class="card text-left">
+					<img src="../{{ post.thumbnail }}" alt="{{ post.title }}" class="responsive-image">
+				<div class="has-padding">
+					<a href="" class="date_added"><time>{{ post.date | date: "%b %-d, %Y" }}</time></a>
+					<h4>{{ post.title }}</h4>
+					<p>
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. In provident ipsa voluptates odio.
+					</p>
+					<a href="{{ post.url | prepend: site.baseurl }}">Lees meer</a>
+				</div>
+			</div>
+			{% endfor %}
+
+
+
+			
+			<div class="clearfix"></div>            
+
+			<p>subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+
+
+		</section>
 	</div>
-</div>
-
-<div id="posts" class="post-grid grid-3 clearfix" style="margin-bottom:20px;">
-
-{% for post in site.posts  %}
-<div class="entry nobottomborder nobottompadding clearfix">
-	<div class="entry-box-shadow">
-		<div class="entry-image nobottommargin">
-			<a href="{{ post.url }}" data-lightbox="image"><img class="image_fade" src="/{{ post.thumbnail }}" alt="{{ post.title }}"></a>
-		</div>
-		<div class="entry-meta-wrapper">
-			<div class="entry-meta nomargin clearfix">
-				<a href="#" class="text-muted">{{ post.date | date_to_string }}</a>
-			</div>
-			<div class="entry-title clearfix">
-				<h2><a href="#" style="">{{ post.title }}.</a></h2>
-			</div>
-			<div class="entry-content clearfix">
-				<p>{{ post.content | truncate: 100, "" }}...</p>
-				<a href="{{ post.url }}" title="{{ post.title }}" class="noleftmargin">Lees verder</a>
-			</div>
-		</div>
-	</div>
-</div>
-{% endfor %}
-
-<div class="clear"></div>
-
-
+   
 </div>

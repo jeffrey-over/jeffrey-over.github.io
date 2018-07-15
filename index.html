@@ -1,304 +1,141 @@
 ---
 layout: default
-title: Jeffrey Overmeer
 ---
 
-<section id="slider" class="slider-element full-screen force-full-screen clearfix">
-	<div class="full-screen force-full-screen" style="position: fixed; width: 100%; background: #FFF url('images/hero-image/background.jpg') no-repeat top center; background-size: cover !important; background-attachment: scroll !important;">
 
-		<div class="container clearfix">
-			<div class="slider-caption dark slider-caption-right" style="top: 200px !important">
-				<h2 class="font-primary ls5" data-animate="fadeIn">Jeffrey Overmeer</h2>
-				<p class="t300 ls1 d-none d-sm-block" data-animate="fadeIn" data-delay="400">Solution Engineer. Nieuwsgierige Marketing <br />Automator en Web Developer.<br></p>
-				<a class="font-primary noborder ls1 topmargin-sm inline-block more-link text-white dark d-sm-inline-block" data-animate="fadeIn" data-delay="800" data-scrollto="#section-about" data-offset="0" href="#section-about"><u>Meer over mij</u> &rarr;</a>
-			</div>
-		</div>
-
-	</div>
-	<div class="full-screen force-full-screen blurred-img" style="position: fixed; width: 100%; top: 0; left: 0; background: #FFF url('images/hero-image/background.jpg') no-repeat top center; background-size: cover; background-attachment: fixed;"></div>
-</section>
-
-<!-- Content
-============================================= -->
-<section id="content" class="nobg">
-
-	<div class="content-wrap nobottompadding nobg">
-
-		<div id="section-skills" class="section nomargin page-section dark nobg clearfix" style="padding-bottom: 50px">
-			<div class="container clearfix">
-				<div class="heading-block">
-					<h2 class="font-secondary center">Mijn specialisaties.</h2>
-				</div>
+<div id="wrap">
 
 
-				<div class="col_one_third">
-					<div class="feature-box fbox-plain">
-						<div class="fbox-icon">
-							<a href="#"><i class="icon-cloud" style="color: #DDD"></i></a>
-						</div>
-						<h3 class="t400 ls2" style="color: #FFF">Selligent Marketing Cloud</h3>
-						<p style="color:#AAA;"></p>
-					</div>
-				</div>
+  
+    <div class="has-full-width" id="intro">
+        <div class="vertical-center">
 
-				<div class="col_one_third">
-					<div class="feature-box fbox-plain">
-						<div class="fbox-icon">
-							<a href="#"><i class="icon-line-layers" style="color: #DDD"></i></a>
-						</div>
-						<h3 class="t400 ls2" style="color: #FFF">Salesforce Marketing Cloud</h3>
-						<p style="color:#AAA;"></p>
-					</div>
-				</div>
+        <div class="container">
 
-				<div class="col_one_third col_last">
-					<div class="feature-box fbox-plain">
-						<div class="fbox-icon">
-							<a href="#"><i class="icon-line2-pencil" style="color: #DDD"></i></a>
-						</div>
-						<h3 class="t400 ls2" style="color: #FFF">E-mail development</h3>
-						<p style="color:#AAA;"></p>
-					</div>
-				</div>
+          
+                <section>
+                    <div class="columns ">
+                        <div class="two-thirds column">
+                        
+                            <h1>Jeffrey Overmeer</h1>
+                            <p class="">Hallo! Ik ben Jeffrey Overmeer. Een <b>vader</b>, <b>marketing automator</b>, <b>web developer</b> en <b>e-mail developer</b>.</p>
+                            <p class="is-light">Ik hou er van om nieuwe features te ontrafelen en samen coole dingen op te zetten.</p>
+                                <a href="#" class="social" style="margin-right:35px;"><i class="fab fa-github-square"></i> Github</a> <a href="#" class="social"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                            
+                        </div>
 
-				<div class="clear"></div>
+                    </div>
+                </section>
+            
+        </div>
+        </div>
+    </div>
 
-				<div class="col_one_third">
-					<div class="feature-box fbox-plain">
-						<div class="fbox-icon">
-							<a href="#"><i class="icon-css3" style="color: #DDD"></i></a>
-						</div>
-						<h3 class="t400 ls2" style="color: #FFF">Website development</h3>
-						<p style="color:#AAA;"></p>
-					</div>
-				</div>
+  
+    
 
-				<div class="col_one_third">
-					<div class="feature-box fbox-plain">
-						<div class="fbox-icon">
-							<a href="#"><i class="icon-subscript" style="color: #DDD"></i></a>
-						</div>
-						<h3 class="t400 ls2" style="color: #FFF">Scrum & Kanban</h3>
-						<p style="color:#AAA;"></p>
-					</div>
-				</div>
+    <div class="has-full-width" id="articles">
 
-				<div class="col_one_third col_last">
-					<div class="feature-box fbox-plain">
-						<div class="fbox-icon">
-							<a href="#"><i class="icon-search2" style="color: #DDD"></i></a>
-						</div>
-						<h3 class="t400 ls2" style="color: #FFF">Automatiseren, Detecteren &amp; Verbeteren</h3>
-						<p style="color:#AAA;"></p>
-					</div>
-				</div>
+        <div class="container">
+            <section>
+                <h2 class="is-serif">Artikelen</h2>
+                <h3 class="is-subtitle">Lorem ipsum dolor sit amet consectetur, adipisicing elit. </h3>
+    
+                {% for post in site.posts limit:3 %}
+                <div class="card text-left">
+                        <img src="../{{ post.thumbnail }}" alt="{{ post.title }}" class="responsive-image">
+                    <div class="has-padding">
+                        <a href="" class="date_added"><time>{{ post.date | date: "%b %-d, %Y" }}</time></a>
+                        <h4>{{ post.title }}</h4>
+                        <p>
+                            {{ post.content | truncate: 100, "" }}...
+                        </p>
+                        <a href="{{ post.url | prepend: site.baseurl }}">Lees meer</a>
+                    </div>
+                </div>
+                {% endfor %}
+    
+    
+    
+                
+                <div class="clearfix"></div>            
+        
+                <a class="button" href="blog/index.html">Bekijk alle artikelen <i class="fas fa-arrow-right" style="margin:0 10px;"></i></a>
+            </section>
+        </div>
+       
+    </div>
 
-			</div>
-		</div>
 
-		<div id="section-about" class="section page-section nomargin clearfix" style="background: #fdfdfe url('images/sections/1.jpg') no-repeat center center; background-size: cover; padding: 100px 0">
-			<div class="container clearfix">
-				<div class="clearfix">
-					<div class="col-md-5 offset-md-7 clearfix">
-						<div class="heading-block">
-							<h2 class="font-secondary">Over mij.</h2>
-							<span>Ben nieuwsgierig en gedreven om nieuwe features te ontrafelen en op te pakken. Ik krijg energie van smaakmakende projecten. Door passie niet te stoppen!</span>
-						</div>
-						<table class="table">
-							<tbody>
-								<tr>
-									<td class="notopborder"><strong>Naam:</strong></td>
-									<td class="notopborder">Jeffrey Overmeer</td>
-								</tr>
-								<tr>
-									<td><strong>Email:</strong></td>
-									<td>hello@jeffreyovermeer.com</td>
-								</tr>
+    <div class="has-full-width promotional-product" > 
+        <div class="container">
+            <section>
+                <div class="columns">
+                    <div class="full column">
+                        <h1 class="is-title is-serif">Helder CSS Framework</h1>
+                        <p>
+                            Een CSS framework zonder poespas dat ik heb ontwikkeld en voor iedereen gratis beschikbaar heb gemaakt. Dit framework excelleert door het simple gridsysteem en is vooral toepasbar voor minimalistisch webdesign.
+                        </p>
+                        
+                        <div class="language-terminal highlighter-rouge floating ">
+                            <img src="images/blog/mockup_helder.png" class="responsive-image-nozoom" />
+                          </div>                  
 
-							</tbody>
-						</table>
-						
-					</div>
-				</div>
-			</div>
-			<div class="video-wrap">
-				<div class="video-overlay d-sm-block d-md-none" style="background: rgba(255,255,255,0.9);"></div>
-			</div>
-		</div>
+                          <p>
+                                <a class="button" target="_BLANK" href="https://www.jeffreyovermeer.com/helder-css-framework/">Bekijk Helder.<i class="fas fa-arrow-right" style="margin:0 10px;"></i></a>
+                          </p>
+                    </div>
+                </div>
+            </section>
 
-		<div class="section nomargin skill-area dark clearfix" style="background-image: linear-gradient(80deg, #00aeff, #3369e7);padding: 80px 0;">
-			<div class="container clearfix">
-				<div class="row clearfix">
-					<div class="col-lg-4 col-md-6">
-						<h4>Education</h4>
-						<div class="skill-info">
-							<span>
-								ROC Flevoland<br>
-								Versneld Applicatieontwikkelaar<br>
-								2002 – 2005
-							</span>
-						</div>
-					</div>
-
-					<div class="w-100 bottommargin d-block d-md-none"></div>
-
-					<div class="col-lg-4 col-md-6">
-						<h4>Experience</h4>
-						<div class="skill-info">
-							<span>
-								2010 - Nu<br>
-								Campaign Developer<br>
-								DM-Interface
-							</span>
-							<span>
-								2006 - 2010<br>
-								Dataspecialist<br>
-								DM-Interface
-							</span>
-							<span>
-								2004 - Nu<br>
-								Website Development<br>
-							</span>
-						</div>
-					</div>
-
-					<div class="w-100 bottommargin d-block d-lg-none clear"></div>
-
-					<div class="col-lg-4 col-12">
-						<h4>Skills</h4>
-						<ul class="skills">
-							<li data-percent="100">
-								<span>Vanilla HTML</span>
-								<div class="progress">
-									<div class="progress-percent"><div class="counter counter-inherit counter-instant"><span data-from="0" data-to="100" data-refresh-interval="10" data-speed="1100"></span>%</div></div>
-								</div>
-							</li>
-							<li data-percent="80">
-								<span>Vanilla CSS</span>
-								<div class="progress">
-									<div class="progress-percent"><div class="counter counter-inherit counter-instant"><span data-from="0" data-to="80" data-refresh-interval="10" data-speed="1100"></span>%</div></div>
-								</div>
-							</li>
-							<li data-percent="40">
-								<span>Javascript</span>
-								<div class="progress">
-									<div class="progress-percent"><div class="counter counter-inherit counter-instant"><span data-from="0" data-to="40" data-refresh-interval="10" data-speed="1100"></span>%</div></div>
-								</div>
-							</li>
-							<li data-percent="70">
-								<span>Static webdev</span>
-								<div class="progress">
-									<div class="progress-percent"><div class="counter counter-inherit counter-instant"><span data-from="0" data-to="70" data-refresh-interval="10" data-speed="1100"></span>%</div></div>
-								</div>
-							</li>
-							<li data-percent="60">
-								<span>Photoshop</span>
-								<div class="progress">
-									<div class="progress-percent"><div class="counter counter-inherit counter-instant"><span data-from="0" data-to="60" data-refresh-interval="10" data-speed="1100"></span>%</div></div>
-								</div>
-							</li>
-						</ul>
-					</div>
-
-				</div>
-			</div>
-		</div>		
-
-		<div id="section-works" class="section page-section bgcolor nomargin clearfix" style="padding: 40px 0;background-color:#F9F9F9 !important;">
-				<div class="container clearfix">
-
-						<div class="">
-							<div class="heading-block">
-								<h2 class="font-secondary">Cases.</h2>
-								<span class="notopmargin">Ben er trots op!</span>
-							</div>
-						</div>
-		
-	
-					<!-- Portfolio Items
-					============================================= -->
-					<div id="portfolio" class="portfolio grid-container portfolio-3 clearfix">
-
-						<article class="portfolio-item pf-media pf-icons">
-							<div class="portfolio-image">
-								<a href="http://www.zorgperfect.nl" target="_BLANK">
-									<img src="images/portfolio/zorgperfect.png" alt="Zorgperfect.nl">
-								</a>
-								<div class="portfolio-overlay">
-									<a href="images/portfolio/zorgperfect.png" class="left-icon" data-lightbox="image"><i class="icon-line-plus"></i></a>
-									<a href="http://www.zorgperfect.nl" target="_BLANK" class="right-icon"><i class="icon-line-ellipsis"></i></a>
-								</div>
-							</div>
-							<div class="portfolio-desc">
-								<h3><a href="http://www.zorgperfect.nl" target="_BLANK">Zorgperfect.nl</a></h3>
-							</div>
-						</article>
-
-						<article class="portfolio-item pf-illustrations">
-							<div class="portfolio-image">
-								<a href="#">
-									<img src="images/portfolio/emailconfig.jpg" alt="Emailconfigurator">
-								</a>
-								<div class="portfolio-overlay">
-									<a href="images/portfolio/emailconfig.jpg" class="left-icon" data-lightbox="image"><i class="icon-line-plus"></i></a>
-									
-								</div>
-							</div>
-							<div class="portfolio-desc">
-								<h3><a href="#">Modulaire emailconfigurator</a></h3>
-							</div>
-						</article>
+          </div>
+    </div>   
 
 
 
-						</div>
-					</div>
+    <div class="has-full-width " > 
+        <div class="container">
+            <section>
+                <div class="columns">
+                    <div class="full column">
+                            <h2 class="is-serif">Get in touch!</h2>
 
-		</div>
+                    </div>
+                </div>
+                <div class="columns">
+                        <div class="two-thirds column">
+                                 
+                                    
+                                    
+                                    <div class="contact-item">
+                                            <div class="contact-icon"><i class="far fa-envelope"></i></div>
+                                            hello@jeffreyovermeer.com<Br/>
+                                            j.overmeer@dm-interface.nl
+                                        </div>
+    
+                                        <div class="contact-item">
+                                                <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                                                Almere<Br/>
+                                                Nederland
+                                            </div>
+                                                            
+                            </div>
+                            <div class="third column subscription">
+                                <h2>Mailinglijst</h2>
+                                <form>
+                                        <p>Schrijf je in en ontvang updates.</p>     
+                                        <input type="email" required placeholder="Email">
+                                        <button type="submit">Inschrijven&nbsp;&nbsp; <i class="fas fa-arrow-right"></i></button>
+                                        <div class="clearfix"></div>   
+                                    </form>   
+        
+                                </div>                                
+                    </div>                    
+            </section>
 
-		<div id="section-articles" class="section page-section nomargin bgcolor clearfix" style="padding:40px 0;">
-			<div class="container clearfix">
-
-				<div class="">
-					<div class="heading-block">
-						<h2 class="font-secondary">Artikelen.</h2>
-						<span class="notopmargin">Soms schrijf ik.</span>
-					</div>
-				</div>
-
-				<div id="posts" class="post-grid grid-3 clearfix" style="margin-bottom:20px;">
+          </div>
+    </div>          
 
 
-					{% for post in site.posts limit:3 %}
-					<div class="entry nobottomborder nobottompadding clearfix">
-						<div class="entry-box-shadow">
-							<div class="entry-image nobottommargin">
-								<a href="{{ post.url }}" data-lightbox="image"><img class="image_fade" src="{{ post.thumbnail }}" alt="{{ post.title }}"></a>
-							</div>
-							<div class="entry-meta-wrapper">
-								<div class="entry-meta nomargin clearfix">
-									<a href="#" class="text-muted">{{ post.date | date_to_string }}</a>
-								</div>
-								<div class="entry-title clearfix">
-									<h2><a href="#" style="">{{ post.title }}.</a></h2>
-								</div>
-								<div class="entry-content clearfix">
-									<p>{{ post.content | truncate: 100, "" }}...</p>
-									<a href="{{ post.url }}" title="{{ post.title }}" class="noleftmargin">Lees verder</a>
-								</div>
-							</div>
-						</div>
-					</div>
-					{% endfor %}
 
-					<div class="clear"></div>
 
-					<a href="blog" class="button button-small button-border button-black button-dark topmargin-sm noleftmargin"><i class="icon-line-stack-2"></i> Bekijk alle artikelen</a>
-					</div>
-				</div>
-			</div>
-		</div>
-
-	</div>
-
-</section>

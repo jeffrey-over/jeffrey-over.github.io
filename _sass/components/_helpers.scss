@@ -1,0 +1,108 @@
+// Styling
+.has-shadow {
+    -webkit-box-shadow: $default-box-shadow;
+    box-shadow: $default-box-shadow;
+}
+
+.has-text-shadow {
+    text-shadow: 1px 3px 0px rgba(0, 0, 0, 0.09);
+}
+
+.has-text-fade {
+    opacity: .7;
+}
+.has-border {
+    border: $default-border;
+}
+
+
+.has-image.right {padding-left: 40px;}
+.has-image.left {padding-right: 40px;}
+
+.post img, .responsive-image, .responsive-image-nozoom {
+    max-width: 100%;
+    height: auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;    
+    display: block;
+}
+
+img.responsive-image:hover {
+    transform: scale(1.1)
+}
+
+
+.background-color-secondary {
+    background-color: $background-color-secondary;
+}
+
+// Display
+.clearfix {
+    clear: both;
+}
+
+.is-relative{position: relative;overflow: hidden;}
+
+.is-shown {
+	display: block !important;
+}
+
+.is-hidden {
+	display: none !important;
+}
+
+.vertical-center {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+
+.is-desktop-only {
+    display: none;
+    width: 0;
+    height: 0;
+    visibility: hidden;
+}
+@include breakpoint-phone-up {
+    .is-desktop-only {
+         display: block;
+         visibility: visible;
+         width: auto;
+         height: auto;
+     }
+ }
+
+
+// Padding and Margins
+.has-padding {
+    padding: $default-padding !important;
+}
+
+.has-margin {
+    margin: $default-margin !important;
+}
+
+.has-no-margin {
+    margin: 0 !important;
+}
+
+.has-no-padding {
+    padding: 0 !important;
+}
+
+
+// Text alignment
+.text-left {
+	text-align: left;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.text-center {
+	text-align: center;
+}

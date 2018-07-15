@@ -1,0 +1,28 @@
+
+
+.feature {
+        padding: 70px 0;
+        background: #ffffff;
+        border-bottom: 1px solid #efefef; 
+}
+
+
+.feature_item {
+        line-height: 1.5;
+        font-weight: 400;
+        letter-spacing: -.022em;
+        min-height: 52px;
+        margin-bottom: 15px;
+        
+}
+    
+
+.feature_icon {
+        display: inline-block;
+        width: 40px;
+}
+    
+.feature_item i {
+        font-size:125%;
+        vertical-align: middle;
+}

@@ -1,27 +1,24 @@
 ---
-layout: subpage
+layout: default
 ---
-<div style="max-width:730px;margin:auto;">
-    <div class="">
-        <div class="heading-block">
-          <img src="/{{page.thumbnail}}" class="thumbnail_post">
-          <h2 class="" style="display: inline-block">{{ page.title }}</h2>
 
-        </div>
-      </div>
-      <ul class="entry-meta clearfix" style="padding: 0 !important;margin-bottom:20px;">
-          <li><i class="icon-calendar3"></i> {{ page.date | date_to_string }}</li>
-          <li><a href="#"><i class="icon-user"></i> Jeffrey</a></li>
-          <li><i class="icon-folder-open"></i>{{ page.tags }}</li>
-        </ul>
 
-        
-        <div class="clear"></div>
+<div id="intro-post" class="container has-full-width text-center">
+    <section>
 
-<div class="post">
-  {{ content }}
+        <span style="background: #3c41ff;padding: 3px 7px;color: #74b9ff;">{{ page.category }}</span>
+        <h1 class="is-serif">{{ page.title }}</h1>
+        <h2 class="is-subtitle"><time>{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</time></h2>
+    </section>
 </div>
 
+	<div class="post container has-small-width">
+		<section>
+    
+			{{ content }}
 
-<a href="/blog" class="button button-small button-border button-black button-dark topmargin-sm noleftmargin"><i class="icon-line-stack-2"></i> Bekijk alle artikelen</a>
-</div>
+
+
+		</section>
+	</div>
+   

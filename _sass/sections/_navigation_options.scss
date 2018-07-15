@@ -1,0 +1,55 @@
+
+.navigation-only-logo .navigation {
+    padding-top: 30px;
+}
+
+@media only screen and (max-width: 800px) {
+    .navigation-only-logo .navigation {
+        margin-top: 0px;
+    }
+
+
+}
+
+
+.navigation-only-logo .navigation .button {
+    margin-top: 6px;
+    padding: 1.2rem 1.4rem;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+    -webkit-transition: .1s ease-in-out;
+    transition: .1s ease-in-out;
+}
+
+
+
+.navigation-no-logo {
+    background: rgba(0,0,0,0.9);
+    
+}
+
+.navigation-no-logo nav {
+    line-height: $navigation-height;
+    float: right;
+}
+
+.navigation-no-logo nav ul li a, .navigation-no-logo nav ul li a:visited {
+    margin-top: 0;
+    padding: 0 90px 0 0;
+}
+
+@media only screen and (max-width: 800px) {
+    .navigation-no-logo nav {
+    background: transparent;
+}
+.navigation-no-logo nav ul li a, .navigation-no-logo nav ul li a:visited {
+    
+    padding: 0 30px 0 0;
+}
+}
+
+.navigation-no-logo nav ul {
+    font-size: 1.3rem
+}
+
+

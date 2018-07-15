@@ -1,0 +1,47 @@
+
+a {
+	color: #3c41ff;
+    text-decoration: none;
+}
+a:hover	{
+    text-decoration: underline;
+}
+a:visited,a:active,a:focus  {
+    text-decoration: none;
+}    
+
+section {padding: 6rem 0;}
+
+
+nav ul li a, nav ul li a:visited {
+    line-height: inherit;
+    text-align: center;
+    margin-top: 14px;
+    color: #fafafa;
+}
+
+nav ul li a:hover {
+    color: #fff;
+}
+
+
+
+a.button, button {
+    background: #3c41ff;
+    border-color: #3c41ff;
+    border-radius: 3px;
+}
+
+a.button:hover, a.button:active, a.button:visited, a.button:focus, button:hover, button:active, button:visited, button:focus {
+    background: #3c41ff;
+    border-color: #3c41ff;
+}
+
+.has-small-width {
+    font-size: 1.8rem;
+    line-height: 1.8;
+}
+
+.has-small-width p {
+    margin-bottom: 4.5rem;
+}

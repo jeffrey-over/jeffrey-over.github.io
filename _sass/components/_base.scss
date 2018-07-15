@@ -1,0 +1,83 @@
+
+
+
+@import url('https://fonts.googleapis.com/css?family=Lato');
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display');
+@import url('https://fonts.googleapis.com/css?family=Muli');
+
+// Initial
+// Defining a base font-size of 62.5% to have the convenience of sizing rems in a way that is similar to using px.
+html { 
+    font-size: 62.5%; 
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    min-width: 300px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+body {
+  background-color: $background-color;
+  font-family: $font-family;
+  font-size: $font-size-small;
+  line-height: $line-height;
+  color: $font-color;
+  -webkit-font-smoothing: antialiased;
+}
+
+    @include breakpoint-desktop-up {
+        body {
+            font-size: $font-size;
+        }
+    }
+ 
+
+// Container
+.container {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: $container-padding;
+}
+    @include breakpoint-phone-up {
+        .container {
+            max-width: 80%;
+        }
+    }
+    @include breakpoint-desktop-up {
+        .container {
+            max-width: 75%;
+        }
+    }
+
+.has-full-width {
+    width: 100%;
+    max-width: 100%;
+    
+}
+    @include breakpoint-phone-up {
+       .container.has-full-width {
+            padding: 0;
+        }
+    }
+
+.has-small-width {
+    max-width: $mobile;
+}
+
+// Margins and Padding
+p,ol,ul,dl,table {
+    margin: $basic-elements-margin;
+}
+
+section {
+    padding: $section-padding;
+}
+
+// hr
+hr {
+    margin: $hr-margin;
+    border-width: 0;
+    border-top: $hr-border;
+    width: 40px;
+}

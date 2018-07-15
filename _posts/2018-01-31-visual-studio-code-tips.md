@@ -2,6 +2,7 @@
 layout: post
 title: "Visual Studio Code tips"
 date: 2018-01-31
+category: learning
 tags: webdevelopment, tips, visual studio code
 published: true
 thumbnail: "images/blog/vsc.gif"
@@ -22,9 +23,10 @@ Emmet is een snippet toolkit waarmee je veel tijd bespaart in je HTML & CSS work
 Deze toolkit is ingebouwd in VSC waardoor dit nog makkelijker is te gebruiken.
 
 #### Voorbeeld Emmet syntax:
-<pre><code>div>ul>li</code></pre>
+<pre><code class="language-html" data-lang="html">div>ul>li</code></pre>
 
 ###### Resultaat
+
 <pre><code class="language-html" data-lang="html">&lt;div&gt;
     &lt;ul&gt;
         &lt;li&gt;&lt;/li&gt;
@@ -32,10 +34,14 @@ Deze toolkit is ingebouwd in VSC waardoor dit nog makkelijker is te gebruiken.
 &lt;/div&gt;</code></pre>
 
 
+
 #### Voorbeeld Emmet snippet:
+
 <pre><code class="language-html" data-lang="html">&lt;!</code></pre>
 
+
 ###### Resultaat
+
 <pre><code class="language-html" data-lang="html">&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
@@ -47,6 +53,7 @@ Deze toolkit is ingebouwd in VSC waardoor dit nog makkelijker is te gebruiken.
 &lt;body&gt;   
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
+
 
 #### Mijn geinstalleerde extensies
 - [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)

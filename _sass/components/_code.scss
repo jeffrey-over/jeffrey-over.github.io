@@ -1,0 +1,85 @@
+
+// Highlight
+mark {
+	background: $highlight-color;
+	padding: $mark-padding;
+}
+
+// Highlight selection
+::selection {
+    background: $highlight-color; 
+  }
+::-moz-selection {
+    background: $highlight-color; 
+  }
+
+// Code preview
+pre {
+	width: 100%;
+	overflow: auto;
+	overflow-y: hidden;   
+    overflow: auto;
+    padding: $pre-padding;
+    font-size: $pre-font-size;
+	margin: $pre-margin;    
+    background: $pre-background-color;  
+    color: $pre-font-color;
+    border-radius: $pre-border-radius;
+}
+
+code {
+    background-color: $code-background-color;
+    color: $code-font-color;
+    padding: $code-padding;
+}
+
+// From PrismJS
+code, pre {
+    @extend .text-left;
+    text-shadow: $code-text-shadow;
+    font-family: $code-font-family;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+	line-height: $code-line-height; 
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+}
+
+.language-terminal {
+  position: relative;
+  padding: 0;
+  border: 3px solid #fff;
+  box-shadow: 0 5px 15px rgba(0,0,0,.16);
+  
+  margin: 2rem 0;
+
+  &::before {
+    content: "\2022 \2022 \2022";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    background: #fff;
+    color: #efefef;
+    width: 100%;
+    font-size: 2.5rem;
+    margin: 0;
+    line-height: 0;
+    padding: 10px 0;
+    text-indent: 4px;
+    letter-spacing: -2px;
+  }
+
+  .highlight {
+    margin: 0;
+    padding: 0;
+    background-color: initial;
+    color: #fff;
+  }
+}
