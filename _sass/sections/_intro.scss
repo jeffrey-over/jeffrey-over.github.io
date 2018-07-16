@@ -17,6 +17,12 @@
 }
 }
 
+@include breakpoint-desktop-up {
+    #intro {
+        height: 50vh;
+    }
+}
+
 #intro-post {
     min-height: 400px;
     background: #2c2d30;
