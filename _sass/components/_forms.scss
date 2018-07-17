@@ -15,7 +15,7 @@ label {
     -webkit-font-smoothing: antialiased;    
 }
 
-[type=color], [type=date], [type=datetime-local], [type=datetime], [type=email], [type=month], [type=number], [type=password], [type=search], [type=tel], [type=text], [type=time], [type=url], [type=week], select, textarea {
+#mc_embed_signup .button, #mc_embed_signup input, #mc_embed_signup input, #mc_embed_signup .mc-field-group input, [type=color], [type=date], [type=datetime-local], [type=datetime], [type=email], [type=month], [type=number], [type=password], [type=search], [type=tel], [type=text], [type=time], [type=url], [type=week], select, textarea {
     @extend .has-border;
     display: block;
     border-radius: $input-border-radius;

@@ -28,3 +28,16 @@
     color: #ffffff;
     margin-top: 0;
 }
+
+.subscription input[type="submit"] {
+    border-color: #74b9ff !important;
+    color: #74b9ff;
+}
+
+.subscription #mc_embed_signup #mce-success-response {
+    color: #fff !important;
+    display: none;
+    /* background: #ffffff; */
+    width: 100%;
+    margin: 0;
+}
