@@ -13,4 +13,4 @@ include: ['_pages']
 kramdown:
   input: GFM
 plugins:
-  - jekyll-sitemap  
+  - jekyll-sitemap
