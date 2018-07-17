@@ -2,7 +2,7 @@
 layout: post
 title: "Visual Studio Code tips"
 date: 2018-01-31
-category: learning
+label: learning
 tags: webdevelopment, tips, visual studio code
 published: true
 thumbnail: "images/blog/vsc.gif"
