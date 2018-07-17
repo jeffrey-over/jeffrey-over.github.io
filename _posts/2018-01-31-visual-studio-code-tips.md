@@ -6,9 +6,10 @@ category: learning
 tags: webdevelopment, tips, visual studio code
 published: true
 thumbnail: "images/blog/vsc.gif"
+description: "Visual Studio Code is mijn favoriete editor. "
 ---
 
-Visual Studio Code is mijn favoriete editor. Dit komt vooral door de vele extensies die worden aangeboden en de geïntegreerde koppeling met Git.
+Dit komt vooral door de vele extensies die worden aangeboden en de geïntegreerde koppeling met Git.
 
 #### Koppeling met Git
 Zoals hierboven al aangegeven heeft VSC een [ingebouwde source control](https://code.visualstudio.com/docs/introvideos/versioncontrol "Visual Studio code"). Deze wordt nog krachtiger in combinatie met de extensie *[Git History](https://marketplace.visualstudio.com/items?itemName=donjayamanne.githistory "Git History extension")*.
