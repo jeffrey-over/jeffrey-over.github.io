@@ -9,9 +9,9 @@ thumbnail: "images/blog/2017-2018.jpg"
 description: "2017 was een bewogen en fantastich jaar!"
 ---
 
-Hieronder een samenvatting wat ik hierin heb bereikt op technisch gebied. 
+En wat een topjaar zeg! Het jaar waar in Jax 1 jaar is geworden en tussen het genieten van de kleine door vooral ook gefocust heb op webdevelopment. Hieronder een samenvatting wat ik heb bereikt op technisch gebied. 
 
-### Wat ik heb geleerd in 2017
+#### Wat ik heb geleerd in 2017
 - Commandline
 - Jekyll en Liquid
 - Markdown
@@ -20,5 +20,8 @@ Hieronder een samenvatting wat ik hierin heb bereikt op technisch gebied.
 - SASS
 - GitHub
 
-### 108 Commits op GitHub
+#### 108 Commits op GitHub
 ![alt text](/images/blog/commits_2017.png "Commits in 2017")
+
+
+

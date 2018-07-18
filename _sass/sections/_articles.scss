@@ -4,10 +4,17 @@
 
 #articles .card {
     margin-bottom: 60px;
+    min-height: 530px;
+}
+
+@include breakpoint-desktop-up {
+#articles .card {
+    margin: 2rem 3rem 6rem 0;
+}
 }
 
 #articles .has-padding {
-   padding: 4rem !important; 
+   padding: 4rem 3rem !important;
 }
 
 #articles a.button, #articles a.button:hover, #articles a.button:active, #articles  a.button:visited, #articles a.button:focus {
