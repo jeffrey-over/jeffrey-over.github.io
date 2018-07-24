@@ -1,5 +1,5 @@
 #dark {
-    background: rgba(0,0,0,0.9);
+    background: #2c2d30;
 }
 
 #light {
@@ -22,7 +22,7 @@
     color: #000;
 }
 
-#light input {
+#light input, #dark input {
     margin-right: 10px;
 }
 
