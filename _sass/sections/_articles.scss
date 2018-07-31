@@ -2,6 +2,12 @@
     margin-bottom: 60px;
 }
 
+@media only screen and (max-width: 800px) {
+    #articles {
+    text-align: center;
+}
+}
+
 #articles .card {
     margin-bottom: 60px;
     min-height: 530px;
