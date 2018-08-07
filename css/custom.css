@@ -48,3 +48,5 @@ input[type="submit"]:hover, a.button:hover, a.button:active, a.button:visited, a
 .has-small-width p {
     margin-bottom: 4.5rem;
 }
+
+.has-small-width h4 {margin: 4rem 0 1.5rem;}

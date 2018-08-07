@@ -11,3 +11,11 @@
 		@content;
 	}
 }
+
+
+// Break on widescreen
+@mixin breakpoint-widescreen-up {
+	@media (min-width: #{$widescreen}) {
+		@content;
+	}
+}

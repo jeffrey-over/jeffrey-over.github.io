@@ -5,6 +5,7 @@
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display');
 @import url('https://fonts.googleapis.com/css?family=Muli');
 
+
 // Initial
 // Defining a base font-size of 62.5% to have the convenience of sizing rems in a way that is similar to using px.
 html { 
@@ -46,9 +47,14 @@ body {
     }
     @include breakpoint-desktop-up {
         .container {
-            max-width: 65%;
+            max-width: 95%;
         }
     }
+    @include breakpoint-widescreen-up {
+        .container {
+            max-width: 65%;
+        }
+    }   
 
 .has-full-width {
     width: 100%;
@@ -62,7 +68,7 @@ body {
     }
 
 .has-small-width {
-    max-width: $mobile;
+    max-width: 800px;
 }
 
 // Margins and Padding

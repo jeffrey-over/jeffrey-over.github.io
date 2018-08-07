@@ -1,27 +1,25 @@
 ---
 layout: post
-title: "Selligent systeem tabellen"
+title: "Selligent Marketing Cloud - systeem tabellen"
 date: 2017-12-11
 label: learning
 tags: Selligent Marketing Cloud, Data
 published: true
 thumbnail: "images/blog/sim-tables.jpg"
-description: "Er is veel informatie te winnen uit de achterliggende systeemtabellen van Selligent Marketing Cloud."
+description: "Er is veel informatie te winnen uit de achterliggende systeemtabellen van Selligent Marketing Cloud. Zo zou je met triggers je workflow verder kunnen automatiseren of custom queries kunnen inzetten om rapportage’s te genereren. "
 ---
 
-Met custom queries kan je hier handige rapportage's van maken. Ik en mijn collega's bij DM-Interface helpen je hier graag bij. Hieronder een kleine opsomming van deze tabellen.
+Het Selligent Marketing Cloud datamodel bestaat uit meer tabellen dan die hieronder worden benoemd. Deze tabellen kunnen gecombineerd voor mooie inzichten zorgen.
 
-#### Actionqueue
-*This table serves as the outqueue for the email channel. Every record contains the definition for one email to be send*
 
-#### Flags
-*Storage for all platform interactions*
+| Tabel        | Beschrijving  | 
+| ------------- |-------------| 
+| *Flags*| Opslag van alle platform en gebruiker interacties.     | 
+| *Actionqueue*| Deze tabel dient als wachtwoord voor e-mails. Elk record bevat de definitie voor één e-mail die moet worden verzonden  | 
+| *Campaigns*| Tabel met alle campagnedefinities.     | 
+| *Lists*| Tabel met alle lijsten.    | 
+| *Mails*| Tabel met alle e-mails / pagina's    | 
 
-#### Campaigns
-*Table containing all campaign definitions*
 
-#### Lists
-*Table describing all lists*
 
-#### Mails
-*Table containing all emails / pages*
+**Tip:** Tabellen worden in Selligent lists of audiences genoemd

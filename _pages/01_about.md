@@ -4,7 +4,10 @@ title: About
 permalink: /about/
 ---
 
-About content goes here.
+Ik ben jeffrey...
+FOTO
 
-* A list item
-* Another list item
+<h4>Projecten</h4>
+{% include projects.html %}
+
+<h4>Webdevelopment setup</h4>

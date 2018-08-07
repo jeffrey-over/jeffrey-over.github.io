@@ -6,10 +6,8 @@ label: personal
 tags: ik, retro
 published: true
 thumbnail: "images/blog/2017-2018.jpg"
-description: "2017 was een bewogen en fantastich jaar!"
+description: "Hierbij een overzicht van mijn jaar op het gebied van marketing automation , web en e-mail development. Een topjaar waarin ik veel heb geleerd en naar mijn mening ook veel heb bereikt."
 ---
-
-En wat een topjaar zeg! Het jaar waar in Jax 1 jaar is geworden en tussen het genieten van de kleine door vooral ook gefocust heb op webdevelopment. Hieronder een samenvatting wat ik heb bereikt op technisch gebied. 
 
 #### Wat ik heb geleerd in 2017
 - Commandline
@@ -24,4 +22,5 @@ En wat een topjaar zeg! Het jaar waar in Jax 1 jaar is geworden en tussen het ge
 ![alt text](/images/blog/commits_2017.png "Commits in 2017")
 
 
-
+#### Projecten
+{% include projects.html %}
