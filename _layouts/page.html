@@ -10,7 +10,7 @@ layout: default
         <div class="container">
             <section>
                 <h2 class="is-serif">{{page.title}}</h2>
-                <h3 class="is-subtitle">{{page.subtitle}} </h3>
+                {% if page.subtitle %} <h3 class="is-subtitle">{{page.subtitle}} </h3>{% endif %}
     
                 {{content}}
             </section>
