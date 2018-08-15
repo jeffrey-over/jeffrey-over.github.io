@@ -23,4 +23,15 @@ description: "Hierbij een overzicht van mijn jaar op het gebied van marketing au
 
 
 #### Projecten
-{% include projects.html %}
+
+<dl>
+        <dt><a href="http://www.zorgperfect.nl" target="_BLANK">Zorgperfect</a></dt>
+        <dd>Website voor het thuiszorgbedrijf van mijn schoonmoeder.
+     </dd>
+     <dt><a href="http://www.dm-interface.nl" target="_BLANK">Emailconfigurator</a></dt>
+     <dd>Een platform onafhankelijke mastertemplate die bestaat uit herbruikbare bouwstenen. 
+  </dd>
+  <dt><a href="https://www.jeffreyovermeer.com" target="_BLANK">Jeffrey Overmeer</a></dt>
+  <dd>Gestart met mijn eigen website. Versie 1 :)
+</dd>
+</dl>     

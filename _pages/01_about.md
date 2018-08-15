@@ -1,19 +1,17 @@
 ---
 layout: page
-title: About
+title: Dit ben ik
 permalink: /about/
 ---
 
 
-Hallo ik ben Jeffrey! Ik ben nieuwsgierig en gedreven om nieuwe features te ontrafelen en op te pakken. Ik krijg energie van smaakmakende projecten. Door passie en focus-time niet te stoppen! 
+Hallo ik ben Jeffrey! Ik ben nieuwsgierig en gedreven om nieuwe features te ontrafelen en op te pakken en hou me graag bezig met automatiseren en innoveren.
 
-Sinds 2006 ben ik werkzaam bij DM-Interface. Ik kan mijn weg vinden binnen Selligent (certificaat), IBM Marketingcloud, relay42. 
+Ik krijg energie van smaakmakende projecten en om als team verbeteringen te detecteren. Ben niet zo van de “u vraagt wij draaien” mentaliteit. Door passie en focus-time niet te stoppen!
 
-Ik houd me graag bezig met automatiseren en innoveren.
-Een voorbeeld hiervan is de emailconfigurator. 
+Sinds 2006 ben ik werkzaam bij DM-Interface. Ik kan mijn weg aardig vinden binnen Selligent, Clang, IBM Marketingcloud en Relay42.
 
-Mijn vrije tijd besteed ik graag met mijn gezin.
-
+<img src="/images/ik.jpg" class="responsive-image"/>
 
 <h4>Projecten</h4>
 {% include projects.html %}
