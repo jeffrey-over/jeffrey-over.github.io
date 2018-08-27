@@ -15,5 +15,3 @@ Sinds 2006 ben ik werkzaam bij DM-Interface. Ik kan mijn weg aardig vinden binne
 
 <h4>Projecten</h4>
 {% include projects.html %}
-
-<h4>Webdevelopment setup</h4>

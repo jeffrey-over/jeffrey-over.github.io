@@ -3,14 +3,24 @@ layout: default
 ---
 
 
+<div id="intro-post" class="container has-full-width text-center">
+        <section>
+    
+          
+            <h1 class="is-serif">{{ page.title }}</h1>
+                {% if page.subtitle %} <h3 class="is-subtitle">{{page.subtitle}} </h3>{% endif %}
+        </section>
+    </div>
+    
+      
+    
 
 
 <div class="container has-small-width" >
 
         
             <section>
-                <h2 class="is-serif">{{page.title}}</h2>
-                {% if page.subtitle %} <h3 class="is-subtitle">{{page.subtitle}} </h3>{% endif %}
+ 
     
                 {{content}}
             </section>
