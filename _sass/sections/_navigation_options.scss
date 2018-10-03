@@ -24,7 +24,7 @@
 
 
 .navigation-no-logo {
-    background: #000000;
+    background: #010101;
     border-bottom: 1px solid #262626;
     
 }
@@ -39,12 +39,11 @@
     line-height: inherit;
     text-align: center;
     color: #fff;
-    font-weight: bold;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     text-transform: uppercase;
 }
 
-@media only screen and (max-width: 1050px) {
+@media only screen and (max-width: 800px) {
     .navigation-no-logo nav {
     background: transparent;
 }

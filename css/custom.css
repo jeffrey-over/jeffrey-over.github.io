@@ -30,8 +30,8 @@ input[type="submit"], a.button, button {
 }
 
 input[type="submit"]:hover, a.button:hover, a.button:active, a.button:visited, a.button:focus, button:hover, button:active, button:visited, button:focus {
-    background: #3c41ff !important;
-    border-color: #3c41ff !important;
+    background: #3c41ff;
+    border-color: #3c41ff;
 }
 
 .has-small-width {

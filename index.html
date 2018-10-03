@@ -34,28 +34,18 @@ layout: default
   
     
 
-    <div class="has-full-width text-center" > 
-        <div class="container">
-            <section>
-                <div class="columns">
-                    <div class="full column">
-                        <h1 class="is-title is-serif">Artikelen</h1>
-                        <p>
-                                Soms schrijf ik.
-                        </p>
-                        
-        
-                    </div>
-                </div>
-            </section>
+   
 
-          </div>
-    </div>   
-
-    <div class="has-full-width" id="articles">
+    <div class="has-full-width text-center" id="articles">
 
         <div class="container">
             <section>
+                    <h1 class="is-title is-serif">Artikelen</h1>
+                    <p>
+                            Soms schrijf ik.
+                    </p>
+                    
+
                 {% for post in site.posts limit:3 %}
                 <div class="card text-left">
                         <img src="../{{ post.thumbnail }}" alt="{{ post.title }}" class="responsive-image">
@@ -92,12 +82,12 @@ layout: default
                                 Helder is een CSS framework en SASS boilerplate zonder poespas met minimalistische vormgegeven componenten zoals formulieren, cards en tabellen en zorgt voor consistentie tussen browsers.
                         </p>
                         
-                        <div class="language-terminal highlighter-rouge floating ">
+                        <div class="language-terminal highlighter-rouge floating text-left">
                             <img src="images/blog/mockup_helder.png" class="responsive-image-nozoom" />
                           </div>                  
-
+ 
                           <p>
-                                <a class="button" target="_BLANK" href="https://www.jeffreyovermeer.com/helder-css-framework/">Bekijk Helder.<i class="fas fa-arrow-right" style="margin:0 10px;"></i></a>
+                                <a class="button is-outlined" target="_BLANK" href="https://www.jeffreyovermeer.com/helder-css-framework/">Bekijk Helder.<i class="fas fa-arrow-right" style="margin:0 10px;"></i></a>
                           </p>
                     </div>
                 </div>
