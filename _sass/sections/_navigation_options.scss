@@ -36,7 +36,12 @@
 
 .navigation-no-logo nav ul li a, .navigation-no-logo nav ul li a:visited {
     margin-top: 0;
-    padding: 0 90px 0 0;
+    line-height: inherit;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }
 
 @media only screen and (max-width: 1050px) {
@@ -45,7 +50,8 @@
 }
 .navigation-no-logo nav ul li a, .navigation-no-logo nav ul li a:visited {
     
-    padding: 0 30px 0 0;
+    padding: 0 5px;
+    letter-spacing: unset;
 }
 }
 

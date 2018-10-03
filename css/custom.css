@@ -13,12 +13,6 @@ a:visited,a:active,a:focus  {
 section {padding: 6rem 0;}
 
 
-nav ul li a, nav ul li a:visited {
-    line-height: inherit;
-    text-align: center;
-    margin-top: 14px;
-    color: #fafafa;
-}
 
 nav ul li a:hover {
     color: #fff;

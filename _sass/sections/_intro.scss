@@ -13,7 +13,7 @@
 
  @media only screen and (max-width: 800px) {
      #intro {
-     text-align: center;
+     text-align: left;
  }
  }
 
@@ -68,14 +68,22 @@
 
 
 #intro h1, footer h1 {
-    font-family: 'Work Sans', serif;
+    //font-family: 'Work Sans', serif;
     margin-bottom: 5rem;
-    font-family: 'Work Sans', serif;
+    font-family: -apple-system, BlinkMacSystemFont, segoe ui, Roboto, Helvetica, Arial, sans-serif, apple color emoji, segoe ui emoji, segoe ui symbol;
     font-size: 9.2rem;
     margin-bottom: 5rem;
     text-transform: uppercase;    
    
 }
+
+@media only screen and (max-width: 800px) {
+    #intro h1, footer h1 {
+        font-size:5rem;    
+       
+    }
+}
+
 #intro p {margin-bottom: 3rem;}
 #intro .container, #intro .column {
     padding: 0 ;}
