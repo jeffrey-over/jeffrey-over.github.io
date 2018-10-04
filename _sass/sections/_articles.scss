@@ -42,12 +42,12 @@
 }
 @include breakpoint-desktop-up {
     #articles .container {
-        max-width: 95%;
+        max-width: 90%;
     }
 }
 @include breakpoint-widescreen-up {
     #articles  .container {
-        max-width: 95%;
+        max-width: 90%;
     }
 }   
 
