@@ -9,7 +9,7 @@ thumbnail: "images/blog/helder.png"
 description: "Helder is een CSS framework en SASS boilerplate zonder poespas met minimalistische vormgegeven componenten zoals formulieren, cards en tabellen en zorgt voor consistentie tussen browsers."
 ---
 
-##### CSS framework
+#### CSS framework
 Een CSS framework is een verzameling van CSS-bestanden gebruikt kunnen voor webprojecten om zo tijd te besparen in het stylen van componenten, structureren van layouts en zorgt voor **cross-browsercompatibiliteit**. Het kan echt een nachtmerrie zijn om zonder css framework een component te stylen die in alle browsers goed en hetzelfde werken.
 
 Naar mijn mening zijn de populairste frameworks zo groot geworden dat ze ook veel ruis met zich meebrengen. Veel code gebruik je simpelweg niet. Je moet er echt voor waken dat het meer tijd gaat kosten om alle mogelijkheden van een framework uit te zoeken dan zelf voor de CSS te zorgen.

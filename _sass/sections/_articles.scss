@@ -5,6 +5,13 @@
     margin-bottom: 60px;
 }
 
+#articles p.introtext {
+    
+    font-size: 2.2rem;
+    line-height: 3.4rem;
+    margin: 4rem 0;
+}
+
 @media only screen and (max-width: 800px) {
     #articles {
     text-align: center;
@@ -47,7 +54,7 @@
 }
 @include breakpoint-widescreen-up {
     #articles  .container {
-        max-width: 90%;
+        max-width: 1200px;
     }
 }   
 

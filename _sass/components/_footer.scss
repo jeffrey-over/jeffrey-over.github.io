@@ -45,7 +45,7 @@ footer {
 }
 @include breakpoint-widescreen-up {
     footer  .container {
-        max-width: 90%;
+        max-width: 1200px;
     }
 }   
 

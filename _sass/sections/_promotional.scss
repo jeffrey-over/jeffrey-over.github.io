@@ -13,20 +13,18 @@
 
 .promotional-product {
         padding: 0 0 6rem 0;
-        background: #3c41ff;
+        background: #fff;
         
 }
 
 .promotional-product a.button {
         margin-top: 6rem;
-        color: #ffffff !important;
-        background: #3c41ff !important;
-        border-color: #ffffff !important;
+     
     }
 
 .promotional-product .is-title {
         margin-bottom: 35px;
-        color: #ffffff;
+        
 }
 
 @media only screen and (max-width: 800px) {
@@ -40,5 +38,5 @@
         font-size: 2.2rem;
         line-height: 3.4rem;
         margin: 4rem 0;
-        color: #ffffff;
+        
 }
