@@ -39,12 +39,12 @@ footer {
 }
 @include breakpoint-desktop-up {
     footer .container {
-        max-width: 95%;
+        max-width: 90%;
     }
 }
 @include breakpoint-widescreen-up {
     footer  .container {
-        max-width: 95%;
+        max-width: 90%;
     }
 }   
 
