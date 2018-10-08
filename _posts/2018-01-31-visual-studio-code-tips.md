@@ -105,6 +105,6 @@ bestandsgeschiedenis, vergelijk branches of commits
 
  
 
-Bekijk zeker ook de [tips](https://github.com/Microsoft/vscode-tips-and-tricks) die Microsoft zelf aanbiedt!
+Check zeker ook de [tips](https://github.com/Microsoft/vscode-tips-and-tricks) die Microsoft zelf aanbiedt!
 
 
