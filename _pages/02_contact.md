@@ -7,7 +7,7 @@ permalink: /contact/
 
                 
 
-Hallo daar! Stuur me een [email](mailto:hello@jeffreyovermeer.com) of gebruik onderstaande links om me te contacten.
+Hallo! Heel erg bedankt voor je interesse! Stuur me een [email](mailto:hello@jeffreyovermeer.com) of gebruik onderstaande links om me te contacten.
 
 
 <a href="https://github.com/jeffrey-over/" class="social" target="_BLANK" style="margin-right:35px;"><i class="fab fa-github-square"></i> Github</a>  <a href="https://www.linkedin.com/in/jeffreyovermeer/" target="_BLANK" class="social"><i class="fab fa-linkedin"></i> LinkedIn</a>
