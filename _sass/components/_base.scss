@@ -42,17 +42,17 @@ body {
 }
     @include breakpoint-phone-up {
         .container {
-            max-width: 80%;
+            max-width: 850px;
         }
     }
     @include breakpoint-desktop-up {
         .container {
-            max-width: 95%;
+            max-width: 850px;
         }
     }
     @include breakpoint-widescreen-up {
         .container {
-            max-width: 65%;
+            max-width: 850px;
         }
     }   
 
