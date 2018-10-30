@@ -147,17 +147,17 @@ $navigation-background-color: transparent;
 $navigation-mobile-background-color: transparent;
 $navigation-padding-mobile: 0;
 $navigation-padding-desktop: 0;
-$navigation-font-color: #ffffff;
-$navigation-link-color: #ffffff;
+$navigation-font-color: rgba(0, 0, 0, 0.84);
+$navigation-link-color: rgba(0, 0, 0, 0.84);
 $navigation-mobile-link-color: #000;
 $navigation-link-hover-color: #3c41ff;
 $navigation-link-padding: 0 30px;
 $navigation-mobile-link-padding: 0 40px;
 $navigation-font-size: 1.4rem;
-$navigation-heading-font-color: #fff;
+$navigation-heading-font-color: rgba(0, 0, 0, 0.84);
 $navigation-line-height: $navigation-height;
 $navigation-mobile-nav-hover-color: $background-color-secondary;
-$logo-font-color: #fff;
+$logo-font-color: rgba(0, 0, 0, 0.84);
 $logo-font-size: $navigation-font-size;
 
 // Footer
