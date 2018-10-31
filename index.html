@@ -36,6 +36,40 @@ layout: default
     
 
    
+    <div class="has-full-width">
+
+            <div class="container">
+                <section>
+    
+                          
+                        <h1 class="is-title is-serif">Stories</h1>
+                        <h3 class="is-subtitle">Tips, projecten en persoonlijke ervaring op het (email)marketingvlak.</h3>                
+    
+                        {% for post in site.posts limit:5 %}
+                    <div class="columns">
+                            <div class="two-thirds column">
+                                <a href="" class="date_added"><time>{{ post.date | date: "%b %-d, %Y" }}</time></a>  - {{ post.label }}
+                                <a href="{{ post.url | prepend: site.baseurl }}"><h4>{{ post.title }}</h4></a>
+                            </div>
+                            <div class="third column hide-mobile">
+                                <img src="../{{ post.thumbnail }}" alt="{{ post.title }}" class="responsive-image hide-mobile" style="height:100px;width: 180px;">
+                            </div>
+                    </div>
+                    {% endfor %}
+        
+    
+           
+        
+        
+                    
+                    <div class="clearfix"></div>            
+            
+                    <a class="button" href="blog/index.html">Bekijk alle artikelen <i class="fas fa-arrow-right" style="margin:0 10px;"></i></a>
+                </section>
+            </div>
+           
+        </div>
+      
 
 
     <div class="has-full-width promotional-product text-left" > 
@@ -43,11 +77,11 @@ layout: default
                 <section>
                     <div class="columns">
                         <div class="full column">
-
-                            
-                            <h1 class="is-title is-serif">Featured project</h1>
-                            <h2>Helder CSS Framework</h2>
-                            <h3 class="is-subtitle">SASS boilerplate zonder poespas</h3>
+                    
+                            <h1 class="is-title is-serif">Helder CSS Framework</h1>
+                            <h3 class="is-subtitle">Featured project</h3>   
+                     
+                            <p class="introtext">SASS boilerplate zonder poespas</p>
                             <!-- Place this tag where you want the button to render. -->
                             <a class="github-button" href="https://github.com/jeffrey-over/helder-css-framework" data-icon="octicon-star" data-show-count="true" aria-label="Star jeffrey-over/helder-css-framework on GitHub">Star</a><br />                            
                             <p>
@@ -67,42 +101,8 @@ layout: default
     
               </div>
         </div> 
-    <div class="has-full-width text-center" id="articles">
 
-        <div class="container">
-            <section>
-                    <h1 class="is-title is-serif">Blog</h1>
-                    <h3 class="is-subtitle">Soms schrijf ik</h3>
-                    <p class="introtext">
-                           Tips, projecten en persoonlijke ervaring op het (email)marketingvlak.
-                    </p>
-                    
-
-                {% for post in site.posts limit:3 %}
-                <div class="card text-left">
-                        <img src="../{{ post.thumbnail }}" alt="{{ post.title }}" class="responsive-image">
-                    <div class="has-padding">
-                        <a href="" class="date_added"><time>{{ post.date | date: "%b %-d, %Y" }}</time></a>
-                        <h4>{{ post.title }}</h4>
-                        <p>
-                            {{ post.description | truncate: 100, "" }}...
-                        </p>
-                        <a href="{{ post.url | prepend: site.baseurl }}">Lees meer</a>
-                    </div>
-                </div>
-                {% endfor %}
-    
-    
-    
-                
-                <div class="clearfix"></div>            
-        
-                <a class="button" href="blog/index.html">Bekijk alle artikelen <i class="fas fa-arrow-right" style="margin:0 10px;"></i></a>
-            </section>
-        </div>
-       
-    </div>
-  
+      
 
 
 <!--

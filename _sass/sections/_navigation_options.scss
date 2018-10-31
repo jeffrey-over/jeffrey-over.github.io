@@ -25,7 +25,9 @@
 
 .navigation-no-logo {
 //    background: #010101;
-    border-bottom: 1px solid #eee;
+border-bottom: 1px solid #efefef;
+box-shadow: 0 0 20px rgba(0,0,0,.05);
+animation: .55s fade-in-up-lg ease-out;
     
 }
 
@@ -39,7 +41,8 @@
     line-height: inherit;
     text-align: center;
    // color: #fff;
-    letter-spacing: 1px;
+
+    font-weight: 700;
     text-transform: uppercase;
 }
 
