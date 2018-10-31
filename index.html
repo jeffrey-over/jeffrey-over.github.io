@@ -46,7 +46,7 @@ layout: default
                         <h3 class="is-subtitle">Tips, projecten en persoonlijke ervaring op het (email)marketingvlak.</h3>                
     
                         {% for post in site.posts limit:5 %}
-                    <div class="columns">
+                    <div class="columns" style="padding-bottom:10px;border-bottom: 1px solid #efefef;margin-bottom: 20px;">
                             <div class="two-thirds column">
                                 <a href="" class="date_added"><time>{{ post.date | date: "%b %-d, %Y" }}</time></a>  - {{ post.label }}
                                 <a href="{{ post.url | prepend: site.baseurl }}"><h4>{{ post.title }}</h4></a>
