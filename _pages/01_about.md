@@ -15,3 +15,5 @@ Sinds 2006 ben ik werkzaam bij DM-Interface. Ik kan mijn weg aardig vinden binne
 
 <h4>Projecten</h4>
 {% include projects.html %}
+
+<div class="LI-profile-badge"  data-version="v1" data-size="large" data-locale="en_US" data-type="vertical" data-theme="light" data-vanity="jeffreyovermeer"><a class="LI-simple-link" href='https://nl.linkedin.com/in/jeffreyovermeer?trk=profile-badge'>Jeffrey Overmeer</a></div>

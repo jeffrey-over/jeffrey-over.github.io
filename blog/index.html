@@ -4,55 +4,57 @@ layout: default
 
 
 
-
-<div class="has-full-width" id="articles">
-
-	<div class="container">
-		<section>
-			<h2 class="is-serif">Artikelen</h2>
-			<h3 class="is-subtitle">Soms schrijf ik. </h3>
-
-			{% for post in site.posts %}
-			<div class="card text-left">
-					<img src="../{{ post.thumbnail }}" alt="{{ post.title }}" class="responsive-image">
-				<div class="has-padding">
-					<a href="" class="date_added"><time>
-							{% assign m = post.date | date: "%-m" %}
-							{{ post.date | date: "%-d" }}
-							{% case m %}
-							  {% when '1' %}januari
-							  {% when '2' %}februari
-							  {% when '3' %}maart
-							  {% when '4' %}april
-							  {% when '5' %}mei
-							  {% when '6' %}juni
-							  {% when '7' %}juli
-							  {% when '8' %}augustus
-							  {% when '9' %}september
-							  {% when '10' %}oktober
-							  {% when '11' %}november
-							  {% when '12' %}december
-							{% endcase %}
-							{{ post.date | date: "%Y" }}
-					</time></a>
-					<h4>{{ post.title }}</h4>
-					<p>
-							{{ post.description | truncate: 150, "" }}...
-					</p>
-					<a href="{{ post.url | prepend: site.baseurl }}">Lees meer</a>
-				</div>
-			</div>
-			{% endfor %}
-
-
-
-			
-			<div class="clearfix"></div>            
-
-			<p>subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
-
-
-		</section>
-	</div>
    
-</div>
+<div class="has-full-width">
+
+		<div class="container">
+			<section>
+
+					  
+					<h1 class="is-title is-serif">Stories</h1>
+					<h3 class="is-subtitle">Tips, projecten en persoonlijke ervaring op het (email)marketingvlak.</h3>                
+
+					{% for post in site.posts %}
+				<div class="columns" style="padding-bottom:10px;border-bottom: 1px solid #efefef;margin-bottom: 20px;">
+						<div class="two-thirds column">
+							<a href="" class="date_added"><time>
+									{% assign m = post.date | date: "%-m" %}
+									{{ post.date | date: "%-d" }}
+									{% case m %}
+									  {% when '1' %}januari
+									  {% when '2' %}februari
+									  {% when '3' %}maart
+									  {% when '4' %}april
+									  {% when '5' %}mei
+									  {% when '6' %}juni
+									  {% when '7' %}juli
+									  {% when '8' %}augustus
+									  {% when '9' %}september
+									  {% when '10' %}oktober
+									  {% when '11' %}november
+									  {% when '12' %}december
+									{% endcase %}
+									{{ post.date | date: "%Y" }}
+							</time></a>  - {{ post.label }}
+							<a href="{{ post.url | prepend: site.baseurl }}"><h4>{{ post.title }}</h4></a>
+						</div>
+						<div class="third column hide-mobile">
+							<img src="../{{ post.thumbnail }}" alt="{{ post.title }}" class="responsive-image hide-mobile" style="height:100px;width: 180px;">
+						</div>
+				</div>
+				{% endfor %}
+	
+
+	   
+	
+	
+				
+				<div class="clearfix"></div>            
+		
+				<p>subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+
+			</section>
+		</div>
+	   
+	</div>
+  
