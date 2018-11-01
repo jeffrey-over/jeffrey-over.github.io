@@ -11,7 +11,7 @@ description: "Een lijst met technieken die je helpt om je (e-mail)campagnes en c
 
 Van te voren een perfecte customer journey uitstippelen die voor iedere klant is toe te passen bestaat niet. Dit ontstaat door een cyclus van meten/experimenteren/aanpassen en continue extra waarde willen creëren. Toch zijn er een aantal methodes die toegepast kunnen worden om je hierin te helpen. 
 
-<img src="https://media.giphy.com/media/myloecKmhWHOU/giphy.gif" class="fullscreen" alt="Cinemagraphs">
+<div class="fullscreen paralax" alt="Cinemagraphs" style="background-image: url('https://media.giphy.com/media/myloecKmhWHOU/giphy.gif');"></div>
 #### Cinemagraphs
 Heb je wel eens van die GIF’s gezien waar maar een klein deel van de foto subtiel animeert? Dat is nou een cinemagraph!
 
@@ -41,7 +41,8 @@ Persoonlijk vind ik het mooier om gaze cueing subtieler toe te passen en het pad
 
 Gaze Cueing gaat goed samen met Chunking. Zo kan je bijvoorbeeld na iedere sectie of artikel in je mail naast wat witruimte een  pijl tonen die 'wijst' naar het volgende artikel.
 
-<img src="/images/blog/guerilla.jpg" class="fullscreen" alt="Guerilla marketing" />
+
+<div class="fullscreen paralax" alt="Guerilla marketing" style="background-image: url('/images/blog/guerilla.jpg');"></div>
 #### Guerilla Marketing
 Guerilla marketing is eigenlijk meer een methode waarbij je met weinig moneys toch aandacht kan krijgen op je product, bijvoorbeeld  met ludieke acties proberen viral te gaan. 
 
@@ -50,7 +51,7 @@ Check zeker ook even deze [website](https://anerdsworld.com/best-100-guerilla-ma
 #### Priming
 Onbewust koppelen we beelden met een bepaalde associatie. Door deze neurotechniek slim toe te passen in je campagnes kan je deze associatie prikkelen en triggeren om te converteren. Als je bijvoorbeeld iets geels ziet zal je sneller aan een banaan denken.
 
-<img src="/images/blog/snackablecontent.png" class="fullscreen" alt="Snackable content" />
+<div class="fullscreen paralax" alt="Snackable content" style="background-image: url('/images/blog/snackablecontent.png');"></div>
 #### Snackable content
 Of te wel hapklare content. Kort en zoet. Content die snel en gemakkelijk in te zien is wordt ook wel snackable content genoemd. Vooral wanneer je klant op mobiel zit is deze strategie waardevol. Op je mobiel zit je vaak niet te wachten op langen teksten van 2.000 / 3.000, maar wil je juist even iets toegankelijks. 
 Zet het in om te engagen of meer verkeer naar je grote content te krijgen. Probeer vooral te werken met relevante images.

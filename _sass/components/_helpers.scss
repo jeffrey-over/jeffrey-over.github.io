@@ -28,9 +28,24 @@
     
 }
 
-.post img {
-    @extend .has-shadow
+.post img.fullscreen {
+    @extend .has-shadow;
     border-radius: 10px;
+    
+}
+
+.paralax {
+    @extend .has-shadow;
+    border-radius: 10px;
+    
+    /* Set a specific height */
+    min-height: 300px; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;    
 }
 
 @media only screen and (min-width: 801px) {

@@ -13,8 +13,8 @@ description: "Er zijn veel goede editors. Het kiezen van een editor die bij jou 
 VS Code heeft een *[ingebouwde source control](https://code.visualstudio.com/docs/introvideos/versioncontrol "Visual Studio code")*. Het biedt simpele acties zoals het wisselen van branches of het vergelijken van de wijzigingen.
 Met de extensie *[Git History](https://marketplace.visualstudio.com/items?itemName=donjayamanne.githistory "Git History extension")* wordt de integratie nog krachtiger en kan je eenvoudig de log, geschiedenis bekijken of branches en commits vergelijken.
 
+<img src="https://github.com/Microsoft/vscode-tips-and-tricks/raw/master/media/OpenCommandPalatte.gif" class="fullscreen" alt="Open Command Palette">
 
-![Open Command Palette](https://github.com/Microsoft/vscode-tips-and-tricks/raw/master/media/OpenCommandPalatte.gif "Open Command Palette")
 
 
 #### Command Palette
