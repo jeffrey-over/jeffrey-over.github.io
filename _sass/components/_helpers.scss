@@ -25,6 +25,12 @@
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;    
     display: block;
+    
+}
+
+.post img {
+    @extend .has-shadow
+    border-radius: 10px;
 }
 
 @media only screen and (min-width: 801px) {
