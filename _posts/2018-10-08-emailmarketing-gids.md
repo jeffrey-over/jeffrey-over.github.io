@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "9 must have (email)marketing technieken die je moet uitproberen"
+title: "9 must have (e-mail)marketing technieken die je moet uitproberen"
 date: 2018-10-08
 label: tips
 tags: marketing, tips, strategie
 published: true
 thumbnail: "images/blog/marketingtechnieken.png"
-description: "Een lijst met technieken die je helpt om je (email)campagnes en customer journeys een boost te geven."
+description: "Een lijst met technieken die je helpt om je (e-mail)campagnes en customer journeys een boost te geven."
 ---
 
 Van te voren een perfecte customer journey uitstippelen die voor iedere klant is toe te passen bestaat niet. Dit ontstaat door een cyclus van meten/experimenteren/aanpassen en continue extra waarde willen creëren. Toch zijn er een aantal methodes die toegepast kunnen worden om je hierin te helpen. 
