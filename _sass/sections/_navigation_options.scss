@@ -24,9 +24,9 @@
 
 
 .navigation-no-logo {
-//    background: #010101;
-border-bottom: 1px solid #efefef;
-box-shadow: 0 0 20px rgba(0,0,0,.05);
+background: #010101;
+//border-bottom: 1px solid #efefef;
+//box-shadow: 0 0 20px rgba(0,0,0,.05);
 animation: .55s fade-in-up-lg ease-out;
     
 }
@@ -40,7 +40,7 @@ animation: .55s fade-in-up-lg ease-out;
     margin-top: 0;
     line-height: inherit;
     text-align: center;
-   // color: #fff;
+    color: #fff;
 
     font-weight: 700;
     text-transform: uppercase;

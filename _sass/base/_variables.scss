@@ -149,23 +149,24 @@ $navigation-padding-mobile: 0;
 $navigation-padding-desktop: 0;
 $navigation-font-color: rgba(0, 0, 0, 0.84);
 $navigation-link-color: rgba(0, 0, 0, 0.84);
-$navigation-mobile-link-color: #000;
+$navigation-mobile-link-color: #fff;
 $navigation-link-hover-color: #3c41ff;
 $navigation-link-padding: 0 30px;
 $navigation-mobile-link-padding: 0 40px;
 $navigation-font-size: 1.4rem;
-$navigation-heading-font-color: rgba(0, 0, 0, 0.84);
+$navigation-heading-font-color: #fff;
 $navigation-line-height: $navigation-height;
 $navigation-mobile-nav-hover-color: $background-color-secondary;
-$logo-font-color: rgba(0, 0, 0, 0.84);
+$logo-font-color: #fff;
 $logo-font-size: $navigation-font-size;
 
 // Footer
 $footer-background-color: #272a34;
 $footer-padding-mobile: 2rem 0;
 $footer-padding-desktop: 5rem 0;
-$footer-font-color: #1a1a1a;
-$footer-link-color:#1a1a1a;
+$footer-font-color: #919191;
+$footer-link-color:#fff;
 $footer-font-size: 1.6rem;
-$footer-heading-font-color: #ffffff;
+$footer-heading-font-color: #919191;
 $footer-line-height: 3.2rem;
+

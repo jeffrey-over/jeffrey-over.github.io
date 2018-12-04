@@ -1,5 +1,5 @@
 #dark {
-    background: #000000;
+    background: #010101;
 }
 
 #light {
@@ -14,6 +14,16 @@
     margin-left: 10px;
     background: #f03434;
     border-color: #f03434;
+}
+
+#dark strong {
+    color: white;
+}
+
+#dark .colofon {
+    margin: 0;
+    border-top: 0;
+    padding-top: 0;
 }
 
 #light button {
