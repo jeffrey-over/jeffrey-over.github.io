@@ -53,13 +53,16 @@ a {
 
 dt {
    font-weight: bold;
-   text-decoration: underline;
-   margin-top: 10px;
+   margin-top: 20px;
  }
  
 dd {
    margin: $dd-margin;
    padding: $dd-padding;
+   padding-bottom: 20px;
+   border-bottom: 1px solid #efefef;
+   margin-bottom: 40px;
+   color: #999;
  }
 
 // Blockqoute

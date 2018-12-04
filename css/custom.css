@@ -18,9 +18,20 @@ a:hover h4 {
 section {padding: 6rem 0;}
 
 
+.os-projects {
+    color: #999;
+}
 
+.os-projects img {
+    height: 20px;
+    margin: 15px 15px 15px 0;
+    display: inline-block;
+    vertical-align: middle;
+}
 
-
+.os-projects a, dt a {
+    color: #010101;
+}
 
 input[type="submit"], a.button, button {
     background: #5558da !important;
