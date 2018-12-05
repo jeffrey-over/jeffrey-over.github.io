@@ -36,7 +36,8 @@ layout: default
 									{% endcase %}
 									{{ post.date | date: "%Y" }}
 							</time></a>  - {{ post.label }}
-							<a href="{{ post.url | prepend: site.baseurl }}"><h4>{{ post.title }}</h4></a>
+							<br /><a href="{{ post.url | prepend: site.baseurl }}" style="color:#999">{{ post.title }}</a>
+							
 						</div>
 						<div class="third column hide-mobile">
 							<img src="../{{ post.thumbnail }}" alt="{{ post.title }}" class="responsive-image hide-mobile" style="height:100px;width: 180px;">

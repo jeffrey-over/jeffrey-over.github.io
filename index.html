@@ -41,7 +41,7 @@ layout: default
 
                       
                     <h1 class="is-title is-serif">Open source</h1>
-                    <h3 class="is-subtitle">Gratis beschikbaar voor iederen.</h3>                
+                    <h3 class="is-subtitle">Beschikbaar voor iederen.</h3>                
                     {% include projects.html %}
 
        
@@ -71,7 +71,7 @@ layout: default
                     <div class="columns" style="padding-bottom:10px;border-bottom: 1px solid #efefef;margin-bottom: 20px;">
                             <div class="two-thirds column">
                                 <a href="" class="date_added"><time>{{ post.date | date: "%b %-d, %Y" }}</time></a>  - {{ post.label }}
-                                <a href="{{ post.url | prepend: site.baseurl }}"><h4>{{ post.title }}</h4></a>
+                                <br /><a href="{{ post.url | prepend: site.baseurl }}" style="color:#999">{{ post.title }}</a>
                             </div>
                             <div class="third column hide-mobile">
                                 <img src="../{{ post.thumbnail }}" alt="{{ post.title }}" class="responsive-image hide-mobile" style="height:100px;width: 180px;">

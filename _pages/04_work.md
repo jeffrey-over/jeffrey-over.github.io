@@ -1,14 +1,14 @@
 ---
 layout: page
-title: 
+title: Work
 permalink: /work/
 ---
 
 
-<h1 class="is-title is-serif">Open source</h1>
+
 {% include projects.html %}
                 
-<h1 class="is-title is-serif" style="margin-top:160px">Marketing Automation</h1>
+<h2 class="is-serif" style="margin-top:160px">Marketing Automation</h2>
 
 <dl>
    <dt><a href="http://www.dm-interface.nl" target="_BLANK">Emailconfigurator</a></dt>
@@ -28,7 +28,7 @@ permalink: /work/
    <dd>Omgeving waarmee dynamische contentblokken toegevoegd kunnen worden aan een customer journey.</dd>
 </dl>
 
-<h1 class="is-title is-serif" style="margin-top:160px">Website development</h1>
+<h2 class="is-serif" style="margin-top:160px">Website development</h2>
 <dl>
    <dt><a href="http://www.zorgperfect.nl" target="_BLANK">Zorgperfect</a></dt>
    <dd>Website voor het thuiszorgbedrijf van mijn schoonmoeder.

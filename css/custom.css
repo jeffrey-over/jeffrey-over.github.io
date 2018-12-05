@@ -1,6 +1,6 @@
 
 a {
-	color: #5558da;
+	color: #3c40c6;
     text-decoration: none;
 }
 a:hover	{
@@ -33,20 +33,25 @@ section {padding: 6rem 0;}
     color: #010101;
 }
 
+.date_added {
+    color: #010101;
+    font-weight: 700;
+}
+
 input[type="submit"], a.button, button {
-    background: #5558da !important;
-    border-color: #5558da !important;
+    background: #3c40c6 !important;
+    border-color: #3c40c6 !important;
     border-radius: 30px !important;
     color: #fff !important;
     
     margin: 0 0 0.5rem 0; 
     margin: 3rem 0 0.5rem 0;
-    padding: 2rem;       
+    padding: 2rem 4rem;       
 }
 
 input[type="submit"]:hover, a.button:hover, a.button:active, a.button:visited, a.button:focus, button:hover, button:active, button:visited, button:focus {
-    background: #5558da;
-    border-color: #5558da;
+    background: #3c40c6;
+    border-color: #3c40c6;
 }
 
 .has-small-width {
