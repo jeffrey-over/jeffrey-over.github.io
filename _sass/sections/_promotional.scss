@@ -14,6 +14,11 @@
 .promotional-product {
         padding: 0 0 6rem 0;
         //background: #fafafa;
+
+        background-image: url(../images/35.-Ronchi.jpg);
+        //background-image: url(https://lstore.graphics/meshgradients/images/39.-Prelude.jpg);
+        background-size: cover; 
+        color: #fff;       
         
 }
 
@@ -22,8 +27,10 @@
      
     }
 
+.promotional-product .is-subtitle {color: #ffffff;}
 .promotional-product .is-title {
         margin-bottom: 35px;
+        color: #ffffff;
         
 }
 

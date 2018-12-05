@@ -1,6 +1,7 @@
 
 a {
-	color: #3c40c6;
+    color:  #2d46b9;
+    
     text-decoration: none;
 }
 a:hover	{
@@ -39,8 +40,8 @@ section {padding: 6rem 0;}
 }
 
 input[type="submit"], a.button, button {
-    background: #3c40c6 !important;
-    border-color: #3c40c6 !important;
+    background: #2d46b9 !important;
+    border-color: #2d46b9 !important;
     border-radius: 30px !important;
     color: #fff !important;
     
@@ -50,8 +51,8 @@ input[type="submit"], a.button, button {
 }
 
 input[type="submit"]:hover, a.button:hover, a.button:active, a.button:visited, a.button:focus, button:hover, button:active, button:visited, button:focus {
-    background: #3c40c6;
-    border-color: #3c40c6;
+    background: #2d46b9;
+    border-color: #2d46b9;
 }
 
 .has-small-width {
