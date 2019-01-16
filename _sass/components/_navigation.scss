@@ -50,6 +50,9 @@
 }
 
 
+
+
+
 nav {
   float: right;
   ul {
@@ -59,20 +62,45 @@ nav {
     li {
       float: left;
       position: relative;
+      padding: 0 20px;
       a,
       a:visited {
         line-height: $navigation-line-height;
         //display: block;
         padding: $navigation-link-padding;
         text-decoration: none;
+        font-weight: 200;
+        
         color: $navigation-link-color;
         &:hover {
           color: $navigation-link-hover-color;
           text-decoration: none;
+          border-bottom: 1px solid #000;
         }
+      }
+      a:active {
+        color: #010101;
       }
     }
   }
+}
+
+@media only screen and (max-width: 800px) {
+  .brand {
+    float: inherit;
+    text-align: center;
+    line-height: unset;
+    position: inherit;
+  }
+
+  nav
+    ul {
+      text-align: center;
+      li {
+        display: inline;
+        float: unset;
+      }
+    }
 }
 
 /*

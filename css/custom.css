@@ -19,19 +19,31 @@ a:hover h4 {
 section {padding: 6rem 0;}
 
 
-.os-projects {
+.os-projects. .blog-title {
     color: #999;
 }
 
 .os-projects img {
-    height: 20px;
-    margin: 15px 15px 15px 0;
+    height: 29px;
+    margin: 15px 25px 15px 0;
     display: inline-block;
     vertical-align: middle;
 }
 
-.os-projects a, dt a {
+.os-projects a, dt a, .os-projects dt, .post h4  {
+    
+    line-height: 1.8;
+    font-size: 2.5rem;
+    font-weight: 200;    
     color: #010101;
+}
+
+
+.os-projects p, .os-projects dd, .about p, .contact p, .blog-title, .post, .post p {
+    margin-bottom: 3rem;
+    line-height: 1.8;
+    font-size: 2.2rem;
+    font-weight: 200;
 }
 
 .date_added {
@@ -39,22 +51,23 @@ section {padding: 6rem 0;}
     font-weight: 700;
 }
 
+
+input[type="submit"]:hover, a.button:hover,  button:hover {
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);  
+    color: #999999;
+}
+
 input[type="submit"], a.button, button {
-    background: rgb(0,122,255) !important;
-    border-color: rgb(0,122,255) !important;
-    border-radius: 30px !important;
-    color: #fff !important;
+    background: #fff;
     
-    margin: 0 0 0.5rem 0; 
-    margin: 3rem 0 0.5rem 0;
-    padding: 2rem 4rem;       
+    border-radius: 30px !important;
+    color: #999999;
+ 
+    margin: 5rem 0 0.5rem 0;
+    padding: 2rem 3rem;
+    font-size: 1.8rem;
 }
-
-input[type="submit"]:hover, a.button:hover, a.button:active, a.button:visited, a.button:focus, button:hover, button:active, button:visited, button:focus {
-    background: rgb(0,122,255);
-    border-color: rgb(0,122,255);
-}
-
 .has-small-width {
     font-size: 1.8rem;
     line-height: 1.8;
@@ -65,3 +78,9 @@ input[type="submit"]:hover, a.button:hover, a.button:active, a.button:visited, a
 }
 
 .has-small-width h4 {margin: 4rem 0 1.5rem;}
+
+
+.utterances {
+    max-width: 100%;
+}
+

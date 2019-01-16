@@ -11,18 +11,18 @@
     font-size: 2.2rem;
     //background-color: #fafafa;
     //background-image: radial-gradient( circle farthest-corner at 12.3% 19.3%, rgba(85,88,218,1) 0%, rgba(95,209,249,1) 100.2% );
-    background-image: linear-gradient(150deg,rgba(48,60,236,.88) 0,#00ece7 100%);
-    background-size: cover;
-    color: rgba(255, 255, 255, 0.7);
+    //background-image: linear-gradient(150deg,rgba(48,60,236,.88) 0,#00ece7 100%);
+    //background-size: cover;
+    //color: rgba(255, 255, 255, 0.7);
 }
 
 
 #intro strong, #intro b {
-    color: white;
+    //color: white;
 }
 
 #intro a.social {
-    color: #fff;
+    //color: #fff;
 }
  @media only screen and (max-width: 800px) {
      #intro {
@@ -80,12 +80,12 @@
 
 #intro h1, footer h1 {
     //font-family: 'Work Sans', serif;
-    margin-bottom: 5rem;
     font-family: -apple-system, BlinkMacSystemFont, segoe ui, Roboto, Helvetica, Arial, sans-serif, apple color emoji, segoe ui emoji, segoe ui symbol;
-    font-size: 9.2rem;
-    margin-bottom: 5rem;
-    text-transform: uppercase; 
-    color: #ffffff;   
+    font-size: 5.2rem;
+    margin-bottom: 3rem;
+    font-weight: 200;
+    //text-transform: uppercase; 
+    color: #010101;   
    
 }
 
@@ -96,7 +96,13 @@
     }
 }
 
-#intro p {margin-bottom: 3rem;}
+#intro p {
+    margin-bottom: 3rem;
+    line-height: 1.8;
+    font-size: 2.5rem;
+    color: #333;
+    font-weight: 200;
+}
 
 
 

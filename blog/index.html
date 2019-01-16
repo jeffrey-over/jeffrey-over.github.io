@@ -11,13 +11,13 @@ layout: default
 			<section>
 
 					  
-					<h1 class="is-title is-serif">Stories</h1>
-					<h3 class="is-subtitle">Tips, projecten en persoonlijke ervaring op het (email)marketingvlak.</h3>                
-
+					<h1 class="is-title">Blog</h1>
+					<hr class="stripe" />
+				
 					{% for post in site.posts %}
 				<div class="columns" style="padding-bottom:10px;border-bottom: 1px solid #efefef;margin-bottom: 20px;">
-						<div class="two-thirds column">
-							<a href="" class="date_added"><time>
+						<div class="two-thirds column" style="font-weight: 200;color: #010101;">
+							<a href="" class=""><time>
 									{% assign m = post.date | date: "%-m" %}
 									{{ post.date | date: "%-d" }}
 									{% case m %}
@@ -36,11 +36,11 @@ layout: default
 									{% endcase %}
 									{{ post.date | date: "%Y" }}
 							</time></a>  - {{ post.label }}
-							<br /><a href="{{ post.url | prepend: site.baseurl }}" style="color:#999">{{ post.title }}</a>
+							<br /><a href="{{ post.url | prepend: site.baseurl }}" class="blog-title" style="color:#999">{{ post.title }}</a>
 							
 						</div>
-						<div class="third column hide-mobile">
-							<img src="../{{ post.thumbnail }}" alt="{{ post.title }}" class="responsive-image hide-mobile" style="width: 180px;">
+						<div class="third column hide-mobile text-right">
+							<img src="../{{ post.thumbnail }}" alt="{{ post.title }}" class="responsive-image hide-mobile" style="width: 180px; display: inline-block;">
 						</div>
 				</div>
 				{% endfor %}

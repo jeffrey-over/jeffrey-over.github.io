@@ -4,11 +4,11 @@ layout: default
 
 
 <div id="intro-post" class="container" style="">
-<div class="has-small-width" style="margin: 0 auto; ">
+<div class="has-full-width" style="margin: 0 auto; ">
     <section class="text-left">
 
         <span style="background: #3c41ff;padding: 3px 7px;color: #74b9ff;">{{ page.label }}</span>
-        <h2 class="is-serif">{{ page.title }}</h2>
+        <h2 class="is-title" style="font-size:3.4rem">{{ page.title }}</h2>
         <h2 class="is-subtitle"><time>
             <!-- Whitespace added for readability -->
 {% assign m = page.date | date: "%-m" %}
@@ -34,7 +34,7 @@ layout: default
 </div>
 </div>
 
-	<div class="post container has-small-width">
+	<div class="post container">
 		<section>
     
             <p>
@@ -49,12 +49,11 @@ layout: default
    
 
 
-	<div class="post container comments  has-small-width">
+	<div class="post container comments">
 		<section>
     
-            <p>
-                <b>Reacties</b>
-            </p>
+            <h1 class="is-title">Reacties</h1>
+                    <hr class="stripe" />
             <script src="https://utteranc.es/client.js"
             repo="jeffrey-over/jeffrey-over.github.io"
             issue-term="title"
@@ -69,7 +68,7 @@ layout: default
    
 
 
-
+<!--
     <div class="has-full-width promotional-product text-left" > 
             <div class="container" style="background:#fafafa">
                 
@@ -108,4 +107,4 @@ layout: default
               </div>
         </div> 
 
-      
+      -->

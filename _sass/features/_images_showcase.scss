@@ -2,3 +2,16 @@
   padding: 3rem;
 }
 
+
+.showcase img {
+  max-width: 80%;
+  margin: 7rem;
+  height: 297px;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  display: inline-block;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.2), 0 2px 35px 0 rgba(0, 0, 0, 0.15);
+  -moz-border-radius: 7px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+}
