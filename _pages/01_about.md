@@ -14,7 +14,7 @@ Hallo ik ben Jeffrey! Ik ben nieuwsgierig en gedreven om nieuwe features te ontr
 Ik krijg energie van smaakmakende projecten en om als team verbeteringen te detecteren. Ben niet zo van de “u vraagt wij draaien” mentaliteit. Door passie en focus-time niet te stoppen!
 </p>
 <p>
-Sinds 2006 ben ik werkzaam bij DM-Interface. Ik kan mijn weg aardig vinden binnen Selligent, Clang en Salesforce Marketingcloud .
+Sinds 2006 ben ik werkzaam bij DM-Interface. Ik kan mijn weg aardig vinden binnen Selligent, Clang en Salesforce Marketing Cloud.
 </p>
 <img src="/images/ik.jpg" class="responsive-image"/>
 
