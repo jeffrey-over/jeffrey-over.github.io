@@ -28,7 +28,11 @@ body {
 
     @include breakpoint-desktop-up {
         body, p, li, h1, h2, h3, h4, h5, a, dl, dt, dd {
-            font-weight: 400 !important
+            font-weight: 400 !important;
+        }
+
+        body, p, li, a {
+            font-size: 1.6rem !important;
         }
     }
  
