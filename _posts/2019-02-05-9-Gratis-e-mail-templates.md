@@ -3,7 +3,7 @@ layout: post
 title: "Gratis email templates"
 date: 2019-02-05
 label: e-mail
-tags: marketing, tips, templates
+tags: marketing, tips, templates, free
 published: true
 thumbnail: "images/blog/templates.jpg"
 description: "Voor alle ESP (Selligent, Clang) gebruikers die snel een litmus-proof template nodig hebben"
