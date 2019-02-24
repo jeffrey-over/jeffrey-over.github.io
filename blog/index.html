@@ -7,7 +7,7 @@ layout: default
    
 <div class="has-full-width">
 
-		<div class="container">
+		<div class="container" style="max-width: 850px;">
 			<section>
 
 					  
@@ -15,8 +15,14 @@ layout: default
 					<hr class="stripe" />
 				
 					{% for post in site.posts %}
-				<div class="columns" style="padding-bottom:10px;border-bottom: 1px solid #efefef;margin-bottom: 20px;">
-						<div class="two-thirds column" style="font-weight: 200;color: #010101;">
+				<div class="columns" style="    padding: 20px;
+			
+
+			border-bottom: 4px solid #f0f3f7;
+                            margin-bottom: 50px;
+				
+			">
+						<div class="two-thirds column" style="color: #222;">
 							<a href="" class=""><time>
 									{% assign m = post.date | date: "%-m" %}
 									{{ post.date | date: "%-d" }}
@@ -36,7 +42,7 @@ layout: default
 									{% endcase %}
 									{{ post.date | date: "%Y" }}
 							</time></a>  - {{ post.label }}
-							<br /><a href="{{ post.url | prepend: site.baseurl }}" class="blog-title" style="color:#999">{{ post.title }}</a>
+							<br /><a href="{{ post.url | prepend: site.baseurl }}" class="blog-title" style="color:#4a4a4a">{{ post.title }}</a>
 							
 						</div>
 						<div class="third column hide-mobile text-right">

@@ -14,9 +14,9 @@ $secondary-color: #636e72;
 $accent-color: #dfe6e9;
 $background-color: #fff;
 $background-color-secondary: #f6f9fc;
-$font-color: #333;
+$font-color: #4a4a4a;
 $font-color-secondary: #666666;
-$link-color: #5558da;
+$link-color: #222;
 $highlight-color: #ffeea8;
 $default-box-shadow: 0 0 13px 0 rgba(0,0,0,.12);
 $default-border: 1px solid rgba(10,10,10,0.1);
@@ -33,13 +33,13 @@ $mark-padding: 0 0.4rem;
 
 // Typography
 $font-family: -apple-system,BlinkMacSystemFont,segoe ui,Roboto,Helvetica,Arial,sans-serif,apple color emoji,segoe ui emoji,segoe ui symbol;
-$font-size: 1.6rem;
-$font-size-small: 1.5rem;
-$line-height: 32px;
+$font-size: 2.0rem;
+$font-size-small: 2.0rem;
+$line-height: 30px;
 $heading-font-weight: 700;
-$heading-font-color:  #1a1a1a;
+$heading-font-color:  #222;
 $heading-line-height: 1.25;
-$heading-margin: 2rem 0 $default-margin;
+$heading-margin: 10px 0 24px 0;
 $heading-letter-spacing: auto;
 $h1: 4.2rem;
 $h2: 3.4rem;
@@ -111,7 +111,7 @@ $table-cell-margin: 0;
 $table-cell-background: transparent;
 
 // Lists
-$dd-margin: 0;
+$dd-margin: 0 0 30px 0;
 $dd-padding: 0 0 0.5em 0;
 
 // Blockqoute
@@ -164,9 +164,9 @@ $logo-font-size: $navigation-font-size;
 $footer-background-color: #272a34;
 $footer-padding-mobile: 2rem 0;
 $footer-padding-desktop: 5rem 0;
-$footer-font-color: #999;
-$footer-link-color:#999;
+$footer-font-color: #61666c;
+$footer-link-color:#61666c;
 $footer-font-size: 1.6rem;
-$footer-heading-font-color: #999;
+$footer-heading-font-color: #222;
 $footer-line-height: 3.2rem;
 

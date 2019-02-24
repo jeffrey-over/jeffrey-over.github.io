@@ -4,42 +4,42 @@ layout: default
 
 
 <div id="intro-post" class="container has-full-width" style="">
-<div class="has-full-width" style="margin: 0 auto; ">
-    <section class="text-center">
+<div class="post container" style="padding-top:130px;margin: 0 auto; ">
+    <section class="text-left">
 
-        <span style="background: #3c41ff;padding: 3px 7px;color: #74b9ff;">{{ page.label }}</span>
-        <h2 class="is-title" style="font-size:3.4rem">{{ page.title }}</h2>
-        <h2 class="is-subtitle"><time>
-            <!-- Whitespace added for readability -->
-{% assign m = page.date | date: "%-m" %}
-{{ page.date | date: "%-d" }}
-{% case m %}
-  {% when '1' %}januari
-  {% when '2' %}februari
-  {% when '3' %}maart
-  {% when '4' %}april
-  {% when '5' %}mei
-  {% when '6' %}juni
-  {% when '7' %}juli
-  {% when '8' %}augustus
-  {% when '9' %}september
-  {% when '10' %}oktober
-  {% when '11' %}november
-  {% when '12' %}december
-{% endcase %}
-{{ page.date | date: "%Y" }}
-            {% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</time> -         {% capture readtime %}{{ content | number_of_words | plus:91 | divided_by:180.0 | append:'.' | split:'.' | first }}{% endcapture %}
-            {% if readtime == '0' %} &lt; 1{% else %}{{ readtime }}{% endif %} minuten leestijd</h2>
-    </section>
+        
 </div>
 </div>
 
 	<div class="post container">
-		<section>
-    
-            <p>
-                <b>{{ page.description }}</b>
-            </p>
+		  
+            <div style="font-size:15px;"><time >
+                    <!-- Whitespace added for readability -->
+        {% assign m = page.date | date: "%-m" %}
+        {{ page.date | date: "%-d" }}
+        {% case m %}
+          {% when '1' %}januari
+          {% when '2' %}februari
+          {% when '3' %}maart
+          {% when '4' %}april
+          {% when '5' %}mei
+          {% when '6' %}juni
+          {% when '7' %}juli
+          {% when '8' %}augustus
+          {% when '9' %}september
+          {% when '10' %}oktober
+          {% when '11' %}november
+          {% when '12' %}december
+        {% endcase %}
+        {{ page.date | date: "%Y" }}
+                    {% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</time> -         {% capture readtime %}{{ content | number_of_words | plus:91 | divided_by:180.0 | append:'.' | split:'.' | first }}{% endcapture %}
+                    {% if readtime == '0' %} &lt; 1{% else %}{{ readtime }}{% endif %} minuten leestijd   </div> 
+                <h2 class="is-title">{{ page.title }}</h2>
+            <h2 class="is-subtitle">
+                    {{ page.description }}
+            </h2>
+      
+
 			{{ content }}
 
 

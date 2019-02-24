@@ -1,7 +1,6 @@
 
 a {
-    color:  #2d46b9;
-    
+ 
     text-decoration: none;
 }
 a:hover	{
@@ -30,25 +29,12 @@ section {padding: 6rem 0;}
     vertical-align: middle;
 }
 
-.os-projects a, dt a, .os-projects dt, .post h4  {
-    
-    line-height: 1.8;
-    font-size: 2.5rem;
-    font-weight: 200;    
-    color: #010101;
-}
 
 
-.os-projects p, .os-projects dd, .about p, .contact p, .blog-title, .post, .post p {
-    margin-bottom: 3rem;
-    line-height: 1.8;
-    font-size: 2rem;
-    font-weight: 200;
-}
 
 .date_added {
-    color: #010101;
-    font-weight: 700;
+    color: #222;
+    
 }
 
 

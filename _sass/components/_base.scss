@@ -26,15 +26,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-    @include breakpoint-desktop-up {
-        body, p, li, h1, h2, h3, h4, h5, a, dl, dt, dd {
-            font-weight: 400 !important;
-        }
 
-        body, p, li, a {
-            font-size: 1.8rem !important;
-        }
-    }
  
 
 // Container
@@ -71,7 +63,9 @@ body {
         }
     }
 
-.post.container {
+
+.post.container, .post {
+    margin-top:50px;
     max-width: 850px;
     }
 
