@@ -41,7 +41,7 @@ h6 {font-size: $h6;}
 a {
 	color: $link-color;
     text-decoration: none;
-    background-image: linear-gradient(180deg, transparent 70%, #74b9ff59 0);
+    
 	&:hover,
 	{
 		text-decoration: underline;
@@ -51,6 +51,10 @@ a {
 	&:focus  {
 		text-decoration: none;
 	}    
+}
+
+.post a {
+    background-image: linear-gradient(180deg,transparent 70%,rgba(64,93,207,.5) 0);
 }
 
 dt {
