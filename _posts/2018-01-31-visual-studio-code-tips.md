@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Visual Studio Code - Tips and Tricks"
+title: "VS Code - Tips and Tricks"
 date: 2018-01-31
 label: learning
 tags: webdevelopment, tips, visual studio code

@@ -33,8 +33,8 @@ $mark-padding: 0 0.4rem;
 
 // Typography
 $font-family: -apple-system,BlinkMacSystemFont,segoe ui,Roboto,Helvetica,Arial,sans-serif,apple color emoji,segoe ui emoji,segoe ui symbol;
-$font-size: 2.0rem;
-$font-size-small: 2.0rem;
+$font-size: 1.8rem;
+$font-size-small: 1.8rem;
 $line-height: 30px;
 $heading-font-weight: 700;
 $heading-font-color:  #222;
@@ -96,7 +96,7 @@ $button-margin: 0 0 0.5rem 0;
 // Cards
 $card-padding: 0;
 $card-margin: 1rem 0;
-$card-font-size: 1.6rem;
+$card-font-size: 1.4rem;
 $card-heading-margin: 1.6rem 0;
 $card-box-shadow: 0px 1px 35px 0px rgba(0, 0, 0, 0.3);
 
@@ -142,18 +142,18 @@ $code-text-shadow: 0;
 $code-font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 
 // Navigation
-$navigation-height: 80px;
+$navigation-height: 70px;
 $navigation-background-color: transparent;
 $navigation-mobile-background-color: transparent;
 $navigation-padding-mobile: 0;
 $navigation-padding-desktop: 0;
-$navigation-font-color: #333;
-$navigation-link-color: #333;
-$navigation-mobile-link-color: #333;
+$navigation-font-color: #636f7b;
+$navigation-link-color: #636f7b;
+$navigation-mobile-link-color: #636f7b;
 $navigation-link-hover-color: #010101;
 $navigation-link-padding: 0 0 3px 0;
 $navigation-mobile-link-padding: 0 40px;
-$navigation-font-size: 1.7rem;
+$navigation-font-size: 1.5rem;
 $navigation-heading-font-color: #333;
 $navigation-line-height: $navigation-height;
 $navigation-mobile-nav-hover-color: $background-color-secondary;

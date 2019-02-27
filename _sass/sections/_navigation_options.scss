@@ -26,12 +26,23 @@
 .navigation-logo {
     border-top: 4px solid #405dcf;
 background: #fff;
-border-bottom: 1px solid #efefef;
+border-bottom: 2px solid #efefef;
 //box-shadow: 0 0 20px rgba(0,0,0,.05);
 animation: .55s fade-in-up-lg ease-out;
-padding: 3rem 0 2rem 0;
+
     
 }
+
+@media only screen and (max-width: 800px) {
+    .navigation-logo  {
+        height: 130px;
+    }
+
+    .brand {margin-top:20px;}
+
+
+}
+
 
 .navigation-no-logo nav {
     line-height: $navigation-height;

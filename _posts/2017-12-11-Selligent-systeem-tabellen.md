@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Selligent Marketing Cloud - systeem tabellen"
+title: "Selligent systeem tabellen"
 date: 2017-12-11
 label: learning
 tags: Selligent Marketing Cloud, Data

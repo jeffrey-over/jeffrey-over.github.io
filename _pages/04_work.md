@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Work
+link: work
 permalink: /work/
 ---
 
@@ -8,16 +9,13 @@ permalink: /work/
 
 
 <h2 class="is-title" style="">Web development</h2>
-<hr class="stripe" />
 {% include webdevelopment.html %}
 
 <h2 class="is-title" style="margin-top:160px">Open Source projecten</h2>
-<hr class="stripe" />
 {% include projects.html %}
                 
 
 <h2 class="is-title" style="margin-top:160px">Marketing Automation projecten</h2>
-<hr class="stripe" />
 <dl class="os-projects">
    <dt><a href="http://www.dm-interface.nl" target="_BLANK">Emailconfigurator</a></dt>
    <dd>Een platform onafhankelijke mastertemplate die bestaat uit herbruikbare bouwstenen. 

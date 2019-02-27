@@ -1,5 +1,6 @@
 ---
 layout: default
+link: home 
 ---
 
 
@@ -35,7 +36,7 @@ layout: default
     <div class="container">
         <section>
             <h1 class="is-title">Recent works  </h1>
-            <hr class="stripe" />
+            
        
 
             <div class="columns ">
@@ -70,46 +71,46 @@ layout: default
     
                           
                         <h1 class="is-title">Blog</h1>
-                        <hr class="stripe" />
                    
-    
+    <div class="card-wrapper">
                         {% for post in site.posts limit:5 %}
-                        <div class="columns" style="    padding: 20px;
-                        
-            
-                            border-bottom: 4px solid #f0f3f7;
-                            margin-bottom: 50px;
+                        <div class="card">
+                            <img src="../{{ post.thumbnail }}" alt="{{ post.title }}" class="responsive-image">
+                            <div class="card-content">
+                            <div style="font-size:14px;color: #636f7b;
+                            font-weight: 200;
+                            margin-bottom: 5px;"><time >
+                                <!-- Whitespace added for readability -->
+                    {% assign m = post.date | date: "%-m" %}
+                    {{ post.date | date: "%-d" }}
+                    {% case m %}
+                      {% when '1' %}januari
+                      {% when '2' %}februari
+                      {% when '3' %}maart
+                      {% when '4' %}april
+                      {% when '5' %}mei
+                      {% when '6' %}juni
+                      {% when '7' %}juli
+                      {% when '8' %}augustus
+                      {% when '9' %}september
+                      {% when '10' %}oktober
+                      {% when '11' %}november
+                      {% when '12' %}december
+                    {% endcase %}
+                    {{ post.date | date: "%Y" }}
+                                {% if post.author %} • {{ post.author }}{% endif %}{% if post.meta %} • {{ post.meta }}{% endif %}</time> -         {% capture readtime %}{{ post.content | number_of_words | plus:91 | divided_by:180.0 | append:'.' | split:'.' | first }}{% endcapture %}
+                                {% if readtime == '0' %} &lt; 1{% else %}{{ readtime }}{% endif %} minuten leestijd   </div>
+                            <h2>{{ post.title }}</h2>
                             
-                        ">
-                                    <div class="two-thirds column" style="color: #222;">
-                                        <a href="" class=""><time>
-                                                {% assign m = post.date | date: "%-m" %}
-                                                {{ post.date | date: "%-d" }}
-                                                {% case m %}
-                                                  {% when '1' %}januari
-                                                  {% when '2' %}februari
-                                                  {% when '3' %}maart
-                                                  {% when '4' %}april
-                                                  {% when '5' %}mei
-                                                  {% when '6' %}juni
-                                                  {% when '7' %}juli
-                                                  {% when '8' %}augustus
-                                                  {% when '9' %}september
-                                                  {% when '10' %}oktober
-                                                  {% when '11' %}november
-                                                  {% when '12' %}december
-                                                {% endcase %}
-                                                {{ post.date | date: "%Y" }}
-                                        </time></a>  - {{ post.label }}
-                                        <br /><a href="{{ post.url | prepend: site.baseurl }}" class="blog-title" style="color:#4a4a4a">{{ post.title }}</a>
-                                        
-                                    </div>
-                                    <div class="third column hide-mobile text-right">
-                                        <img src="../{{ post.thumbnail }}" alt="{{ post.title }}" class="responsive-image hide-mobile" style="width: 180px; display: inline-block;">
-                                    </div>
-                            </div>
+                            <p>{{ post.description | strip_html | truncatewords: 300 }}</p>
+                        </div>
+                        <div class="card-link">
+                            <a href="{{ post.url | prepend: site.baseurl }}" class="blog-title">Lees meer</a>
+                        </div>
+                        </div>                        
+                       
                     {% endfor %}
-        
+        </div>
     
            
         

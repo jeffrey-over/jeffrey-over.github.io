@@ -8,10 +8,10 @@
             <nav>
                 <div class="items">
                     <ul>
-                        <li> <a href="/index.html" title="Home">Home</a> </li>
-                        <li> <a href="/about/" title="About">About</a> </li>                        
-                        <li> <a href="/blog/" title="Articles">Blog</a> </li>
-                        <li> <a href="/work/" title="Contact">Work</a>  </li>
+                        <li> <a href="/index.html" {% if page.link == "home" %} class="active"{% endif %} title="Home">Home</a> </li>
+                        <li> <a href="/about/" {% if page.link == "about" %} class="active"{% endif %} title="About">About</a> </li>                        
+                        <li> <a href="/blog/" {% if page.link == "blog" %} class="active"{% endif %} title="Articles">Blog</a> </li>
+                        <li> <a href="/work/" {% if page.link == "work" %} class="active"{% endif %} title="Contact">Work</a>  </li>
                     </ul>
 
           

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Helder CSS Framework. SASS boilerplate zonder poespas."
+title: "Helder CSS Framework"
 date: 2018-04-17
 label: update 
 tags: webdevelopment, development tools, css framework

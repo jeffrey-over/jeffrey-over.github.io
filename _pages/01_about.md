@@ -2,11 +2,12 @@
 layout: page
 title: Dit ben ik
 permalink: /about/
+link: about
 ---
 
 <div class="about">
 <h2 class="is-title" style="">My name is Jeff!</h2>
-<hr class="stripe" />
+
 <p>
 Hallo ik ben Jeffrey! Ik ben nieuwsgierig en gedreven om nieuwe features te ontrafelen en op te pakken en hou me graag bezig met automatiseren en innoveren.
 </p>
