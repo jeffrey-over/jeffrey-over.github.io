@@ -38,22 +38,7 @@ main {background: #f9fbfd}
 }
 
 
-input[type="submit"]:hover, a.button:hover,  button:hover {
-    background: #fff;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);  
-    color: #999999;
-}
 
-input[type="submit"], a.button, button {
-    background: #fff;
-    
-    border-radius: 30px !important;
-    color: #999999;
- 
-    margin: 5rem 0 0.5rem 0;
-    padding: 2rem 3rem;
-    font-size: 1.8rem;
-}
 .has-small-width {
     font-size: 1.8rem;
     line-height: 1.8;
