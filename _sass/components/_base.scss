@@ -48,7 +48,7 @@ body {
     }
     @include breakpoint-widescreen-up {
         .container {
-            max-width: 70%;
+            max-width: 1000px;
         }
     }   
 
