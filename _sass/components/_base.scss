@@ -27,7 +27,13 @@ body {
 }
 
 
- 
+
+@media only screen and (max-width: 800px) {
+    body {
+      font-size: 1.7rem;
+      line-height:1.7;
+    } 
+}
 
 // Container
 .container {
@@ -39,7 +45,9 @@ body {
     @include breakpoint-phone-up {
         .container {
             max-width: 85%;
+            
         }
+        
     }
     @include breakpoint-desktop-up {
         .container {
