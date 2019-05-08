@@ -27,8 +27,8 @@ Helder is een compacte CSS framework die met een simpele grid-systeem en minimal
 #### &nbsp;
 In de [documentatie](https://www.jeffreyovermeer.com/helder-css-framework/) staat beschreven hoe je kan starten met Helder, welke componenten zijn gestyled en hoe je dit kan gebruiken.
 
-<a class="button" target="_BLANK" href="https://www.jeffreyovermeer.com/helder-css-framework/">Bekijk documentatie
-<i class="fas fa-arrow-right" style="margin:0 10px;"></i></a> &nbsp; <a class="button" target="_BLANK" href="https://www.jeffreyovermeer.com/helder-css-framework/testing-elements.html">Bekijk componenten
+<a class="" target="_BLANK" href="https://www.jeffreyovermeer.com/helder-css-framework/">Bekijk documentatie
+<i class="fas fa-arrow-right" style="margin:0 10px;"></i></a> &nbsp; <a class="" target="_BLANK" href="https://www.jeffreyovermeer.com/helder-css-framework/testing-elements.html">Bekijk componenten
 <i class="fas fa-arrow-right" style="margin:0 10px;"></i></a>                                
 
 
