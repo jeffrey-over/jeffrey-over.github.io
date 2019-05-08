@@ -22,9 +22,10 @@ h6 {font-size: $h6;}
 
 
     font-family: -apple-system, BlinkMacSystemFont, segoe ui, Roboto, Helvetica, Arial, sans-serif, apple color emoji, segoe ui emoji, segoe ui symbol;
-    font-size: 3rem;
+    font-size: 4rem;
     font-weight: 700;
     color: #222;
+    line-height: 1.8;
   }
   
 .is-subtitle {
@@ -33,6 +34,7 @@ h6 {font-size: $h6;}
     font-weight: 400;
     color: #6e6e6e;
     margin: 0 0 26px 0;
+    font-style: italic;
   }
 
 .big-font {font-size:2rem;}
@@ -65,7 +67,7 @@ dt {
 dd {
    margin: $dd-margin;
    padding: $dd-padding;
-   border-bottom: 4px solid #efefef;
+   //border-bottom: 4px solid #efefef;
 
 
  }
