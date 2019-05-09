@@ -7,17 +7,19 @@ link: about
 
 <div class="post container">
 <div class="about">
-<h2 class="is-title" style="">My name is Jeff!</h2>
-<img src="/images/ik.jpg" class="fullscreen" style="margin-bottom:50px;"/>
+<h2 class="is-title" style="">About me</h2>
 <p>
-Hallo ik ben Jeffrey! Ik ben nieuwsgierig en gedreven om nieuwe features te ontrafelen en op te pakken en hou me graag bezig met automatiseren en innoveren.
+Ik ben Jeffrey Overmeer en denk graag mee om een marketing model op te zetten om op die manier de biggest bang voor je marketing euro te krijgen.
+</p>
+<img src="/images/ik.jpg" class="fullscreen" style="margin-bottom:50px;">
+<p>
+Ik ben gespecialiseerd in marketing automation, ontwikkel websites en e-mails en werk graag met marketing tools zoals Selligent- Clang en Salesforce Marketing Cloud. Ook denk ik graag mee op strategisch en tactisch vlak.
 </p>
 <p>
-Ik krijg energie van smaakmakende projecten en om als team verbeteringen te detecteren. Ben niet zo van de “u vraagt wij draaien” mentaliteit. Door passie en focus-time niet te stoppen!
+Ik krijg energie van automiseren en innoveren en door passie en focus-time probeer ik voor de beste in plaats van de gemakkelijkste oplossing te gaan. Ben niet zo van de “u vraagt wij draaien” mentaliteit. 
 </p>
 <p>
-Sinds 2006 ben ik werkzaam bij DM-Interface. Ik kan mijn weg aardig vinden binnen Selligent, Clang en Salesforce Marketing Cloud.
+Momenteel ben ik werkzaam bij DM-Interface waar ik als Campaign Developer werk en graag met de klant aan het sparren ben over de ultieme oplossing.
 </p>
 </div>
-
 
