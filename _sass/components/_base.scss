@@ -24,7 +24,14 @@ body {
   line-height: $line-height;
   color: $font-color;
   -webkit-font-smoothing: antialiased;
+  font-kerning: normal;
+  -moz-font-feature-settings: "kern", "liga", "clig", "calt";
+  -ms-font-feature-settings: "kern", "liga", "clig", "calt";
+  -webkit-font-feature-settings: "kern", "liga", "clig", "calt";
+  font-feature-settings: "kern", "liga", "clig", "calt";  
+  text-rendering: geometricPrecision;
 }
+
 
 
 
@@ -83,7 +90,7 @@ body {
 
 // Margins and Padding
 p,ol,ul,dl,table {
-    margin: $basic-elements-margin;
+    margin: 0 0 3.1rem 0;
 }
 
 section {
