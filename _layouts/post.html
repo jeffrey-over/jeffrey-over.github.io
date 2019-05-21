@@ -12,8 +12,8 @@ layout: default
 </div>
 -->
 	<div class="post container">
-		  
-            <div style="font-size:15px;"><time >
+        <h2 style="margin-bottom: 0;">{{ page.title }}</h2>
+            <div style="font-size:15px;margin-bottom:20px;color:#888;"><time >
                     <!-- Whitespace added for readability -->
         {% assign m = page.date | date: "%-m" %}
         {{ page.date | date: "%-d" }}
@@ -34,11 +34,11 @@ layout: default
         {{ page.date | date: "%Y" }}
                     {% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</time> -         {% capture readtime %}{{ content | number_of_words | plus:91 | divided_by:180.0 | append:'.' | split:'.' | first }}{% endcapture %}
                     {% if readtime == '0' %} &lt; 1{% else %}{{ readtime }}{% endif %} minuten leestijd   </div> 
-                <h2 class="is-title">{{ page.title }}</h2>
-            <h2 class="is-subtitle">
+                
+            <p>
                     {{ page.description }}
-            </h2>
-      
+         
+                </p>>
 
 			{{ content }}
 
