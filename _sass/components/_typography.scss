@@ -14,7 +14,7 @@ h1,h2,h3,h4,h5,h6 {
 h1 {font-size: $h1;}
 h2 {font-size: $h2;}
 h3 {font-size: $h3;color: #6e6e6e;margin-top:0;}
-h4 {font-size: $h4; margin-top: 30px;}
+h4 {font-size: $h4;}
 h5 {font-size: $h5;}
 h6 {font-size: $h6;}
 
@@ -24,11 +24,12 @@ h6 {font-size: $h6;}
 .is-title {
 
 
-    font-family: -apple-system, BlinkMacSystemFont, segoe ui, Roboto, Helvetica, Arial, sans-serif, apple color emoji, segoe ui emoji, segoe ui symbol;
-    font-size: 4rem;
-    font-weight: 700;
+    //font-family: -apple-system, BlinkMacSystemFont, segoe ui, Roboto, Helvetica, Arial, sans-serif, apple color emoji, segoe ui emoji, segoe ui symbol;
+    //font-size: 4rem;
+    font-weight: 300;
     color: #222;
-    line-height: 1.8;
+    line-height: 1;
+    margin: 0 0 2rem 0;
   }
   
 .is-subtitle {
@@ -91,9 +92,9 @@ b, strong  {
 }
 
 p, dd, dt {
-    font-family: 'Merriweather', sans-serif;
+    //font-family: 'Merriweather', sans-serif;
     letter-spacing: 0.1px;
-    font-weight: 300;
+    //font-weight: 300;
     font-size: 1.8rem;
     line-height: 1.75em;
 }
