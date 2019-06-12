@@ -33,4 +33,8 @@ permalink: /work/
    <dt><a href="#" target="_BLANK">Dynamic email uploadtool</a></dt>
    <dd>Omgeving waarmee dynamische contentblokken toegevoegd kunnen worden aan een customer journey.</dd>
 </dl>
-</div>
+
+<h2 class="is-title" style="margin-top:160px">Trots gewerkt voor o.a.</h2>
+<p>Mercedes-Benz, smart, Avero, Wensink, GrandVision, Kwik-Fit, Zilveren Kruis, Volkswagen Pon Financial Services.</p>
+     </div>
+           
