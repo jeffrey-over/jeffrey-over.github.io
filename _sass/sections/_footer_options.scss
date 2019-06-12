@@ -1,5 +1,6 @@
 #dark {
-    background: #010101;
+    background: #1a1d20;
+    color: #656d78;
 }
 
 #light {
@@ -8,6 +9,10 @@
 }
 
 #light h5 {color: rgba(0,0,0,0.88);}
+#dark h5 {color: #aab2bd;margin: 0;    text-transform: uppercase;
+    font-size: 1.4rem;
+    letter-spacing: 1px;}
+#dark p {margin:14px 0;}
 
 #dark button {
     margin-left: 10px;

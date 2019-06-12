@@ -23,8 +23,7 @@
     margin: $card-margin;
     color: $font-color;
     font-size: $card-font-size;
-    box-shadow: 0 15px 35px 0 rgba(42, 51, 83, 0.12),
-    0 5px 15px rgba(0, 0, 0, 0.06);
+    //box-shadow: 0 15px 35px 0 rgba(42, 51, 83, 0.12), 0 5px 15px rgba(0, 0, 0, 0.06);
   transition: all .15s ease;
   border-radius: .5rem;
   text-decoration: none;
@@ -37,18 +36,21 @@
     h1, h2, h3, h4, h5, h6 {
         color: #0c1e29;
         margin: 0;
-        margin-bottom: 1rem;
+        //margin-bottom: 1rem;
         font-size: 2rem;
         
     }
     a {
-        background: #405dcf;
-        padding: 7px 15px;
-        border-radius: 3px;
-        color: #fff;
+        //background: #405dcf;
+        //`padding: 7px 15px;
+        //`border-radius: 3px;
+        //color: #fff;
     }
     a:hover {
         text-decoration: none;
+    }
+    p {
+        margin: 14px 0;
     }
 
 }
@@ -62,7 +64,7 @@
 
 @include breakpoint-desktop-up {
     .card {
-        max-width: calc(33% - 3rem);
+        max-width: calc(50% - 3rem);
         margin: 2rem 1.5rem;
     }
 
