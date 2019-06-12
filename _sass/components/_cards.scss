@@ -51,6 +51,7 @@
     }
     p {
         margin: 14px 0;
+        
     }
 
 }
@@ -60,7 +61,7 @@
 }
 
 .card-link {padding: 20px 30px;background: hsl(0, 0%, 97%)}
-.card p {line-height: 2.4rem; font-family: $font-family; font-size: 1.4rem; font-weight: normal;}
+.card p {line-height: 2.4rem; font-family: $font-family; font-size: 1.7rem; font-weight: normal;}
 
 @include breakpoint-desktop-up {
     .card {
