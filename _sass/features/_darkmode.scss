@@ -1,0 +1,41 @@
+#togglemode {
+    background: unset;
+    border: unset;
+    margin: 0 0 0 30px;
+    padding: unset;
+    display: block;
+    line-height: 100px;
+    font-size: 20px;
+}
+
+body.darkmode .has-full-width, body.darkmode {
+    background-color: #1a1d20 ;
+    color: #aaa ;
+}
+
+nav ul li a, nav ul li a:visited, p, .showcase .description {
+    color: #aaa ;
+}
+
+
+body.darkmode .half.column.text-center {
+    background-color: unset !important;
+    text-align: left !important
+}
+
+body.darkmode .active,body.darkmode a,body.darkmode nav ul li a.active { color: #fff !important;}
+
+.card, .card p {color: #737374 ;}
+body.darkmode .card h1,body.darkmode .card h2,body.darkmode .card h3,body.darkmode .card h4,body.darkmode .card h5, .card h6 {
+    color: #0c1e29  !important;
+}
+
+body.darkmode h1,body.darkmode h2,body.darkmode h3,body.darkmode h4,body.darkmode h5,body.darkmode h6 {
+    color: #fff ;
+}
+
+body.darkmode #dark {background-color: #010101;}
+
+body.darkmode .promotional-product .container {
+    background: #010101 !important;
+}
