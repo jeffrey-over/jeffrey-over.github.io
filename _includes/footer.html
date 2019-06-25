@@ -31,6 +31,7 @@
 
 	<script src="https://www.jeffreyovermeer.com/helder-css-framework/js/prism.js"></script>
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script async defer src="https://buttons.github.io/buttons.js"></script>
 	<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
 
@@ -44,15 +45,46 @@
   gtag('config', 'UA-113733633-1');
 </script>
 <script>
+  $('body').toggleClass(localStorage.mode);
 function toggleDarkLight() {
   var body = document.getElementById("body");
   var currentClass = body.className;
   body.className = currentClass == "darkmode" ? "" : "darkmode";
 
-  if(body.className == "darkmode") {
-    document.getElementById("togglemode").innerText="☀️";
-  } else {document.getElementById("togglemode").innerText="🌙";}
 }
+
+
+function darkmode(){
+    $('body').addClass('darkmode');
+    $('body').removeClass('light');
+    localStorage.setItem("mode", "darkmode");
+    
+    }
+
+function nodark(){
+  
+        $('body').removeClass('darkmode');
+        localStorage.setItem("mode", "light");
+        
+        }
+
+if(localStorage.getItem("mode")=="darkmode")
+        darkmode();
+        
+  else
+    nodark();
+
+$('#togglemode').click(function(){   
+
+  if(localStorage.getItem("mode")=="darkmode"){
+        nodark();
+}
+  else {
+        darkmode();
+
+  }
+
+});
 </script>
 
 <!--

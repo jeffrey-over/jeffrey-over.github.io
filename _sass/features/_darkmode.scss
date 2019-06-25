@@ -12,6 +12,8 @@ body.darkmode .has-full-width, body.darkmode {
     color: #aaa ;
 }
 
+
+
 nav ul li a, nav ul li a:visited, p, .showcase .description {
     color: #aaa ;
 }
@@ -37,4 +39,10 @@ body.darkmode #dark {background-color: #010101;}
 
 body.darkmode .promotional-product .container {
     background: #010101 !important;
+}
+
+body.darkmode b, body.darkmode strong {
+    
+        color: #fff;
+    
 }
