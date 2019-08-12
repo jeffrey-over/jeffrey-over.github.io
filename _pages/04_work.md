@@ -11,7 +11,7 @@ permalink: /work/
 <h2 class="is-title" style="">Web development</h2>
 {% include webdevelopment.html %}
 <div class="post container">
-<h2 class="is-title" style="margin-top:160px">Open Source projecten</h2>
+<h2 class="is-title" style="margin-top:160px">Projecten</h2>
 {% include projects.html %}
                 
 
