@@ -45,7 +45,7 @@ body {
 
 // Container
 .container {
-    width: 100%;
+    width: 90%;
     margin-left: auto;
     margin-right: auto;
     padding: $container-padding;
@@ -80,9 +80,10 @@ body {
     }
 
 
-.post.container, .post {
+.post.container,  {
    // padding-top:50px;
-    //max-width: 100%;
+    max-width: 664px;
+    padding-top:2rem;
     }
 
 .has-small-width {

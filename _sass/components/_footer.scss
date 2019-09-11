@@ -11,8 +11,11 @@ footer {
         padding: 0;
     }
     h1, h2, h3, h4, h5, h6 {
-        color: $footer-heading-font-color;
-        margin: 0 0 30px 0;
+        color: #fff;
+    letter-spacing: -0.5px;
+    font-size: 16px;
+    text-transform: uppercase;
+    margin: 0 0 10px 0;
        // font-family: 'Muli', sans-serif;
     }
     a {
@@ -23,6 +26,7 @@ footer {
     }
     p {
         font-size: 1.6rem;
+        color: #757575;
     }
 }
 
