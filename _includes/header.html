@@ -3,17 +3,18 @@
         <div class="container">
         <header class="navigation">
 				<div class="brand hide-mobile">
-						<a href="/index.html"><h4 style="text-transform:capitalize;line-height: 100px;margin:0;">Jeffrey.</h4></a>
+						<a href="/index.html"><span style="text-transform:capitalize;line-height: 80px;margin:0;    letter-spacing: -1px;
+                            font-weight: 700;">Jeffrey.</span></a>
 					</div>			
             <nav>
                 <div class="items">
                     <ul>
                         <li> <a href="/index.html" {% if page.link == "home" %} class="active"{% endif %} title="Home">Home</a> </li>
                         <li> <a href="/about/" {% if page.link == "about" %} class="active"{% endif %} title="About">About</a> </li>                        
-                        <li> <a href="/blog/" {% if page.link == "blog" %} class="active"{% endif %} title="Articles">Artikelen</a> </li>
+                        <li> <a href="/blog/" {% if page.link == "blog" %} class="active"{% endif %} title="Articles">Articles</a> </li>
                         <li> <a href="/work/" {% if page.link == "work" %} class="active"{% endif %} title="Contact">Work</a>  </li>
-                        <li><button type="button" id="togglemode" name="dark_light" title="Toggle dark/light mode"><span style="color:#ccc">🌗</span></button>
-                        </li>
+                       <!-- <li><button type="button" id="togglemode" name="dark_light" title="Toggle dark/light mode"><span style="color:#ccc">🌗</span></button>
+                        </li>-->
                     </ul>
 
           

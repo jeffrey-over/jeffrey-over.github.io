@@ -6,7 +6,7 @@ link: blog
 
 
    
-<div class="has-full-width">
+<div class="has-full-width" style="background:#f2f1f1">
 
 	<div class="container">
 		<section>
@@ -23,6 +23,9 @@ link: blog
 					<h2>{{ post.title }}</h2>
 					
 					<p>{{ post.description | strip_html | truncatewords: 300 }}</p>
+
+
+					<a href="{{ post.url | prepend: site.baseurl }}">Lees meer</a>
 				</div>
 			
 				</div>                        

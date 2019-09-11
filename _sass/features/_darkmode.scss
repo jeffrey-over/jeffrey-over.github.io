@@ -14,7 +14,13 @@ body.darkmode .has-full-width, body.darkmode {
 
 
 
-nav ul li a, nav ul li a:visited, p, .showcase .description {
+nav ul li a, nav ul li a:visited {
+    color: #fff ;
+}
+
+
+
+p, .showcase .description {
     color: #737374 ;
 }
 

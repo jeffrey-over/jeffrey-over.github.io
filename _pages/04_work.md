@@ -10,12 +10,12 @@ permalink: /work/
 
 <h2 class="is-title" style="">Web development</h2>
 {% include webdevelopment.html %}
-<div class="post container">
-<h2 class="is-title" style="margin-top:160px">Projecten</h2>
+<div>
+<h2 class="is-title" style="margin-top:60px">Projecten</h2>
 {% include projects.html %}
                 
 
-<h2 class="is-title" style="margin-top:160px">Marketing Automation projecten</h2>
+<h2 class="is-title" style="margin-top:60px">Marketing Automation projecten</h2>
 <dl class="os-projects">
    <dt><a href="http://www.dm-interface.nl" target="_BLANK">Emailconfigurator</a></dt>
    <dd>Een platform onafhankelijke mastertemplate die bestaat uit herbruikbare bouwstenen. 
@@ -34,7 +34,7 @@ permalink: /work/
    <dd>Omgeving waarmee dynamische contentblokken toegevoegd kunnen worden aan een customer journey.</dd>
 </dl>
 
-<h2 class="is-title" style="margin-top:160px">Trots gewerkt voor o.a.</h2>
+<h2 class="is-title" style="margin-top:60px">Trots gewerkt voor o.a.</h2>
 <p>Mercedes-Benz, smart, Avero, Wensink, GrandVision, Kwik-Fit, Zilveren Kruis, Volkswagen Pon Financial Services.</p>
      </div>
            

@@ -77,14 +77,14 @@ nav {
         &:hover {
           color: $navigation-link-hover-color;
           text-decoration: none;
-          border-bottom: 1px solid #000;
+          border-bottom: 2px solid #fff;
         }
       }
       a:active, .active {
         border-bottom: 3px solid #ffd667 !important;
         padding-bottom: 5px !important;
         font-weight: bold !important;
-        color: #222 !important;
+        color: #fff !important;
       }
     }
   }

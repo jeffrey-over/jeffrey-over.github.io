@@ -13,10 +13,10 @@ $base-color: #E5E5E5;
 $secondary-color: #636e72;
 $accent-color: #dfe6e9;
 $background-color: #fff;
-$background-color-secondary: #f6f9fc;
+$background-color-secondary: #020202;
 $font-color: #737374;
-$font-color-secondary: #666666;
-$link-color: #010101;
+$font-color-secondary: #020202;
+$link-color: #020202;
 $highlight-color: #ffeea8;
 $default-box-shadow: 0 0 13px 0 rgba(0,0,0,.12);
 $default-border: 1px solid rgba(10,10,10,0.1);
@@ -28,7 +28,7 @@ $basic-elements-margin: 0 0 $default-margin 0; //p,ol,ul,dl,table
 $container-padding: 0 1rem;
 $column-padding: 1rem;
 $column-margin-bottom: 0;
-$section-padding: 6rem 0 0 0;
+$section-padding: 6rem 0 ;
 $mark-padding: 0 0.4rem;
 
 // Typography
@@ -37,9 +37,9 @@ $font-size: 2rem;
 $font-size-small: 2rem;
 $line-height: 28px;
 $heading-font-weight: 700;
-$heading-font-color:  #1d1d1d;
+$heading-font-color:  #0c1e29;
 $heading-line-height: 1.25;
-$heading-margin: 3rem 0 -0.75rem 0;
+$heading-margin: 3rem 0 0.75rem 0;
 $heading-letter-spacing: -1.22px;
 $h1: 4.2rem;
 $h2: 3.4rem;
@@ -142,31 +142,31 @@ $code-text-shadow: 0;
 $code-font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 
 // Navigation
-$navigation-height: 100px;
+$navigation-height: 80px;
 $navigation-background-color: transparent;
 $navigation-mobile-background-color: transparent;
 $navigation-padding-mobile: 0;
 $navigation-padding-desktop: 0;
-$navigation-font-color: #636f7b;
-$navigation-link-color: #636f7b;
-$navigation-mobile-link-color: #636f7b;
-$navigation-link-hover-color: #010101;
+$navigation-font-color: #FFF;
+$navigation-link-color: #FFF;
+$navigation-mobile-link-color: #FFF;
+$navigation-link-hover-color: #FFF;
 $navigation-link-padding: 0 0 3px 0;
 $navigation-mobile-link-padding: 0 40px;
 $navigation-font-size: 1.5rem;
-$navigation-heading-font-color: #333;
+$navigation-heading-font-color: #fff;
 $navigation-line-height: $navigation-height;
 $navigation-mobile-nav-hover-color: $background-color-secondary;
-$logo-font-color: #010101;
-$logo-font-size: $navigation-font-size;
+$logo-font-color: #fff;
+$logo-font-size: 26px;
 
 // Footer
-$footer-background-color: #272a34;
+$footer-background-color: #020202;
 $footer-padding-mobile: 3rem 0;
 $footer-padding-desktop: 10rem 0;
-$footer-font-color: #656d78;
+$footer-font-color: #FFF;
 $footer-link-color:#fff;
 $footer-font-size: 1.6rem;
-$footer-heading-font-color: #222;
+$footer-heading-font-color: #fff;
 $footer-line-height: 3.2rem;
 

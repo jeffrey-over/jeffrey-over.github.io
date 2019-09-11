@@ -45,7 +45,7 @@ body {
 
 // Container
 .container {
-    width: 90%;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
     padding: $container-padding;
@@ -59,7 +59,7 @@ body {
     }
     @include breakpoint-desktop-up {
         .container {
-            max-width: 75%;
+            max-width: 85%;
         }
     }
     @include breakpoint-widescreen-up {
@@ -81,8 +81,8 @@ body {
 
 
 .post.container, .post {
-    padding-top:50px;
-    max-width: 850px;
+   // padding-top:50px;
+    //max-width: 100%;
     }
 
 .has-small-width {

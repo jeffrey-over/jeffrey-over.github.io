@@ -28,7 +28,7 @@ h6 {font-size: $h6;}
     //font-size: 4rem;
  
     font-weight: 700;
-    color: #1a202c;
+    
     margin: 0 0 2rem;
     font-size: 3rem;
     font-family: -apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,Helvetica,Arial,sans-serif;
@@ -63,7 +63,7 @@ a {
 }
 
 .post a {
-  color: #010101;
+  
   text-decoration: none;
     //background-image: linear-gradient(180deg,transparent 70%,rgba(64,93,207,.5) 0);
 }
@@ -91,7 +91,7 @@ blockquote {
 
 // Manipulation
 b, strong  {
-    color: black;
+    color: #020202;
 }
 
 p, dd, dt {
@@ -99,5 +99,10 @@ p, dd, dt {
     letter-spacing: 0.1px;
     //font-weight: 300;
     font-size: 1.8rem;
+
     line-height: 1.75em;
+}
+
+dd, dt {
+  color: #737374;
 }

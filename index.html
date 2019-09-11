@@ -13,7 +13,7 @@ link: home
 
         <div class="container">
                
-                <section>
+                
                     <div class="columns ">
                         <div class="full column">
 
@@ -24,7 +24,6 @@ link: home
                         </div>
 
                     </div>
-                </section>
             
         
         </div> 
@@ -46,10 +45,10 @@ link: home
  
  
    
-    <div class="has-full-width">
+    <div class="has-full-width" style="background: #f2f2f1">
             <div class="container">
                 <section>   
-                        <h2 class="is-title">Laatste artikelen</h2>
+                        <h2 class="is-title">Trending artikelen</h2>
                
 
     <div class="card-wrapper">
@@ -83,6 +82,8 @@ link: home
                             <h2>{{ post.title }}</h2>
                             
                             <p>{{ post.description | strip_html | truncatewords: 300 }}</p>
+
+                            <a href="{{ post.url | prepend: site.baseurl }}">Lees meer</a>
                         </div>
          
                         </div>                        
