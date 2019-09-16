@@ -37,8 +37,11 @@ a:hover h4 {
     vertical-align: middle;
 }
 
-
-
+@media only screen and (max-width: 800px) {
+.os-projects .two-thirds  {
+    width: calc(100% - 50px);
+}
+}
 
 .date_added {
     color: #222;

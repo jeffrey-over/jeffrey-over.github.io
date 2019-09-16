@@ -32,7 +32,7 @@
 	<script src="https://www.jeffreyovermeer.com/helder-css-framework/js/prism.js"></script>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script async defer src="https://buttons.github.io/buttons.js"></script>
+	
 	<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -44,7 +44,28 @@
 
   gtag('config', 'UA-113733633-1');
 </script>
+
 <script>
+(function($) {
+  $(function() {
+    $('nav ul li > a:not(:only-child)').click(function(e) {
+      $(this).siblings('.nav-dropdown').toggle();
+      $('.nav-dropdown').not($(this).siblings()).hide();
+      e.stopPropagation();
+    });
+    $('html').click(function() {
+      $('.nav-dropdown').hide();
+    });
+  });
+  document.querySelector('#nav-toggle').addEventListener('click', function() {
+    this.classList.toggle('active');
+  });
+  $('#nav-toggle').click(function() {
+    $('nav ul').toggle();
+  });
+})(jQuery);</script>
+
+<!--<script>
   $('body').toggleClass(localStorage.mode);
 function toggleDarkLight() {
   var body = document.getElementById("body");
@@ -86,7 +107,7 @@ $('#togglemode').click(function(){
 
 });
 </script>
-
+-->
 <!--
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

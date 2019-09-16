@@ -7,12 +7,17 @@
                             font-weight: 700;">Jeffrey.</span></a>
 					</div>			
             <nav>
+                    <div class="nav-mobile">
+                            <a id="nav-toggle" href="#!"><span></span></a>
+                    </div>
                 <div class="items">
-                    <ul>
+                    <ul class="menu">
                         <li> <a href="/index.html" {% if page.link == "home" %} class="active"{% endif %} title="Home">Home</a> </li>
                         <li> <a href="/about/" {% if page.link == "about" %} class="active"{% endif %} title="About">About</a> </li>                        
                         <li> <a href="/blog/" {% if page.link == "blog" %} class="active"{% endif %} title="Articles">Articles</a> </li>
                         <li> <a href="/work/" {% if page.link == "work" %} class="active"{% endif %} title="Contact">Work</a>  </li>
+                        <li> <a href="/now/" {% if page.link == "now" %} class="active"{% endif %} title="Contact">Now</a>  </li>
+                        <li> <a href="/tools/" {% if page.link == "tools" %} class="active"{% endif %} title="Contact">Tools</a>  </li>
                        <!-- <li><button type="button" id="togglemode" name="dark_light" title="Toggle dark/light mode"><span style="color:#ccc">🌗</span></button>
                         </li>-->
                     </ul>
