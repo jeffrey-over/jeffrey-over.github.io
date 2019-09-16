@@ -70,7 +70,7 @@ link: home
                           
                           {% endfor %}
 
-
+<!--
     <div class="card-wrapper">
                         {% for post in site.posts limit:2 %}
                         <div class="card">
@@ -79,8 +79,8 @@ link: home
                             <div style="font-size:14px;color: #636f7b;
                             font-weight: 200;
                             margin-bottom: 5px;"><time >
-                                <!-- Whitespace added for readability -->
-                  <!--  {% assign m = post.date | date: "%-m" %}
+                                
+                   {% assign m = post.date | date: "%-m" %}
                     {{ post.date | date: "%-d" }}
                     {% case m %}
                       {% when '1' %}januari
@@ -98,7 +98,7 @@ link: home
                     {% endcase %}
                     {{ post.date | date: "%Y" }}
                                 {% if post.author %} • {{ post.author }}{% endif %}{% if post.meta %} • {{ post.meta }}{% endif %}</time> -         {% capture readtime %}{{ post.content | number_of_words | plus:91 | divided_by:180.0 | append:'.' | split:'.' | first }}{% endcapture %}
-                                {% if readtime == '0' %} &lt; 1{% else %}{{ readtime }}{% endif %} minuten leestijd -->  </div>
+                                {% if readtime == '0' %} &lt; 1{% else %}{{ readtime }}{% endif %} minuten leestijd   </div>
                             <h2>{{ post.title }}</h2>
                             
                             <p>{{ post.description | strip_html | truncatewords: 300 }}</p>
@@ -111,7 +111,7 @@ link: home
                     {% endfor %}
         </div>
     
-           
+    -->
         
         
                     
