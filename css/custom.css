@@ -23,9 +23,16 @@ a:hover h4 {
     color: #999;
 }
 
+.os-projects .wrapper {
+    padding-left: 0;
+    padding: 0;
+    margin-left: 50px;
+}
+
 .os-projects img {
-    height: 29px;
-    margin: 15px 25px 15px 0;
+    height: 25px;
+    width: 25px;
+    margin: 0 25px 0 0;
     display: inline-block;
     vertical-align: middle;
 }

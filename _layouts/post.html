@@ -37,7 +37,10 @@ layout: default
                     {% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</time> -         {% capture readtime %}{{ content | number_of_words | plus:91 | divided_by:180.0 | append:'.' | split:'.' | first }}{% endcapture %}
                     {% if readtime == '0' %} &lt; 1{% else %}{{ readtime }}{% endif %} minuten leestijd   </div> 
                 -->
-            <p>
+            <p class="is-subtitle" style="    margin: 2.8rem 0;
+            font-family: 'Merriweather', sans-serif;
+            font-size: 1.5rem;
+            font-style: italic;">
                     {{ page.description }}
          
                 </p>

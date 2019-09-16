@@ -36,6 +36,7 @@ link: home
 <div class="container">
     <section>   
                 <h2 class="is-title" >Projecten</h2>
+                <p class="is-subtitle">(Open-source) projecten waar ik de afgelopen tijd mee bezig ben geweest.</p>
                 {% include projects.html %}
                                 
                 
@@ -49,7 +50,26 @@ link: home
             <div class="container">
                 <section>   
                         <h2 class="is-title">Trending artikelen</h2>
-               
+                        <p class="is-subtitle">Hopelijk helpt het je verder op weg!</p>
+
+                        {% for post in site.posts limit:5 %}
+                        <div class="columns os-projects" style="padding-bottom:10px;border-bottom: 0px solid #efefef;margin-bottom: 20px;">
+                            <div class="full column" style="padding:0;">
+                                <img src="https://www.jeffreyovermeer.com/images/keynote-icon.png"><a href="{{ post.url | prepend: site.baseurl }}" alt="{{ post.title }}" >{{ post.title }}</a><br />
+                                
+                                
+                                
+                              </div> 
+                              <div class="two-thirds column wrapper" style="padding:0;">
+                              
+                                <p style="margin-top:0;">{{ post.description | strip_html | truncatewords: 300 }}</p>
+                              </div> 
+                            
+                         
+                          </div>
+                          
+                          {% endfor %}
+
 
     <div class="card-wrapper">
                         {% for post in site.posts limit:2 %}

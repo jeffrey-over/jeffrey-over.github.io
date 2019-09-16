@@ -91,9 +91,11 @@ body {
 }
 
 // Margins and Padding
-p,ol,ul,dl,table {
+ol,ul,dl,table {
     margin: 2.4rem 0 0 0;
 }
+
+p {margin: 0.4rem 0 0 0}
 
 section {
     padding: $section-padding;
