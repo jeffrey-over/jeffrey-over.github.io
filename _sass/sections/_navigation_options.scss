@@ -24,8 +24,8 @@
 
 
 .navigation-logo {
-    background: #020202;
-    border-bottom: 1px solid #262626;
+    background: #0e1734;
+    //border-bottom: 1px solid #262626;
 // border-bottom: 2px solid #efefef;
 // box-shadow: 0 0 20px rgba(0,0,0,.05);
 animation: .55s fade-in-up-lg ease-out;
@@ -201,11 +201,11 @@ nav {
          a {
           padding: 15px;
           line-height: 20px;
-          color: rgba(0, 0, 0, 0.7) !important;
+          color: #08122c !important;
           border-bottom:1px solid #f2f2f1;
         }
          a.active {
-            color: rgba(0, 0, 0, 0.7) !important;
+            color: #08122c !important;
          }
         ul li a {
           padding-left: 30px;

@@ -2,19 +2,13 @@
 layout: default
 ---
 
-<!--
+
 <div id="intro-post" class="container has-full-width" style="">
-<div class="post container" style="padding-top:130px;margin: 0 auto; ">
+<div class="post container" style="margin: 0 auto; ">
     <section class="text-left">
+<h2 style="margin-bottom: .5rem;">{{ page.title }}</h2>
 
         
-</div>
-</div>
--->
-	<div class="post container">
-        <h2 style="margin-bottom: .5rem;">{{ page.title }}</h2>
-
-        <!--
             <div style="font-size:15px;margin-bottom:20px;color:#888;"><time >
                   
         {% assign m = page.date | date: "%-m" %}
@@ -36,7 +30,13 @@ layout: default
         {{ page.date | date: "%Y" }}
                     {% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</time> -         {% capture readtime %}{{ content | number_of_words | plus:91 | divided_by:180.0 | append:'.' | split:'.' | first }}{% endcapture %}
                     {% if readtime == '0' %} &lt; 1{% else %}{{ readtime }}{% endif %} minuten leestijd   </div> 
-                -->
+    </section>
+</div>
+</div>
+
+	<div class="post container">
+        
+                
             <p class="is-subtitle" style="    margin: 2.8rem 0;
             font-family: 'Merriweather', sans-serif;
             font-size: 1.5rem;

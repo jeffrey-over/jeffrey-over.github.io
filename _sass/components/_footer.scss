@@ -1,7 +1,7 @@
 footer {
     @extend .text-left;
     background: $footer-background-color;
-    border-top: 1px solid #262626;
+    //border-top: 1px solid #262626;
     padding-bottom: 4rem;
     color: $footer-font-color;
     font-size: $footer-font-size;
@@ -26,7 +26,7 @@ footer {
     }
     p {
         font-size: 1.6rem;
-        color: #757575;
+        color: #f8f9fb;
     }
 }
 
