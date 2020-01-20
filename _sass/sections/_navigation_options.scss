@@ -15,8 +15,8 @@
 .navigation-only-logo .navigation .button {
     margin-top: 6px;
     padding: 1.2rem 1.4rem;
-    border: 1px solid #ffffff;
-    color: #ffffff;
+    //border: 1px solid #ffffff;
+    //color: #ffffff;
     -webkit-transition: .1s ease-in-out;
     transition: .1s ease-in-out;
 }
@@ -24,10 +24,13 @@
 
 
 .navigation-logo {
-    background: #0e1734;
+    //background: #0e1734;
     //border-bottom: 1px solid #262626;
-// border-bottom: 2px solid #efefef;
-// box-shadow: 0 0 20px rgba(0,0,0,.05);
+ //border-bottom: 2px solid #efefef;
+ border-top: 5px solid $accent-color;
+ padding-top: 40px;
+ //color: $nav-font-color;
+ //box-shadow: 0 0 20px rgba(0,0,0,.05);
 animation: .55s fade-in-up-lg ease-out;
 
     
@@ -53,7 +56,7 @@ animation: .55s fade-in-up-lg ease-out;
     margin-top: 0;
     line-height: inherit;
     text-align: center;
-    color: #fff;
+    //color: #fff;
 
     font-weight: 700;
     text-transform: uppercase;
@@ -83,7 +86,7 @@ $content-width: 1000px;
 $breakpoint: 800px;
 $nav-height: 80px;
 $nav-background: #262626;
-$nav-font-color: #ffffff;
+$nav-font-color: hsl(0,0%,13%);
 $link-hover-color: #2581DC;
 
 nav {

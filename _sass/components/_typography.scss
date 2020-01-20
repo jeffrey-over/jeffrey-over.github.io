@@ -63,10 +63,10 @@ a {
 }
 
 .post a, .os-projects a  {
-  color: #0e1e25;
+  color: #ffffff;
   font-weight: 700;
   text-decoration: none;
-    background-image: linear-gradient(180deg, transparent 70%, #F0F3F7 0);
+    //background-image: linear-gradient(180deg, transparent 70%, #F0F3F7 0);
 }
 .os-projects a {
   background-image: unset;
@@ -97,7 +97,7 @@ blockquote {
 
 // Manipulation
 b, strong  {
-    color: #020202;
+    color: hsl(0,0%,13%);
 }
 
 p, dd, dt {

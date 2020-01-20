@@ -5,8 +5,7 @@ permalink: /tools/
 link: tools
 ---
 
-<div class="post container">
-<div class="">
+
 <h2 class="is-title" style="">Aanbevolen tools</h2>
 <p class="subtitle">Op deze pagina vind je mijn meest aanbevolen tools die ik gebruik om mijn werk te doen en die ik gebruik bij mijn side-projects.
 </p>
@@ -18,9 +17,6 @@ link: tools
 <li><a href="https://www.asana.com" target="_BLANK">Asana</a> (Beste To-Do app die ik ben tegengekomen)</li>
 <li><a href="https://www.udemy.com" target="_BLANK">Udemy</a> (waar ik mijn JS en markering training volg)</li>
 </ul>
-
-
-</div>
 
 
 

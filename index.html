@@ -15,11 +15,14 @@ link: home
                
                 
                     <div class="columns ">
-                        <div class="full column">
+                        <div class="two-thirds column">
 
-                            Hallo, ik ben Jeffrey 👋
-                         
-                            <h1 style="margin-top:3rem">Marketing Enthusiast</h1><h1>Selligent Specialist</h1><h1>Creative Thinker</h1>            
+                            <h1 style="margin:3rem 0">Hallo, ik ben Jeffrey 👋, <br />Marketing Enthusiast, Selligent Specialist, Creative Thinker</h1>    
+                        </div> 
+                    </div>
+                    <div class="columns ">
+                        <div class="half column">
+                            <p>Ik krijg energie van automatiseren en innoveren en door passie en focus-time probeer ik voor de beste in plaats van de gemakkelijkste oplossing te gaan. Ben niet zo van de “u vraagt wij draaien” mentaliteit. Ik denk graag mee om een marketing model op te zetten om op die manier de biggest bang voor je marketing euro te krijgen.</p>
                     
                         </div>
 
@@ -34,8 +37,14 @@ link: home
       
   
 <div class="container">
+
+
+    <section>
+    <h2 class="is-title " style="">Work showcase</h2>
+{% include webdevelopment.html %}
+    </section>
     <section>   
-                <h2 class="is-title" >Projecten</h2>
+                <h2 class="is-title" >Projects</h2>
                 <p class="is-subtitle">(Open-source) projecten waar ik de afgelopen tijd mee bezig ben geweest.</p>
                 {% include projects.html %}
                                 
@@ -46,10 +55,10 @@ link: home
  
  
    
-    <div class="has-full-width" style="background: #f8f9fb;">
+    <div class="has-full-width">
             <div class="container">
                 <section>   
-                        <h2 class="is-title">Trending artikelen</h2>
+                        <h2 class="is-title">Trending articles</h2>
                         <p class="is-subtitle">Hopelijk helpt het je verder op weg!</p>
 
                         {% for post in site.posts limit:5 %}

@@ -5,8 +5,8 @@ permalink: /now/
 link: now
 ---
 
-<div class="post container">
-<div class="">
+
+
 <h2 class="is-title" style="">Waar ben ik momenteel mee bezig?</h2>
 <p class="subtitle">Deze pagina is geïnspireerd door <A href="https://sivers.org/nowff" target="_BLANK">Derek Sivers</a> en probeer ik zoveel mogelijk bij te werken.</p>
 
@@ -21,7 +21,5 @@ link: now
 <p>
 Dit zijn mijn meest actuele prioriteiten. Dit zijn mijn activiteiten die ik doe totdat ik betere dingen bedenk om te doen :).
 </p>
-</div>
-
 
 

@@ -66,3 +66,10 @@ a:hover h4 {
     max-width: 100%;
 }
 
+nav ul li a, nav ul li a:visited {
+    color: rgb(143,143,143) !important;
+}
+
+nav ul li a.active {
+    color: #fff !important;
+}
