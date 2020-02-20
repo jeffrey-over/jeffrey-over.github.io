@@ -6,7 +6,7 @@ link: tools
 ---
 
 
-<h2 class="is-title" style="">Aanbevolen tools</h2>
+<h1  style="">Aanbevolen tools</h1>
 <p class="subtitle">Op deze pagina vind je mijn meest aanbevolen tools die ik gebruik om mijn werk te doen en die ik gebruik bij mijn side-projects.
 </p>
 <!--<p>

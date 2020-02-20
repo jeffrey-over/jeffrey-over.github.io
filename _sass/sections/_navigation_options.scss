@@ -24,11 +24,11 @@
 
 
 .navigation-logo {
-    //background: #0e1734;
+    background: #000000;
     //border-bottom: 1px solid #262626;
  //border-bottom: 2px solid #efefef;
- border-top: 5px solid $accent-color;
- padding-top: 40px;
+// border-top: 5px solid $accent-color;
+ //padding-top: 40px;
  //color: $nav-font-color;
  //box-shadow: 0 0 20px rgba(0,0,0,.05);
 animation: .55s fade-in-up-lg ease-out;
@@ -153,7 +153,7 @@ nav {
     border-radius: 1px;
     height: 5px;
     width: 35px;
-    background: $nav-font-color;
+    background: #ffffff;
     position: absolute;
     display: block;
     content: '';

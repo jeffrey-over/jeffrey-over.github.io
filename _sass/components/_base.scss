@@ -30,18 +30,19 @@ body {
   -webkit-font-feature-settings: "kern", "liga", "clig", "calt";
   font-feature-settings: "kern", "liga", "clig", "calt";  
   text-rendering: geometricPrecision;
-
+  letter-spacing: -1px;
 }
 
 
 
-
+/*
 @media only screen and (max-width: 800px) {
     body {
       font-size: 1.7rem;
       line-height:1.7;
     } 
 }
+*/
 
 // Container
 .container {
@@ -59,7 +60,7 @@ body {
     }
     @include breakpoint-desktop-up {
         .container {
-            max-width: 85%;
+            max-width: 75%;
         }
     }
     @include breakpoint-widescreen-up {

@@ -5,7 +5,7 @@ permalink: /about/
 link: about
 ---
 
-<div class="post container">
+<div class="">
 <div class="about">
 <h2 class="is-title" style="">About me</h2>
 <p>

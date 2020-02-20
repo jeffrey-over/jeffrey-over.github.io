@@ -7,7 +7,7 @@ link: now
 
 
 
-<h2 class="is-title" style="">Waar ben ik momenteel mee bezig?</h2>
+<h1 class="" style="">Waar ben ik momenteel mee bezig?</h1>
 <p class="subtitle">Deze pagina is geïnspireerd door <A href="https://sivers.org/nowff" target="_BLANK">Derek Sivers</a> en probeer ik zoveel mogelijk bij te werken.</p>
 
 <ul>

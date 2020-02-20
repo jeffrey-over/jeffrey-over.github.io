@@ -41,6 +41,8 @@ a:hover h4 {
 .os-projects .two-thirds  {
     width: calc(100% - 50px);
 }
+
+
 }
 
 .date_added {
@@ -67,9 +69,14 @@ a:hover h4 {
 }
 
 nav ul li a, nav ul li a:visited {
-    color: rgb(143,143,143) !important;
+    color: #b6beb8 !important;
 }
 
-nav ul li a.active {
-    color: #fff !important;
-}
+
+@media only screen and (min-width: 800px) {
+    nav ul li a.active {
+        color: #fff !important;
+    }
+    
+    
+    }

@@ -71,12 +71,14 @@ nav {
         padding: $navigation-link-padding;
         text-decoration: none;
         font-weight: normal;
+        letter-spacing: 0;
                 
         
         color: $navigation-link-color;
         &:hover {
           color: $navigation-link-hover-color;
           text-decoration: none;
+          letter-spacing: 0;
          // border-bottom: 2px solid #fff;
         }
       }
@@ -168,6 +170,7 @@ nav li {
         a {
           padding: 15px;
           line-height: 20px;
+          letter-spacing: 0;
         }
         ul li a {
           padding-left: 30px;

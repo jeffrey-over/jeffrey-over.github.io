@@ -8,14 +8,14 @@ permalink: /work/
 
 
 
-<h2 class="is-title" style="">Web development</h2>
+<h1 style="">Web development</h1>
 {% include webdevelopment.html %}
 <div>
-<h2 class="is-title" style="margin-top:60px">Projecten</h2>
+<h1 style="margin-top:60px">Projecten</h1>
 {% include projects.html %}
                 
 
-<h2 class="is-title" style="margin-top:60px">Marketing Automation projecten</h2>
+<h1 style="margin-top:60px">Marketing Automation projecten</h1>
 <dl class="os-projects">
    <dt><a href="http://www.dm-interface.nl" target="_BLANK">Emailconfigurator</a></dt>
    <dd>Een platform onafhankelijke mastertemplate die bestaat uit herbruikbare bouwstenen. 
