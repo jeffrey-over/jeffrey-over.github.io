@@ -69,13 +69,13 @@ a:hover h4 {
 }
 
 nav ul li a, nav ul li a:visited {
-    color: #b6beb8 !important;
+    color: #222 !important;
 }
 
 
 @media only screen and (min-width: 800px) {
     nav ul li a.active {
-        color: #fff !important;
+        color: #000 !important;
     }
     
     

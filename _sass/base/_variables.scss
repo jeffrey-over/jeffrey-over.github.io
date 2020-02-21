@@ -12,7 +12,7 @@ $fullhd: 1800px;
 $base-color: #E5E5E5;
 $secondary-color:#4E5851;
 $accent-color: #4E5851;
-$background-color: #f9f9f9;
+$background-color: #F9F9F9;
 $background-color-secondary: hsl(0,0%,87%);
 $font-color: rgb(142,142,142);
 $font-color-secondary: hsl(0,0%,87%);
@@ -143,21 +143,21 @@ $code-font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 
 // Navigation
 $navigation-height: 80px;
-$navigation-background-color: transparent;
+$navigation-background-color: #ffffff;
 $navigation-mobile-background-color: transparent;
 $navigation-padding-mobile: 0;
 $navigation-padding-desktop: 0;
-$navigation-font-color: #ffffff;
+$navigation-font-color: #000000;
 $navigation-link-color: hsl(131, 6%, 73%);
 $navigation-mobile-link-color :hsl(131, 6%, 73%);
 $navigation-link-hover-color:hsl(131, 6%, 73%);
 $navigation-link-padding: 0 0 3px 0;
 $navigation-mobile-link-padding: 0 40px;
 $navigation-font-size: 1.5rem;
-$navigation-heading-font-color: #ffffff;
+$navigation-heading-font-color: #000000;
 $navigation-line-height: $navigation-height;
 $navigation-mobile-nav-hover-color: $background-color-secondary;
-$logo-font-color: #ffffff;
+$logo-font-color: #000000;
 $logo-font-size: 26px;
 
 // Footer

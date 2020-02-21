@@ -20,8 +20,9 @@ html {
 body {
   background-color: $background-color;
   font-family: $font-family;
-  font-size: $font-size-small;
-  line-height: $line-height;
+  font-size: 18px;
+    line-height: 31px;
+    letter-spacing: 0;
   color: $font-color;
   -webkit-font-smoothing: antialiased;
   font-kerning: normal;
@@ -30,7 +31,7 @@ body {
   -webkit-font-feature-settings: "kern", "liga", "clig", "calt";
   font-feature-settings: "kern", "liga", "clig", "calt";  
   text-rendering: geometricPrecision;
-  letter-spacing: -1px;
+  //letter-spacing: -1px;
 }
 
 
@@ -60,7 +61,7 @@ body {
     }
     @include breakpoint-desktop-up {
         .container {
-            max-width: 75%;
+            max-width: 65%;
         }
     }
     @include breakpoint-widescreen-up {
