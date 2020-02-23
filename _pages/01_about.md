@@ -11,7 +11,7 @@ link: about
 <p>
 Ik ben Jeffrey Overmeer en denk graag mee om een marketing model op te zetten om op die manier de biggest bang voor je marketing euro te krijgen.
 </p>
-<img src="/images/ik.jpg" class="fullscreen" style="margin-top:24px;">
+<img src="/images/ik.jpg" class="fullscreen" style="margin-top:24px;max-width:100%;">
 <p>
 Ik ben gespecialiseerd in marketing automation, ontwikkel websites & e-mails en werk graag met marketing tools zoals Selligent- Clang en Salesforce Marketing Cloud. Ook denk ik graag mee op strategisch en tactisch vlak.
 </p>
