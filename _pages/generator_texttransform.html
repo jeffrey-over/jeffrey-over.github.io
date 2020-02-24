@@ -1,0 +1,56 @@
+---
+layout: page
+title: Text Generator
+permalink: /text-generator/
+link: Text Generator
+---
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+
+<style>
+#text-transform {
+    height:300px;
+}
+.is-secondary {
+    background: #000000;
+    border: 1px solid #000000;
+}
+</style>
+
+<h1  style="">Tekst generator</h1>
+<p class="subtitle">Converteer je tekst binnen een paar luttele secondes naar hoofdletters, kleine letters en meer!
+</p>
+
+<textarea id="text-transform"></textarea>
+<button id="btn-uppercase" class="is-secondary">Hoofdletters</button>
+<button id="btn-lowercase" class="is-secondary">Kleine letters</button>
+<button id="btn-copyclipboard" onclick="copyclipboard()" class="is-secondary" style="padding: 0 6px;height: 47px;float: right;"><img src="https://img.icons8.com/material-rounded/80/ffffff/copy-2.png" style="height: 30px;"></button>
+<script>
+// uppercase 
+document.getElementById('btn-uppercase').onclick = function() {
+   var upperString = document.getElementById('text-transform').value.toUpperCase();
+   document.getElementById('text-transform').value = upperString;
+}
+
+
+// lowercase 
+document.getElementById('btn-lowercase').onclick = function() {
+   var lowerString = document.getElementById('text-transform').value.toLowerCase();
+   document.getElementById('text-transform').value = lowerString;
+}
+
+//copy to clipboard
+function copyclipboard() {
+  /* Get the text field */
+  var copyText = document.getElementById("text-transform");
+  /* Select the text field */
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+
+  /* Copy the text inside the text field */
+  document.execCommand("copy");
+
+  /* Alert the copied text */
+  console.log("Copied the text: " + copyText.value);
+} 
+</script>
+

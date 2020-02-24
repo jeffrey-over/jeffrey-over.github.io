@@ -1,9 +1,15 @@
 ---
 layout: page
-title: Aanbevolen tools
+title: Aanbevolen tools en generators
 permalink: /tools/
 link: tools
 ---
+<section style="padding-top:0;">
+<h1>Generators</h1>
+{% include generators.html %}
+
+</section>
+<section>
 
 
 <h1  style="">Aanbevolen tools</h1>
@@ -20,3 +26,4 @@ link: tools
 
 
 
+</section>
