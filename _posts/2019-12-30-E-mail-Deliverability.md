@@ -6,7 +6,7 @@ label: e-mail
 tags: marketing, tips, e-mail, free
 published: true
 thumbnail: "images/blog/deliverability.jpg"
-description: "Uren gewerkt aan de perfecte e-mail, maar hij komt niet aan? Check hier hoe dat komt en oplost. Krijg grip op email deliverability."
+description: "Uren gewerkt aan de perfecte e-mail, maar hij komt niet aan? Check hier hoe dat komt en hoe je dit oplost. Krijg grip op email deliverability."
 ---
 
 Email Deliverability is lastig. Echt echt heel lastig. Een e-mail gaat langs heel veel poortjes voordat deze eindelijk in de inbox van de ontvanger belandt. Gelukkig maar, want dit houdt heel wat spam tegen! 

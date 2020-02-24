@@ -15,7 +15,7 @@ link: tools
 <ul>
 <li><a href="https://www.github.com" target="_BLANK">Github</a> (Gebruik ik voor gratis hosting)</li>
 <li><a href="https://www.asana.com" target="_BLANK">Asana</a> (Beste To-Do app die ik ben tegengekomen)</li>
-<li><a href="https://www.udemy.com" target="_BLANK">Udemy</a> (waar ik mijn JS en markering training volg)</li>
+<li><a href="https://www.udemy.com" target="_BLANK">Udemy</a> (waar ik mijn JS en marketing training volg)</li>
 </ul>
 
 

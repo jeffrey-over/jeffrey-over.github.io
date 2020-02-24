@@ -19,7 +19,7 @@ Ik ben gespecialiseerd in marketing automation, ontwikkel websites & e-mails en 
 Ik krijg energie van automatiseren en innoveren en door passie en focus-time probeer ik voor de beste in plaats van de gemakkelijkste oplossing te gaan. Ben niet zo van de “u vraagt wij draaien” mentaliteit. 
 </p>
 <p>
-Momenteel ben ik werkzaam bij Ematters waar ik als Campaign Developer werk en graag met de klant aan het sparren ben over de ultieme oplossing.
+Momenteel ben ik werkzaam bij Ematters waar ik als Campaign Developer graag met de klant aan het sparren ben over de ultieme oplossing.
 </p>
 </div>
 
