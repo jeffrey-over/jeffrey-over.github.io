@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Ultimate e-mail deliverability guide"
-date: 2019-02-05
+date: 2020-02-05
 label: e-mail
 tags: marketing, tips, e-mail, free
 published: true

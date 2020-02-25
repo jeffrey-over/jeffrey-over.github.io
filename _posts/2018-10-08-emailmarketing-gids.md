@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "9 (e-mail)marketing technieken"
-date: 2018-10-08
+date: 2019-05-08
 label: tips
 tags: marketing, tips, strategie
 published: true

@@ -20,8 +20,8 @@ html {
 body {
   background-color: $background-color;
   font-family: $font-family;
-  font-size: 18px;
-    line-height: 31px;
+  font-size: 19.2px;
+  line-height: 28.8px;
     letter-spacing: 0;
   color: $font-color;
   -webkit-font-smoothing: antialiased;
@@ -86,8 +86,31 @@ body {
    // padding-top:50px;
     max-width: 664px;
     padding-top:2rem;
-    }
 
+    }
+.post.container * {
+    font-family: 'Merriweather', sans-serif;
+    color: #323232;
+    line-height: 35px;
+}
+.post.container a {
+    color: $link-color;
+}
+
+.post.container h2 {line-height: 1.25;}
+
+.post.container h4, {
+    padding-top: 50px;
+    font-size: 2.5rem;
+    color: #000000;
+    font-family: -apple-system, BlinkMacSystemFont, segoe ui, Roboto, Helvetica, Arial, sans-serif, apple color emoji, segoe ui emoji, segoe ui symbol;
+}
+
+.post.container h5 {
+    padding-top:25px;
+    font-size: 2.2rem;
+    font-family: -apple-system, BlinkMacSystemFont, segoe ui, Roboto, Helvetica, Arial, sans-serif, apple color emoji, segoe ui emoji, segoe ui symbol;
+}
 .has-small-width {
     max-width: 800px;
 }
