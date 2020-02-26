@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Gratis email templates"
-date: 2029-02-05
+date: 2020-01-05
 label: e-mail
 tags: marketing, tips, templates, free
 published: true

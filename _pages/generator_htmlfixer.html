@@ -1,0 +1,203 @@
+---
+layout: page
+title: Tidy e-mail HTML Generator
+permalink: /emailhtml-generator/
+link: E-mail HTML Generator
+---
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+
+<style>
+#text-transform {
+    height: 300px;
+    font-family: Consolas,Monaco,andale mono,ubuntu mono,monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+    font-size: 11px;
+}
+.is-secondary {
+    background: #000000;
+    border: 1px solid #000000;
+}
+</style>
+
+<h1  style="">Tidy e-mail HTML generator</h1>
+  <p class="subtitle">Herstel, schoon en valideer de HTML van je e-mail met deze generator.</p>
+
+<textarea id="text-transform"></textarea>
+<button id="btn-tidyhtml" class="is-secondary">Tidy HTML</button>
+<button id="btn-beutifyhtml" class="is-secondary">Beautify HTML</button>
+<button id="btn-copyclipboard" onclick="copyclipboard()" class="is-secondary" style="padding: 0 6px;height: 47px;float: right;"><img src="https://img.icons8.com/material-rounded/80/ffffff/copy-2.png" style="height: 30px;"></button>
+
+<h4>Validatie meldingen:</h4>
+<pre><code id="log"></code></pre>
+
+<h4 id="what-tidy-does">Opschoon voorbeelden</h4>
+<ul>
+<li><b>Mismatched end tags:</b>
+<pre>   &lt;h2&gt;subheading&lt;/h3&gt;
+</pre>
+<p>…is converted to:</p>
+<pre>   &lt;h2&gt;subheading&lt;/h2&gt;
+</pre></li>
+<li><b>Misnested tags:</b>
+<pre>   &lt;p&gt;here is a para &lt;b&gt;bold &lt;i&gt;bold italic&lt;/b&gt; bold?&lt;/i&gt; normal?
+</pre>
+<p>…is converted to:</p>
+<pre>   &lt;p&gt;here is a para &lt;b&gt;bold &lt;i&gt;bold italic&lt;/i&gt; bold?&lt;/b&gt; normal?
+</pre></li>
+</ul>
+<p style="margin-top:50px;color:lightgrey"><i>Mogelijk gemaakt door open source project: <a href="https://github.com/htacg/tidy-html5">Tidy HTML5</a></i></p>
+<script>
+(function () {
+    if (!console) {
+        console = {};
+    }
+    var old = console.log;
+    var logger = document.getElementById('log');
+    console.log = function (message) {
+      
+            logger.innerHTML += message + '<br />';
+        
+    }
+
+
+})();
+
+
+// tidyhtml 
+options = {
+  "indent":"auto",
+  "indent-spaces":2,
+  "wrap":80,
+  "markup":true,
+  "output-xml":false,
+  "numeric-entities":true,
+  "quote-marks":true,
+  "quote-nbsp":false,
+  "show-body-only":true,
+  "quote-ampersand":false,
+  "break-before-br":true,
+  "uppercase-tags":false,
+  "uppercase-attributes":false,
+  "drop-font-tags":true,
+  "tidy-mark":false
+}
+
+function format(html) {
+    var tab = '\t';
+    var result = '';
+    var indent= '';
+
+    html.split(/>\s*</).forEach(function(element) {
+        if (element.match( /^\/\w/ )) {
+            indent = indent.substring(tab.length);
+        }
+
+        result += indent + '<' + element + '>\r\n';
+
+        if (element.match( /^<?\w[^>]*[^\/]$/ )) { 
+            indent += tab;              
+        }
+    });
+
+    return result.substring(1, result.length-3);
+}
+
+
+
+
+
+
+
+// Parameters:
+// code 								- (string) code you wish to format
+// stripWhiteSpaces			- (boolean) do you wish to remove multiple whitespaces coming after each other?
+// stripEmptyLines 			- (boolean) do you wish to remove empty lines?
+function formatCode (code, stripWhiteSpaces, stripEmptyLines) {
+    "use strict";
+    var whitespace          = ' '.repeat(4);             // Default indenting 4 whitespaces
+    var currentIndent       = 0;
+    var char                = null;
+    var nextChar            = null;
+
+
+    var result = '';
+    for(var pos=0; pos <= code.length; pos++) {
+        char            = code.substr(pos, 1);
+        nextChar        = code.substr(pos+1, 1);
+
+        // If opening tag, add newline character and indention
+        if(char === '<' && nextChar !== '/') {
+            result += '\n' + whitespace.repeat(currentIndent);
+            currentIndent++;
+        }
+        // if Closing tag, add newline and indention
+        else if(char === '<' && nextChar === '/') {
+            // If there're more closing tags than opening
+            if(--currentIndent < 0) currentIndent = 0;
+            result += '\n' + whitespace.repeat(currentIndent);
+        }
+
+        // remove multiple whitespaces
+        else if(stripWhiteSpaces === true && char === ' ' && nextChar === ' ') char = '';
+        // remove empty lines
+        else if(stripEmptyLines === true && char === '\n' ) {
+            //debugger;
+            if(code.substr(pos, code.substr(pos).indexOf("<")).trim() === '' ) char = '';
+        }
+
+        result += char;
+    }
+
+    return result;
+}
+
+
+//console.log(formatCode(code3, true, true));
+
+
+
+
+
+
+document.getElementById('btn-tidyhtml').onclick = function() {
+  var html = document.getElementById('text-transform').value;
+var result = tidy_html5(html, options);
+
+  format(result);
+   document.getElementById('text-transform').value = result;
+}
+
+
+
+
+document.getElementById('btn-beutifyhtml').onclick = function() {
+  var html = document.getElementById('text-transform').value;
+
+
+  var result = formatCode(html, true, true);
+  
+   document.getElementById('text-transform').value = result;
+}
+
+
+//copy to clipboard
+function copyclipboard() {
+  /* Get the text field */
+  var copyText = document.getElementById("text-transform");
+  /* Select the text field */
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+
+  /* Copy the text inside the text field */
+  document.execCommand("copy");
+
+  /* Alert the copied text */
+  console.log("Copied the text: " + copyText.value);
+} 
+</script>
+<script src='http://lovasoa.github.io/tidy-html5/tidy.js'></script>

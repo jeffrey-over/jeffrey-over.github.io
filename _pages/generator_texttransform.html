@@ -23,8 +23,11 @@ link: Text Generator
 <textarea id="text-transform"></textarea>
 <button id="btn-uppercase" class="is-secondary">Hoofdletters</button>
 <button id="btn-lowercase" class="is-secondary">Kleine letters</button>
+
 <button id="btn-copyclipboard" onclick="copyclipboard()" class="is-secondary" style="padding: 0 6px;height: 47px;float: right;"><img src="https://img.icons8.com/material-rounded/80/ffffff/copy-2.png" style="height: 30px;"></button>
 <script>
+
+
 // uppercase 
 document.getElementById('btn-uppercase').onclick = function() {
    var upperString = document.getElementById('text-transform').value.toUpperCase();
@@ -37,6 +40,9 @@ document.getElementById('btn-lowercase').onclick = function() {
    var lowerString = document.getElementById('text-transform').value.toLowerCase();
    document.getElementById('text-transform').value = lowerString;
 }
+
+
+
 
 //copy to clipboard
 function copyclipboard() {
@@ -53,4 +59,3 @@ function copyclipboard() {
   console.log("Copied the text: " + copyText.value);
 } 
 </script>
-

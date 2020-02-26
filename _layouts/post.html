@@ -44,9 +44,9 @@ layout: default
                     {{ page.description }}
          
                 </p>
-
+{% if page.thumbnail <> '' %}
                 <img src="/{{ page.thumbnail }}" class="fullscreen" style="margin-top:24px;margin-bottom:24px">
-
+{% endif %}
 			{{ content }}
 
 
