@@ -1,11 +1,12 @@
 .navigation {
   @extend .text-left;
-  height: $navigation-height;
+  //height: $navigation-height;
   background: $navigation-background-color;
   padding: $navigation-padding-mobile;
   color: $navigation-font-color;
   font-size: $navigation-font-size;
-    
+  
+
   section {
       padding: 0;
   }
@@ -37,12 +38,23 @@
 
 // Logo and branding
 .brand {
-  position: absolute;
+/*
+  // position: absolute;
   padding-left: 0;
-  float: left;
+ // float: left;
   line-height: $navigation-line-height;
   text-transform: uppercase;
   font-size: $logo-font-size;
+  */
+  transition: 0.4s;
+  transition-delay: 0.1s;
+  padding-left: 0;
+    //line-height: 80px;
+    /* text-transform: uppercase; */
+    font-size: 26px;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    font-family: 'Muli', sans-serif;
   a,
   a:visited {
     color: $logo-font-color;
@@ -55,18 +67,18 @@
 
 
 nav {
-  float: right;
+  position: relative;
+  //text-align: center;
   ul {
     list-style: none;
     margin: 0;
     padding: 0;
     li {
-      float: left;
-      position: relative;
-      padding: 0 20px;
+      display: inline-block;
+      padding: 20px 60px 10px 0;
       a,
       a:visited {
-        line-height: $navigation-line-height;
+        //line-height: $navigation-line-height;
         //display: block;
         padding: $navigation-link-padding;
         text-decoration: none;
@@ -78,13 +90,15 @@ nav {
         &:hover {
           color: $navigation-link-hover-color;
           text-decoration: none;
-          letter-spacing: 0;
+          
          // border-bottom: 2px solid #fff;
         }
       }
       a:active, .active {
         //border-bottom: 3px solid #ffd667 !important;
-        padding-bottom: 5px !important;
+        margin-bottom: 5px !important;
+        font-weight: bold !important;
+        border-bottom: 3px solid $accent-color;
         font-weight: bold !important;
         //color: #fff !important;
       }
@@ -94,10 +108,10 @@ nav {
 
 @media only screen and (max-width: 800px) {
   .brand {
-    float: inherit;
-    text-align: center;
-    line-height: unset;
-    position: inherit;
+   // float: inherit;
+   // text-align: center;
+   // line-height: unset;
+   // position: inherit;
   }
 
   nav

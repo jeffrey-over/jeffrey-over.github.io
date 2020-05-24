@@ -7,34 +7,77 @@ permalink: /work/
 
 
 
-
-<h1 style="">Web development</h1>
-{% include webdevelopment.html %}
-<div>
-<h1 style="margin-top:60px">Projecten</h1>
+<h3>Open-Source Projects</h3>
 {% include projects.html %}
-                
 
-<h1 style="margin-top:60px">Marketing Automation projecten</h1>
-<dl class="os-projects">
-   <dt><a href="http://www.dm-interface.nl" target="_BLANK">Emailconfigurator</a></dt>
-   <dd>Een platform onafhankelijke mastertemplate die bestaat uit herbruikbare bouwstenen. 
-   </dd>
+<h3>Marketing Automation solutions</h3>
+<div class="columns os-projects" style="padding-bottom:10px;border-bottom: 0px solid #efefef;margin-bottom: 0px;">
+  <div class="full column" style="padding:0;">
+      <img src="https://www.jeffreyovermeer.com/images/portfolio/emailamp.png"><a href="#" target="">Email configurator</a><br />  
+    </div> 
+    <div class="full column wrapper" style="padding-left:0;">
+      <p style="margin-top:0;">A platform-independent master template consisting of reusable building blocks.</p>
+    </div> 
+</div>
 
- 
-   <dt><a href="#" target="_BLANK">Interactive elements toolbox</a></dt>
-   <dd>Collectie van herbruikbare interactieve email elementen met een speciale modus om ureninschattinge te bekijken en mogelijkheid om notities op te slaan.</dd>
-   <dt><a href="#" target="_BLANK">E-mail toolkit</a></dt>
-   <dd>Verzameling van frameworks, templates, tools, workflows en nog veel meer interessante onderwerpen om sneller en betere e-mails te kunnen bouwen. Dit bespaart tijd met het telkens weer opzoeken van dezelfde gegevens.</dd>
-   <dt><a href="#" target="_BLANK">Email preflight checklist</a></dt>
-   <dd>Piloten voeren ook bij iedere vlucht hun preflight checklist uit en controleren alle essentiële onderdelen voordat ze gaan opstijgen, hoe ervaren ze ook zijn. Een krachtig instrument die je weer scherp houdt met de juiste onderwerpen en binnen enkele minuten is af te ronden.</dd>
-   <dt><a href="#" target="_BLANK">Selligent reporting tool</a></dt>
-   <dd>E-mailrapportage module dat gemakkelijk statistieken van een emailcampagne genereert. </dd>
-   <dt><a href="#" target="_BLANK">Dynamic email uploadtool</a></dt>
-   <dd>Omgeving waarmee dynamische contentblokken toegevoegd kunnen worden aan een customer journey.</dd>
-</dl>
 
-<h2 class="is-title" style="margin-top:60px">Trots gewerkt voor o.a.</h2>
-<p>Mercedes-Benz, smart, Avero, Wensink, GrandVision, Kwik-Fit, Zilveren Kruis, Volkswagen Pon Financial Services.</p>
-     </div>
-           
+<div class="columns os-projects" style="padding-bottom:10px;border-bottom: 0px solid #efefef;margin-bottom: 0px;">
+  <div class="full column" style="padding:0;">
+      <img src="https://www.jeffreyovermeer.com/images/portfolio/emailamp.png"><a href="#" target="">Interactive elements toolbox</a><br />  
+    </div> 
+    <div class="full column wrapper" style="padding-left:0;">
+      <p style="margin-top:0;">Collection of reusable interactive email elements with a special mode to view time estimates and save notes.</p>
+    </div> 
+</div>
+
+
+<div class="columns os-projects" style="padding-bottom:10px;border-bottom: 0px solid #efefef;margin-bottom: 0px;">
+  <div class="full column" style="padding:0;">
+      <img src="https://www.jeffreyovermeer.com/images/portfolio/emailamp.png"><a href="#" target="">Email toolkit</a><br />  
+    </div> 
+    <div class="full column wrapper" style="padding-left:0;">
+      <p style="margin-top:0;">Collection of frameworks, templates, tools, workflows, and many more interesting topics to build faster and better emails. This saves time by looking up the same data over and over again.</p>
+    </div> 
+</div>
+
+
+
+<div class="columns os-projects" style="padding-bottom:10px;border-bottom: 0px solid #efefef;margin-bottom: 0px;">
+  <div class="full column" style="padding:0;">
+      <img src="https://www.jeffreyovermeer.com/images/portfolio/emailamp.png"><a href="#" target="">Email preflight checklist</a><br />  
+    </div> 
+    <div class="full column wrapper" style="padding-left:0;">
+      <p style="margin-top:0;">Pilots also perform their preflight checklist on every flight and check all essential parts before taking off. However, experienced they may be. A powerful tool that keeps you sharp with the right subjects and can be completed in a few minutes.</p>
+    </div> 
+</div>
+
+
+
+<div class="columns os-projects" style="padding-bottom:10px;border-bottom: 0px solid #efefef;margin-bottom: 0px;">
+  <div class="full column" style="padding:0;">
+      <img src="https://www.jeffreyovermeer.com/images/portfolio/emailamp.png"><a href="#" target="">Selligent reporting tool</a><br />  
+    </div> 
+    <div class="full column wrapper" style="padding-left:0;">
+      <p style="margin-top:0;">Email reporting module that easily generates statistics from an email campaign.</p>
+    </div> 
+</div>
+
+
+
+<div class="columns os-projects" style="padding-bottom:10px;border-bottom: 0px solid #efefef;margin-bottom: 0px;">
+  <div class="full column" style="padding:0;">
+      <img src="https://www.jeffreyovermeer.com/images/portfolio/emailamp.png"><a href="#" target="">Dynamic email upload tool</a><br />  
+    </div> 
+    <div class="full column wrapper" style="padding-left:0;">
+      <p style="margin-top:0;">An dashboard where dynamic content blocks can be added to a customer journey.</p>
+    </div> 
+</div>
+
+
+
+<h3>Web development</h3>
+{% include webdevelopment.html %}
+
+<h3> Proudly worked for </h3>
+<p> Mercedes-Benz, smart, Avero, Wensink, GrandVision, Kwik-Fit, Zilveren Kruis, Volkswagen Pon Financial Services. </p>
+    

@@ -1,34 +1,33 @@
 ---
 layout: post
-title: "VS Code - Tips and Tricks"
+title: "Visual Studio Code - Best practices"
 date: 2018-01-31
 label: learning
 tags: webdevelopment, tips, visual studio code
+yearreview: false
 published: true
 thumbnail: "images/blog/vsc.gif"
-description: "Er zijn veel goede editors. Het kiezen van een editor die bij jou past kan daarom best lastig zijn. Zelf vind ik VS Code écht nice! Het werkt gemakkelijk en is gratis, open-source en zowel op OS X als op Windows beschikbaar."
+description: "There are many good editors. Choosing an editor that suits you can be quite tricky. I really like VS Code! It works easily and is free, open-source, and available on both OS X and Windows."
 ---
 
-#### GIT integratie
-VS Code heeft een *[ingebouwde source control](https://code.visualstudio.com/docs/introvideos/versioncontrol "Visual Studio code")*. Het biedt simpele acties zoals het wisselen van branches of het vergelijken van de wijzigingen.
-Met de extensie *[Git History](https://marketplace.visualstudio.com/items?itemName=donjayamanne.githistory "Git History extension")* wordt de integratie nog krachtiger en kan je eenvoudig de log, geschiedenis bekijken of branches en commits vergelijken.
+### GIT integration
+VS Code has a *[built-in source control](https://code.visualstudio.com/docs/introvideos/versioncontrol "Visual Studio code")*. It offers simple actions such as switching branches or comparing changes.
+With the extension *[Git History](https://marketplace.visualstudio.com/items?itemName=donjayamanne.githistory "Git History extension")* the integration becomes even more powerful and you can easily view the log, history or branches and compare commits.
 
 <img src="https://github.com/Microsoft/vscode-tips-and-tricks/raw/master/media/OpenCommandPalatte.gif" class="fullscreen" alt="Open Command Palette">
 
+### Command Palette
+The most important key combination you should know is <kbd> ⇧ + ⌘ + P </kbd> or <kbd> Ctrl + Shift + P </kbd> for Windows. This will open the Command Palette that gives you access to all available functions. This way you can clone a repository, create an extra branch or search for a file in a few simple steps.
 
 
-#### Command Palette
-De belangrijkste toetsencombinatie is <kbd>⇧⌘P</kbd> of <kbd>Ctrl+Shift+P</kbd> voor Windows. Hiermee open je het Command Palette waarmee je toegang hebt tot alle beschikbaar functies. Zo kan je hiermee in een paar simpele stappen een repository clonen, een extra branche aanmaken of een file opzoeken.
+### Emmet
+Emmet is a snippet tool that saves a lot of time in your HTML & CSS workflow by working with abbreviations. This tool is integrated into VS Code, making it super tasty!
 
+### Example Emmet input:
+<pre><code>   div&gt;ul&gt;li
+</code></pre>
 
-#### Emmet
-Emmet is een snippet toolt waarmee je veel tijd bespaart in je HTML & CSS workflow door met afkortingen te werken. Deze tool is geïntegreerd in VS Code waardoor dit superlekker werkt!
-
-#### Voorbeeld Emmet syntax:
-<pre><code class="language-html" data-lang="html">div>ul>li</code></pre>
-
-###### Resultaat
-
+### Output result
 <pre><code class="language-html" data-lang="html">&lt;div&gt;
     &lt;ul&gt;
         &lt;li&gt;&lt;/li&gt;
@@ -36,14 +35,10 @@ Emmet is een snippet toolt waarmee je veel tijd bespaart in je HTML & CSS workfl
 &lt;/div&gt;</code></pre>
 
 
+### Emmet snippet:
+<pre><code>&lt;!</code></pre>
 
-#### Voorbeeld Emmet snippet:
-
-<pre><code class="language-html" data-lang="html">&lt;!</code></pre>
-
-
-###### Resultaat
-
+### Output result
 <pre><code class="language-html" data-lang="html">&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
@@ -56,55 +51,44 @@ Emmet is een snippet toolt waarmee je veel tijd bespaart in je HTML & CSS workfl
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
 
-#### IntelliSense (auto complete)
-IntelliSense gaat verder dan syntax markering. Het automatiseert het afronden van een syntax!
-
+### IntelliSense (auto complete)
+IntelliSense goes beyond syntax highlighting. It automates the completion of a syntax!
 <blockquote>
 Go beyond syntax highlighting and autocomplete with IntelliSense, which provides smart completions based on variable types, function definitions, and imported modules.
 <a href="https://www.microsoft.com" target="_BLANK">- Microsoft</a>
 </blockquote>
 
-
-
-
-#### Extensies
-Extensies zijn extra functies of thema’s die gedownload kunnen worden in de marketplace. Hierbij een aantal vette extensies die ik gebruik.
+### Extensions
+Extensions are additional features or themes that can be downloaded from the marketplace. Here are some cool extensions that I use.
 <dl>
-   <dt><a href="https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag" target="_BLANK">Auto close tag</a></dt>
-   <dd>Voeg automatisch een HTML / XML-close-tag toe, hetzelfde als Visual Studio IDE of Sublime Text
+   
+<dt> <a href="https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag" target="_BLANK"> Auto close tag </a> </dt>
+   
+<dd> Automatically add an HTML / XML close tag, the same as Visual Studio IDE or Sublime Text</dd>
+   
+<dt> <a href="https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-rename-tag" target="_BLANK"> Auto rename tag </a> </dt>
+   
+<dd> Automatically renames paired HTML / XML tags</dd>
+   
+<dt> <a href="https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify" target="_BLANK"> Beautify </a> </dt>
+   
+<dd> Beautifies code in Visual Studio Code</dd>
+   
+<dt> <a href="https://marketplace.visualstudio.com/items?itemName=donjayamanne.githistory" target="_BLANK"> Git History </a> </dt>
+   
+<dd> View git log,
+   file history, compare branches or commits
 </dd>
-
-
-   <dt><a href="https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-rename-tag" target="_BLANK">Auto rename tag</a></dt>
-   <dd>Hernoemt automatisch gepaarde HTML / XML-tags
-</dd>
-
-
-   <dt><a href="https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify" target="_BLANK">Beautify</a></dt>
-   <dd>Verfraait code in Visual Studio Code 
-</dd>
-
-
-   <dt><a href="https://marketplace.visualstudio.com/items?itemName=donjayamanne.githistory" target="_BLANK">Git History</a></dt>
-   <dd>Bekijk git log,
-bestandsgeschiedenis, vergelijk branches of commits
-</dd>
-
-   <dt><a href="https://marketplace.visualstudio.com/items?itemName=zhuangtongfa.Material-theme" target="_BLANK">One Dark Pro theme</a></dt>
-   <dd>Atom's iconic One Dark thema voor Visual Studio Code
-</dd>
-
-
-
-  <dt><a href="https://marketplace.visualstudio.com/items?itemName=robertohuertasm.vscode-icons" target="_BLANK">vscode-icons</a></dt>
-   <dd>Icons voor Visual Studio Code
-</dd>
-
+   
+<dt> <a href="https://marketplace.visualstudio.com/items?itemName=zhuangtongfa.Material-theme" target="_BLANK"> One Dark Pro theme </a> </dt>
+   
+<dd> Atom's iconic One Dark theme for Visual Studio Code</dd>
+  
+<dt> <a href="https://marketplace.visualstudio.com/items?itemName=robertohuertasm.vcode-icons" target="_BLANK"> vcode icons </a> </dt>
+   
+<dd> Icons for Visual Studio Code</dd>
 
 </dl>
 
  
-
-Check zeker ook de [tips](https://github.com/Microsoft/vscode-tips-and-tricks) die Microsoft zelf aanbiedt!
-
-
+Be sure to check the [tips](https://github.com/Microsoft/vcode-tips-and-tricks) that Microsoft itself offers!

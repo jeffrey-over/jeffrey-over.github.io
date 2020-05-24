@@ -3,7 +3,7 @@ footer {
     background: $footer-background-color;
     //border-top: 1px solid #262626;
     padding-bottom: 4rem;
-    color: $footer-font-color;
+    //color: $footer-font-color;
     font-size: $footer-font-size;
     line-height: $footer-line-height;
     letter-spacing: 0;
@@ -21,14 +21,14 @@ footer {
        // font-family: 'Muli', sans-serif;
     }
     a {
-        color: $footer-link-color;
+        color: #222222;
     }
     .column {
         padding-top: 50px;
     }
     p {
         font-size: 1.6rem;
-        color: hsl(131, 6%, 73%);
+        //color: hsl(131, 6%, 73%);
     }
 }
 
@@ -41,6 +41,11 @@ footer {
     }
 }
 
+footer .post.container a {
+    color: rgba(0,0,0,.6);
+    //font-family: inherit;
+}
 
+a.social {margin-left: 20px;}
 
-
+footer .post.container {padding-top: 0;}

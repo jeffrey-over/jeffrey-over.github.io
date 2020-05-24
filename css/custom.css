@@ -69,7 +69,9 @@ a:hover h4 {
 }
 
 nav ul li a, nav ul li a:visited {
-    color: #222 !important;
+    color: #666 !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 
@@ -77,6 +79,20 @@ nav ul li a, nav ul li a:visited {
     nav ul li a.active {
         color: #000 !important;
     }
-    
+
+    .navigation {
+        max-width: 680px;
+       
+    }
     
     }
+
+#branding.fixed {display: none !important;   }
+#navigation.fixed {
+   
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 3;
+
+}

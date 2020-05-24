@@ -1,21 +1,20 @@
 ---
 layout: post
-title: "Gratis email templates"
+title: "A collection of the best (free) email templates"
 date: 2020-01-05
 label: e-mail
 tags: marketing, tips, templates, free
 published: true
+yearreview: false
 thumbnail: "images/blog/templates.jpg"
-description: "Voor alle ESP (Selligent, Clang) gebruikers die snel een litmus-proof template nodig hebben"
+description: "For all marketers and developers who need a litmus-proof template quickly"
 ---
 
-Ben je klaar met het dupliceren van verouderde e-mails?
+Are you done with the fact that you always have to duplicate outdated emails, or even worse the complaints you get about that? Ever spent hours looking for the cause of a bug that is preventing your email from showing up properly in an email client?
 
-Wel eens uren bezig geweest met het zoeken naar de oorzaak van een bug die ervoor zorgt dat je e-mail niet helemaal goed toont in een e-mailclient?
+For all marketers and developers who need a litmus-proof template quickly. Here are some free email templates that have been tested in popular clients. Many of these templates are managed by a permanent community or specialized team. This means they are regularly updated with updates!
 
-Voor alle ESP (Selligent, Clang) gebruikers die snel een litmus-proof template nodig hebben. Hierbij een aantal gratis email templates die zijn getest in de populaire clients. Veel van deze templates worden beheerd door een vaste community of gespecialiseerd team. Hierdoor worden ze regelmatig voorzien van updates!
-
-#### Templates
+### Templates
 
 <dl> 
    <dt><a href="https://www.sendwithus.com/resources/templates" target="_BLANK">Sendwithus</a></dt>
@@ -37,11 +36,9 @@ Voor alle ESP (Selligent, Clang) gebruikers die snel een litmus-proof template n
 </dl>
  
 
+### Conclusion
+My personal preference is Cerberus. Cerberus forms a solid foundation with the most commonly used sections.
 
-#### Conclusie
-Mijn persoonlijke voorkeur gaat uit naar Cerberus. Cerberus vormt een solide basis met de meest gebruikte secties.
+I have also used this email as a basis when developing a master template that is completely litmus-proof. The modular design of this master template makes it easy to expand. It is therefore also possible to use dynamic content so that you can send the right message to the right person at the right time. The three pillars for relevant content.
 
-Bij DM-Interface heb ik een mastertemplate ontwikkeld die litmus-proof is. Door de modulaire opzet kan deze gemakkelijk worden uitgebreid. Het is hierdoor ook mogelijk om gebruik te maken van dynamische content zodat je de juiste boodschap op het juiste moment aan de juiste persoon kan sturen. De drie pilaren voor relevante content.
-
-Mocht je hier meer over willen weten dan vertel ik er je graag over!
-
+If you want to know more about this, I will be happy to tell you about it!

@@ -1,6 +1,8 @@
 // Imports
 //@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
+
+
 // Sizing
 $mobile: 600px;
 $tablet-portrait: 800px;
@@ -16,7 +18,7 @@ $background-color: #ffffff;
 $background-color-secondary: hsl(0,0%,87%);
 $font-color: #454545;
 $font-color-secondary: hsl(0,0%,87%);
-$link-color: #06c;
+$link-color: #1A73EA;
 $highlight-color: #ffeea8;
 $default-box-shadow: 0 0 13px 0 rgba(0,0,0,.12);
 $default-border: 1px solid rgba(10,10,10,0.1);
@@ -25,7 +27,7 @@ $default-border: 1px solid rgba(10,10,10,0.1);
 $default-margin: 1.5rem;
 $default-padding: 1.5rem;
 $basic-elements-margin: 0 0 $default-margin 0; //p,ol,ul,dl,table
-$container-padding: 0 1rem;
+$container-padding: 0;
 $column-padding: 1rem;
 $column-margin-bottom: 0;
 $section-padding: 6rem 0 ;

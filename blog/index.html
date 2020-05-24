@@ -3,17 +3,18 @@ layout: page
 link: blog
 ---
 
-<style>
-	h2 {
-	    padding-bottom: 20px;
- 	   padding-top: 50px;
-	}
-</style>
-	
 
 				  
-				<h1>Artikelen</h1>
-		   
+				<h1>Articles</h1>
+		
+
+				{% for post in site.posts %}
+				{% if post.published == true %}
+			&dash;&nbsp; <a href="{{ post.url | prepend: site.baseurl }}" alt="{{ post.title }}">{{ post.title }}</a><br />
+				{% endif %}
+				{% endfor %}
+	
+				<!--
 				<p class="is-subtitle">Hopelijk helpt het je verder op weg!</p>
 			
 				
@@ -57,4 +58,4 @@ link: blog
 				{% endif %}
 			{% endfor %}
 			
-			
+				-->
