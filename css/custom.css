@@ -111,3 +111,14 @@ nav ul li a, nav ul li a:visited {
     z-index: 3;
 
 }
+
+
+.sources, .sources * {
+    color: #aaa !important;
+}
+
+.sources h3 {margin-top: 20px}
+.sources {
+    border-top: 1px solid #eeeeee;
+    margin-top: 40px;
+}
