@@ -2,9 +2,9 @@
 
 @media only screen and (max-width: 880px) {
   .hide-mobile {
-      display: none;
-      width: 0;
-      font-size: 0;
-      visibility: hidden;
+      display: none !important;
+      width: 0 !important;
+      font-size: 0 !important;
+      visibility: hidden !important;
   }
 }

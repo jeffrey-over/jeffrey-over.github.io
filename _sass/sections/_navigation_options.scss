@@ -41,6 +41,8 @@ border-top: 20px solid #eeeeee;
 @media only screen and (max-width: 800px) {
     .navigation-logo  {
         padding:0;
+        position: fixed;
+    top: 0;
     }
 
     .brand {margin-top:20px;}
@@ -86,7 +88,7 @@ border-top: 20px solid #eeeeee;
 // hamburger menu
 $content-width: 1000px;
 $breakpoint: 800px;
-$nav-height: 80px;
+$nav-height: 40px;
 $nav-background: #262626;
 $nav-font-color: hsl(0,0%,13%);
 $link-hover-color: #2581DC;

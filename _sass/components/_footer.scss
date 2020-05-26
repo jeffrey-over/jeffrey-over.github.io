@@ -32,8 +32,11 @@ footer {
     }
 }
 
+@media only screen and (max-width: 800px) {
 
-
+footer p {
+    text-align: center;}
+}
 @include breakpoint-desktop-up {
     footer {
         text-align: left;

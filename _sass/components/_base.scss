@@ -92,7 +92,9 @@ body {
     padding-top:5rem;
 
     }
-.post.container * {
+   
+
+    .post.container * {
     font-family: Georgia,Times,Times New Roman,serif; 
     color: #323232;
     line-height: 35px;
@@ -114,6 +116,8 @@ body {
     line-height: 2;
     margin-bottom: 20px;
 }
+
+
 .post.container h2 {line-height: 1.25;}
 
 .post.container h3 {margin: 40px 0 15px;}
@@ -132,6 +136,20 @@ body {
 }
 .has-small-width {
     max-width: 800px;
+}
+
+@media only screen and (max-width: 800px) {
+
+    .post.container  {
+        // padding-top:50px;
+         
+         padding-top:0;
+         max-width: 80%;
+     
+         }
+
+         .post.container h1 {
+         font-size: 2em;}
 }
 
 // Margins and Padding

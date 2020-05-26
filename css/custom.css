@@ -28,6 +28,21 @@ a:hover h4 {
     padding: 0;
     margin-left: 50px;
 }
+@media only screen and (max-width: 800px) {
+    .os-projects .wrapper {
+        margin-left: 0;
+    }
+}
+
+
+@media only screen and (min-width: 880px) {
+    .desktopshowcase {
+        max-width: 150%;
+        width: 150%;
+        margin-left: -25%;
+    }
+}
+
 
 .os-projects img {
     height: 25px;
