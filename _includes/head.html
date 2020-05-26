@@ -6,10 +6,12 @@
 	<title>{% if page.title %}{{ page.title }}{% else %}Jeffrey Overmeer. Selligent expert, marketing automation enthusiast, Front-end developer{% endif %}</title>
 
 	<link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
-	<link rel="stylesheet" href="{{ "/css/custom.css" | prepend: site.baseurl }}">
-	<link rel="stylesheet" href="https://www.jeffreyovermeer.com/helder-css-framework/css/prism.css">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">   
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="{{ "/css/custom.css" | prepend: site.baseurl }}" async>
+	<link rel="stylesheet" href="https://www.jeffreyovermeer.com/helder-css-framework/css/prism.css" async>
+	<!--
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous"> 
+	-->  
+	<script async src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
 
 	<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />

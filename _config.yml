@@ -9,6 +9,7 @@ github_username:  jeffrey-over
 # Build Settings
 sass:
   sass_dir: _sass
+  style: compressed
 include: ['_pages']
 kramdown:
   input: GFM
