@@ -113,12 +113,12 @@ nav ul li a, nav ul li a:visited {
 }
 
 
-.sources, .sources * {
+.footnote, .footnote * {
     color: #aaa !important;
 }
 
-.sources h3 {margin-top: 20px}
-.sources {
+.footnote h3 {margin-top: 20px}
+.footnote {
     border-top: 1px solid #eeeeee;
     margin-top: 40px;
 }

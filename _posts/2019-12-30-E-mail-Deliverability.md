@@ -142,7 +142,7 @@ The suppression list is a special table and contains all email addresses that yo
 
 [NeverBounce](https://neverbounce.com/)
 <br />Check the quality of an email address.
-<div class="sources">
+<div class="footnote">
 <h3>Sources</h3>
 - litmus.com<br />
 - campaignmonitor.com<br />
