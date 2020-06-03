@@ -17,7 +17,7 @@ link: home
 
         <h3>Latest Articles</h3>
         {% for post in site.posts limit:10 %}
-            {% if post.yearreview == false && post.published == true %}
+            {% if post.yearreview == false and post.published == true %}
             &dash;&nbsp; <a href="{{ post.url | prepend: site.baseurl }}" alt="{{ post.title }}">{{ post.title }}</a><br />
             {% endif %}
         {% endfor %}
