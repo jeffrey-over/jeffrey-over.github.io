@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Selligent backbone tables - use all the data you have at your disposal."
+title: "Selligent backbone - use all the data you have at your disposal."
 date: 2020-06-01
 label: learning
 tags: Selligent Marketing Cloud, Data
@@ -28,8 +28,9 @@ By linking to the correct system tables, it is possible to set up an incident mo
 Use a self-developed export to track which domains often cause delivery failures to avoid blacklisting and improve your email quality.
 
 ### Selligent system tables
+
 | Table        | Description  | 
-| ------------- |-------------| 
+|-------------|-------------| 
 |*Flags*| Storage of all user interactions. |
 |*Actionqueue*| This table serves as the queue for emails. Each record contains the definition for one email to be sent. |
 |*Campaigns*| Table with all campaign definitions. |
