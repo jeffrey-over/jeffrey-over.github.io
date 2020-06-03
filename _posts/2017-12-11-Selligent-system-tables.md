@@ -12,7 +12,7 @@ description: "There is a lot of information to be gained from the underlying sys
 
 Fortunately, for me most of us, the days when hail is randomly shot are far behind us. Nowadays, the end customer receives so many emails that you no longer get away with generic information. This will quickly be perceived as negative, which will not benefit your brand. You must be of added value with your expressions. To achieve this, you must use all available data from the end customer to send the right message at the right time.
 
-<img src="/images/blog/addvalueformula.png" alt="Added value = Right content * Right moment" class="fullscreen" >
+<img src="/images/blog/addvalueformula.png" alt="Added value = Right content * Right moment" class="" >
 
 
 Therefore, use all the data you have at your disposal to get the best possible picture of your customers and their interests. The Selligent system tables can also be useful here.
