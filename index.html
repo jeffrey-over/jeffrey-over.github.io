@@ -6,43 +6,59 @@ link: home
 
     <div class="post container">
 
-        <!-- <h1>Hi, I'm Jeffrey 👋</h1>-->
-       
-        <p style="margin-top: 40px;">Hi, I'm Jeffrey 👋. I'm a Campaign Developer who gets energy by helping other people. I try to do this by automating, innovating, and going for the best instead of the easiest solution. </p>
-        
-
-
-        <p>Maybe this could benefit you too:</p>
-
+        <img src="/images/ik.png" class="avatar">
+        <h1 style="text-align: left;">Hi, I'm Jeffrey</h1>
+        <P>I am an all-round campaign developer and currently working at <span class="company"><img src="/images/ematters.png" /> Ematters</span>. I specialize in automation and go for the best instead of the easiest solution.</P>
+        <P>I am a certified <span class="selligent">Selligent</span> expert  and can find my way around in other ESP's like <span class="clang">Clang</span>.</P>
+      
+<div class="socialicon container" >
+    <p>
+      
+      <a href="https://github.com/jeffrey-over/" class="socialicon" target="_BLANK" style=""><img src = "/images/Social_Icons/github.png" class = "socialimg" alt = ""></a> 
+      <a href="https://www.linkedin.com/in/jeffreyovermeer/" target="_BLANK" class="socialicon" style=""><img src = "/images/Social_Icons/linkedin.png" class = "socialimg" alt = ""></a>
+      <a href="https://www.instagram.com/jeffrey.overmeer/" target="_BLANK" class="socialicon" style=""><img src = "/images/Social_Icons/instagram.png" class = "socialimg" alt = ""></a>					
+      		
+      <a href="https://twitter.com/jeffreyovermeer" target="_BLANK" class="socialicon" style=""><img src = "/images/Social_Icons/twitter.png" class = "socialimg" alt = "twitter"></a>
+      <a href="https://www.jeffreyovermeer.com/feed.xml" target="_BLANK" class="socialicon" style=""><img src = "/images/Social_Icons/rss.png" class = "socialimg" alt = ""></a>
+                      
+    </p>	
+  </div>
 
         <h3>Latest Articles</h3>
-        {% for post in site.posts limit:10 %}
+        <ul>
+            {% for post in site.posts limit:10 %}
             {% if post.yearreview == false and post.published == true %}
-            &dash;&nbsp; <a href="{{ post.url | prepend: site.baseurl }}" alt="{{ post.title }}">{{ post.title }}</a><br />
+            <li><a href="{{ post.url | prepend: site.baseurl }}" alt="{{ post.title }}">{{ post.title }}</a></li>
             {% endif %}
         {% endfor %}
+        </ul>
+
 
         <h3>Open-Source Projects</h3>
-        &dash;&nbsp; <a href="https://github.com/jeffrey-over/amp-email-boilerplate" alt="AMP for e-mail boilerplate">AMP for e-mail boilerplate</a><br />
-        &dash;&nbsp; <a href="https://www.jeffreyovermeer.com/helder-css-framework/" alt="Helder CSS Framework">Helder CSS Framework</a><br />
-        &dash;&nbsp; <a href="https://github.com/jeffrey-over/deer-demo" alt="Modular landingspages">Modular landingspages</a><br />
+        <ul>
+            <li><a href="https://github.com/jeffrey-over/amp-email-boilerplate" alt="AMP for e-mail boilerplate">AMP for e-mail boilerplate</a></li>
+        <li><a href="https://www.jeffreyovermeer.com/helder-css-framework/" alt="Helder CSS Framework">Helder CSS Framework</a></li>
+        <li><a href="https://github.com/jeffrey-over/deer-demo" alt="Modular landingspages">Modular landingspages</a></li>
+        </ul>
+        
         
 
         <h3>Tools</h3>
-        - <a href="/text-generator" alt="Text converter">Text converter</a><br />
-        - <a href="/emailhtml-generator" alt="Tidy e-mail HTML generator">Tidy e-mail HTML generator</a><br />
+        <ul>
+        <li><a href="/text-generator" alt="Text converter">Text converter</a></li>
+        <li><a href="/emailhtml-generator" alt="Tidy e-mail HTML generator">Tidy e-mail HTML generator</a></li>
+    </ul>
 
-
-        <!--x
+        
         <h3>Currently working on</h3>
-        <ul style="margin-top:0">
+        <ul>
             <li>Campaign Developer at Ematters</li>
             <li>Datascience course</li>
             <li>Learning Vue</li>
             <li>Writing articles</li>
             <li>Creating more side projects</li>
         </ul>
-        -->
+        
 
     </div>
 </div>

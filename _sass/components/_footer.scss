@@ -13,7 +13,7 @@ footer {
         padding: 0;
     }
     h1, h2, h3, h4, h5, h6 {
-        color: #fff;
+        color: #fff ;
     letter-spacing: -0.5px;
     font-size: 16px;
     text-transform: uppercase;
@@ -21,21 +21,23 @@ footer {
        // font-family: 'Muli', sans-serif;
     }
     a {
-        color: #222222;
+        color: #333;
     }
     .column {
         padding-top: 50px;
     }
     p {
         font-size: 1.6rem;
+        color: #333;
         //color: hsl(131, 6%, 73%);
     }
+    .social {float: unset !important;}
 }
 
 @media only screen and (max-width: 800px) {
 
 footer p {
-    text-align: center;}
+    text-align: left;}
 }
 @include breakpoint-desktop-up {
     footer {
@@ -45,7 +47,7 @@ footer p {
 }
 
 footer .post.container a {
-    color: rgba(0,0,0,.6);
+    color:#333;
     //font-family: inherit;
 }
 

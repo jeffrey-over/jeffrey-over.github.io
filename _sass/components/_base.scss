@@ -88,25 +88,55 @@ body {
 
 .post.container,  {
    // padding-top:50px;
-    max-width: 680px;
-    padding-top:5rem;
+    //padding: 0 20px;
+    max-width: 720px;
+    margin: 0 auto 20px;
 
     }
    
 
-    .post.container * {
-    font-family: Georgia,Times,Times New Roman,serif; 
-    color: #323232;
-    line-height: 35px;
+
+    .post.container *:not(a) {
+        color: #333;
+        font-family: -apple-system,system-ui,BlinkMacSystemFont,'Source Sans Pro','Helvetica Neue',Helvetica,Sans-serif;
+        -webkit-font-smoothing: antialiased;
 }
+
+
+.post.container ol, 
+.post.container ul {
+    margin-bottom: 50px;
+    margin-top: 0;
+    //list-style: square inside url(data:image/gif;base64,R0lGODlhBQAKAIABAAAAAP///yH5BAEAAAEALAAAAAAFAAoAAAIIjI+ZwKwPUQEAOw==);
+}
+.post.container p, 
+.post.container li {
+       
+    font-size: 19px;
+    line-height: 33px;
+    font-weight: 400;
+    margin-top: 10px;
+}
+
+.post.container li {padding: 3px}
+
+.post.container p {
+  
+    margin-bottom: 30px;
+}
+
 .post.container a {
-    color: $link-color;
-    font-family: 'Muli', sans-serif;
+    //color: $link-color;
+       color: #0462FE;
+    font-size: 19px;
+    line-height: 33px;
+    font-weight: 400;
+    
 }
 .post.container .is-secondary {color: #ffffff;line-height: 1;}
 .post.container h1,.post.container h2,.post.container h3,.post.container h4,.post.container h5 {
-    font-family: 'Muli', sans-serif;
-    letter-spacing: .5px;
+    margin: 60px auto 0;
+    line-height: 32px;
 }
 
 
@@ -115,24 +145,26 @@ body {
     color: #000000;
     line-height: 2;
     margin-bottom: 20px;
+    font-size: 30px;
+    line-height: 1.4;
+    text-align: center;
 }
 
 
 .post.container h2 {line-height: 1.25;}
 
-.post.container h3 {margin: 40px 0 15px;}
+.post.container h3 {}
 
 .post.container h4, {
     //padding-top: 50px;
-    font-size: 2.5rem;
+ 
     color: #000000;
-    font-family: -apple-system, BlinkMacSystemFont, segoe ui, Roboto, Helvetica, Arial, sans-serif, apple color emoji, segoe ui emoji, segoe ui symbol;
+    
 }
 
 .post.container h5 {
-    padding-top:25px;
-    font-size: 2.2rem;
-    font-family: -apple-system, BlinkMacSystemFont, segoe ui, Roboto, Helvetica, Arial, sans-serif, apple color emoji, segoe ui emoji, segoe ui symbol;
+    
+   
 }
 .has-small-width {
     max-width: 800px;

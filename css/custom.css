@@ -33,7 +33,7 @@ a:hover h4 {
         margin-left: 0;
     }
 
-    main {    margin-top: 150px;}
+    
 }
 
 
@@ -45,7 +45,35 @@ a:hover h4 {
     }
 }
 
+.socialicon.container {
+    margin:0;
+}
 
+.selligent {    color: #00b8fb !important;
+    background: rgba(0,161,224,.03);padding: 2px;
+}
+
+.clang { color: #f99d25 !important;padding: 2px; background: rgba(249,157,37,.03)}
+.company {
+    padding: 2px 5px 2px 3px;
+    margin: -2px 0;
+    border-radius: 10px;
+    line-height: 1.6;
+    color: #5AA1E3 !important;
+    background: rgba(20,140,252,.08);
+}
+
+
+
+.company img {
+display: inline-block;
+margin-left: 3px;
+width: 20px;
+height: 20px;
+vertical-align: middle;
+line-height: 30px;
+margin-right: 2px;
+}
 .os-projects img {
     height: 25px;
     width: 25px;
@@ -53,6 +81,12 @@ a:hover h4 {
     display: inline-block;
     vertical-align: middle;
 }
+
+img.socialimg {width: 45px;
+    display: inline-block;
+    padding: 5px;
+    margin-right: 5px;
+    //margin: 10px;}
 
 @media only screen and (max-width: 800px) {
 .os-projects .two-thirds  {
@@ -86,19 +120,18 @@ a:hover h4 {
 }
 
 nav ul li a, nav ul li a:visited {
-    color: #666 !important;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    color: rgba(255,255,255.8) !important;
+    
 }
 
 
 @media only screen and (min-width: 800px) {
     nav ul li a.active {
-        color: #000 !important;
+        color: #fff !important;
     }
 
     .navigation {
-        max-width: 680px;
+        max-width: 100%;
        
     }
     
@@ -124,3 +157,6 @@ nav ul li a, nav ul li a:visited {
     border-top: 1px solid #eeeeee;
     margin-top: 40px;
 }
+
+.clear {clear: both;}
+main {    margin-top: 100px;}

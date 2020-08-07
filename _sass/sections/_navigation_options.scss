@@ -25,7 +25,8 @@
 
 .navigation-logo {
   transition:  0.4s;
-   background: #ffffff;
+   background: #F4F3F4;
+   margin: 0 0 50px;
     //border-bottom: 1px solid #262626;
  //border-bottom: 2px solid #efefef;
 // border-top: 5px solid $accent-color;
@@ -33,7 +34,7 @@
  //color: $nav-font-color;
  //box-shadow: 0 0 20px rgba(0,0,0,.05);
 //animation: .55s fade-in-up-lg ease-out;
-border-top: 20px solid #eeeeee;
+//border-top: 20px solid #eeeeee;
 //border-bottom: 1px solid #eeeeee;
     
 }
@@ -45,7 +46,7 @@ border-top: 20px solid #eeeeee;
     top: 0;
     }
 
-    .brand {margin-top:20px;}
+ //   .brand {margin-top:20px;}
 
 
 }
@@ -94,11 +95,12 @@ $nav-font-color: hsl(0,0%,13%);
 $link-hover-color: #2581DC;
 
 nav {
-  
+  float: right;
   ul {
     list-style: none;
     margin: 0;
     padding: 0;
+    font-size: 14px;
     li {
       display: inline-block;
       a {
@@ -135,18 +137,19 @@ nav {
 }
 .nav-mobile {
   display: none;
+  /*
   position: absolute;
   top: 0;
   right: 0;
   
   height: $nav-height;
-  width: $nav-height;
+  width: $nav-height;*/
 }
 
 #nav-toggle {
   position: absolute;
-  left: 18px;
-  top: 22px;
+  right: 18px;
+  top: 18px;
   cursor: pointer;
   padding: 16px 35px 16px 0px;
   span,
@@ -193,10 +196,19 @@ nav {
     padding: 0;
 }
 
-  .items {background: #fff;}
+.brand {padding: 0;}
+
+  .items {
+    
+    //background: #fff;
+    display: block;
+    max-width: 100%;
+    width: 100%;
+  }
    nav {
     width: 100%;
-    padding: $nav-height 0 ;
+    padding: 0 ;
+    float: unset;
     ul {
       display: none;
       li {
@@ -241,6 +253,16 @@ nav {
 }
 
 .has-full-width.navigation-logo .container {
-  max-width: 85%;
+  max-width: 720px;
 }
 
+
+
+.breadcrumb {
+  background: #f4f3f4;
+  padding: 10px;
+  font-size: 16px;
+}
+.breadcrumb a {
+  color: #333;
+}

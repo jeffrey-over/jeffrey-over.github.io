@@ -1,9 +1,47 @@
 
+    
+       <div id="branding" >
+           <div class="brand">
+               <span class="hide-mobile">Jeffrey Overmeer.</span>
+                
+                
+
+                <nav>
+
+                    <div class="nav-mobile">
+                            <a id="nav-toggle" href="#!"><span></span></a>
+                    </div>
+                <div class="items">
+                    <ul class="menu">
+                        <li> <a href="/index.html" {% if page.link == "home" %} class="active"{% endif %} title="Home">About</a> </li>
+                        <li> <a href="/blog/" {% if page.link == "blog" %} class="active"{% endif %} title="Articles">Articles</a> </li>
+                        <li> <a href="/work/" {% if page.link == "work" %} class="active"{% endif %} title="Contact">Work</a>  </li>
+                        <li> <a href="/tools/" {% if page.link == "tools" %} class="active"{% endif %} title="Contact">Tools</a>  </li>
+                    </ul>
+
+          
+
+                    
+                </div>
+
+            </nav>
+             </div>
+        </div>
+        <div class="clear"></div>
+        {% if page.link != "home" %} 
+<div class="breadcrumb ">
+    <div class="container">
+        &larr; <a href="#"  onclick="window.history.go(-1); return false;">Back</a>
+</div>
+</div>
+{% endif %}
+
+        <!--
     <div  id ="navigation" class="has-full-width navigation-logo">
-        <div class="container" style="border-bottom:1px solid #eeeeee">
+        <div class="container" >
         <header  class="navigation">
                 
-          <div id="branding" class="brand hide-mobile">Jeffrey Overmeer</div>
+       
             <nav>
 
                     <div class="nav-mobile">
@@ -23,7 +61,7 @@
                 </div>
 
             </nav>
-        
+           
         </header>
         </div>
-    </div>
+    </div>-->

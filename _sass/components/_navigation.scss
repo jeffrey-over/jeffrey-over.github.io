@@ -1,11 +1,11 @@
 .navigation {
   @extend .text-left;
   //height: $navigation-height;
-  background: $navigation-background-color;
-  padding: $navigation-padding-mobile;
-  color: $navigation-font-color;
-  font-size: $navigation-font-size;
   
+  padding: $navigation-padding-mobile;
+  color: #333;
+  font-size: $navigation-font-size;
+ 
 
   section {
       padding: 0;
@@ -17,7 +17,7 @@
 
 @include breakpoint-desktop-up {
   .navigation {
-      text-align: left;
+      text-align: center;
       padding: $navigation-padding-desktop;
   }
 
@@ -37,24 +37,41 @@
 
 
 // Logo and branding
+.social {
+
+
+  display: inline-block;
+  float: RIGHT;
+
+}
+div#branding {
+  background: #0462FE;
+ // margin-bottom: 100px;
+}
 .brand {
 /*
   // position: absolute;
   padding-left: 0;
- // float: left;
-  line-height: $navigation-line-height;
+ 
   text-transform: uppercase;
   font-size: $logo-font-size;
   */
-  transition: 0.4s;
-  transition-delay: 0.1s;
-  padding-left: 0;
-    //line-height: 80px;
-    /* text-transform: uppercase; */
-    font-size: 26px;
-    margin-top: 50px;
-    margin-bottom: 30px;
-    font-family: 'Muli', sans-serif;
+ // float: left;
+    /* line-height: 80px; */
+    padding: 20px 0;
+    color: #fff;
+    display: block;
+    margin: 0 auto;
+    max-width: 720px;
+    /* align-items: center; */
+    transition: 0.4s;
+    transition-delay: 0.1s;
+    padding-left: 0;
+    font-size: 12px;
+    font-weight: 500;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+ 
   a,
   a:visited {
     color: $logo-font-color;
@@ -67,7 +84,8 @@
 
 
 nav {
-  position: relative;
+
+ 
   //text-align: center;
   ul {
     list-style: none;
@@ -75,7 +93,7 @@ nav {
     padding: 0;
     li {
       display: inline-block;
-      padding: 20px 60px 10px 0;
+      padding: 0px 20px 0px 0;
       a,
       a:visited {
         //line-height: $navigation-line-height;
@@ -96,11 +114,17 @@ nav {
       }
       a:active, .active {
         //border-bottom: 3px solid #ffd667 !important;
-        margin-bottom: 5px !important;
-        font-weight: bold !important;
-        border-bottom: 3px solid $accent-color;
-        font-weight: bold !important;
+       // margin-bottom: 5px !important;
+       // font-weight: bold !important;
+       // border-bottom: 3px solid $accent-color;
+      //  font-weight: bold !important;
         //color: #fff !important;
+      //  margin-bottom: 5px !important; */
+    font-weight: bold !important;
+    /* border-bottom: 3px solid #4E5851; */
+    background: rgba(0,161,224,.3);
+    padding: 3px 15px !important;
+    font-weight: bold !important;
       }
     }
   }
