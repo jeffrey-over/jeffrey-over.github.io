@@ -150,6 +150,7 @@ nav {
   position: absolute;
   right: 18px;
   top: 18px;
+  z-index: 1;
   cursor: pointer;
   padding: 16px 35px 16px 0px;
   span,
@@ -204,6 +205,7 @@ nav {
     display: block;
     max-width: 100%;
     width: 100%;
+   
   }
    nav {
     width: 100%;
@@ -235,6 +237,10 @@ nav {
  .nav-dropdown {
    position: static;
   }
+
+  nav ul li a, nav ul li a:visited {
+    color: BLACK !important;
+}
 }
 
 @media screen and (min-width: $breakpoint) {
