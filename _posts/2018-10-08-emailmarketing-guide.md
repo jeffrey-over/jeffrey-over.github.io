@@ -3,6 +3,7 @@ layout: post
 title: "9 (email) marketing techniques that you must immediately use"
 date: 2019-05-08
 label: tips
+permalink: emailmarketing-guide
 tags: marketing, tips, strategie
 published: true
 yearreview: false

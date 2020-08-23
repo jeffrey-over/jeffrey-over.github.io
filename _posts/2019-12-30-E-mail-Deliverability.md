@@ -3,6 +3,7 @@ layout: post
 title: "Ultimate email deliverability guide"
 date: 2020-02-05
 label: e-mail
+permalink: /ultimate-email-deliverability-guide
 tags: marketing, tips, e-mail, free
 published: true
 yearreview: false

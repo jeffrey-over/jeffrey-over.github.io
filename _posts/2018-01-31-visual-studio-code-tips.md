@@ -3,6 +3,7 @@ layout: post
 title: "Visual Studio Code - Best practices"
 date: 2018-01-31
 label: learning
+permalink: /vscode-tips
 tags: webdevelopment, tips, visual studio code
 yearreview: false
 published: true

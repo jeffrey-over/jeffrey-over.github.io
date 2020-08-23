@@ -3,6 +3,7 @@ layout: post
 title: "Booknotes - Atomic Habits"
 date: 2020-06-21
 label: learning
+permalink: /booknotes-atomithabits
 tags: booknotes
 yearreview: false
 published: true

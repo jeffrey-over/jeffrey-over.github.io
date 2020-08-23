@@ -2,6 +2,7 @@
 layout: post
 title: "Selligent backbone - use all the data you have at your disposal."
 date: 2020-06-01
+permalink: /selligent-database
 label: learning
 tags: Selligent Marketing Cloud, Data
 yearreview: false
