@@ -23,16 +23,22 @@ link: home
                       
     </p>	
   </div>
-
+<div class="hp">
         <h3>Latest Articles</h3>
         <ul>
             {% for post in site.posts limit:10 %}
             {% if post.yearreview == false and post.published == true %}
-            <li><a href="{{ post.url | prepend: site.baseurl }}" alt="{{ post.title }}">{{ post.title }}</a></li>
+            <li>{% assign months = "januari|februari|maart|april|mei|juni|juli|augustus|september|oktober|november|december" | split: "|" %}
+                {% assign m = post.date | date: "%-m" | minus: 1 %}
+                {% assign day = post.date | date: "%-d" %}
+                {% assign month = months[m] %}
+                {% assign year = post.date | date: "%Y" %}
+                <span class="date">{{ day }} {{ month }} {{ year }}</span>
+                <a href="{{ post.url | prepend: site.baseurl }}" alt="{{ post.title }}">{{ post.title }}</a></li>
             {% endif %}
         {% endfor %}
         </ul>
-
+    </div>   
 
         <h3>Open-Source Projects</h3>
         <ul>
@@ -49,7 +55,7 @@ link: home
         <li><a href="/emailhtml-generator" alt="Tidy e-mail HTML generator">Tidy e-mail HTML generator</a></li>
     </ul>
 
-        
+  
         <h3>Currently working on</h3>
         <ul>
             <li>Campaign Developer at Ematters</li>

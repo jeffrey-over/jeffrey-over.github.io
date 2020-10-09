@@ -109,6 +109,26 @@ body {
     margin-top: 0;
     //list-style: square inside url(data:image/gif;base64,R0lGODlhBQAKAIABAAAAAP///yH5BAEAAAEALAAAAAAFAAoAAAIIjI+ZwKwPUQEAOw==);
 }
+
+.post.container .hp  ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.post.container .hp a {
+    //color: #000000;
+    font-weight: 700;
+
+    /* font-weight: 400; */
+}
+
+
+.post.container .hp .date {
+    display: block;
+    font-size: 14px;
+    line-height: 18px;
+}
+
 .post.container p, 
 .post.container li {
        
