@@ -45,8 +45,12 @@
 
 }
 div#branding {
-  background: #0462FE;
- // margin-bottom: 100px;
+  top: 0;
+  background: #ffffff;
+  z-index: 1;
+  position: sticky;
+  transition: box-shadow 0.3s ease 0s, top 0.3s ease 0s;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 30px 30px, rgba(0, 0, 0, 0.03) 0px 0px 8px, rgba(0, 0, 0, 0.05) 0px 1px 0px;
 }
 .brand {
 /*
@@ -130,7 +134,7 @@ nav {
 
 @media only screen and (max-width: 800px) {
 
-  div#branding {background: #f4f3f4;}
+  div#branding {background: #ffffff;}
   .brand {
    // float: inherit;
    // text-align: center;
