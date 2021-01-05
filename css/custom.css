@@ -120,14 +120,14 @@ img.socialimg {width: 45px;
 }
 
 nav ul li a, nav ul li a:visited {
-    color: #454545 ;
+    color: #222222 ;
     
 }
 
 
 @media only screen and (min-width: 800px) {
     nav ul li a.active {
-        color: #454545 ;
+        color: #222222 ;
     }
 
     .navigation {

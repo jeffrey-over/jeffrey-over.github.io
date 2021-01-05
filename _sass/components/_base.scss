@@ -108,6 +108,8 @@ body {
     margin-bottom: 50px;
     margin-top: 0;
     //list-style: square inside url(data:image/gif;base64,R0lGODlhBQAKAIABAAAAAP///yH5BAEAAAEALAAAAAAFAAoAAAIIjI+ZwKwPUQEAOw==);
+    list-style: none;
+    padding-left: 0;
 }
 
 .post.container .hp  ul {
@@ -117,7 +119,7 @@ body {
 
 .post.container .hp a {
     //color: #000000;
-    font-weight: 700;
+    //font-weight: 700;
 
     /* font-weight: 400; */
 }
@@ -165,7 +167,7 @@ body {
     color: #000000;
     line-height: 2;
     margin-bottom: 20px;
-    font-size: 30px;
+    //font-size: 30px;
     line-height: 1.4;
     text-align: center;
 }
