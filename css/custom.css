@@ -93,6 +93,7 @@ img.socialimg {width: 45px;
     width: calc(100% - 50px);
 }
 
+.column {padding: 0 !important;}
 
 }
 
@@ -134,6 +135,8 @@ nav ul li a, nav ul li a:visited {
         max-width: 100%;
        
     }
+
+
     
     }
 
