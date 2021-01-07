@@ -211,23 +211,23 @@ nav {
     padding: 0 ;
     float: unset;
     ul {
-      display: none;
+      /*display: none;*/
       li {
-        float: none;
-        display: block;
-        padding:10px 50px;
+        //float: none;
+        //display: block;
+        //padding:10px 50px;
         //margin: 0 0 20px 0;
          a {
-          padding: 15px;
+          //padding: 15px;
           line-height: 20px;
           color: #08122c !important;
-          border-bottom:1px solid #f2f2f1;
+          //border-bottom:1px solid #f2f2f1;
         }
          a.active {
             color: #08122c !important;
          }
         ul li a {
-          padding-left: 30px;
+          //padding-left: 30px;
         }
       }
     }
@@ -239,6 +239,7 @@ nav {
 
   nav ul li a, nav ul li a:visited {
     color: BLACK !important;
+    line-height: 60px;
 }
 }
 
