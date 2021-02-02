@@ -1,13 +1,15 @@
 ---
 layout: page
-title: Aanbevolen tools en generators
-permalink: /tools/
-link: tools
+title: Tools, Generators and useful links
+permalink: /resources/
+link: resources
 ---
 
 <h1>Generators</h1>
 {% include generators.html %}
 
+<h1>Email Marketing Resources</h1>
+{% include marketing-recources.html %}
 
 
 <!--

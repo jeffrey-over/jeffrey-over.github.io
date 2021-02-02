@@ -1,67 +1,20 @@
-
-    
-       <div id="branding" >
-           <div class="brand">
-              
-                
-
-                <nav>
-
-                 <!--   <div class="nav-mobile">
-                            <a id="nav-toggle" href="#!"><span></span></a>
-                    </div>
-                    -->
-                <div class="items text-center">
-                    <ul class="menu">
-                        <li> <a href="/index.html" {% if page.link == "home" %} class="active"{% endif %} title="Home">Start here</a> </li>
-                        <li> <a href="/blog/" {% if page.link == "blog" %} class="active"{% endif %} title="Articles">Articles</a> </li>
-                        <li> <a href="/work/" {% if page.link == "work" %} class="active"{% endif %} title="Contact">Work</a>  </li>
-                        <li> <a href="/tools/" {% if page.link == "tools" %} class="active"{% endif %} title="Contact">Tools</a>  </li>
-                    </ul>
-
-          
-
-                    
-                </div>
-
-            </nav>
-             </div>
-        </div>
-        <div class="clear"></div>
-        {% if page.link != "home" %} 
-<div class="breadcrumb hide-mobile">
-    <div class="container">
-        &larr; <a href="#"  onclick="window.history.go(-1); return false;">Back</a>
+<div id="navigation">
+    <nav>
+        <ul>
+            <li class="logo">JEFFREY</li>
+            <li> <a href="/index.html" {% if page.link=="home" %} class="active" {% endif %} title="Home">Home</a> </li>
+            <li> <a href="/blog/" {% if page.link=="blog" %} class="active" {% endif %} title="Articles">Articles</a>
+            </li>
+            <li> <a href="/work/" {% if page.link=="work" %} class="active" {% endif %} title="Work">Work</a> </li>
+            <li> <a href="/resources/" {% if page.link=="resources" %} class="active" {% endif %} title="Recources">Resources</a>
+            </li>
+        </ul>
+    </nav>
 </div>
+{% if page.link != "home" %}
+<div class="breadcrumb">
+    <div class="container">
+        &larr; <a href="#" onclick="window.history.go(-1); return false;">Back</a>
+    </div>
 </div>
 {% endif %}
-
-        <!--
-    <div  id ="navigation" class="has-full-width navigation-logo">
-        <div class="container" >
-        <header  class="navigation">
-                
-       
-            <nav>
-
-                    <div class="nav-mobile">
-                            <a id="nav-toggle" href="#!"><span></span></a>
-                    </div>
-                <div class="items">
-                    <ul class="menu">
-                        <li> <a href="/index.html" {% if page.link == "home" %} class="active"{% endif %} title="Home">About</a> </li>
-                        <li> <a href="/blog/" {% if page.link == "blog" %} class="active"{% endif %} title="Articles">Articles</a> </li>
-                        <li> <a href="/work/" {% if page.link == "work" %} class="active"{% endif %} title="Contact">Work</a>  </li>
-                        <li> <a href="/tools/" {% if page.link == "tools" %} class="active"{% endif %} title="Contact">Tools</a>  </li>
-                    </ul>
-
-          
-
-                    
-                </div>
-
-            </nav>
-           
-        </header>
-        </div>
-    </div>-->
