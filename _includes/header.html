@@ -1,20 +1,20 @@
 <div id="navigation">
     <nav>
-        <ul>
-            <li class="logo">JEFFREY</li>
-            <li> <a href="/index.html" {% if page.link=="home" %} class="active" {% endif %} title="Home">Home</a> </li>
-            <li> <a href="/blog/" {% if page.link=="blog" %} class="active" {% endif %} title="Articles">Articles</a>
-            </li>
-            <li> <a href="/work/" {% if page.link=="work" %} class="active" {% endif %} title="Work">Work</a> </li>
-            <li> <a href="/resources/" {% if page.link=="resources" %} class="active" {% endif %} title="Recources">Resources</a>
-            </li>
-        </ul>
+       <ul>
+          <li class="logo">JEFFREY</li>
+          <li> <a href="/index.html" {% if page.link=="home" %} class="active" {% endif %} title="Home">Home</a> </li>
+          <li> <a href="/blog/" {% if page.link=="blog" %} class="active" {% endif %} title="Articles">Articles</a>
+          </li>
+          <li> <a href="/work/" {% if page.link=="work" %} class="active" {% endif %} title="Work">Work</a> </li>
+          <li> <a href="/resources/" {% if page.link=="resources" %} class="active" {% endif %} title="Recources">Resources</a>
+          </li>
+       </ul>
     </nav>
-</div>
-{% if page.link != "home" %}
-<div class="breadcrumb">
+ </div>
+ {% if page.link != "home" %}
+ <div class="breadcrumb">
     <div class="container">
-        &larr; <a href="#" onclick="window.history.go(-1); return false;">Back</a>
+       &larr; <a href="#" onclick="window.history.go(-1); return false;">Back</a>
     </div>
-</div>
-{% endif %}
+ </div>
+ {% endif %}

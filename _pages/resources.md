@@ -9,7 +9,7 @@ link: resources
 {% include generators.html %}
 
 <h1>Email Marketing Resources</h1>
-{% include marketing-recources.html %}
+{% include marketing-resources.html %}
 
 
 <!--

@@ -1,58 +1,47 @@
 ---
 layout: default
 ---
-
-	<div class="container">
-        
-        <h1>{{ page.title }}</h1>
-            <p>
-                    {% assign m = page.date | date: "%-m" %}
-                    {{ page.date | date: "%-d" }}
-                    {% case m %}
-                      {% when '1' %}januari
-                      {% when '2' %}februari
-                      {% when '3' %}maart
-                      {% when '4' %}april
-                      {% when '5' %}mei
-                      {% when '6' %}juni
-                      {% when '7' %}juli
-                      {% when '8' %}augustus
-                      {% when '9' %}september
-                      {% when '10' %}oktober
-                      {% when '11' %}november
-                      {% when '12' %}december
-                    {% endcase %}
-                    
-                    {{ page.date | date: "%Y" }}
-                                {% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</time> -         {% capture readtime %}{{ content | number_of_words | plus:91 | divided_by:180.0 | append:'.' | split:'.' | first }}{% endcapture %}
-                                {% if readtime == '0' %} &lt; 1{% else %}{{ readtime }}{% endif %} minuten leestijd
-         
-                </p>
-
-
-            <p>{{ page.description }}</p>
-			{{ content }}
-
-
-
-	</div>
-   
-
+<div class="container">
+   <h1>{{ page.title }}</h1>
+   <p>
+      {% assign m = page.date | date: "%-m" %}
+      {{ page.date | date: "%-d" }}
+      {% case m %}
+      {% when '1' %}januari
+      {% when '2' %}februari
+      {% when '3' %}maart
+      {% when '4' %}april
+      {% when '5' %}mei
+      {% when '6' %}juni
+      {% when '7' %}juli
+      {% when '8' %}augustus
+      {% when '9' %}september
+      {% when '10' %}oktober
+      {% when '11' %}november
+      {% when '12' %}december
+      {% endcase %}
+      {{ page.date | date: "%Y" }}
+      {% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}{% capture readtime %}{{ content | number_of_words | plus:91 | divided_by:180.0 | append:'.' | split:'.' | first }}{% endcapture %}
+      {% if readtime == '0' %} &lt; 1{% else %}{{ readtime }}{% endif %} minuten leestijd
+   </p>
+   <p>{{ page.description }}</p>
+   {{ content }}
+</div>
 <!--
-	<div class="post container comments">
-		<section>
-    
-            <h1 class="is-title">Reacties</h1>
-                    <hr class="stripe" />
-            <script src="https://utteranc.es/client.js"
-            repo="jeffrey-over/jeffrey-over.github.io"
-            issue-term="title"
-            theme="github-light"
-            crossorigin="anonymous"
-            async>
-    </script>
-    
-
-		</section>
-	</div>
-   -->
+   <div class="post container comments">
+   	<section>
+      
+              <h1 class="is-title">Reacties</h1>
+                      <hr class="stripe" />
+              <script src="https://utteranc.es/client.js"
+              repo="jeffrey-over/jeffrey-over.github.io"
+              issue-term="title"
+              theme="github-light"
+              crossorigin="anonymous"
+              async>
+      </script>
+      
+   
+   	</section>
+   </div>
+     -->

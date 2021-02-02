@@ -1,79 +1,35 @@
 ---
 layout: default
-link: home 
+link: home
 ---
 <div id="wrapper">
-
-    <div class="container">
-
+   <div class="container">
+      <div class="intro">
          <img src="/images/ik.png" class="avatar">
-        <h1 style="text-align: left;">Hi, I'm Jeffrey</h1>
-        <P>I am an all-round campaign developer and currently working at <span class="company"><img src="/images/ematters.png" /> Ematters</span>. I specialize in automation and go for the best instead of the easiest solution.</P>
-        <P>I am a certified <span class="selligent">Selligent</span> expert  and can find my way around in other ESP's like <span class="clang">Clang</span>.</P>
-
-    
-
-
-        <div class="row" style="">
-            <h3 style="margin-top:0">Latest Articles</h3>
-            
-            <!--
-               <ul>
-                {% for post in site.posts limit:5 %}
-                {% if post.yearreview == false and post.published == true %}
-                <li>{% assign months = "januari|februari|maart|april|mei|juni|juli|augustus|september|oktober|november|december" | split: "|" %}
-                    {% assign m = post.date | date: "%-m" | minus: 1 %}
-                    {% assign day = post.date | date: "%-d" %}
-                    {% assign month = months[m] %}
-                    {% assign year = post.date | date: "%Y" %}
-                    <span class="date">{{ day }} {{ month }} {{ year }}</span>
-                    <a href="{{ post.url | prepend: site.baseurl }}" alt="{{ post.title }}">{{ post.title }}</a></li>
-                {% endif %}
+         <h1 style="text-align: left;">Hi, I'm Jeffrey</h1>
+         <P>I am an all-round campaign developer and currently working at <span class="company"><img
+            src="/images/ematters.png" /> Ematters</span>. I specialize in automation and go for the best
+            instead of the easiest solution.
+         </P>
+         <P>I am a certified <span class="selligent">Selligent</span> expert and can find my way around in other
+            ESP's like <span class="clang">Clang</span>.
+         </P>
+      </div>
+      <div>
+         <h3>Latest Articles</h3>
+         <ul>
+            {% for post in site.posts limit:5 %}
+            {% if post.yearreview == false and post.published == true %}
+            <li>
+               <a href="{{ post.url | prepend: site.baseurl }}" alt="{{ post.title }}">{{ post.title }}</a>
+            </li>
+            {% endif %}
             {% endfor %}
-            </ul> 
-            -->
-            <ul>
-                {% for post in site.posts limit:5 %}
-                {% if post.yearreview == false and post.published == true %}
-                <li>
-                    <a href="{{ post.url | prepend: site.baseurl }}" alt="{{ post.title }}">{{ post.title }}</a></li>
-                {% endif %}
-            {% endfor %}
-            </ul>
-         
-        </div>
-        <div >
-            <h3>Open-Source Projects</h3>
-            <ul>
-                <li><a href="https://www.jeffreyovermeer.com/wizza-theme/" alt="Wizza - Visual Studio Code theme">Wizza - Visual Studio Code theme</a></li>
-                <li><a href="https://github.com/jeffrey-over/amp-email-boilerplate" alt="AMP for e-mail boilerplate">AMP for e-mail boilerplate</a></li>
-            <li><a href="https://www.jeffreyovermeer.com/helder-css-framework/" alt="Helder CSS Framework">Helder CSS Framework</a></li>
-            <li><a href="https://github.com/jeffrey-over/deer-demo" alt="Modular landingspages">Modular landingspages</a></li>
-            </ul>
-        
-        </div>
-    
-   
-
- 
-            </div>
-            
-       
-        
-      
-
-
-
-
-        <h3>Currently working on</h3>
-        <ul>
-            <li>Campaign Developer at Ematters</li>
-            <li>Datascience course</li>
-            <li>Learning Vue</li>
-            <li>Writing articles</li>
-            <li>Creating more side projects</li>
-        </ul>
-        
-
-    </div>
+         </ul>
+      </div>
+      <div>
+         <h3>Open-Source Projects</h3>
+         {% include projects.html %}
+      </div>
+   </div>
 </div>
