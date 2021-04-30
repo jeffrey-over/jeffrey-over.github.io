@@ -5,8 +5,7 @@ link: work
 permalink: /work/
 ---
 
-
-
+<div class="section">
 <h3>Open-Source Projects</h3>
 {% include projects.html %}
 
@@ -18,4 +17,4 @@ permalink: /work/
 
 <h3>Proudly worked for </h3>
 {% include clients.html %}
-   
+   </div>
