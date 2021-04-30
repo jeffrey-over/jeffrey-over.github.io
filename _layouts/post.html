@@ -1,9 +1,9 @@
 ---
 layout: default
 ---
-<div class="container">
+<div class="content-container">
    <h1>{{ page.title }}</h1>
-   <p>
+   <!--<p>
       {% assign m = page.date | date: "%-m" %}
       {{ page.date | date: "%-d" }}
       {% case m %}
@@ -23,8 +23,8 @@ layout: default
       {{ page.date | date: "%Y" }}
       {% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}{% capture readtime %}{{ content | number_of_words | plus:91 | divided_by:180.0 | append:'.' | split:'.' | first }}{% endcapture %}
       {% if readtime == '0' %} &lt; 1{% else %}{{ readtime }}{% endif %} minuten leestijd
-   </p>
-   <p>{{ page.description }}</p>
+   </p>-->
+   <p class="intro">{{ page.description }}</p>
    {{ content }}
 </div>
 <!--
