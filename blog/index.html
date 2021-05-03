@@ -5,8 +5,66 @@ link: blog
 
 
 				  
-				<h1>All Articles</h1>
-		
+				
+				<div class="section blog content-container">
+				
+
+
+
+<h2>All Articles</h2>
+
+
+					{% for post in site.posts  %}
+					{% capture this_year %}{{ post.date | date: "%Y" }}{% endcapture %}
+					{% capture next_year %}{{ post.previous.date | date: "%Y" }}{% endcapture %}
+	
+					{% if forloop.first %}
+					<h3 id="{{ this_year }}-ref" style="">{{this_year}}</h3>
+					
+					{% endif %}
+	
+	
+					<div class="flex" >
+						
+							{% assign months = "January|February|March|April|May|June|July|August|September|October|November|December" | split: "|" %}
+							{% assign m = post.date | date: "%-m" | minus: 1 %}
+							{% assign day = post.date | date: "%-d" %}
+							{% assign month = months[m] %}
+							{% assign year = post.date | date: "%Y" %}
+							<span class="date">{{ month }} {{ day }}</span>
+							
+						  <div class="" ">						  
+							<a href="{{ post.url }}">{{ post.title }}</a>
+						  </div> 
+						
+					 
+					  </div>
+					
+					{% if forloop.last %}
+					
+					{% else %}
+						{% if this_year != next_year %}
+						
+						<h3 id="{{ next_year }}-ref">{{next_year}}</h3>
+						
+						{% endif %}
+					{% endif %}
+				{% endfor %}
+
+
+
+
+
+
+
+			
+	
+				<!--
+
+
+
+
+
 <ul>
 	{% for post in site.posts %}
 			
@@ -15,9 +73,8 @@ link: blog
 		
 		{% endfor %}
 </ul>
-			
-	
-				<!--
+
+
 				<p class="is-subtitle">Hopelijk helpt het je verder op weg!</p>
 			
 				

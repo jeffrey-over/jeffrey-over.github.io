@@ -5,10 +5,10 @@ permalink: /resources/
 link: resources
 ---
 
-<h1>Generators</h1>
+
 {% include generators.html %}
 
-<h1>Email Marketing Resources</h1>
+
 {% include marketing-resources.html %}
 
 
