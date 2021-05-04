@@ -1,5 +1,6 @@
 ---
 layout: post
+author: Jeffrey Overmeer
 title: "I build a modular CSS framework: Helder."
 date: 2018-04-17
 label: update 

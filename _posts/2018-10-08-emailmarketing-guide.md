@@ -1,5 +1,6 @@
 ---
 layout: post
+author: Jeffrey Overmeer
 title: "9 (email) marketing techniques that you must immediately use"
 date: 2019-05-08
 label: tips

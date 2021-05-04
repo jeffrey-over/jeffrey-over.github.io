@@ -1,10 +1,11 @@
 ---
 layout: post
+author: Jeffrey Overmeer
 title: "Visual Studio Code - Best practices"
 date: 2018-01-31
 label: learning
 permalink: /vscode-tips
-tags: webdevelopment, tips, visual studio code
+tags: <span>webdevelopment</span> <span>visual studio code</span>
 yearreview: false
 published: true
 thumbnail: "images/blog/vsc.gif"
