@@ -11,7 +11,7 @@ thumbnail: "images/blog/sim-tables.jpg"
 description: "There is a lot of information to be gained from the underlying system tables of Selligent Marketing Cloud. For example, you could further automate your workflow with triggers or use custom queries to generate reports. "
 ---
 
-Fortunately, for me most of us, the days when hail is randomly shot are far behind us. Nowadays, the end customer receives so many emails that you no longer get away with generic information. This will quickly be perceived as negative, which will not benefit your brand. You must be of added value with your expressions. To achieve this, you must use all available data from the end customer to send the right message at the right time.
+Fortunately, for the most of us, the days when hail is randomly shot are far behind us. Nowadays, the end customer receives so many emails that you no longer get away with generic information. This will quickly be perceived as negative, which will not benefit your brand. You must be of added value with your expressions. To achieve this, you must use all available data from the end customer to send the right message at the right time.
 
 <img src="/images/blog/addvalueformula.png" alt="Added value = Right content * Right moment" class="" >
 

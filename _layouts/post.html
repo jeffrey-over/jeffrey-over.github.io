@@ -1,42 +1,55 @@
 ---
 layout: default
 ---
+<div class="content-container">
+  
+
 <div class="post content-container">
         
- 
-        <h1>{{ page.title }}</h1>
 
+
+   <h2>{{ page.title }}</h2>
+
+        <div class="readtime">
+         {{ page.date | date: "%d" }}
+         {% assign m = page.date | date: "%-m" %}
+         <div class="date">
+         {% case m %}
+         {% when '1' %}January
+         {% when '2' %}February
+         {% when '3' %}March
+         {% when '4' %}April
+         {% when '5' %}May
+         {% when '6' %}June
+         {% when '7' %}July
+         {% when '8' %}August
+         {% when '9' %}September
+         {% when '10' %}October
+         {% when '11' %}November
+         {% when '12' %}December
+         {% endcase %}
+         {{ page.date | date: "%Y" }}
+         {% if page.author %} By {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}
+   </div>{% capture readtime %}{{ content | number_of_words | plus:91 | divided_by:180.0 | append:'.' | split:'.' | first }}{% endcapture %}
+         {% if readtime == '0' %} &lt; 1{% else %}- {{ readtime }}{% endif %} minute(s) reading time
+      </div>
+     
+    
+
+  <!-- <div class="tag">{{ page.label }}</div>-->
+
+
+       
 <div class="flex">
-        {% if page.thumbnail %}        
-        <div style="flex: 0 0 52px;"><img  class="thumb" src="{{ page.thumbnail }}" /></div>
-        {% endif %}
-   <div class="readtime">
-      {% assign m = page.date | date: "%-m" %}
-      <div class="date">
-      {% case m %}
-      {% when '1' %}January
-      {% when '2' %}February
-      {% when '3' %}March
-      {% when '4' %}April
-      {% when '5' %}May
-      {% when '6' %}June
-      {% when '7' %}July
-      {% when '8' %}August
-      {% when '9' %}September
-      {% when '10' %}October
-      {% when '11' %}November
-      {% when '12' %}December
-      {% endcase %}
-      {{ page.date | date: "%Y" }}
-      <!--{% if page.author %} By {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}-->
-</div>{% capture readtime %}{{ content | number_of_words | plus:91 | divided_by:180.0 | append:'.' | split:'.' | first }}{% endcapture %}
-      {% if readtime == '0' %} &lt; 1{% else %}{{ readtime }}{% endif %} minute(s) reading time
-   </div>
-   <div class="tag">{{ page.label }}</div>
-
+      
 </div>
 
    <p class="intro">{{ page.description }}</p>
+
+   {% if page.thumbnail and page.thumbnail != '' %}        
+   <div style=""><img  class="thumb" src="{{ page.thumbnail }}" /></div>
+   {% endif %}
+
    {{ content }}
 </div>
 
@@ -57,3 +70,4 @@ layout: default
    	</section>
    </div>
      
+</div>

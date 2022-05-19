@@ -2,14 +2,35 @@
 
 body {
     background-color: #fff;
-    font-family: 'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-family: Inter, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-sans;
 
-    font-size: 1rem;
-    line-height: 2;
+    font-size: 16px;
+    line-height: 32px;
     color: #3c4b62;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale
 
+}
+
+
+article, footer, table {
+    max-width: 768px;
+    margin: 0 auto;
+}
+
+#i {max-width: 100%;}
+
+.btn-primary {
+    text-transform: uppercase;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 15px 20px;
+    color: #2c4bff;
+    background: #ffffff;
+    box-shadow: 0 2px 5px rgba(65, 45, 47, 0.2);
 }
 
 ul {
@@ -18,8 +39,8 @@ ul {
 }
 
 a {
-    color: rgb(0,122,255);
-    text-decoration: none;
+    color: #0067c2;
+    
 }
 
 b, strong {
@@ -28,16 +49,36 @@ b, strong {
 }
 footer .container, .content-container, .breadcrumb .container {
     margin: 0 auto;
-    padding: 1rem;
-    max-width: 700px;
+   //padding: 1rem 0;
+   // max-width: 60rem;
 }
 
+footer .container {
+    border-top: 1px solid #E4E7EB;
+    text-align: center;
+    padding: 20px 0 50px;
+    font-size: 14px;
+    color: #9AA5B1;
+  }
 
+footer a { color: #9AA5B1;}
 .flex {display: flex;}
 .flex div {flex:1}
 #wrapper {padding-top:100px;}
 .content-container {
-    max-width: 650px;
+    //max-width: 60rem;
+}
+
+.content-container h2 {
+    display: block;
+//font-weight: 400;
+color: #222222;
+font-size: 30px;
+font-weight: 800;
+letter-spacing: -0.75px;
+margin: 0;
+padding-top: 80px;
+
 }
 .showcase {
     background: rgb(44, 75, 255);
@@ -57,17 +98,6 @@ footer .container, .content-container, .breadcrumb .container {
         border-radius: 3px;
 }
 .showcase * {color:#ffffff;}
-.btn-primary {
-    text-transform: uppercase;
-    border-radius: 8px;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    padding: 15px 20px;
-    color: #2c4bff;
-    background: #ffffff;
-    box-shadow: 0 2px 5px rgba(65, 45, 47, 0.2);
-}
 
 
 .showcase h5 {margin:0;font-size:14px;font-weight:400}
@@ -98,15 +128,16 @@ main {
     //padding-top: 100px;
 }
 
-p {
+p, article li {
     margin-top: 10px;
-    letter-spacing: -0.4px;
-    line-height: 1.6;
+    //letter-spacing: -0.4px;
+    //line-height: 1.5;
+    //max-width: 80%;
 }
 h1, h2, h3, h4, h5, h6 {
     color: #1d1d1f;
-    font-family: 'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-    letter-spacing: -1px;
+    font-family:Inter, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-sans;
+    letter-spacing: -.6px;
     font-weight: 700;
     line-height: 1.15;
 }
@@ -114,14 +145,19 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
     color: #657482;
-    font-size: 3rem;
+    font-size: 36px;
+    line-height: 1.125;
 }
 
 
+h3 {font-size: 24px; line-height: 40px;font-weight: 400; color:#0f172a}
+intro h1 {margin: 0;}
+
 h1 b {
     display: block;
-    font-weight: 700;
-    color: #1d1d1f;
+    font-weight: 400;
+    color: #1F2933;
+    margin: 80px 0 36px;
 }
 #latest {
     background: #000000;
@@ -137,7 +173,7 @@ h1 b {
 }
 
 #latest a {
-    color: #ccc;
+    color: #0067c2;
     text-decoration: none;
 }
 
@@ -152,11 +188,23 @@ h1 b {
 }
 #navigation {
    // border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    z-index: 1;
-    //position: sticky;
-    //top: 0;
-    background: #ffffff;
-    border-bottom: 1px solid #f3f3f3;
+   z-index: 1;
+   background: #ffffff;
+   border-bottom: 1px solid #f3f3f3;
+   border-top: 6px solid #2c4bff;
+}
+
+#navigation .btn-primary {
+    text-transform: uppercase !important;
+    border-radius: 8px !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    letter-spacing: 1px !important;
+    padding: 10px 20px !important;
+    color: #2c4bff !important;
+    background: #fff !important;
+    box-shadow: 0 2px 5px rgba(65,45,47,0.2) !important;
+    margin-top: 15px !important;
 }
 nav {
     max-width: 80%;
@@ -167,21 +215,45 @@ nav {
     display: flex;
     list-style-type: none;
     margin: 0;
+    height: 80px;
 }
 
 .menu a {
-    margin: 10px 0 10px 30px;
+    margin: 0 0 0 30px;
     font-size: 14px;
-    color: #4e616c;
+    color: #1F2933;
     //font-weight: 600;
     display: block;
-    padding: 15px 0;
+    padding: 0;
     letter-spacing: -0.2px;
     text-decoration: none;
+    position: relative;
+    
 }
+.menu-item {line-height: 80px;}
+.menu a.active {color: #000000; text-decoration: none; font-weight: bold;}
 
-.menu a.active {color: #000000; text-decoration: underline; font-weight: bold;}
-.menu a:hover {color: #222222;}
+.menu-item a::before{
+    content: "";
+    width: 100%;
+    height: 4px;
+    position: absolute;
+    left: 0;
+    bottom: 20px;
+    background: #fff;
+    transition: 0.5s transform ease;
+    transform: scale3d(0,1,1);
+    transform-origin: 0 50%;
+  }
+  .menu-item a:hover::before{
+    transform: scale3d(1,1,1);
+  }
+
+.menu-item a::before{
+    background: #2c4bff;
+    transform-origin: 0 50%;
+  }
+
 .menu .logo {
     font-size: 1rem;
     color: #000000;
@@ -189,27 +261,44 @@ nav {
     -webkit-font-smoothing: subpixel-antialiased;
     letter-spacing: -.1px;
     font-weight: 800;
-   
-    font-family: 'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    line-height: 80px;
+    margin-left:0;
+    font-family: Inter, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-sans;
 }
 
 .intro {
-    text-align: center;
-    margin:0 0 100px 0;
+    margin: 0 auto 100px;
+    max-width: 80%;
 }
 
 
 .intro p {
-    font-size: 1.3rem;
-    font-family: 'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-    margin: 0 auto 10px auto;
-    max-width: 500px;
-
+    
+    font-family: Inter, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-sans;
+   
+    font-size: 18px;
+    line-height: 32px;
+    color: #52606D;
 }
 
 
-.intro a{color:#000000;font-weight:700;}
+.intro a{color:#2c4bff;font-weight:700;}
 
+
+.projects-section {
+    background: #F5F7FA;
+    padding: 6rem 0;
+}
+
+.blog-section {
+    background: #fff;
+    padding: 6rem 0;
+}
+
+.projects-section .container, .blog-section .container {
+    max-width: 80%;
+    margin: 0 auto;
+}
 .selligent {
     color: #00b8fb!important;
     background: rgba(0,161,224,.03);
@@ -230,11 +319,8 @@ nav {
  
 }
 
-footer {background: #ffffff;padding: 20px 0;font-size:13px; color:#657482;
-   
-    bottom: 0px;
+footer {
     width: 100%;}
-footer a {color:#657482; text-decoration: none;}
 
 .socials {margin:40px 0 0 0}
 .socials img {
@@ -253,10 +339,14 @@ footer a {color:#657482; text-decoration: none;}
 }
 
 .content-container h3 {
+   
+    color: #1d1d1f;
     font-size: 24px;
-    margin-top: 60px;
-    margin-bottom: 0;
-    color: #1d1d1f
+font-weight: 700;
+letter-spacing: -0.6px;
+line-height: 32px;
+margin-bottom: 16px;
+margin-top: 48px;
 }
 
 .content-container p.intro {
@@ -266,13 +356,17 @@ footer a {color:#657482; text-decoration: none;}
     color: #657482;
     text-align: left;
     margin: 30px 0;
+    max-width: 100%;
 }
 .content-container img {
     max-width: 100%;
     margin: 10px 0 0 0;
+    border-radius: 8px;
 }
-
-
+.content-container h4 {
+    margin: 25px 0 0;
+  }
+/*
 .content-container p, .content-container ul, .content-container li, .content-container dd, .content-container dl {
     font-size: 14px;
     line-height: 28px;
@@ -281,7 +375,7 @@ footer a {color:#657482; text-decoration: none;}
     color: #3c4b62;
 }
 
-
+*/
 .text-left {text-align: left;}
 table {
     border-collapse: collapse;
@@ -327,30 +421,23 @@ td {
     background-color: $table-cell-background;
 }
 
-.section h3 {
-    padding: 10px 0;
-    border-bottom: 3px solid #f3f3f3;
-    letter-spacing: normal;
-    /* color: #000; */
-}
 
 .resources-links h2 {margin-top:50px;}
-.resources-links h3, .post.content-container h3 {
-    padding: 10px 0;
-    border-bottom: 3px solid #f3f3f3;
-    letter-spacing: normal;
-    margin-top:40px;
+.resources-links h3, .post.content-container h3, section h3 {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.6px;
+    line-height: 32px;
+    margin-bottom: 16px;
+    margin-top: 48px;
 }
 
 img.avatar {
-    width: 90px !important;
-    height: 90px !important;
     background-size: contain;
-    /* object-fit: cover; */
-    margin: 0 auto;
+    object-fit: cover; 
     border-radius: 50%;
     border: 3px solid #f3f3f3;
-    /* box-shadow: 1px 0 3px rgb(40 43 48 / 40%), 0 1px 4px rgb(40 43 48 / 10%); */
+    /*box-shadow: 1px 0 3px rgb(40 43 48 / 40%), 0 1px 4px rgb(40 43 48 / 10%); */
     display: block;
 }
 
@@ -371,6 +458,11 @@ img.avatar {
     vertical-align: middle;
     line-height: 30px;
     margin-right: 2px;
+}
+
+.list {
+
+    margin-top: 1rem;
 }
 
 .list .flex div {
@@ -404,7 +496,7 @@ img.fullscreen {
 .webshowcase {margin-top: 20px;}
 .webshowcase img {
     max-width: 80%;
-    height: 297px;
+   // height: 297px;
     -webkit-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out;
     margin: 5rem auto;
@@ -439,24 +531,45 @@ span.date {
     color: #1d1d1f;
 }
 
+.post {font-size: 16px; line-height:28px;}
 .post .flex {
     display: flex;
     align-items: center;
     width: 100%;
 }
 .post .thumb {
-    width: 32px;
-    height: 32px;
-    border-radius: 50px;
+    max-width: 100%;
+    margin: 10px 0 30px;
+    border-radius:8px;
 }
 .post .readtime {
-    font-size: 12px;
+    font-size: 14px;
+line-height: 24px;
+margin: 1rem 0;
+}
+
+.post .intro, .post p {
+   // max-width: 100%;
+  }
+
+.post p.intro {
+color: #3c4b62;
+
+}
+
+.post ul li {
+    list-style-type: disc;
+    margin: 20px;
+   
+  }
+.post li:first {
+    margin-top:0;
 }
 .post .date {
     display: inline-block;
     margin: 0 10px 0 0;
-    color: #c3c3c3;
-    font-size: 12px;
+   // color: #c3c3c3;
+    //font-size: 14px;
 }
 .post .tag {
     letter-spacing: 1px;
@@ -470,7 +583,14 @@ span.date {
     font-size: 12px;
     color: #c3c3c3;
 }
-@media (max-width: 800px) {
+
+.blog-section * .list .flex div {margin: 0;}
+
+#i p {
+    max-width: 80%;
+  }
+@media (max-width: 1000px) {
+
 
     .section.blog.content-container .flex {
         display: flex;
@@ -482,16 +602,86 @@ span.date {
       flex-wrap: wrap;
     }
 
-    .menu a {padding: 5px 0;}
-    .menu li:first-child {flex: 100% ;
-        margin-left: 0 !important;
-    }
-    nav {max-width: 100%;}
 
     main {padding-top:20px}
+
+    p {max-width: 100%;}
+
+    
 }
 
-@media (min-width: 801px) {
+
+@media (max-width: 800px){
+    
+
+    footer, article, table {
+        max-width: 90%;
+        margin: 0 auto;
+    }
+    footer .container, .content-container, .breadcrumb .container {
+        margin: 0 auto;
+        padding: 0;
+        max-width: 100%;
+      }
+    
+    .content-container {
+        max-width: 100%;
+      }
+
+    .menu-item a::before {
+    background: unset;
+ }
+    .blog-section, .projects-section {
+     
+        padding: 2rem 0;
+      }
+    nav {max-width: 90%;
+         min-height: 80px;}
+
+         .intro, .projects-section .container, .blog-section .container {max-width: 90%;}
+
+#navigation {
+      
+    border-bottom: 0px solid #f3f3f3;
+    
+  }
+.menu .logo {margin: 10px 0 10px 0px;}
+
+.menu .logo {line-height: unset;}
+
+.menu-item {
+    line-height: 32px;
+  }
+
+.menu li:first-child {
+    flex: 100% ;
+   // margin-left: 0 !important;
+   // display: none;
+}
+
+.menu a {
+    margin: 0 20px 0 0px;
+}
+.menu li:last-child {
+    display: none;
+  }
+
+  .content-container h2 {
+   
+    padding-top: 50px;
+  }
+
+  .post.content-container h2 {
+    padding-top: 30px;
+  }
+  .list {
+    margin-top: 1rem;
+  }
+
+  //.post .readtime {padding-top: 50px;}
+}
+
+@media (min-width: 1010px) {
 .webshowcase {
     max-width: 140%;
     width: 140%;
