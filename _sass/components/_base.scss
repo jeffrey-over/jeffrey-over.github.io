@@ -74,7 +74,7 @@ footer a { color: #9AA5B1;}
 //font-weight: 400;
 color: #222222;
 font-size: 30px;
-font-weight: 800;
+font-weight: 400;
 letter-spacing: -0.75px;
 margin: 0;
 padding-top: 80px;
@@ -189,9 +189,10 @@ h1 b {
 #navigation {
    // border-bottom: 1px solid rgba(0, 0, 0, 0.05);
    z-index: 1;
-   background: #ffffff;
-   border-bottom: 1px solid #f3f3f3;
-   border-top: 6px solid #2c4bff;
+ //  background: #ffffff;
+  // border-bottom: 1px solid #f3f3f3;
+ border-top: 6px solid #2c4bff;
+ // margin-top: 10px;
 }
 
 #navigation .btn-primary {
@@ -610,6 +611,32 @@ color: #3c4b62;
     
 }
 
+
+.glow {
+    background: linear-gradient(45deg, #f0468d, #f0b84b, #EFB755, #EE826D, #f0b84b44);
+      background-image: linear-gradient(45deg, rgb(240, 70, 141), rgb(240, 184, 75), rgb(239, 183, 85), rgb(238, 130, 109), rgba(240, 184, 75, 0.267));
+      background-size: auto;
+    background-size: auto;
+    background-size: auto;
+    position: absolute;
+    top: 10px;
+    left: -300px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(500px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 30s linear infinite;
+    opacity: 1;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+    height: 100px;
+    //background: linear-gradient\( 180deg, hsl(231deg 100% 59%) 0%, hsl(264deg 84% 59%) 14%, hsl(284deg 71% 54%) 21%, hsl(301deg 61% 50%) 26%, hsl(315deg 75% 55%) 30%, hsl(325deg 87% 60%) 35%, hsl(334deg 96% 65%) 39%, hsl(342deg 100% 69%) 43%, hsl(351deg 100% 72%) 46%, hsl(0deg 100% 76%) 50%, hsl(8deg 100% 76%) 54%, hsl(15deg 96% 76%) 57%, hsl(20deg 89% 77%) 61%, hsl(26deg 80% 78%) 65%, hsl(30deg 71% 80%) 69%, hsl(36deg 60% 83%) 74%, hsl(41deg 48% 87%) 79%, hsl(49deg 32% 91%) 86%, hsl(60deg 5% 96%) 100%;
+  //  background-image: linear-gradient( 180deg, hsl(231deg 100% 59%) 0%, hsl(264deg 84% 59%) 14%, hsl(284deg 71% 54%) 21%, hsl(301deg 61% 50%) 26%, hsl(315deg 75% 55%) 30%, hsl(325deg 87% 60%) 35%, hsl(334deg 96% 65%) 39%, hsl(342deg 100% 69%) 43%, hsl(351deg 100% 72%) 46%, hsl(0deg 100% 76%) 50%, hsl(8deg 100% 76%) 54%, hsl(15deg 96% 76%) 57%, hsl(20deg 89% 77%) 61%, hsl(26deg 80% 78%) 65%, hsl(30deg 71% 80%) 69%, hsl(36deg 60% 83%) 74%, hsl(41deg 48% 87%) 79%, hsl(49deg 32% 91%) 86%, hsl(60deg 5% 96%) 100% );
+    overflow: hidden;
+   // background-image: linear-gradient(180deg,#2e4dff 0%,#853fee 14%, #f9b390 61%, #f4c19a 65%, #f0cca8 69%, #eed9ba 74%,#eee4ce 79%,#efede1 86%, #f5f5f4 100%);
+      background-image: linear-gradient(0deg, rgb(255, 222, 233) 0%, rgb(181, 255, 252) 100%);
+  }
 
 @media (max-width: 800px){
     
