@@ -715,3 +715,27 @@ color: #3c4b62;
     margin-left: -20%;
 }
 }
+
+
+
+@media (prefers-color-scheme: dark) {
+body {
+    background-color: #111213;
+}
+
+.blog-section {background-color: transparent;}
+.projects-section {background-color: transparent;}
+.glow {opacity: 0;}
+
+footer .container {border-top: 0;}
+#navigation {
+ 
+    border-top: 6px solid #60c;
+  }
+
+  .icon {background-color: #fff;box-shadow: 0 0 10px;}
+  #navigation .btn-primary {background-color: #60c !important; color: #fff !important}
+  .intro a {color: #60c;}
+  body, .post p.intro, .intro p, p, li, ul, ol, dl, dd, nav a, .menu a {color: #94A3B8}
+  h1 b, .menu .logo, .menu a.active ,a, h1, h2, h3,h4,h5, .content-container h1, .content-container h2, .content-container h3, .content-container h4 {color:#fff}
+}
