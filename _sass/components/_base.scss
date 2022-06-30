@@ -13,7 +13,37 @@ body {
 
 }
 
+.cards {
+    display: flex;
 
+    /* Put a card in the next row when previous cards take all width */
+    flex-wrap: wrap;
+width: 100%;
+    margin-left: -8px;
+    margin-right: -8px;
+}
+
+.cards__item {
+    /* There will be 4 cards per row */
+    flex-basis: 50%;
+
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.card_img {
+    width:100;
+}
+
+.card_txt {
+    flex-direction: row;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-align-items: flex-start;
+    align-items: flex-start;
+}
+
+.card_button {}
 article, footer, table {
     max-width: 768px;
     margin: 0 auto;
@@ -63,7 +93,7 @@ footer .container {
 
 footer a { color: #9AA5B1;}
 .flex {display: flex;}
-.flex div {flex:1}
+.flex div {flex:1;margin:0 auto;text-align: center;}
 #wrapper {padding-top:100px;}
 .content-container {
     //max-width: 60rem;
@@ -509,6 +539,35 @@ img.fullscreen {
     border-radius: 6px;
 }
 
+.webshowcase img.store {
+    max-width: 80%;
+   // height: 297px;
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    margin: 5rem auto 0;
+    display: block !important;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .2), 0 2px 35px 0 rgba(0, 0, 0, .15);
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+}
+
+.store-txt {
+    text-align: left !important;
+max-width: 80%;
+}
+
+.store-txt .btn-primary {
+    float: right;
+margin: 20px 0;
+padding: 3px 8px;
+background: #2c4bff;
+color: #fff;
+text-decoration: none;
+}
+.store-txt h4 {display: inline-block;padding: 3px;
+    line-height: 25px;}
+
 .section.blog.content-container .flex div {
     margin: 10px 0;
 }
@@ -705,6 +764,8 @@ color: #3c4b62;
   .list {
     margin-top: 1rem;
   }
+
+  .store-txt .btn-primary {float:left;}
 
   //.post .readtime {padding-top: 50px;}
 }
