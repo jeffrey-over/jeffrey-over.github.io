@@ -3,12 +3,12 @@ layout: post
 author: Jeffrey Overmeer
 title: "I build a modular CSS framework: Helder."
 date: 2018-04-17
-label: update 
+label: project 
 permalink: /cssframework-helder
 tags: webdevelopment, development tools, css framework
 yearreview: false
 published: true
-thumbnail: "images/blog/helder.png"
+thumbnail: "/images/blog/helder.png"
 description: "Helder is a no-fuss CSS framework and SASS boilerplate with minimalist designed components such as forms, cards, and tables and ensures consistency between browsers."
 ---
 

@@ -8,12 +8,28 @@ link: Text Generator
 
 <style>
 #text-transform {
-    height:300px;
+   height: 300px;
+    font-family: Consolas,Monaco,andale mono,ubuntu mono,monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+    font-size: 11px;
+    padding: 10px;
+    max-width: 100%;
+    line-height: 1.5;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px #999;
+    width: 100%;
+    min-height: 250px;
 }
 
 </style>
-
-<h1>Text generator</h1>
+<div class="section">
+<h3>Text generator</h3>
 <p>Convert your text from lowercase to uppercase and uppercase to lowercase.
 </p>
 
@@ -21,8 +37,10 @@ link: Text Generator
 <button id="btn-uppercase" class="is-secondary">Uppercase</button>
 <button id="btn-lowercase" class="is-secondary">Lowercase</button>
 
-<button id="btn-copyclipboard" onclick="copyclipboard()" class="is-secondary" style="padding: 0 6px;height: 47px;float: right;"><img src="https://img.icons8.com/material-rounded/80/ffffff/copy-2.png" style="height: 30px;"></button>
+<button id="btn-copyclipboard" onclick="copyclipboard()" class="is-secondary">Copy to clipboard</button>
+</div>
 <script>
+
 
 
 // uppercase 

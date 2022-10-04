@@ -3,11 +3,11 @@ layout: post
 title: "Ultimate email deliverability guide"
 date: 2020-02-05
 label: e-mail
-permalink: /ultimate-email-deliverability-guide
+author: Jeffrey Overmeer
 tags: marketing, tips, e-mail, free
 published: true
 yearreview: false
-thumbnail: "images/blog/deliverability.jpg"
+thumbnail: "/images/blog/deliverability.jpg"
 description: "Worked hours on the perfect email, but it bounces? Check out why and how to solve this. Get control over email deliverability."
 ---
 

@@ -6,15 +6,14 @@ permalink: /work/
 ---
 
 <div class="section">
-<h2>Open-Source Projects</h2>
-{% include projects.html %}
 
-<h2>Marketing Automation solutions</h2>
+
+<h3>Marketing Automation solutions</h3>
 {% include marketing-solutions.html %}
 
-<h2>Web development</h2>
+<h3>Web development</h3>
 {% include webdevelopment.html %}
 
-<h2>Proudly worked for </h2>
+<h3>Proudly worked for </h3>
 {% include clients.html %}
    </div>

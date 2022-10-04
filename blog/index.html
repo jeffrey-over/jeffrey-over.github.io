@@ -6,30 +6,71 @@ link: blog
 
 				  
 				
-				<div class="section blog content-container">
+			
 				
 
 
 
-<h2>All Articles</h2>
+<h3>All Articles</h3>
 <p>Book summaries, productivity tips, Email marketing resources and developer tutorials articles I've written.</p>
 
 
 
-<div class="list">
+<section class="cards">
+
 
 	{% for post in site.posts %}
 	{% if post.published == true %}
-	<div class="flex">
-		 <!-- <span class="icon">{{ post.label }}</span>-->
-		  <div> <a href="{{ post.url }}" alt="{{ post.title }}">{{ post.title }}</a>
-		  <p>{{ post.description }}</p>
+	
+		<div class="card">
+			<div class="card__image-container">
+			  <img
+				src=" {{ post.thumbnail }}"
+			  />
+			  <p class="card__tag">{{ post.label }}</p>
+			</div>
+			<div class="card__content">
+			  <p class="card__title text--medium">
+				<a href="{{ post.url | prepend: site.baseurl }}" alt="{{ post.title }}">{{ post.title }}</a>
+			  </p>
+			  <div class="card__info">
+	   
+				<p class="card__price"> 
+					{% assign m = post.date | date: "%-m" %}
+				   
+					{% case m %}
+					{% when '1' %}Jan
+					{% when '2' %}Feb
+					{% when '3' %}Mar
+					{% when '4' %}Apr
+					{% when '5' %}May
+					{% when '6' %}Jun
+					{% when '7' %}Jul
+					{% when '8' %}Aug
+					{% when '9' %}Sept
+					{% when '10' %}Oct
+					{% when '11' %}Nov
+					{% when '12' %}Dec
+					{% endcase %}
+					{{ post.date | date: "%-d" }}, 
+					{{ post.date | date: "%Y" }} • 
+					{% capture readtime %}{{ post.content | number_of_words | plus:91 | divided_by:180.0 | append:'.' | split:'.' | first }}{% endcapture %}
+					{% if readtime == '0' %} &lt; 1{% else %} {{ readtime }}{% endif %} minute(s) reading time</p>
+			
+			  </div>
+			  
+			</div>
 		  </div>
-	   </div>
+		 <!-- <span class="icon">{{ post.label }}</span>-->
+		 
+	   
 	   {% endif %}
 	   {% endfor %}
-	</div>
-
+	
+  
+  
+  </section>
+ 
 				
 				
 <!--

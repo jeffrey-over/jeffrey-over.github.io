@@ -3,12 +3,12 @@ layout: post
 author: Jeffrey Overmeer
 title: "9 (email) marketing techniques that you must immediately use"
 date: 2019-05-08
-label: tips
+label: e-mail
 permalink: emailmarketing-guide
 tags: marketing, tips, strategie
 published: true
 yearreview: false
-thumbnail: "images/blog/marketingtechnieken.png"
+thumbnail: "/images/blog/marketingtechnieken.png"
 description: "A list of must-have techniques that will help boost your (email) campaigns and customer journeys."
 ---
 

@@ -1,13 +1,14 @@
 ---
 layout: post
+author: Jeffrey Overmeer
 title: "Selligent backbone - use all the data you have at your disposal."
-date: 2020-06-01
+date: 2020-6-1
 permalink: /selligent-database
-label: learning
+label: selligent
 tags: Selligent Marketing Cloud, Data
 yearreview: false
 published: true
-thumbnail: "images/blog/sim-tables.jpg"
+thumbnail: "/images/blog/sim-tables.jpg"
 description: "There is a lot of information to be gained from the underlying system tables of Selligent Marketing Cloud. For example, you could further automate your workflow with triggers or use custom queries to generate reports. "
 ---
 

@@ -2,12 +2,13 @@
 layout: post
 title: "Booknotes - Atomic Habits"
 date: 2020-06-21
-label: learning
+label: productivity
 permalink: /booknotes-atomithabits
 tags: booknotes
 yearreview: false
+author: Jeffrey Overmeer
 published: true
-thumbnail: ""
+thumbnail: "/images/atomic.jpg"
 description: "Small habits make a big difference. "
 ---
 

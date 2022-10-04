@@ -3,63 +3,109 @@ layout: defaulthome
 link: home
 ---
 <div id="wrapper">
-   
-    <div class="intro">
-        <img src="/images/ik.png" class="avatar">
-        <h1>
-           
-            <b>Marketing meets technology.</b>
+  
+    <div class="intro container">
+      
+        <h1 class="animate__animated animate__slideInLeft">Marketing meets technology
 
         </h1>
-        <div class="container">
+        <div class=" aboutme">
+            <img src="/images/ik.png" class="avatar">
+          
             <p>Hi, I'm Jeffrey - a campaign developer based in the Netherlands. I like to create stuff that help other people. </p>
            
             <p>Curious about my work? Check out my <a href="/work/">work</a> page!</p>
-        <!--    <div class="socials" >
+            <div class="socials" >
                 <a href="https://github.com/jeffrey-over/" class="" target="_BLANK" style=""><img src = "/images/Social_Icons/Github.png" class = "" alt = ""></a> 
                 <a href="https://www.linkedin.com/in/jeffreyovermeer/" target="_BLANK" class="" style=""><img src = "/images/Social_Icons/linkedin.png" class = "" alt = ""></a>
                 <a href="https://www.jeffreyovermeer.com/feed.xml" target="_BLANK" class="" style=""><img src = "/images/Social_Icons/Rss.png" class = "" alt = ""></a>
-            </div>-->
+            </div>
         </div>
     </div>
 
-    <div class="projects-section">
-        <div class="container">
+    <div class="container">
+       
             
-            <h3>Selected projects</h3>
-            <p>These days I'm mainly focused on carefully putting together projects that can be downloaded from my store. Here are some of the projects I've worked on in the past.</p>
+            <h3>Recources</h3>
+            <p>For marketers, email developers, and creatives.</p>
        
             
             {% include projects.html %}
-        </div>
+        
     </div>
 
 
 
 
    
-    <div class="blog-section">
         <div class="container">
-            <h3>Read my latest Articles</h3>
+            <h3>Latest Articles</h3>
 
-            <p>Book summaries, productivity tips, Email marketing resources and developer tutorials articles I've written.</p>
+            <p>Read my latest book summaries, productivity tips, Email marketing resources and developer tutorials articles I've written.</p>
        
-            <div class="list">
+    
+
+
+            <section class="cards">
+
 
                 {% for post in site.posts limit:5 %}
                 {% if post.yearreview == false and post.published == true %}
-                <div class="flex">
-                     <!-- <span class="icon">{{ post.label }}</span>-->
-                      <div> <a href="{{ post.url | prepend: site.baseurl }}" alt="{{ post.title }}">{{ post.title }}</a>
-                      <p>{{ post.description }}</p>
+                
+                    <div class="card">
+                        <div class="card__image-container">
+                          <img
+                            src=" {{ post.thumbnail }}"
+                          />
+                          <p class="card__tag">{{ post.label }}</p>
+                        </div>
+                        <div class="card__content">
+                          <p class="card__title text--medium">
+                            <a href="{{ post.url | prepend: site.baseurl }}" alt="{{ post.title }}">{{ post.title }}</a>
+                          </p>
+                          <div class="card__info">
+                   
+                            <p class="card__price"> 
+                                {% assign m = post.date | date: "%-m" %}
+                               
+                                {% case m %}
+                                {% when '1' %}Jan
+                                {% when '2' %}Feb
+                                {% when '3' %}Mar
+                                {% when '4' %}Apr
+                                {% when '5' %}May
+                                {% when '6' %}Jun
+                                {% when '7' %}Jul
+                                {% when '8' %}Aug
+                                {% when '9' %}Sept
+                                {% when '10' %}Oct
+                                {% when '11' %}Nov
+                                {% when '12' %}Dec
+                                {% endcase %}
+                                {{ post.date | date: "%-d" }}, 
+                                {{ post.date | date: "%Y" }} • 
+                                {% capture readtime %}{{ post.content | number_of_words | plus:91 | divided_by:180.0 | append:'.' | split:'.' | first }}{% endcapture %}
+                                {% if readtime == '0' %} &lt; 1{% else %} {{ readtime }}{% endif %} minute(s) reading time</p>
+                        
+                          </div>
+                          
+                        </div>
                       </div>
-                   </div>
+                     <!-- <span class="icon">{{ post.label }}</span>-->
+                     
+                   
                    {% endif %}
                    {% endfor %}
-                </div>
+                
+              
+              
+              </section>
+             
+
+                
           
         </div>
-    </div>
+
   
 <!--
     <div class="showcase">  

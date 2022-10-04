@@ -3,12 +3,12 @@ layout: post
 author: Jeffrey Overmeer
 title: "Visual Studio Code - Best practices"
 date: 2018-01-31
-label: learning
+label: development
 permalink: /vscode-tips
 tags: <span>webdevelopment</span> <span>visual studio code</span>
 yearreview: false
 published: true
-thumbnail: "images/blog/vsc.gif"
+thumbnail: "/images/blog/vsc.gif"
 description: "There are many good editors. Choosing an editor that suits you can be quite tricky. I really like VS Code! It works easily and is free, open-source, and available on both OS X and Windows."
 ---
 

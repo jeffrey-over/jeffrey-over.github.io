@@ -8,7 +8,7 @@ permalink: /free-emailtemplates
 tags: marketing, tips, templates, free
 published: true
 yearreview: false
-thumbnail: "images/blog/templates.jpg"
+thumbnail: "/images/blog/templates.jpg"
 description: "For all marketers and developers who need a litmus-proof template quickly"
 ---
 
