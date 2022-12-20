@@ -12,6 +12,8 @@ thumbnail: "/images/email23.jpg"
 description: "Here are five things you need to know about email marketing in 2023:"
 ---
 
+<b>This article was created with the help of AI.</b>
+
 As we head into 2023, email marketing remains a crucial part of any digital marketing strategy. Here are five things you need to know about email marketing in 2023:
 
 1. Open rates are still hovering around 20%: Recent data shows that the average open rate for marketing emails is around 20%. This means that about 20% of the people who receive your email will actually open it. While this may not seem like a high number, it's important to remember that email is still one of the most effective marketing channels out there.
