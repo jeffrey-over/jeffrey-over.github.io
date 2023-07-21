@@ -12,8 +12,6 @@ thumbnail: "/images/segmentation.jpg"
 description: "It's time to start segmenting your email list!"
 ---
 
-<b>This article was created with the help of AI.</b>
-
 Are you tired of sending generic emails that fail to engage your audience? It's time to start segmenting your email list! By dividing your list into smaller groups based on specific criteria, such as location, age, purchase history, or engagement level, you can send targeted, personalized messages that are relevant and valuable to each group. This can lead to higher open and click-through rates and ultimately, better conversion rates.
 
 Segmenting your email list allows you to divide it into smaller groups based on specific criteria, such as location, age, purchase history, or engagement level. This way, you can send targeted, personalized messages to each group, which can lead to higher open and click-through rates and ultimately, better conversion rates.

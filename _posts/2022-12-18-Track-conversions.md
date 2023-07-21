@@ -12,8 +12,6 @@ thumbnail: "/images/emailconversions.jpg"
 description: "How to track conversions from your email campaign using UTMs and Google Analytics"
 ---
 
-<b>This article was created with the help of AI.</b>
-
 Are you running an email campaign and want to know how it's performing? One way to track its effectiveness is by using UTMs (Urchin Tracking Module) and Google Analytics.
 
 UTMs are little pieces of code that you can add to the links in your emails. They allow you to track where traffic is coming from and see how many conversions (e.g., purchases, sign-ups, etc.) are coming from your email campaign.

@@ -12,8 +12,6 @@ thumbnail: "/images/emailforbeginners.jpg"
 description: "Email Marketing 101: tips and best practices"
 ---
 
-<b>This article was created with the help of AI.</b>
-
 Email marketing is a powerful tool for businesses of all sizes. It allows you to reach and engage with your audience, nurture leads, and drive conversions. Here are some key facts about email marketing and tips on how to implement it effectively:
 
 1. Email has a high ROI. According to the Direct Marketing Association, email marketing has an average ROI of 122%, which is four times higher than other marketing channels such as social media and direct mail.

@@ -12,8 +12,6 @@ thumbnail: "/images/emailpareto.jpg"
 description: "Using the Pareto Principle to boost your email marketing results"
 ---
 
-<b>This article was created with the help of AI.</b>
-
 If you're looking to get the most out of your email marketing efforts, it might be time to turn to the Pareto Principle, also known as the 80/20 rule. This principle states that roughly 80% of effects come from 20% of causes, and it can be applied to a wide range of business scenarios, including email marketing. Here's how to use the Pareto Principle to boost your email marketing results:
 
 ### Identify your top 20%

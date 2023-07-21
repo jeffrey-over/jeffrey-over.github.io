@@ -12,8 +12,6 @@ thumbnail: "/images/selligenttroubleshooting.jpg"
 description: "Troubleshooting tips for when your Selligent campaign isn't starting"
 ---
 
-<b>This article was created with the help of AI.</b>
-
 Has your Selligent campaign come to a halt? Don't worry, it's a common issue that can usually be fixed with a few simple troubleshooting steps. Here's what to do when your Selligent campaign isn't starting:
 
 1. Check if the campaign is activated. Some campaigns may be paused or disabled, which can prevent the campaign from starting.

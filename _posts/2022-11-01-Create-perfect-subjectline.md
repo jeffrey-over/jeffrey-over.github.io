@@ -12,8 +12,6 @@ thumbnail: "/images/subjectline.jpg"
 description: "Effective email subject lines: A step-by-step guide"
 ---
 
-<b>This article was created with the help of AI.</b>
-
 Crafting the perfect subject line for your emails is crucial to ensuring that your message is opened and read. A compelling subject line can make the difference between a recipient clicking through to your email or simply deleting it.
 
 According to a study by Campaign Monitor, 35% of email recipients open an email based on the subject line alone (source: <a href="https://www.campaignmonitor.com/blog/email-marketing/2019/01/best-subject-lines/">Campaign Monitor</a>). Therefore, it is important to put effort into crafting effective subject lines.
