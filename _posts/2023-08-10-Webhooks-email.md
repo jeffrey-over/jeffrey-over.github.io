@@ -8,7 +8,7 @@ tags: email marketing, email, development
 yearreview: false
 author: Jeffrey Overmeer
 published: true
-thumbnail: "/images/selligent1.png"
+thumbnail: ""
 description: "Unlock the potential of your marketing strategy with the Selligent Marketing Cloud. Discover its comprehensive features, seamless integrations, and commitment to innovation. Elevate your campaigns and engage your audience like never before."
 ---
 
