@@ -1,15 +1,15 @@
 ---
 layout: post
 title: "Webhooks Demystified: Empowering Real-Time Data Integration"
-date: 2023-08-12
+date: 2023-08-10
 label: email
 permalink: /webhooks
 tags: email marketing, email, development
 yearreview: false
 author: Jeffrey Overmeer
 published: true
-thumbnail: ""
-description: "Unlock the potential of your marketing strategy with the Selligent Marketing Cloud. Discover its comprehensive features, seamless integrations, and commitment to innovation. Elevate your campaigns and engage your audience like never before."
+thumbnail: "/images/webhook.jpg"
+description: "Uncover the power of webhooks in real-time data integration. Explore how webhooks streamline communication between systems and enhance email marketing for personalized engagement and automation."
 ---
 
 In the digital realm, seamless data integration is the key to delivering timely and relevant experiences. Webhooks, a fascinating technology, hold the potential to revolutionize how systems communicate and share information. In this article, we'll delve into the world of webhooks, uncover their significance, and explore how they can be harnessed to enhance various processes, including email marketing.
