@@ -9,7 +9,7 @@ yearreview: false
 author: Jeffrey Overmeer
 published: true
 thumbnail: "/images/modular.jpg"
-description: "Discover the ultimate guide to crafting a powerful Email Design System. Learn how to unify brand aesthetics, design modular components, implement responsive layouts, and more. Elevate your email marketing with consistency and efficiency. A comprehensive tutorial for marketers and designers."
+description: "Learn how to create a powerful and flexible modular email system using Jekyll. This comprehensive tutorial guides you through the process of building reusable email components like headers, text blocks, images, buttons, and footers. Discover how to structure email templates, generate emails with dynamic content, and test their rendering across different email clients. Whether you're a developer or a marketer, this tutorial empowers you to send beautifully crafted and consistent emails effortlessly."
 ---
 
 In this tutorial, we'll walk through the step-by-step process of building a modular email system using Jekyll. Jekyll is a static site generator commonly used for building websites, but it can also be utilized to generate emails. The modular system we'll build will make it easy to create reusable email components and assemble them into complete emails.
@@ -42,6 +42,7 @@ In this tutorial, we'll walk through the step-by-step process of building a modu
 #### Installing Jekyll
 Make sure you have Jekyll installed on your system. Use the following command to install Jekyll via RubyGems:
 
+
 ```
 gem install jekyll
 ```
@@ -65,7 +66,7 @@ jekyll new .
 #### Header
 Create a new file named `_header.html` in the _includes directory. This file will contain the code for the email header:
 
- <pre><code>&lt;table width="100%" cellpadding="0" cellspacing="0"&gt;
+ <pre><code class="language-html" data-lang="html">&lt;table width="100%" cellpadding="0" cellspacing="0"&gt;
   &lt;tr&gt;
     &lt;td align="center"&gt;
       &lt;h1&gt;Our Amazing Emails&lt;/h1&gt;
@@ -77,7 +78,7 @@ Create a new file named `_header.html` in the _includes directory. This file wil
 Create a new file named _text_block.html in the _includes directory. This file will contain the code for a reusable text block:
 
 
-<pre><code>&lt;table width="100%" cellpadding="0" cellspacing="0"&gt;
+<pre><code class="language-html" data-lang="html">&lt;table width="100%" cellpadding="0" cellspacing="0"&gt;
   &lt;tr&gt;
     &lt;td&gt;
       &lt;p&gt;&#x7B;&#x7B; include.text &#x7D;&#x7D;&lt;/p&gt;
@@ -88,7 +89,7 @@ Create a new file named _text_block.html in the _includes directory. This file w
 #### Images
 Create a new file named `_image.html` in the _includes directory. This file will contain the code for inserting an image:
 
-<pre><code>&lt;table width="100%" cellpadding="0" cellspacing="0"&gt;
+<pre><code class="language-html" data-lang="html">&lt;table width="100%" cellpadding="0" cellspacing="0"&gt;
   &lt;tr&gt;
     &lt;td align="center"&gt;
       &lt;img src="&#x7B;&#x7B; include.image_url &#x7D;&#x7D;" alt="&#x7B;&#x7B; include.image_alt &#x7D;&#x7D;" width="300"&gt;
@@ -101,7 +102,7 @@ Create a new file named `_image.html` in the _includes directory. This file will
 #### Call-to-Action Buttons
 Create a new file named `_cta_button.html` in the _includes directory. This file will contain the code for a call-to-action button:
 
-<pre><code>&lt;table width="100%" cellpadding="0" cellspacing="0"&gt;
+<pre><code class="language-html" data-lang="html">&lt;table width="100%" cellpadding="0" cellspacing="0"&gt;
   &lt;tr&gt;
     &lt;td align="center"&gt;
       &lt;a href="&#x7B;&#x7B; include.button_url &#x7D;&#x7D;" style="background-color: #007bff; color: #ffffff; padding: 10px 20px; text-decoration: none;"&gt;
@@ -116,7 +117,7 @@ Create a new file named `_cta_button.html` in the _includes directory. This file
 Create a new file named `_footer.html` in the _includes directory. This file will contain the code for the email footer:
 
 
-<pre><code>&lt;table width="100%" cellpadding="0" cellspacing="0"&gt;
+<pre><code class="language-html" data-lang="html">&lt;table width="100%" cellpadding="0" cellspacing="0"&gt;
   &lt;tr&gt;
     &lt;td align="center"&gt;
       &lt;p&gt;&amp;copy; &#x7B;&#x7B; site.year &#x7D;&#x7D; Our Company. All rights reserved.&lt;/p&gt;
@@ -130,7 +131,7 @@ Create a new file named `_footer.html` in the _includes directory. This file wil
 #### Template for Promotion Email
 Create a new file named `promotion_email.html` in the _layouts directory. This file will serve as the template for a promotion email:
 
-<pre><code>&lt;!DOCTYPE html&gt;
+<pre><code class="language-html" data-lang="html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
   &lt;title&gt;&#x7B;&#x7B; page.title &#x7D;&#x7D;&lt;/title&gt;
@@ -159,7 +160,7 @@ Create a new file named `promotion_email.html` in the _layouts directory. This f
 #### Template for Newsletter
 Create a new file named `newsletter.html` in the _layouts directory. This file will be the template for a newsletter:
 
-<pre><code>&lt;!DOCTYPE html&gt;
+<pre><code class="language-html" data-lang="html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
   &lt;title&gt;&#x7B;&#x7B; page.title &#x7D;&#x7D;&lt;/title&gt;
