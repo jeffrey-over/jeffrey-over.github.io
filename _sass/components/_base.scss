@@ -291,7 +291,14 @@ h1 b {
     color: #1F2933;
     margin: 80px 0 36px;
 }
-.intro h1 {text-shadow: 0 0 5px rgba(65,45,47,.2);font-size: 10vw; color: #fff;text-align: center;padding-bottom: 100px;//text-shadow: 1px 1px 1px rgba(65,45,47,.1)
+.intro h1 {
+  //text-shadow: 0 0 5px rgba(65,45,47,.2);
+  font-size: 36px;
+  font-family: "Source Serif 4", Georgia, serif;
+   color: #000;
+   text-align: center;
+   padding-bottom: 100px;
+   //text-shadow: 1px 1px 1px rgba(65,45,47,.1)
 }
 .container {max-width: 1200px;padding: 0 40px;margin: auto;}
 
@@ -440,14 +447,14 @@ font-size: 14px;
 .hero {
    
     //background-image: linear-gradient\(to bottom,rgba(245,246,252,0.52),rgba(117,19,93,0.73),url("https://images.unsplash.com/photo-1604077137850-c6d2e2a44cce?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80");
-    background-position: center;
+   // background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     
-    background-image: linear-gradient(to bottom, rgba(213,147,23,0), rgba(255, 255,255,1)),url("https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3112&q=80");
+ //   background-image: linear-gradient(to bottom, rgba(213,147,23,0), rgba(255, 255,255,1)),url("https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3112&q=80");
     
     background-image: linear-gradient(to bottom, rgba(213,147,23,0), rgba(255, 255,255,1)),url("https://images.unsplash.com/photo-1614088439978-9be39d87d81a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=776&q=80");
-   background-image: linear-gradient(to bottom, rgba(213,147,23,0), rgba(255, 255,255,1)),url("https://images.unsplash.com/photo-1604079628040-94301bb21b91?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2731&q=80");
+  // background-image: linear-gradient(to bottom, rgba(213,147,23,0), rgba(255, 255,255,1)),url("https://images.unsplash.com/photo-1604079628040-94301bb21b91?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2731&q=80");
     min-height: 70vh;
     height: 100%;
 position: absolute;
