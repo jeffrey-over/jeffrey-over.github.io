@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "Creating an Email Design System: A Step-by-Step Tutorial"
+titleshort: "Email Design System"
+featured: 1
 date: 2023-08-19
 label: email
 permalink: /email-design-system

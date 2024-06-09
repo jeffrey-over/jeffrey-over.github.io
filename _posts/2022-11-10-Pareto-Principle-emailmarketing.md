@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "The Pareto Principle: A simple way to improve your email marketing result"
+titleshort: "The Pareto Principle"
 date: 2022-11-10
 label: email
 permalink: /paretoprinciple-in-emailmarketing

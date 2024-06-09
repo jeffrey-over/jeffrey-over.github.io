@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Track conversions from your email campaign"
+title: "Conversion tracking"
 date: 2022-12-18
 label: email
 permalink: /track-conversion-from-your-email

@@ -27,11 +27,10 @@ link: blog
 			  <img
 				src=" {{ post.thumbnail }}"
 			  />
-			  <p class="card__tag">{{ post.label }}</p>
-			</div>
+				</div>
 			<div class="card__content">
 			  <p class="card__title text--medium">
-				<a href="{{ post.url | prepend: site.baseurl }}" alt="{{ post.title }}">{{ post.title }}</a>
+				<a href="{{ post.url | prepend: site.baseurl }}" alt="{{ post.title }}">{% if post.titleshort %}{{ post.titleshort }}{% else %}{{ post.title }}{% endif %}</a>
 			  </p>
 			  <div class="card__info">
 	   

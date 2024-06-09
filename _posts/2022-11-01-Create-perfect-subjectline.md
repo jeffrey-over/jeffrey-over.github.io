@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Creating the perfect subject lines for your emails"
+titleshort: "Perfect subject lines"
 date: 2022-11-10
 label: email
 permalink: /create-perfect-subjectline

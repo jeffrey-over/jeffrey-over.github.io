@@ -2,6 +2,7 @@
 layout: post
 author: Jeffrey Overmeer
 title: "Visual Studio Code - Best practices"
+featured: 0
 date: 2018-01-31
 label: development
 permalink: /vscode-tips

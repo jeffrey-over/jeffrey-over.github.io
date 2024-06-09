@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Ultimate email deliverability guide"
+featured: 1
 date: 2020-02-05
 label: e-mail
 author: Jeffrey Overmeer
@@ -17,7 +18,7 @@ It is the collection of factors that determine whether or not your email ends up
 
 In addition to the <b>content </b> of your email, you also have to deal with <b> authentication </b> (DKIM, SPF, TLS, DMARC) and reputation (blacklists, number of bounces, engagement).
 
-It is therefore also possible that a mail server has a successful "handshake" with Selligent (or another ESP), but the email does not end up in the customer's inbox.
+It is therefore also possible that a mail server has a successful "handshake" with Marigold Engage (or another ESP), but the email does not end up in the customer's inbox.
 
 ### Reputation
 A good domain and sender reputation are essential to ensure that emails end up in the inbox successfully. Sites where your reputation can be tested:

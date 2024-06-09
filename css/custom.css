@@ -1,7 +1,11 @@
 #menuToggle {
     display: none;
 }
+
+
 @media (max-width: 800px){
+
+  #navigation {width: 100%;}
     #menuToggle
 {
   display: block;

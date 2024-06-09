@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "Building a Modular Email System with Jekyll"
+titleshort: "Modular Email System with Jekyll"
+featured: 1
 date: 2023-08-20
 label: email
 permalink: /modular-email-system-with-jekyll
@@ -211,6 +213,6 @@ Use the previously created includes to compose emails within the templates. Incl
 Before sending the emails, test them across various email clients to ensure proper rendering. Use services like Litmus or Email on Acid for comprehensive testing.
 
 #### Sending the Emails
-To send the emails, you can use an email marketing service such as DeployTeq, Selligent, or Salesforce Marketing Cloud. These services provide tools to send your emails to subscribers and track statistics.
+To send the emails, you can use an email marketing service such as DeployTeq, Marigold Engage, or Salesforce Marketing Cloud. These services provide tools to send your emails to subscribers and track statistics.
 
 With this tutorial, you've set up a modular email system using Jekyll. You can now easily create reusable email components and assemble them into professional email templates. Remember to test and optimize your emails for different email clients before sending them to your subscribers.

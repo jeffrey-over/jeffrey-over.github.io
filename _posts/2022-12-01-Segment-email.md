@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Segmenting your email list: How to target your messages and boost engagement"
+titleshort: "Segmenting your email list:"
 date: 2022-12-01
 label: marketing
 permalink: /segmenting-email-list

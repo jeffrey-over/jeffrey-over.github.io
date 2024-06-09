@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Deployteq (Formerly Clang/CanopyDeploy): Empowering Seamless Marketing Campaigns"
+titleshory: "Discover Deployteq"
 date: 2023-08-04
 label: deployteq
 permalink: /Deployteq-empowering-marketing-campaigns

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Email marketing for beginners: a comprehensive guide"
+titleshort: "Email marketing for beginners"
 date: 2022-11-10
 label: email
 permalink: /emailmarketing-for-beginners

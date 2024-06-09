@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Webhooks Demystified: Empowering Real-Time Data Integration"
+titleshort: "Webhooks"
 date: 2023-08-10
 label: email
 permalink: /webhooks

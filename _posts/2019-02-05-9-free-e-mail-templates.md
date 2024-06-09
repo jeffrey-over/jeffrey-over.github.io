@@ -2,6 +2,8 @@
 layout: post
 author: Jeffrey Overmeer
 title: "A collection of the best (free) email templates"
+featured: 1
+titleshort: "Free emailtemplates"
 date: 2020-01-05
 label: e-mail
 permalink: /free-emailtemplates

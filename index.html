@@ -6,25 +6,89 @@ link: home
   
     <div class="intro container">
       
-        <h1 class="animate__animated animate__slideInLeft">Learn Email Marketing Automation: Tips, Tools, and Strategies for Growth
-
+        <h1 class="animate__animated animate__slideInLeft">Learn Email Marketing Automation
         </h1>
-        <div class=" aboutme">
+
+        <div class="badge">Tips, Tools, and Strategies for Growth</div>
+
+
+</div>
+
+<div class="separator">
+    <div class="featured-content-slider">
+
+
+
+        {% for post in site.posts %}
+        {% if post.featured == 1 %}
+
+
+        <div class="slide">
+            <a href="{{ post.url | prepend: site.baseurl }}" class="slide-link">
+                <div class="slide-item" style="background-image:linear-gradient(to top, rgba(245, 246, 252, 0.01), rgba(21, 21, 21, 0.73)),
+                url('{{ post.thumbnail }}');">
+                
+                    <h3>{% if post.titleshort %}{{ post.titleshort }}{% else %}{{ post.title }}{% endif %}</h3>
+                
+                </div>
+                </a>
+        </div>
+
+        {% endif %}
+        {% endfor %}
+        
+      
+    </div>
+</div>
+
+
+
+<div class="intro fullcontainer" style="padding: 40px 0;
+margin: 150px 0 20px;
+
+background: rgb(239, 238, 229);"> 
+        <div class="aboutme">
             <img src="/images/ik.png" class="avatar">
-          
+
+            <h3>Hey there! 👋</h3>
             <p>
-                Hi there! I'm Jeffrey, a campaign developer from the Netherlands. In my spare time, I love spending time with my family, especially my two young kids. I'm passionate about creating things that make a positive impact. If you want to see my work, visit my <a href="/work/">work</a> page. If you have any ideas for new projects or just want to chat, don't hesitate to reach out!
+                I'm Jeffrey, a campaign developer from the Netherlands specializing in email marketing automation. With years of experience in optimizing email campaigns, I help businesses increase engagement and drive results through advanced automation techniques.
+                
+                When I'm not working, I enjoy spending time with my family, especially my two young kids. 
+            </p>
+                <p>Explore my <a href="/work/">work</a> page to see some of my projects, or check out my <a href="/knowledge-hub/">Knowledge Hub</a> for guides and tutorials on email marketing automation and other topics. Feel free to <a href="/contact/">contact me</a> if you have any ideas for new projects or just want to chat about email marketing!
+                </p>
             
-          
-            <div class="socials" >
-                <a href="https://github.com/jeffrey-over/" class="" target="_BLANK" style=""><img src = "/images/Social_Icons/Github.png" class = "" alt = ""></a> 
-                <a href="https://www.linkedin.com/in/jeffreyovermeer/" target="_BLANK" class="" style=""><img src = "/images/Social_Icons/linkedin.png" class = "" alt = ""></a>
-                <a href="https://www.jeffreyovermeer.com/feed.xml" target="_BLANK" class="" style=""><img src = "/images/Social_Icons/Rss.png" class = "" alt = ""></a>
+            <div class="socials">
+                <a href="https://github.com/jeffrey-over/" target="_BLANK"><img src="/images/Social_Icons/Github.png" alt="GitHub"></a>
+                <a href="https://www.linkedin.com/in/jeffreyovermeer/" target="_BLANK"><img src="/images/Social_Icons/linkedin.png" alt="LinkedIn"></a>
+                <a href="https://www.jeffreyovermeer.com/feed.xml" target="_BLANK"><img src="/images/Social_Icons/Rss.png" alt="RSS"></a>
             </div>
         </div>
     </div>
 
-
+    <!--    
+        <div class="key-sections">
+            <h2>Explore Our Resources</h2>
+            
+            <div class="section">
+                <h3><a href="/knowledge-hub/">Knowledge Hub</a></h3>
+                <p>Find in-depth guides, tutorials, and articles on email marketing automation.</p>
+            </div>
+            
+            <div class="section">
+                <h3><a href="/tool-reviews/">Tool Reviews & Comparisons</a></h3>
+                <p>Read detailed reviews and comparisons of the best email marketing automation tools available.</p>
+            </div>
+            
+            <div class="section">
+                <h3><a href="/case-studies/">Case Studies & Success Stories</a></h3>
+                <p>Discover how businesses have successfully implemented email marketing automation to achieve their goals.</p>
+            </div>
+        </div>
+        
+    
+-->
 
 
    
@@ -47,11 +111,10 @@ link: home
                           <img
                             src=" {{ post.thumbnail }}"
                           />
-                          <p class="card__tag">{{ post.label }}</p>
-                        </div>
+                              </div>
                         <div class="card__content">
                           <p class="card__title text--medium">
-                            <a href="{{ post.url | prepend: site.baseurl }}" alt="{{ post.title }}">{{ post.title }}</a>
+                            <a href="{{ post.url | prepend: site.baseurl }}" alt="{{ post.title }}">{% if post.titleshort %}{{ post.titleshort }}{% else %}{{ post.title }}{% endif %}</a>
                           </p>
                           <div class="card__info">
                    

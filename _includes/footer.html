@@ -7,7 +7,7 @@
   </div>
   <div class="bottom container">
      <div class="copy">
-      <p>&copy; 2022. Made by Jeffrey Overmeer. 
+      <p>&copy; 2024. Made by Jeffrey Overmeer. 
       
        </p>
      </div>
@@ -21,8 +21,6 @@
   </div>
 </footer>
 <script async src="https://www.jeffreyovermeer.com/helder-css-framework/js/prism.js"></script>
-<script  src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
 
 
 {% if page.link == "home" %}
@@ -55,3 +53,24 @@ setTimeout('$(".hero").addClass("hfixed")',100);
 
   gtag('config', 'G-JP9ZM8C036');
 </script>
+
+
+<script type="text/javascript">
+  $(document).ready(function(){
+      $('.featured-content-slider').slick({
+        dots: false,  // Verberg de stippen
+            arrows: false,  // Verberg de pijlen
+            infinite: true,
+            speed: 10000,  // Langzame scrollsnelheid
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            cssEase: 'linear',  // Zorgt voor continu scrollen
+            autoplay: true,
+            autoplaySpeed: 0, 
+          
+  centerMode: true,
+  variableWidth: true
+      });
+  });
+</script>
+
