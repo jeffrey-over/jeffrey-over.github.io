@@ -9,7 +9,7 @@ tags: email marketing, email, marketing
 yearreview: false
 author: Jeffrey Overmeer
 published: true
-thumbnail: "/images/selligent1.png"
+thumbnail: "/images/Homepage_Keyframe-e1694727219149.png"
 description: "Unlock the potential of your marketing strategy with the Marigold Engage Marketing Cloud. Discover its comprehensive features, seamless integrations, and commitment to innovation. Elevate your campaigns and engage your audience like never before."
 ---
 

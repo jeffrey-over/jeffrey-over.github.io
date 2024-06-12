@@ -9,7 +9,7 @@ tags: email marketing, email, marketing
 yearreview: false
 author: Jeffrey Overmeer
 published: true
-thumbnail: "/images/deployteq.png"
+thumbnail: "/images/deployteq_marketing-automation-channels_visual4-bg-blue.png"
 description: "Discover how Deployteq, the evolved form of Clang/CanopyDeploy, is reshaping marketing automation. Explore its enhanced features, personalized engagement, and innovative vision for the future."
 ---
 

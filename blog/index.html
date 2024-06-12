@@ -11,12 +11,25 @@ link: blog
 
 
 
-<h3>All Articles</h3>
-<p>Book summaries, productivity tips, Email marketing resources and developer tutorials articles I've written.</p>
+<h3>Knowledge Hub</h3>
+<p>Find in-depth guides, tutorials, and articles on email marketing automation.</p>
+
+<div class="view-toggle">
+    <button id="card-view-btn" style="    border-radius: 8px;
+    border: 0;
+    padding: 8px 16px;
+    margin: 0 10px 0 0;
+    font-size: 14px;cursor: pointer;">Card View</button>
+    <button id="list-view-btn" style="    border-radius: 8px;
+    border: 0;
+    padding: 8px 16px;
+    margin: 0 10px 0 0;
+    font-size: 14px;cursor: pointer;">List View</button>
+</div>
 
 
 
-<section class="cards">
+<section id="cards" class="cards">
 
 
 	{% for post in site.posts %}
@@ -69,7 +82,25 @@ link: blog
   
   
   </section>
- 
+ <script>
+
+document.addEventListener('DOMContentLoaded', function() {
+    const cardViewBtn = document.getElementById('card-view-btn');
+    const listViewBtn = document.getElementById('list-view-btn');
+    const articlesContainer = document.getElementById('cards');
+
+    cardViewBtn.addEventListener('click', function() {
+        articlesContainer.classList.add('card-view');
+        articlesContainer.classList.remove('list-view');
+    });
+
+    listViewBtn.addEventListener('click', function() {
+        articlesContainer.classList.add('list-view');
+        articlesContainer.classList.remove('card-view');
+    });
+});
+
+ </script>
 				
 				
 <!--
