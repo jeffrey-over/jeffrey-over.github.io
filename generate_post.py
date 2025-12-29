@@ -1,12 +1,14 @@
 import os
 import time
+import urllib.parse
+import urllib.request
 from google import genai
 from datetime import datetime
 
 # 1. Configuration
 client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 
-# 2. SEO Strategy: Topic Rotation (English)
+# 2. Topic Rotation
 topics = [
     "Email Deliverability Best Practices 2026",
     "Subject Line AI Generators vs Human Creativity",
@@ -40,58 +42,87 @@ topics = [
     "The Future of Email Marketing Automation"
 ]
 
-# Pick a topic based on the day of the year
 day_of_year = datetime.now().timetuple().tm_yday
 topic = topics[day_of_year % len(topics)]
 
-# 3. The Ultimate SEO Prompt (English)
-prompt = f"""
-Act as a World-Class SEO Copywriter and Email Marketing Expert.
-Write a comprehensive, high-ranking blog post for Jeffrey Overmeer's blog about: '{topic}'.
+# 3. Image Generation Function (No API Key needed)
+def download_image(prompt_text, save_path):
+    print(f"🎨 Generating image for: {prompt_text}...")
+    try:
+        # Create a safe URL prompt
+        encoded_prompt = urllib.parse.quote(f"futuristic clean minimal tech illustration about {prompt_text}, soft lighting, high quality, 4k")
+        image_url = f"https://image.pollinations.ai/prompt/{encoded_prompt}?width=1200&height=630&nologo=true&seed={day_of_year}"
+        
+        # Download the image
+        urllib.request.urlretrieve(image_url, save_path)
+        print(f"✅ Image saved to {save_path}")
+        return True
+    except Exception as e:
+        print(f"❌ Image generation failed: {e}")
+        return False
 
-TARGET AUDIENCE: Marketing Managers, SaaS Founders, and Tech-savvy Marketers.
-LANGUAGE: Fluent, engaging American English.
-TONE: Professional, Authoritative, yet Accessible (E-E-A-T focused).
+# 4. Determine Filenames
+safe_slug = topic.lower().replace(" ", "-").replace(":", "").replace("/", "")
+date_str = datetime.now().strftime('%Y-%m-%d')
+post_filename = f"_posts/{date_str}-{safe_slug}.md"
+image_filename = f"images/{date_str}-{safe_slug}.jpg"
+image_public_path = f"/{image_filename}" # This goes into the frontmatter
+
+# Ensure directories exist
+os.makedirs("_posts", exist_ok=True)
+os.makedirs("images", exist_ok=True)
+
+# 5. Generate and Download Image FIRST
+download_image(topic, image_filename)
+
+# 6. Generate Text Content
+prompt = f"""
+Act as a World-Class SEO Copywriter.
+Write a blog post for Jeffrey Overmeer's blog about: '{topic}'.
+
+TARGET AUDIENCE: Marketing Managers & SaaS Founders.
+LANGUAGE: Fluent American English.
+TONE: Professional, Authoritative, yet Accessible.
 
 REQUIREMENTS:
-1.  **Structure**: Use Markdown. Include H2 (##) and H3 (###) headers.
-2.  **Key Takeaways**: Start the article (after the intro) with a bulleted list of 3-5 "Key Takeaways".
+1.  **Structure**: Markdown. H2 (##) and H3 (###).
+2.  **Key Takeaways**: Start with a bulleted list of 3-5 key insights.
 3.  **Visuals**: Include at least one Markdown comparison table.
-4.  **Snippet Optimization**: Include a "Frequently Asked Questions" (FAQ) section at the end (Great for Google Featured Snippets).
-5.  **Length**: Deep dive, high value (approx. 1000+ words).
+4.  **FAQ**: Add a "Frequently Asked Questions" section at the end.
+5.  **Length**: 1000+ words.
 
-IMPORTANT: The output MUST start with this exact Frontmatter block (YAML):
+IMPORTANT: Start with this EXACT Frontmatter:
 ---
 layout: post
-title: "[Create a click-worthy, SEO-optimized title for {topic}]"
+title: "[Create a click-worthy title for {topic}]"
 titleshort: "[Short title max 40 chars]"
 featured: 0
-date: {datetime.now().strftime('%Y-%m-%d')}
+date: {date_str}
 label: email, marketing, automation
-permalink: /generated-post-{datetime.now().strftime('%Y-%m-%d')}
+permalink: /generated-post-{date_str}
 tags: email, marketing, automation, ai, tech
 yearreview: false
 author: Jeffrey Overmeer
 published: true
-thumbnail: "/images/email-marketing-default.png"
-description: "[A compelling meta-description (max 160 chars) including the main keyword]"
+thumbnail: "{image_public_path}"
+description: "[Meta-description max 160 chars]"
 ---
 
-After the frontmatter, write the full blog post.
+After frontmatter, write the full post.
 """
 
-# 4. Smart Generator (Tries your best models first)
+# 7. AI Generation Loop
 models_to_try = [
-    "gemini-3-pro-preview",      # Top Tier
-    "gemini-2.0-flash-exp",      # Experimental High Quality
-    "gemini-2.5-flash",          # New Stable
-    "gemini-flash-latest",       # Fallback Stable
-    "gemini-1.5-flash"           # Old Fallback
+    "gemini-3-pro-preview",
+    "gemini-2.0-flash-exp",
+    "gemini-2.5-flash",
+    "gemini-flash-latest",
+    "gemini-1.5-flash"
 ]
 
 generated_content = None
 
-print(f"Starting generation for topic: {topic}")
+print(f"📝 Starting text generation for: {topic}")
 
 for model_name in models_to_try:
     print(f"Trying model: {model_name}...")
@@ -101,30 +132,22 @@ for model_name in models_to_try:
             contents=prompt
         )
         generated_content = response.text
-        print(f"✅ SUCCESS! Content generated using {model_name}")
+        print(f"✅ SUCCESS! Text generated using {model_name}")
         break 
     except Exception as e:
         print(f"❌ Failed with {model_name}: {e}")
         time.sleep(1)
 
-# 5. Save File
+# 8. Save Content
 if generated_content:
-    # Cleanup if AI adds text before frontmatter
     if "---" in generated_content:
         start_index = generated_content.find("---")
         generated_content = generated_content[start_index:]
 
-    # Create English slug
-    safe_slug = topic.lower().replace(" ", "-").replace(":", "").replace("/", "")
-    filename = f"_posts/{datetime.now().strftime('%Y-%m-%d')}-{safe_slug}.md"
-
-    os.makedirs("_posts", exist_ok=True)
-
-    with open(filename, "w", encoding="utf-8") as f:
+    with open(post_filename, "w", encoding="utf-8") as f:
         f.write(generated_content)
 
-    print(f"🎉 Blogpost saved: {filename}")
-
+    print(f"🎉 Blogpost saved: {post_filename}")
 else:
-    print("\n⚠️ All models failed. Check Quota or API Key.")
+    print("⚠️ All models failed.")
     exit(1)
