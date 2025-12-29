@@ -2,26 +2,26 @@ import os
 from google import genai
 from datetime import datetime
 
-# 1. Configureren met de NIEUWE SDK (2025 standaard)
-# We gebruiken nu 'genai.Client' in plaats van het oude 'genai.configure'
+# 1. Configureren
+# We gebruiken de nieuwe Client
 client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 
 # 2. SEO Strategie: Roulatie van onderwerpen
 topics = [
-    "Email Deliverability Best Practices 2026",
+    "Email Deliverability Best Practices",
     "Subject Line AI Generators vs Human Creativity",
-    "GDPR and Email Marketing: A 2026 Update",
+    "GDPR and Email Marketing Updates",
     "Segmenting Audiences for Higher Open Rates",
     "The Psychology of the Click-Through Rate",
     "Email Design Trends: Dark Mode & Interactivity",
     "Automated Welcome Flows: The Ultimate Guide",
     "Win-Back Campaigns: Re-engaging Dormant Users",
-    "Transactional vs Marketing Emails: The Differences",
+    "Transactional vs Marketing Emails",
     "Integrating CRM with Email Automation Tools",
     "A/B Testing Strategies for Newsletters",
     "Mobile-First Email Design Strategies",
     "Reducing Churn Rate via Email Automation",
-    "Cold Email Outreach: Does it still work?",
+    "Cold Email Outreach Strategies",
     "Email Marketing KPIs you should track",
     "Newsletter Monetization Strategies",
     "Omnichannel Marketing: Email + SMS",
@@ -29,12 +29,12 @@ topics = [
     "Hyper-personalization in Email Marketing",
     "B2B vs B2C Email Marketing Strategies",
     "The Impact of AI on Email Copywriting",
-    "Avoiding the Spam Folder: Technical Guide (SPF/DKIM)",
+    "Avoiding the Spam Folder (SPF/DKIM)",
     "Drip Campaigns for SaaS Onboarding",
     "Holiday Email Marketing Calendars",
     "User Generated Content in Emails",
     "Interactive AMP Emails explained",
-    "Video in Email Marketing: Pros and Cons",
+    "Video in Email Marketing",
     "Storytelling in Newsletters",
     "Lead Magnets that grow your Email List",
     "The Future of Email Marketing Automation"
@@ -77,11 +77,11 @@ Schrijf daarna de blogpost.
 - Eindig met een conclusie.
 """
 
-# 4. Content genereren (Nieuwe Syntax)
+# 4. Content genereren
 try:
-    # We gebruiken gemini-2.0-flash omdat 1.5 in 2025 vaak deprecated is
+    # We gebruiken gemini-1.5-flash, dat is de stabiele gratis versie
     response = client.models.generate_content(
-        model="gemini-2.0-flash", 
+        model="gemini-1.5-flash", 
         contents=prompt
     )
     
