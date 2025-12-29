@@ -2,7 +2,7 @@ name: Daily AI Content Generator
 on:
   schedule:
     - cron: '0 7 * * *' # Elke dag om 07:00 UTC
-  workflow_dispatch: # Zodat je hem ook nu direct kunt testen
+  workflow_dispatch: # Handmatige startknop
 
 jobs:
   write-and-publish:
@@ -17,10 +17,10 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.9'
+          python-version: '3.11'  # UPGRADE: Van 3.9 naar 3.11
 
       - name: Install dependencies
-        run: pip install google-generativeai
+        run: pip install google-genai # UPGRADE: De nieuwe Google SDK
 
       - name: Run AI Script
         env:
