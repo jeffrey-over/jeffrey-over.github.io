@@ -1,0 +1,36 @@
+name: Daily AI Content Generator
+on:
+  schedule:
+    - cron: '0 7 * * *' # Elke dag om 07:00 UTC
+  workflow_dispatch: # Zodat je hem ook nu direct kunt testen
+
+jobs:
+  write-and-publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: pip install google-generativeai
+
+      - name: Run AI Script
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python generate_post.py
+
+      - name: Commit and Push
+        run: |
+          git config --global user.name 'AI Content Bot'
+          git config --global user.email 'bot@jeffreyovermeer.com'
+          git add _posts/
+          git commit -m "Daily AI Content: New Post Generated" || echo "Geen wijzigingen"
+          git push
