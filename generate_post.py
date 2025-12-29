@@ -1,13 +1,12 @@
 import os
 import time
 from google import genai
-from google.genai import types
 from datetime import datetime
 
 # 1. Configureren
 client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 
-# 2. SEO Strategie: Onderwerpen
+# 2. Onderwerpen
 topics = [
     "Email Deliverability Best Practices 2026",
     "Subject Line AI Generators vs Human Creativity",
@@ -77,17 +76,16 @@ Schrijf daarna de blogpost.
 - Eindig met een conclusie.
 """
 
-# 4. De "Slimme" Generator (Probeert meerdere modellen)
+# 4. De "Slimme" Generator (Nu met Gemini 3 Pro bovenaan!)
 models_to_try = [
-    "gemini-1.5-flash",       # Standaard alias
-    "gemini-1.5-flash-001",   # Specifieke versie 1
-    "gemini-1.5-flash-002",   # Specifieke versie 2
-    "gemini-1.5-pro",         # Probeer Pro als Flash faalt
-    "gemini-2.0-flash-exp"    # Experimenteel (als laatste redmiddel)
+    "gemini-3-pro-preview",      # Jouw voorkeur (Het allerbeste model)
+    "gemini-2.0-flash-exp",      # Vaak gratis & super slim
+    "gemini-2.5-flash",          # Nieuwe stabiele versie
+    "gemini-flash-latest",       # Veilige fallback
+    "gemini-1.5-flash"           # Oude fallback
 ]
 
 generated_content = None
-used_model = None
 
 print(f"Start genereren voor onderwerp: {topic}")
 
@@ -99,16 +97,15 @@ for model_name in models_to_try:
             contents=prompt
         )
         generated_content = response.text
-        used_model = model_name
         print(f"✅ SUCCES! Content gegenereerd met {model_name}")
-        break # Stop de loop, we hebben beet!
+        break 
     except Exception as e:
         print(f"❌ Mislukt met {model_name}: {e}")
-        time.sleep(1) # Even wachten voor de volgende poging
+        # Geen pauze nodig bij 404, wel bij 429, dus korte sleep is veilig
+        time.sleep(1)
 
-# 5. Opslaan (of foutmelding printen als ALLES faalt)
+# 5. Opslaan
 if generated_content:
-    # Cleanup frontmatter indien nodig
     if "---" in generated_content:
         start_index = generated_content.find("---")
         generated_content = generated_content[start_index:]
@@ -124,14 +121,12 @@ if generated_content:
     print(f"🎉 Blogpost opgeslagen: {filename}")
 
 else:
-    print("\n⚠️ ALLE POGINGEN MISLUKT. DEBUG INFO:")
-    print("Beschikbare modellen voor deze API key:")
+    print("\n⚠️ Helaas, alle modellen faalden.")
+    # Print nogmaals de lijst om te debuggen als het misgaat
     try:
-        # Dit print alle modellen die JIJ mag gebruiken in de log
+        print("Beschikbare modellen voor jouw key:")
         for m in client.models.list():
             print(f"- {m.name}")
-    except Exception as list_err:
-        print(f"Kon modellenlijst niet ophalen: {list_err}")
-    
-    # Laat de action falen zodat je een mail krijgt
+    except:
+        pass
     exit(1)
