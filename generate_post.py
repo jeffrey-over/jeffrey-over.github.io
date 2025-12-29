@@ -2,8 +2,8 @@ import os
 from google import genai
 from datetime import datetime
 
-# 1. Configureren met de NIEUWE SDK
-# We gebruiken nu 'genai.Client'
+# 1. Configureren met de NIEUWE SDK (2025 standaard)
+# We gebruiken nu 'genai.Client' in plaats van het oude 'genai.configure'
 client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 
 # 2. SEO Strategie: Roulatie van onderwerpen
@@ -79,8 +79,9 @@ Schrijf daarna de blogpost.
 
 # 4. Content genereren (Nieuwe Syntax)
 try:
+    # We gebruiken gemini-2.0-flash omdat 1.5 in 2025 vaak deprecated is
     response = client.models.generate_content(
-        model="gemini-1.5-flash",
+        model="gemini-2.0-flash", 
         contents=prompt
     )
     
@@ -88,7 +89,6 @@ try:
     
     # Check of de output begint met --- (clean up indien nodig)
     if "---" in content:
-        # Zoek de eerste keer dat --- voorkomt (in case er tekst voor staat)
         start_index = content.find("---")
         content = content[start_index:]
 
