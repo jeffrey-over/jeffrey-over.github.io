@@ -1,15 +1,12 @@
 import os
-import google.generativeai as genai
+from google import genai
 from datetime import datetime
-import random
 
-# 1. Configureren
-api_key = os.environ["GEMINI_API_KEY"]
-genai.configure(api_key=api_key)
-model = genai.GenerativeModel("gemini-1.5-flash")
+# 1. Configureren met de NIEUWE SDK
+# We gebruiken nu 'genai.Client'
+client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 
-# 2. SEO Strategie: Roulatie van onderwerpen om Duplicate Content te voorkomen
-# Dit zorgt dat je elke dag een fris, uniek onderwerp hebt.
+# 2. SEO Strategie: Roulatie van onderwerpen
 topics = [
     "Email Deliverability Best Practices 2026",
     "Subject Line AI Generators vs Human Creativity",
@@ -43,19 +40,18 @@ topics = [
     "The Future of Email Marketing Automation"
 ]
 
-# Kies een onderwerp gebaseerd op de dag van het jaar (zodat het deterministisch is per dag)
+# Kies een onderwerp gebaseerd op de dag van het jaar
 day_of_year = datetime.now().timetuple().tm_yday
 topic = topics[day_of_year % len(topics)]
 
-# 3. De Prompt (Geoptimaliseerd voor jouw template & Google)
-# We vragen specifiek om jouw Frontmatter structuur.
+# 3. De Prompt
 prompt = f"""
 Je bent een Senior SEO Specialist en Content Marketer.
 Schrijf een technische, diepgaande blogpost voor Jeffrey Overmeer's blog over: '{topic}'.
 
 DOEL: Ranken in Google op long-tail keywords rondom dit topic.
 TOON: Professioneel, behulpzaam, expert-niveau.
-STRUCTUUR: Markdown. Gebruik H2 (##) en H3 (###). Gebruik minstens één tabel.
+STRUCTUUR: Markdown. Gebruik H2 (##) en H3 (###).
 
 BELANGRIJK: De output MOET beginnen met deze exacte Frontmatter block (YAML):
 ---
@@ -71,30 +67,32 @@ yearreview: false
 author: Jeffrey Overmeer
 published: true
 thumbnail: "/images/email-marketing-default.png"
-description: "[Een sterke meta-description van max 160 tekens die uitnodigt tot klikken]"
+description: "[Een sterke meta-description van max 160 tekens]"
 ---
 
 Schrijf daarna de blogpost. 
-- Begin met een sterke introductie die het probleem schetst.
+- Begin met een sterke introductie.
 - Gebruik tussenkopjes.
-- Verwerk een vergelijkingstabel (markdown table) in de tekst die relevant is voor het onderwerp.
+- Verwerk een vergelijkingstabel (markdown table) in de tekst.
 - Eindig met een conclusie.
 """
 
-# 4. Content genereren
+# 4. Content genereren (Nieuwe Syntax)
 try:
-    response = model.generate_content(prompt)
+    response = client.models.generate_content(
+        model="gemini-1.5-flash",
+        contents=prompt
+    )
+    
     content = response.text
     
-    # Check of de output begint met --- (soms kletst AI eromheen)
-    if not content.strip().startswith("---"):
-        # Als hij praatjes heeft, strip dan alles tot de eerste ---
+    # Check of de output begint met --- (clean up indien nodig)
+    if "---" in content:
+        # Zoek de eerste keer dat --- voorkomt (in case er tekst voor staat)
         start_index = content.find("---")
-        if start_index != -1:
-            content = content[start_index:]
+        content = content[start_index:]
 
     # 5. Opslaan
-    # Bestandsnaam formaat: YYYY-MM-DD-onderwerp-slug.md
     safe_slug = topic.lower().replace(" ", "-").replace(":", "").replace("/", "")
     filename = f"_posts/{datetime.now().strftime('%Y-%m-%d')}-{safe_slug}.md"
 
@@ -107,4 +105,4 @@ try:
 
 except Exception as e:
     print(f"Fout bij genereren: {e}")
-    exit(1) # Zorg dat GitHub Action faalt als het script faalt
+    exit(1)
