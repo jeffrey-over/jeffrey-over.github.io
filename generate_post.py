@@ -3,10 +3,10 @@ import time
 from google import genai
 from datetime import datetime
 
-# 1. Configureren
+# 1. Configuration
 client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 
-# 2. Onderwerpen
+# 2. SEO Strategy: Topic Rotation (English)
 topics = [
     "Email Deliverability Best Practices 2026",
     "Subject Line AI Generators vs Human Creativity",
@@ -40,23 +40,31 @@ topics = [
     "The Future of Email Marketing Automation"
 ]
 
+# Pick a topic based on the day of the year
 day_of_year = datetime.now().timetuple().tm_yday
 topic = topics[day_of_year % len(topics)]
 
-# 3. De Prompt
+# 3. The Ultimate SEO Prompt (English)
 prompt = f"""
-Je bent een Senior SEO Specialist en Content Marketer.
-Schrijf een technische, diepgaande blogpost voor Jeffrey Overmeer's blog over: '{topic}'.
+Act as a World-Class SEO Copywriter and Email Marketing Expert.
+Write a comprehensive, high-ranking blog post for Jeffrey Overmeer's blog about: '{topic}'.
 
-DOEL: Ranken in Google op long-tail keywords rondom dit topic.
-TOON: Professioneel, behulpzaam, expert-niveau.
-STRUCTUUR: Markdown. Gebruik H2 (##) en H3 (###).
+TARGET AUDIENCE: Marketing Managers, SaaS Founders, and Tech-savvy Marketers.
+LANGUAGE: Fluent, engaging American English.
+TONE: Professional, Authoritative, yet Accessible (E-E-A-T focused).
 
-BELANGRIJK: De output MOET beginnen met deze exacte Frontmatter block (YAML):
+REQUIREMENTS:
+1.  **Structure**: Use Markdown. Include H2 (##) and H3 (###) headers.
+2.  **Key Takeaways**: Start the article (after the intro) with a bulleted list of 3-5 "Key Takeaways".
+3.  **Visuals**: Include at least one Markdown comparison table.
+4.  **Snippet Optimization**: Include a "Frequently Asked Questions" (FAQ) section at the end (Great for Google Featured Snippets).
+5.  **Length**: Deep dive, high value (approx. 1000+ words).
+
+IMPORTANT: The output MUST start with this exact Frontmatter block (YAML):
 ---
 layout: post
-title: "[Bedenk een pakkende, SEO-titel voor {topic}]"
-titleshort: "[Korte versie van de titel max 40 tekens]"
+title: "[Create a click-worthy, SEO-optimized title for {topic}]"
+titleshort: "[Short title max 40 chars]"
 featured: 0
 date: {datetime.now().strftime('%Y-%m-%d')}
 label: email, marketing, automation
@@ -66,50 +74,47 @@ yearreview: false
 author: Jeffrey Overmeer
 published: true
 thumbnail: "/images/email-marketing-default.png"
-description: "[Een sterke meta-description van max 160 tekens]"
+description: "[A compelling meta-description (max 160 chars) including the main keyword]"
 ---
 
-Schrijf daarna de blogpost. 
-- Begin met een sterke introductie.
-- Gebruik tussenkopjes.
-- Verwerk een vergelijkingstabel (markdown table) in de tekst.
-- Eindig met een conclusie.
+After the frontmatter, write the full blog post.
 """
 
-# 4. De "Slimme" Generator (Nu met Gemini 3 Pro bovenaan!)
+# 4. Smart Generator (Tries your best models first)
 models_to_try = [
-    "gemini-3-pro-preview",      # Jouw voorkeur (Het allerbeste model)
-    "gemini-2.0-flash-exp",      # Vaak gratis & super slim
-    "gemini-2.5-flash",          # Nieuwe stabiele versie
-    "gemini-flash-latest",       # Veilige fallback
-    "gemini-1.5-flash"           # Oude fallback
+    "gemini-3-pro-preview",      # Top Tier
+    "gemini-2.0-flash-exp",      # Experimental High Quality
+    "gemini-2.5-flash",          # New Stable
+    "gemini-flash-latest",       # Fallback Stable
+    "gemini-1.5-flash"           # Old Fallback
 ]
 
 generated_content = None
 
-print(f"Start genereren voor onderwerp: {topic}")
+print(f"Starting generation for topic: {topic}")
 
 for model_name in models_to_try:
-    print(f"Proberen met model: {model_name}...")
+    print(f"Trying model: {model_name}...")
     try:
         response = client.models.generate_content(
             model=model_name,
             contents=prompt
         )
         generated_content = response.text
-        print(f"✅ SUCCES! Content gegenereerd met {model_name}")
+        print(f"✅ SUCCESS! Content generated using {model_name}")
         break 
     except Exception as e:
-        print(f"❌ Mislukt met {model_name}: {e}")
-        # Geen pauze nodig bij 404, wel bij 429, dus korte sleep is veilig
+        print(f"❌ Failed with {model_name}: {e}")
         time.sleep(1)
 
-# 5. Opslaan
+# 5. Save File
 if generated_content:
+    # Cleanup if AI adds text before frontmatter
     if "---" in generated_content:
         start_index = generated_content.find("---")
         generated_content = generated_content[start_index:]
 
+    # Create English slug
     safe_slug = topic.lower().replace(" ", "-").replace(":", "").replace("/", "")
     filename = f"_posts/{datetime.now().strftime('%Y-%m-%d')}-{safe_slug}.md"
 
@@ -118,15 +123,8 @@ if generated_content:
     with open(filename, "w", encoding="utf-8") as f:
         f.write(generated_content)
 
-    print(f"🎉 Blogpost opgeslagen: {filename}")
+    print(f"🎉 Blogpost saved: {filename}")
 
 else:
-    print("\n⚠️ Helaas, alle modellen faalden.")
-    # Print nogmaals de lijst om te debuggen als het misgaat
-    try:
-        print("Beschikbare modellen voor jouw key:")
-        for m in client.models.list():
-            print(f"- {m.name}")
-    except:
-        pass
+    print("\n⚠️ All models failed. Check Quota or API Key.")
     exit(1)
