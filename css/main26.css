@@ -154,7 +154,7 @@ nav {
    ========================================= */
 .cards {
     display: grid;
-    /* Minimaal 280px zorgt dat er sneller 2 naast elkaar passen */
+
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 30px;
     margin: 40px auto;
