@@ -339,3 +339,58 @@ footer {
     #menu li { font-size: 1.2rem; font-weight: 600; }
     #menuToggle input:checked ~ ul { transform: none; }
 }
+
+
+/* =========================================
+   POST TAGS & FOOTER STYLING
+   ========================================= */
+
+/* De container onderaan de post */
+.post-footer {
+    margin-top: 60px;
+    padding-top: 30px;
+    border-top: 1px solid var(--color-border);
+}
+
+.tags-container {
+    display: flex;
+    flex-wrap: wrap; /* Zorgt dat tags naar volgende regel gaan als ze niet passen */
+    gap: 10px;
+    align-items: center;
+}
+
+/* De "Pill" stijl (Lijkt op je toggle buttons) */
+.tag-pill {
+    background: #f0f2f5;       /* Zelfde lichtgrijs als je buttons */
+    color: var(--color-text-light);
+    padding: 6px 16px;
+    border-radius: 50px;       /* Volledig ronde hoeken */
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.2s;
+    cursor: default;
+    display: inline-block;
+}
+
+/* Hover effect voor tags */
+.tag-pill:hover {
+    background: var(--color-primary);
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Extra witruimte rondom comments */
+.comments-section h3 {
+    margin-bottom: 20px;
+}
+
+/* Code blokken in artikelen ook mooi maken */
+.post-content pre {
+    background: #f6f8fa;
+    border-radius: 12px;
+    padding: 20px;
+    overflow-x: auto;
+    border: 1px solid rgba(0,0,0,0.05);
+    margin: 30px 0;
+}
