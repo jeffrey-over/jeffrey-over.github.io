@@ -2,27 +2,32 @@
    1. CONFIGURATIE & VARIABELEN
    ========================================= */
 :root {
+    /* FONTS */
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     --font-serif: 'Source Serif 4', Georgia, serif;
     
-    --color-bg: #fdfdfd;           
-    --color-text: #1d1d1f;         
-    --color-text-light: #515154;   
-    --color-primary: #0067c2;      
-    --color-card-bg: #ffffff;
-    --color-border: rgba(0,0,0,0.08);
+    /* KLEUREN */
+    --color-bg: #fdfdfd;           /* Pagina achtergrond */
+    --color-text: #1d1d1f;         /* Hoofdtekst (Apple Black) */
+    --color-text-light: #515154;   /* Secundaire tekst */
+    --color-primary: #0067c2;      /* Brand Blue */
+    --color-card-bg: #ffffff;      /* Kaart achtergrond */
+    --color-border: rgba(0,0,0,0.08); /* Subtiele lijntjes */
 
-    --width-wide: 1100px;
-    --width-reading: 740px;
+    /* AFMETINGEN */
+    --width-wide: 1100px;          /* Voor Menu & Grids */
+    --width-reading: 740px;        /* Voor Artikelen & Intro */
     --nav-height: 70px;
-    --spacing: 24px;
-    --radius: 12px;
+    --spacing: 24px;               /* Standaard padding */
+    --radius: 12px;                /* Afronding hoeken */
 }
 
 /* =========================================
-   2. RESET
+   2. RESET (Cruciaal voor layout)
    ========================================= */
-*, *:before, *:after { box-sizing: border-box; }
+*, *:before, *:after {
+    box-sizing: border-box; 
+}
 
 body {
     background-color: var(--color-bg);
@@ -30,20 +35,23 @@ body {
     font-size: 17px;          
     line-height: 1.6;         
     color: var(--color-text);
-    margin: 0; padding: 0;
+    margin: 0;
+    padding: 0;
     -webkit-font-smoothing: antialiased;
 }
 
 img { max-width: 100%; height: auto; display: block; }
+
 a { color: var(--color-primary); text-decoration: none; transition: 0.2s; }
 a:hover { color: #004585; }
 
-/* Bolletjes weghalen bij alle lijsten */
+/* Verwijder standaard lijst-bolletjes */
 ul, ol { list-style: none; padding: 0; margin: 0; }
 
 /* =========================================
    3. LAYOUT CONTAINERS
    ========================================= */
+/* BREED: Voor Navigatie, Footer en Kaartjes */
 .container, nav, .footer-inner {
     max-width: var(--width-wide);
     margin: 0 auto;
@@ -51,6 +59,7 @@ ul, ol { list-style: none; padding: 0; margin: 0; }
     width: 100%;
 }
 
+/* SMAL: Voor Intro, Artikelen en Tekst */
 .container-narrow, article, .post, .intro, .aboutme {
     max-width: var(--width-reading);
     margin: 0 auto;
@@ -59,7 +68,7 @@ ul, ol { list-style: none; padding: 0; margin: 0; }
 }
 
 /* =========================================
-   4. NAVIGATIE
+   4. NAVIGATIE (Gecentreerd & Sticky)
    ========================================= */
 #navigation {
     position: fixed;
@@ -69,45 +78,66 @@ ul, ol { list-style: none; padding: 0; margin: 0; }
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--color-border);
     z-index: 999;
-    display: flex; justify-content: center; align-items: center;
+    
+    /* Centreer de container */
+    display: flex;
+    justify-content: center; 
+    align-items: center;
 }
 
 nav {
-    display: flex; justify-content: center; align-items: center;
+    display: flex;
+    justify-content: center; /* Items in het midden */
+    align-items: center;
     position: relative;
 }
 
-/* Desktop Menu Styles */
+/* Desktop Menu */
 .menu {
-    display: flex; gap: 32px; align-items: center;
+    display: flex;
+    gap: 32px;
+    align-items: center;
 }
 
 .menu a {
-    color: var(--color-text); font-size: 15px; font-weight: 500;
+    color: var(--color-text);
+    font-size: 15px;
+    font-weight: 500;
 }
-.menu a:hover, .menu a.active { color: var(--color-primary); }
+.menu a:hover, .menu a.active {
+    color: var(--color-primary);
+}
 
+/* Hamburger verbergen op desktop */
 #menuToggle { display: none; }
 
 /* =========================================
    5. HERO & INTRO
    ========================================= */
 .intro {
-    padding-top: 140px; padding-bottom: 60px; text-align: center;
+    padding-top: 140px; 
+    padding-bottom: 60px;
+    text-align: center;
 }
 
 .intro h1 {
-    font-family: var(--font-serif); font-size: 3rem; font-weight: 700;
-    margin-bottom: 1.5rem; letter-spacing: -1px; line-height: 1.1;
+    font-family: var(--font-serif);
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    letter-spacing: -1px;
+    line-height: 1.1;
 }
 
+/* Blauwe Knop Styling */
 .btn-primary { 
     display: inline-block; 
     background: var(--color-primary); 
     color: #fff !important; 
     padding: 14px 28px; 
     border-radius: 50px; 
-    font-weight: 600; font-size: 1rem;
+    font-weight: 600; 
+    font-size: 1rem;
     transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
     box-shadow: 0 4px 10px rgba(0, 103, 194, 0.3);
     cursor: pointer;
@@ -115,15 +145,17 @@ nav {
 
 .btn-primary:hover {
     transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 103, 194, 0.4);
     background: #0056a3; 
 }
 
 /* =========================================
-   6. CARDS (FIXED: Full Bleed Images)
+   6. GRID CARDS (De basis)
    ========================================= */
 .cards {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    /* Minimaal 280px zorgt dat er sneller 2 naast elkaar passen */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 30px;
     margin: 40px auto;
     padding-bottom: 40px;
@@ -136,8 +168,9 @@ nav {
     overflow: hidden;
     display: flex; 
     flex-direction: column;
-    padding: 0; /* BELANGRIJK: Geen padding op de kaart zelf */
+    padding: 0;
     transition: transform 0.2s, box-shadow 0.2s;
+    position: relative; /* Nodig voor stretched-link */
 }
 
 .card:hover {
@@ -145,34 +178,25 @@ nav {
     box-shadow: 0 12px 24px rgba(0,0,0,0.08);
 }
 
+/* Afbeelding vult breedte */
 .card__image-container {
-    height: 200px; /* Iets hoger voor betere zichtbaarheid */
+    height: 180px; 
     width: 100%; 
-    overflow: hidden; 
+    overflow: hidden;
     background-color: #f0f0f0;
-    margin: 0; 
-    padding: 0;
 }
-
-/* Zorg dat de afbeelding de container volledig vult */
 .card__image-container img { 
-    width: 100%; 
-    height: 100%; 
-    object-fit: cover; 
-    display: block; 
-    margin: 0;
-    border-radius: 0; /* Geen ronde hoeken binnenin de kaart */
+    width: 100%; height: 100%; object-fit: cover; 
 }
 
+/* Inhoud kaart */
 .card__content { 
     padding: 24px; 
-    display: flex; 
-    flex-direction: column; 
-    flex: 1; 
+    display: flex; flex-direction: column; flex: 1; 
 }
 
 .card__title {
-    font-size: 1.2rem; 
+    font-size: 1.15rem; 
     margin: 0 0 10px 0; 
     font-family: var(--font-serif);
     line-height: 1.3;
@@ -180,10 +204,84 @@ nav {
 .card__title a { color: var(--color-text); font-weight: 700; }
 .card__title a:hover { color: var(--color-primary); }
 
-.card__info { margin-top: auto; font-size: 0.85rem; color: var(--color-text-light); }
+.card__info {
+    margin-top: auto; font-size: 0.85rem; color: var(--color-text-light);
+}
+
+/* KLIKBAAR MAKEN VAN DE HELE KAART */
+/* Dit legt een onzichtbare laag over de kaart die linkt naar de <a> in de titel */
+.stretched-link::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 1;
+}
 
 /* =========================================
-   7. FOOTER & ARTIKELEN
+   7. BLOG VIEW TOGGLE & LIST VIEW
+   ========================================= */
+
+/* Toggle Knoppen */
+.view-toggle {
+    display: flex; gap: 8px; background: #f0f2f5; padding: 4px; border-radius: 8px;
+}
+.view-btn {
+    border: none; background: transparent; padding: 8px; border-radius: 6px;
+    cursor: pointer; color: #666; display: flex; align-items: center; justify-content: center;
+}
+.view-btn:hover { background: rgba(0,0,0,0.05); color: #000; }
+.view-btn.active { background: #fff; color: var(--color-primary); box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+
+/* LIST VIEW TRANSFORMATIE */
+.cards.list-view {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.cards.list-view .card {
+    flex-direction: row; /* Plaatje links, tekst rechts */
+    align-items: center;
+    min-height: 140px;
+    transform: none; /* Geen jump effect */
+}
+.cards.list-view .card:hover {
+    transform: none;
+    background-color: #fafafa;
+}
+
+.cards.list-view .card__image-container {
+    width: 220px; /* Vaste breedte plaatje */
+    height: 100%;
+    min-height: 140px;
+    flex-shrink: 0;
+}
+
+.cards.list-view .card__content {
+    justify-content: center;
+    padding: 10px 30px;
+}
+.cards.list-view .card__title { font-size: 1.3rem; margin-bottom: 10px; }
+
+/* Mobiele fallback voor List View */
+@media (max-width: 650px) {
+    .cards.list-view .card { flex-direction: column; }
+    .cards.list-view .card__image-container { width: 100%; height: 180px; }
+}
+
+/* =========================================
+   8. ARTIKELEN (Blog Posts)
+   ========================================= */
+.post-header { text-align: center; margin: 40px 0; }
+.post-title { font-size: 2.5rem; font-family: var(--font-serif); margin-bottom: 20px; }
+.post-intro { 
+    font-size: 1.25rem; color: #444; border-left: 4px solid var(--color-primary); 
+    padding-left: 20px; margin-bottom: 40px; 
+}
+.post-content h2 { margin-top: 2.5rem; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+
+/* =========================================
+   9. FOOTER
    ========================================= */
 footer {
     border-top: 1px solid var(--color-border);
@@ -194,31 +292,23 @@ footer {
 .footer-socials img { width: 24px; opacity: 0.6; transition: 0.2s; }
 .footer-socials img:hover { opacity: 1; }
 
-.post-header { text-align: center; margin: 40px 0; }
-.post-title { font-size: 2.5rem; font-family: var(--font-serif); margin-bottom: 20px; }
-.post-intro { 
-    font-size: 1.25rem; color: #444; border-left: 4px solid var(--color-primary); 
-    padding-left: 20px; margin-bottom: 40px; 
-}
-
 /* =========================================
-   8. MOBIEL MENU FIX
+   10. MOBIEL MENU (OVERLAY)
    ========================================= */
 @media (max-width: 800px) {
-    /* 1. LAYOUT RESET */
+    /* Layout aanpassingen */
     nav { justify-content: space-between; }
     
-    /* 2. DESKTOP MENU VERBERGEN (Cruciaal!) */
+    /* VERBERG DESKTOP MENU */
     .hidemobile, 
     #navigation .menu { 
         display: none !important; 
     }
     
     .intro h1 { font-size: 2rem; }
-    .cards { grid-template-columns: 1fr; }
     .footer-inner { flex-direction: column; gap: 20px; text-align: center; }
 
-    /* 3. HAMBURGER ZICHTBAAR MAKEN */
+    /* HAMBURGER */
     #menuToggle { display: block; position: relative; z-index: 101; }
     
     #menuToggle input {
@@ -230,28 +320,22 @@ footer {
         position: relative; background: #1d1d1f; border-radius: 3px; z-index: 1;
         transition: transform 0.4s, opacity 0.4s;
     }
+
+    /* Kruisje Animatie */
     #menuToggle input:checked ~ span:nth-last-child(3) { opacity: 0; transform: scale(0.2); }
     #menuToggle input:checked ~ span:nth-last-child(2) { transform: rotate(-45deg) translate(0, -1px); }
     #menuToggle input:checked ~ span { transform: rotate(45deg) translate(-2px, -1px); }
 
-    /* 4. FULLSCREEN OVERLAY MENU */
+    /* MENU OVERLAY */
     #menu {
         position: fixed; width: 100vw; height: 100vh;
         margin: 0; padding: 120px 0 0 0;
         top: 0; left: 0; background: rgba(255,255,255,0.98);
-        
-        /* Reset list styles voor mobiel menu */
-        list-style-type: none; 
-        text-align: center;
-        
+        list-style-type: none; text-align: center;
         transform: translate(-100%, 0);
         transition: transform 0.4s cubic-bezier(0.77,0.2,0.05,1.0);
         display: flex; flex-direction: column; gap: 20px;
-        
-        /* Zorg dat dit menu wél zichtbaar is als het open is */
-        display: flex !important; 
     }
-    
     #menu li { font-size: 1.2rem; font-weight: 600; }
     #menuToggle input:checked ~ ul { transform: none; }
 }
