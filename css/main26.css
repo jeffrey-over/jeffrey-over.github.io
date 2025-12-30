@@ -368,41 +368,68 @@ footer {
 }
 
 /* Meta data (Avatar + Naam) */
+/* =========================================
+   PROFESSIONAL AUTHOR META
+   ========================================= */
+
 .post-meta {
-    display: flex;
-    align-items: center;
+    display: inline-flex; /* Zorgt dat het blok zo breed is als de inhoud */
+    align-items: center;  /* Verticaal centreren */
     justify-content: center;
-    gap: 16px;
-    text-align: left;
+    gap: 16px;            /* Ruimte tussen foto en tekst */
+    margin-top: 32px;
+    padding: 10px 20px;   /* Optioneel: kaderruimte */
+    
+    /* Optioneel: Een heel lichte achtergrond om het samen te binden */
+    /* background: #f8f9fa; */
+    /* border-radius: 50px; */
+}
+
+/* DE FOTO: Perfect rond en scherp */
+.author-avatar-container {
+    position: relative;
+    width: 54px;
+    height: 54px;
+    flex-shrink: 0; /* Voorkomt dat foto wordt ingedrukt */
 }
 
 .author-avatar {
-    width: 56px; /* Iets groter */
-    height: 56px;
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid #fff; /* Witte rand voor 'diepte' */
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    object-fit: cover; /* BELANGRIJK: Snijdt foto bij zonder vervorming */
+    border: 2px solid #fff; /* Witte rand voor contrast */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Subtiele schaduw */
+    display: block;
 }
 
+/* DE TEKST: Strak onder elkaar */
 .meta-info {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    text-align: left; /* Tekst zelf lijnt links uit tegen de foto aan */
+    line-height: 1.3;
 }
 
 .author-name {
     font-size: 1rem;
     font-weight: 700;
-    color: #000;
-    line-height: 1.2;
+    color: #111;
+    letter-spacing: -0.3px;
 }
 
 .meta-details {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: var(--color-text-light);
-    margin-top: 2px;
+    font-weight: 500;
 }
+
+.meta-details .separator {
+    margin: 0 4px;
+    font-weight: bold;
+}
+
+
 
 /* Introductie tekst (Lead) */
 .post-intro {
