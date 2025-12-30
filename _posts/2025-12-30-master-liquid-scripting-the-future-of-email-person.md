@@ -4,7 +4,7 @@ title: "Master Liquid Scripting The Future of Email Personalization"
 titleshort: "Master Liquid Scripting The Fu..."
 date: 2025-12-30
 label: development
-permalink: /generated-post-2025-12-30-715
+permalink: /master-liquid-scripting
 tags: email, automation, tech, seo
 yearreview: false
 author: Jeffrey Overmeer
