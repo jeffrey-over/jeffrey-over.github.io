@@ -14,27 +14,29 @@ layout: default
 
     <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
 
-    <div class="post-meta" style="margin-top: 32px;">
-      <img src="/images/ik.png" alt="Jeffrey Overmeer" class="author-avatar">
+   <div class="post-meta">
+  <div class="author-avatar-container">
+    <img src="/images/ik.png" alt="Jeffrey Overmeer" class="author-avatar">
+  </div>
+  
+  <div class="meta-info">
+    <span class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <span itemprop="name">{% if page.author %}{{ page.author }}{% else %}Jeffrey Overmeer{% endif %}</span>
+    </span>
+    
+    <div class="meta-details">
+      <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+        {{ page.date | date: "%b %d, %Y" }}
+      </time>
+      <span class="separator">&middot;</span>
       
-      <div class="meta-info">
-        <span class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <span itemprop="name">{% if page.author %}{{ page.author }}{% else %}Jeffrey Overmeer{% endif %}</span>
-        </span>
-        
-        <div class="meta-details">
-          <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-            {{ page.date | date: "%b %d, %Y" }}
-          </time>
-          <span class="separator">•</span>
-          
-          {% capture readtime %}{{ content | number_of_words | plus:91 | divided_by:180.0 | append:'.' | split:'.' | first }}{% endcapture %}
-          <span class="read-time">
-            {% if readtime == '0' %} < 1 min read{% else %}{{ readtime }} min read{% endif %}
-          </span>
-        </div>
-      </div>
+      {% capture readtime %}{{ content | number_of_words | plus:91 | divided_by:180.0 | append:'.' | split:'.' | first }}{% endcapture %}
+      <span class="read-time">
+        {% if readtime == '0' %} < 1 min read{% else %}{{ readtime }} min read{% endif %}
+      </span>
     </div>
+  </div>
+</div>
 
   </header>
 
