@@ -3,7 +3,7 @@ layout: page
 link: blog
 ---
 
-<div class="container" style="margin-top: 40px;">
+<div class="container" style="margin-top: 100px; margin-bottom: 60px;">
 
     <div class="blog-header" style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; flex-wrap: wrap; gap: 20px;">
         <div>
@@ -12,7 +12,7 @@ link: blog
         </div>
 
         <div class="view-toggle">
-            <button id="card-view-btn" class="view-btn active" aria-label="Card View">
+            <button id="card-view-btn" class="view-btn active" aria-label="Card View" title="Card View">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <rect x="3" y="3" width="7" height="7"></rect>
                     <rect x="14" y="3" width="7" height="7"></rect>
@@ -20,7 +20,7 @@ link: blog
                     <rect x="3" y="14" width="7" height="7"></rect>
                 </svg>
             </button>
-            <button id="list-view-btn" class="view-btn" aria-label="List View">
+            <button id="list-view-btn" class="view-btn" aria-label="List View" title="List View">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <line x1="8" y1="6" x2="21" y2="6"></line>
                     <line x1="8" y1="12" x2="21" y2="12"></line>
@@ -44,7 +44,7 @@ link: blog
 
             <div class="card__content">
                 <h2 class="card__title">
-                    <a href="{{ post.url | prepend: site.baseurl }}" class="card__link">
+                    <a href="{{ post.url | prepend: site.baseurl }}" class="stretched-link">
                         {% if post.titleshort %}{{ post.titleshort }}{% else %}{{ post.title }}{% endif %}
                     </a>
                 </h2>
@@ -76,14 +76,23 @@ document.addEventListener('DOMContentLoaded', function() {
             container.classList.add('list-view');
             listViewBtn.classList.add('active');
             cardViewBtn.classList.remove('active');
+            // Opslaan in local storage zodat de browser het onthoudt
+            localStorage.setItem('blogView', 'list');
         } else {
             container.classList.remove('list-view');
             cardViewBtn.classList.add('active');
             listViewBtn.classList.remove('active');
+            localStorage.setItem('blogView', 'card');
         }
     }
 
     cardViewBtn.addEventListener('click', () => setView('card'));
     listViewBtn.addEventListener('click', () => setView('list'));
+
+    // Check of er een voorkeur was opgeslagen
+    const savedView = localStorage.getItem('blogView');
+    if (savedView === 'list') {
+        setView('list');
+    }
 });
 </script>
