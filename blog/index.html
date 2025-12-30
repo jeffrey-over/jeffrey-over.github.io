@@ -45,7 +45,7 @@ link: blog
             <div class="card__content">
                 <h2 class="card__title">
                     <a href="{{ post.url | prepend: site.baseurl }}" class="stretched-link">
-                        {% if post.titleshort %}{{ post.titleshort }}{% else %}{{ post.title }}{% endif %}
+                        {{ post.title }}
                     </a>
                 </h2>
                 
