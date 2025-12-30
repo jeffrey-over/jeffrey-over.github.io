@@ -3,209 +3,87 @@ layout: page
 link: blog
 ---
 
+<div class="container" style="margin-top: 40px;">
 
-				  
-				
-			
-				
+    <div class="blog-header" style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; flex-wrap: wrap; gap: 20px;">
+        <div>
+            <h3>Knowledge Hub</h3>
+            <p style="color: #666; margin: 0;">In-depth guides, tutorials, and articles.</p>
+        </div>
 
+        <div class="view-toggle">
+            <button id="card-view-btn" class="view-btn active" aria-label="Card View">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="14" width="7" height="7"></rect>
+                    <rect x="3" y="14" width="7" height="7"></rect>
+                </svg>
+            </button>
+            <button id="list-view-btn" class="view-btn" aria-label="List View">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="8" y1="6" x2="21" y2="6"></line>
+                    <line x1="8" y1="12" x2="21" y2="12"></line>
+                    <line x1="8" y1="18" x2="21" y2="18"></line>
+                    <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                    <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                    <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+    </div>
 
+    <section id="cards" class="cards">
+        {% for post in site.posts %}
+        {% if post.published == true %}
+        
+        <article class="card">
+            <div class="card__image-container">
+                <img src="{{ post.thumbnail }}" alt="{{ post.title }}" loading="lazy" />
+            </div>
 
-<h3>Knowledge Hub</h3>
-<p>Find in-depth guides, tutorials, and articles on email marketing automation.</p>
+            <div class="card__content">
+                <h2 class="card__title">
+                    <a href="{{ post.url | prepend: site.baseurl }}" class="card__link">
+                        {% if post.titleshort %}{{ post.titleshort }}{% else %}{{ post.title }}{% endif %}
+                    </a>
+                </h2>
+                
+                <div class="card__info">
+                    <p class="card__price">
+                        {{ post.date | date: "%b %d, %Y" }} • 
+                        {% capture readtime %}{{ post.content | number_of_words | plus:91 | divided_by:180.0 | append:'.' | split:'.' | first }}{% endcapture %}
+                        {% if readtime == '0' %} < 1{% else %} {{ readtime }}{% endif %} min read
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        {% endif %}
+        {% endfor %}
+    </section>
 
-<div class="view-toggle">
-    <button id="card-view-btn" style="    border-radius: 8px;
-    border: 0;
-    padding: 8px 16px;
-    margin: 0 10px 0 0;
-    font-size: 14px;cursor: pointer;">Card View</button>
-    <button id="list-view-btn" style="    border-radius: 8px;
-    border: 0;
-    padding: 8px 16px;
-    margin: 0 10px 0 0;
-    font-size: 14px;cursor: pointer;">List View</button>
 </div>
 
-
-
-<section id="cards" class="cards">
-
-
-	{% for post in site.posts %}
-	{% if post.published == true %}
-	
-		<div class="card">
-			<div class="card__image-container">
-			  <img
-				src=" {{ post.thumbnail }}"
-			  />
-				</div>
-			<div class="card__content">
-			  <p class="card__title text--medium">
-				<a href="{{ post.url | prepend: site.baseurl }}" alt="{{ post.title }}">{% if post.titleshort %}{{ post.titleshort }}{% else %}{{ post.title }}{% endif %}</a>
-			  </p>
-			  <div class="card__info">
-	   
-				<p class="card__price"> 
-					{% assign m = post.date | date: "%-m" %}
-				   
-					{% case m %}
-					{% when '1' %}Jan
-					{% when '2' %}Feb
-					{% when '3' %}Mar
-					{% when '4' %}Apr
-					{% when '5' %}May
-					{% when '6' %}Jun
-					{% when '7' %}Jul
-					{% when '8' %}Aug
-					{% when '9' %}Sept
-					{% when '10' %}Oct
-					{% when '11' %}Nov
-					{% when '12' %}Dec
-					{% endcase %}
-					{{ post.date | date: "%-d" }}, 
-					{{ post.date | date: "%Y" }} • 
-					{% capture readtime %}{{ post.content | number_of_words | plus:91 | divided_by:180.0 | append:'.' | split:'.' | first }}{% endcapture %}
-					{% if readtime == '0' %} &lt; 1{% else %} {{ readtime }}{% endif %} minute(s) reading time</p>
-			
-			  </div>
-			  
-			</div>
-		  </div>
-		 <!-- <span class="icon">{{ post.label }}</span>-->
-		 
-	   
-	   {% endif %}
-	   {% endfor %}
-	
-  
-  
-  </section>
- <script>
-
+<script>
 document.addEventListener('DOMContentLoaded', function() {
     const cardViewBtn = document.getElementById('card-view-btn');
     const listViewBtn = document.getElementById('list-view-btn');
-    const articlesContainer = document.getElementById('cards');
+    const container = document.getElementById('cards');
 
-    cardViewBtn.addEventListener('click', function() {
-        articlesContainer.classList.add('card-view');
-        articlesContainer.classList.remove('list-view');
-    });
+    function setView(view) {
+        if (view === 'list') {
+            container.classList.add('list-view');
+            listViewBtn.classList.add('active');
+            cardViewBtn.classList.remove('active');
+        } else {
+            container.classList.remove('list-view');
+            cardViewBtn.classList.add('active');
+            listViewBtn.classList.remove('active');
+        }
+    }
 
-    listViewBtn.addEventListener('click', function() {
-        articlesContainer.classList.add('list-view');
-        articlesContainer.classList.remove('card-view');
-    });
+    cardViewBtn.addEventListener('click', () => setView('card'));
+    listViewBtn.addEventListener('click', () => setView('list'));
 });
-
- </script>
-				
-				
-<!--
-					{% for post in site.posts  %}
-					{% capture this_year %}{{ post.date | date: "%Y" }}{% endcapture %}
-					{% capture next_year %}{{ post.previous.date | date: "%Y" }}{% endcapture %}
-	
-					{% if forloop.first %}
-					<h3 id="{{ this_year }}-ref" style="">{{this_year}}</h3>
-					
-					{% endif %}
-	
-	
-					<div class="flex" >
-						
-							{% assign months = "January|February|March|April|May|June|July|August|September|October|November|December" | split: "|" %}
-							{% assign m = post.date | date: "%-m" | minus: 1 %}
-							{% assign day = post.date | date: "%-d" %}
-							{% assign month = months[m] %}
-							{% assign year = post.date | date: "%Y" %}
-							<span class="date">{{ month }} {{ day }}</span>
-							
-						  <div class="" ">						  
-							<a href="{{ post.url }}">{{ post.title }}</a>
-						  </div> 
-						
-					 
-					  </div>
-					
-					{% if forloop.last %}
-					
-					{% else %}
-						{% if this_year != next_year %}
-						
-						<h3 id="{{ next_year }}-ref">{{next_year}}</h3>
-						
-						{% endif %}
-					{% endif %}
-				{% endfor %}
-
-
-					-->
-
-
-
-
-			
-	
-				<!--
-
-
-
-
-
-<ul>
-	{% for post in site.posts %}
-			
-
-	<li><a href="{{ post.url | prepend: site.baseurl }}" alt="{{ post.title }}">{{ post.title }}</a></li>
-		
-		{% endfor %}
-</ul>
-
-
-				<p class="is-subtitle">Hopelijk helpt het je verder op weg!</p>
-			
-				
-				{% for post in site.posts  %}
-				{% capture this_year %}{{ post.date | date: "%Y" }}{% endcapture %}
-				{% capture next_year %}{{ post.previous.date | date: "%Y" }}{% endcapture %}
-
-				{% if forloop.first %}
-				<h2 id="{{ this_year }}-ref" style="">{{this_year}}</h2>
-				
-				{% endif %}
-
-
-				<div class="columns os-projects" style="padding-bottom:0px;border-bottom: 0px solid #efefef;margin-bottom: 10px;">
-					<div class="one-third column" style="width:150px; padding:0;">
-						{% assign months = "januari|februari|maart|april|mei|juni|juli|augustus|september|oktober|november|december" | split: "|" %}
-						{% assign m = post.date | date: "%-m" | minus: 1 %}
-						{% assign day = post.date | date: "%-d" %}
-						{% assign month = months[m] %}
-						{% assign year = post.date | date: "%Y" %}
-						<span class="date">{{ day }} {{ month }} {{ year }}</span>
-						
-						
-					  </div> 
-					  <div class="two-thirds column wrapper" style="padding:0;margin-left:20px;">
-					  
-						<a href="{{ post.url }}">{{ post.title }}</a>
-					  </div> 
-					
-				 
-				  </div>
-				
-				{% if forloop.last %}
-				
-				{% else %}
-					{% if this_year != next_year %}
-					
-					<h2 id="{{ next_year }}-ref">{{next_year}}</h2>
-					
-					{% endif %}
-				{% endif %}
-			{% endfor %}
-			
-				-->
+</script>
