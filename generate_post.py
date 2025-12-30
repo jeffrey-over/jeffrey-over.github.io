@@ -9,57 +9,72 @@ from datetime import datetime
 # 1. Configureren
 client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 
-# 2. Thema's (Oneindige inspiratie)
-themes = [
-    "Advanced HTML CSS techniques for Email Developers",
-    "Technical Email Deliverability Protocols",
-    "SQL Data Scripting for Marketing Automation",
-    "API Integrations Webhooks in Email Marketing",
-    "Future Trends in Email Technology",
-    "Strategic Email Marketing for SaaS",
-    "Customer Data Platforms CDP Segmentation",
-    "Dark Mode Accessibility in Email Coding"
+# 2. SEO Strategie: Search Intent Structures
+# We dwingen de AI om titels te maken waar mensen ÉCHT op zoeken.
+seo_structures = [
+    "Comparison: {tech} vs {tech} for Enterprise",
+    "How to fix {tech} issues in 2026",
+    "The Ultimate Guide to {tech} for Developers",
+    "Top 5 Mistakes Developers make with {tech}",
+    "Advanced {tech} Tutorial: Step-by-Step",
+    "Why {tech} is the future of Email Marketing",
+    "Implementing {tech}: A Technical Walkthrough"
 ]
 
-todays_theme = random.choice(themes)
+# De Tech Stack waar jij expert in bent (waar de AI uit mag grabbelen)
+tech_keywords = [
+    "Selligent Marketing Cloud", "Deployteq", "Salesforce Marketing Cloud",
+    "Liquid Scripting", "AMP for Email", "Dark Mode Email Coding",
+    "BIMI and DMARC", "Email SQL Queries", "JSON-LD in Email",
+    "CSS Grid for Email", "Outlook Rendering", "Email API Webhooks",
+    "Server-side Javascript (SSJS)", "mjml framework", "Litmus testing"
+]
 
-# Functie: Onderwerp Bedenken (STRENG!)
+# We combineren een structuur met een tech-onderwerp
+chosen_structure = random.choice(seo_structures)
+chosen_tech = random.choice(tech_keywords)
+# Als de structuur 2x {tech} nodig heeft (voor vergelijkingen), pakken we er nog een bij
+if "{tech} vs {tech}" in chosen_structure:
+    tech2 = random.choice([t for t in tech_keywords if t != chosen_tech])
+    base_prompt_theme = chosen_structure.format(tech=chosen_tech, tech2=tech2) # Foutje fix: tech=... werkt niet direct in format als naam niet matcht, ik los dit hieronder simpel op
+    # Simpele replace is veiliger hier:
+    base_prompt_theme = chosen_structure.replace("{tech}", chosen_tech, 1).replace("{tech}", random.choice([t for t in tech_keywords if t != chosen_tech]))
+else:
+    base_prompt_theme = chosen_structure.replace("{tech}", chosen_tech)
+
+print(f"🎯 SEO Doelwit voor vandaag: {base_prompt_theme}")
+
+# Functie: Titel Bedenken (STRENG!)
 def get_strict_topic(theme):
-    print(f"🧠 Onderwerp bedenken voor: {theme}...")
-    # Instructie: Geen lijstjes, geen "Here is...", alleen de titel.
+    print(f"🧠 Titel optimaliseren voor Google...")
     prompt = f"""
-    Create ONE single, professional blog title about '{theme}'.
-    The title must be under 60 characters.
-    Do NOT generate a list.
-    Do NOT write "Here is a title".
-    Output ONLY the title text.
+    You are an SEO Specialist.
+    Take this concept: "{theme}" and turn it into a high-ranking blog title.
+    
+    Rules:
+    1. Use a "Long-tail keyword" approach.
+    2. Keep it under 60 characters.
+    3. Make it clickable (High CTR).
+    4. NO lists, NO "Here is a title". Output ONLY the title text.
     """
     try:
         resp = client.models.generate_content(model="gemini-2.5-flash", contents=prompt)
         text = resp.text.strip()
-        
-        # VEILIGHEID: Als de AI toch een lijst maakt (met enters), pakken we alleen regel 1
-        if "\n" in text:
-            text = text.split("\n")[0]
-            
-        # Verwijder quotes en dubbele punten voor de zekerheid
+        if "\n" in text: text = text.split("\n")[0]
         text = text.replace('"', '').replace(":", "").replace("*", "")
-        
-        # Verwijder nummering als AI dat doet (bijv "1. Titel")
         text = re.sub(r'^\d+\.\s*', '', text)
-        
         return text
     except:
-        return theme # Fallback
+        return theme
 
-topic = get_strict_topic(todays_theme)
-print(f"💡 Gekozen titel: {topic}")
+topic = get_strict_topic(base_prompt_theme)
+print(f"💡 Definitieve Titel: {topic}")
 
 # Functie: Bestandsnaam schoonmaken
 def clean_filename(text):
     text = text.lower()
-    text = re.sub(r'[^a-z0-9-]', '-', text) # Vervang alles wat geen letter/cijfer is door streepje
-    text = re.sub(r'-+', '-', text) # Geen dubbele streepjes
+    text = re.sub(r'[^a-z0-9-]', '-', text)
+    text = re.sub(r'-+', '-', text)
     text = text.strip('-')
     return text[:50]
 
@@ -75,20 +90,15 @@ image_public_path = f"/{image_filename}"
 os.makedirs("_posts", exist_ok=True)
 os.makedirs(image_folder, exist_ok=True)
 
-# 3. Image Genereren (Zonder Tekst)
+# 3. Image Genereren
 def download_image_robust(prompt_text, save_path):
     print(f"🎨 Afbeelding genereren...")
     try:
-        # We gebruiken de slug in de prompt, die is korter en bevat geen leestekens
         short_prompt = prompt_text.replace("-", " ")
-        
-        # PROMPT: Abstract, 3D, Gradient, Geen tekst
-        # We voegen 'abstract' en 'shapes' toe en 'text' in de seed logic
-        clean_prompt = f"abstract 3d tech shapes representing {short_prompt}, minimalist, gradient lighting, 8k render, no text, no letters"
+        # We voegen 'SEO', 'Data', 'Tech' sfeer toe
+        clean_prompt = f"abstract 3d tech visualization of {short_prompt}, data streams, code snippets style, minimalist, blue and purple gradient, 8k, no text"
         encoded_prompt = clean_prompt.replace(" ", "%20")
-        
         seed = random.randint(0, 9999)
-        # Model 'flux' is het beste voor abstract
         url = f"https://image.pollinations.ai/prompt/{encoded_prompt}?width=1200&height=630&nologo=true&seed={seed}&model=flux"
         
         headers = {'User-Agent': 'Mozilla/5.0'}
@@ -102,20 +112,24 @@ def download_image_robust(prompt_text, save_path):
     except:
         return False
 
-download_image_robust(safe_slug, image_filename) # We gebruiken de slug voor de image prompt (korter = beter)
+download_image_robust(safe_slug, image_filename)
 
-# 4. Content Genereren
+# 4. Content Genereren (SEO Focus)
 prompt = f"""
-Act as a Senior Email Developer.
+Act as a Senior Technical Content Writer.
 Write a blog post about: '{topic}'.
 
-DO NOT write the Frontmatter. Start with the Introduction.
+GOAL: Rank #1 on Google for this topic.
+STRATEGY: Answer the user's search intent immediately.
 
 REQUIREMENTS:
-1. Deep Dive Technical Content.
-2. Use Markdown (H2, H3).
-3. Include a Comparison Table.
-4. Include a FAQ section.
+1. **Intro**: Start with the problem definition ("Are you struggling with...?").
+2. **Body**: Technical deep dive (Code, SQL, Logic).
+3. **Structure**: Comparison Table is MANDATORY.
+4. **FAQ**: Include "People Also Ask" style questions at the end.
+5. **Length**: 1000+ words.
+
+DO NOT write Frontmatter.
 """
 
 models_to_try = [
@@ -133,7 +147,6 @@ for model_name in models_to_try:
     try:
         response = client.models.generate_content(model=model_name, contents=prompt)
         content_body = response.text
-        # Clean up als AI toch frontmatter start
         if "---" in content_body[:50]:
             parts = content_body.split("---")
             if len(parts) > 2:
@@ -143,10 +156,8 @@ for model_name in models_to_try:
     except Exception as e:
         time.sleep(1)
 
-# 5. Opslaan (Veilige Frontmatter)
+# 5. Opslaan
 if content_body:
-    # We bouwen de YAML handmatig en heel strikt op
-    # Let op de dubbele quotes rondom strings om YAML errors te voorkomen
     final_post = f"""---
 layout: post
 title: "{topic}"
@@ -154,12 +165,12 @@ titleshort: "{topic[:30]}..."
 date: {date_str}
 label: development
 permalink: /generated-post-{date_str}-{random.randint(100,999)}
-tags: email, automation, tech, ai
+tags: email, automation, tech, seo
 yearreview: false
 author: Jeffrey Overmeer
 published: true
 thumbnail: "{image_public_path}"
-description: "A technical deep-dive into {topic}."
+description: "Learn about {topic} in this technical deep dive for email developers."
 ---
 
 {content_body}
