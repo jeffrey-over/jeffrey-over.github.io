@@ -4,15 +4,17 @@ layout: default
 
 <article class="wrapper-narrow post" itemscope itemtype="http://schema.org/BlogPosting">
 
-  <header class="post-header">
+  <header class="post-header" style="margin-bottom: 60px;">
     
     {% if page.label %}
-      <span class="post-label">{{ page.label }}</span>
+      <div style="margin-bottom: 24px;">
+        <span class="post-label">{{ page.label }}</span>
+      </div>
     {% endif %}
 
     <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
 
-    <div class="post-meta">
+    <div class="post-meta" style="margin-top: 32px;">
       <img src="/images/ik.png" alt="Jeffrey Overmeer" class="author-avatar">
       
       <div class="meta-info">
@@ -37,13 +39,15 @@ layout: default
   </header>
 
   {% if page.thumbnail and page.thumbnail != '' %}
-  <figure class="post-thumbnail">
+  <figure class="post-thumbnail" style="margin-bottom: 60px;">
     <img src="{{ page.thumbnail }}" alt="{{ page.title }}" itemprop="image">
   </figure>
   {% endif %}
 
   {% if page.description %}
-    <p class="post-intro">{{ page.description }}</p>
+    <div class="post-intro-wrapper" style="margin-bottom: 50px;">
+      <p class="post-intro">{{ page.description }}</p>
+    </div>
   {% endif %}
 
   <div class="post-content" itemprop="articleBody">
@@ -53,8 +57,12 @@ layout: default
   {% if page.tags.size > 0 %}
   <div class="post-footer">
     <div class="tags-container">
-      {% for tag in page.tags %}
-        <span class="tag-pill">{{ tag }}</span>
+      {% assign tags_list = page.tags | join: ',' | split: ',' %}
+      {% for tag in tags_list %}
+        {% assign clean_tag = tag | strip %} 
+        {% if clean_tag != "" %}
+          <span class="tag-pill">{{ clean_tag }}</span>
+        {% endif %}
       {% endfor %}
     </div>
   </div>
@@ -62,8 +70,8 @@ layout: default
 
 </article>
 
-<div class="wrapper-narrow" style="margin-top: 60px;">
-  <section class="comments-section" style="border-top: 1px solid #eee; padding-top: 40px;">
+<div class="wrapper-narrow" style="margin-top: 80px; margin-bottom: 80px;">
+  <section class="comments-section" style="border-top: 1px solid #eee; padding-top: 50px;">
     <h3>Discussion</h3>
     <script src="https://utteranc.es/client.js"
         repo="jeffrey-over/jeffrey-over.github.io"
