@@ -1,14 +1,13 @@
 import os
 import time
-import urllib.parse
-import urllib.request
+import requests # Nieuwe, betere bibliotheek
 from google import genai
 from datetime import datetime
 
-# 1. Configuration
+# 1. Configureren
 client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 
-# 2. Topic Rotation
+# 2. Onderwerpen
 topics = [
     "Email Deliverability Best Practices 2026",
     "Subject Line AI Generators vs Human Creativity",
@@ -45,37 +44,62 @@ topics = [
 day_of_year = datetime.now().timetuple().tm_yday
 topic = topics[day_of_year % len(topics)]
 
-# 3. Image Generation Function (No API Key needed)
-def download_image(prompt_text, save_path):
-    print(f"🎨 Generating image for: {prompt_text}...")
+# 3. De Verbeterde Image Downloader
+def download_image_robust(prompt_text, save_path):
+    print(f"🎨 Start genereren afbeelding voor: {prompt_text}")
+    
+    # Pollinations URL constructie
+    # We gebruiken een 'seed' zodat het plaatje elke keer anders is, maar wel consistent per dag
+    clean_prompt = prompt_text.replace(" ", "%20")
+    url = f"https://image.pollinations.ai/prompt/futuristic%20minimal%20tech%20illustration%20{clean_prompt}?width=1200&height=630&nologo=true&seed={day_of_year}"
+    
     try:
-        # Create a safe URL prompt
-        encoded_prompt = urllib.parse.quote(f"futuristic clean minimal tech illustration about {prompt_text}, soft lighting, high quality, 4k")
-        image_url = f"https://image.pollinations.ai/prompt/{encoded_prompt}?width=1200&height=630&nologo=true&seed={day_of_year}"
+        # We doen alsof we een browser zijn (User-Agent) om blokkades te voorkomen
+        headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'}
+        response = requests.get(url, headers=headers, timeout=30)
         
-        # Download the image
-        urllib.request.urlretrieve(image_url, save_path)
-        print(f"✅ Image saved to {save_path}")
-        return True
+        if response.status_code == 200:
+            with open(save_path, 'wb') as f:
+                f.write(response.content)
+            
+            # CRUCIALE CHECK: Bestaat het bestand nu echt?
+            if os.path.exists(save_path) and os.path.getsize(save_path) > 0:
+                print(f"✅ Afbeelding succesvol opgeslagen in: {save_path}")
+                return True
+            else:
+                print(f"❌ Bestand lijkt leeg of niet aangemaakt: {save_path}")
+                return False
+        else:
+            print(f"❌ Server gaf foutmelding: {response.status_code}")
+            return False
+            
     except Exception as e:
-        print(f"❌ Image generation failed: {e}")
+        print(f"❌ Fout bij downloaden: {e}")
         return False
 
-# 4. Determine Filenames
+# 4. Paden instellen (In de ROOT images map)
 safe_slug = topic.lower().replace(" ", "-").replace(":", "").replace("/", "")
 date_str = datetime.now().strftime('%Y-%m-%d')
+
+# Mapnamen
 post_filename = f"_posts/{date_str}-{safe_slug}.md"
-image_filename = f"images/{date_str}-{safe_slug}.jpg"
-image_public_path = f"/{image_filename}" # This goes into the frontmatter
+image_folder = "images" # Gewoon 'images' in de root
+image_filename = f"{image_folder}/{date_str}-{safe_slug}.jpg"
+image_public_path = f"/{image_filename}" # Dit komt in de HTML
 
-# Ensure directories exist
+# Zorg dat de mappen bestaan
 os.makedirs("_posts", exist_ok=True)
-os.makedirs("images", exist_ok=True)
+os.makedirs(image_folder, exist_ok=True)
 
-# 5. Generate and Download Image FIRST
-download_image(topic, image_filename)
+# 5. EERST de afbeelding proberen
+success = download_image_robust(topic, image_filename)
 
-# 6. Generate Text Content
+if not success:
+    print("⚠️ LET OP: Afbeelding genereren mislukt. We gaan door, maar gebruiken een fallback of geen plaatje.")
+    # Optioneel: Je kunt hier 'exit(1)' doen als je wilt dat het script stopt zonder plaatje.
+    # Voor nu laten we hem doorgaan, maar check de logs!
+
+# 6. Tekst Genereren
 prompt = f"""
 Act as a World-Class SEO Copywriter.
 Write a blog post for Jeffrey Overmeer's blog about: '{topic}'.
@@ -111,7 +135,6 @@ description: "[Meta-description max 160 chars]"
 After frontmatter, write the full post.
 """
 
-# 7. AI Generation Loop
 models_to_try = [
     "gemini-3-pro-preview",
     "gemini-2.0-flash-exp",
@@ -122,23 +145,23 @@ models_to_try = [
 
 generated_content = None
 
-print(f"📝 Starting text generation for: {topic}")
+print(f"📝 Start tekst generatie voor: {topic}")
 
 for model_name in models_to_try:
-    print(f"Trying model: {model_name}...")
+    print(f"Poging met model: {model_name}...")
     try:
         response = client.models.generate_content(
             model=model_name,
             contents=prompt
         )
         generated_content = response.text
-        print(f"✅ SUCCESS! Text generated using {model_name}")
+        print(f"✅ Tekst gegenereerd met {model_name}")
         break 
     except Exception as e:
-        print(f"❌ Failed with {model_name}: {e}")
+        print(f"❌ Mislukt met {model_name}: {e}")
         time.sleep(1)
 
-# 8. Save Content
+# 7. Opslaan
 if generated_content:
     if "---" in generated_content:
         start_index = generated_content.find("---")
@@ -147,7 +170,7 @@ if generated_content:
     with open(post_filename, "w", encoding="utf-8") as f:
         f.write(generated_content)
 
-    print(f"🎉 Blogpost saved: {post_filename}")
+    print(f"🎉 Blogpost opgeslagen: {post_filename}")
 else:
-    print("⚠️ All models failed.")
+    print("⚠️ Alle modellen faalden.")
     exit(1)
