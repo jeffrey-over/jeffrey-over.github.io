@@ -2,23 +2,28 @@
    1. CONFIGURATIE & VARIABELEN
    ========================================= */
 :root {
+    /* FONTS */
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     --font-serif: 'Source Serif 4', Georgia, serif;
     
-    --color-bg: #fdfdfd;           
-    --color-text: #1d1d1f;         
-    --color-text-light: #515154;   
-    --color-primary: #0067c2;      
-    --color-card-bg: #ffffff;
+    /* KLEUREN */
+    --color-bg: #fdfdfd;           /* Achtergrond pagina */
+    --color-text: #1d1d1f;         /* Hoofdtekst (Apple zwart) */
+    --color-text-light: #515154;   /* Secundaire tekst */
+    --color-primary: #0067c2;      /* Jouw Brand Blue */
+    --color-card-bg: #ffffff;      /* Achtergrond kaarten */
+    --color-border: rgba(0,0,0,0.08);
 
-    --width-wide: 1100px;
-    --width-reading: 740px;
+    /* AFMETINGEN */
+    --width-wide: 1100px;          /* Voor Menu & Grids */
+    --width-reading: 740px;        /* Voor Tekst & Intro */
     --nav-height: 70px;
-    --spacing: 24px;
+    --spacing: 24px;               /* Standaard padding */
+    --radius: 12px;                /* Afronding hoeken */
 }
 
 /* =========================================
-   2. RESET
+   2. RESET (Cruciaal voor layout)
    ========================================= */
 *, *:before, *:after {
     box-sizing: border-box; 
@@ -28,7 +33,7 @@ body {
     background-color: var(--color-bg);
     font-family: var(--font-sans);
     font-size: 17px;          
-    line-height: 1.7;         
+    line-height: 1.6;         
     color: var(--color-text);
     margin: 0;
     padding: 0;
@@ -36,10 +41,13 @@ body {
 }
 
 img { max-width: 100%; height: auto; display: block; }
+a { color: var(--color-primary); text-decoration: none; transition: 0.2s; }
+a:hover { color: #004585; }
 
 /* =========================================
-   3. LAYOUT CONTAINERS
+   3. CONTAINERS (Het "Smal vs Breed" systeem)
    ========================================= */
+/* Breed: Voor Navigatie, Footer en Kaartjes */
 .container, nav, .footer-inner {
     max-width: var(--width-wide);
     margin: 0 auto;
@@ -47,20 +55,16 @@ img { max-width: 100%; height: auto; display: block; }
     width: 100%;
 }
 
-.container-narrow, article, .post, .intro {
+/* Smal: Voor Intro, Artikelen en Tekst */
+.container-narrow, article, .post, .intro, .aboutme {
     max-width: var(--width-reading);
     margin: 0 auto;
     padding: 0 var(--spacing);
     width: 100%;
 }
 
-.intro {
-    padding-top: 120px;
-    padding-bottom: 40px;
-}
-
 /* =========================================
-   4. NAVIGATIE (FIXED VOOR JOUW PROBLEEM)
+   4. NAVIGATIE (Gecentreerd & Sticky)
    ========================================= */
 #navigation {
     position: fixed;
@@ -68,30 +72,32 @@ img { max-width: 100%; height: auto; display: block; }
     height: var(--nav-height);
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(0,0,0,0.05);
+    border-bottom: 1px solid var(--color-border);
     z-index: 999;
+    
+    /* Centreer de inhoud */
     display: flex;
+    justify-content: center; 
     align-items: center;
-    justify-content: center;
 }
 
 nav {
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* Items in het midden */
     align-items: center;
+    position: relative;
 }
 
-/* Desktop Menu Styles */
+/* Desktop Menu */
 .menu {
     display: flex;
     list-style: none;
     margin: 0; padding: 0;
-    gap: 30px;
+    gap: 32px;
 }
 
 .menu a {
     color: var(--color-text);
-    text-decoration: none;
     font-size: 15px;
     font-weight: 500;
 }
@@ -99,82 +105,114 @@ nav {
     color: var(--color-primary);
 }
 
-/* BELANGRIJK: Verberg mobiel menu standaard op desktop */
-#menuToggle {
-    display: none; 
+/* Hamburger (Verberg op desktop) */
+#menuToggle { display: none; }
+
+/* =========================================
+   5. HERO & INTRO (Gecentreerd)
+   ========================================= */
+.intro {
+    padding-top: 140px; /* Ruimte voor menu */
+    padding-bottom: 60px;
+    text-align: center; /* Alles in het midden */
+}
+
+.intro h1 {
+    font-family: var(--font-serif);
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    letter-spacing: -1px;
+    line-height: 1.1;
+}
+
+.intro .badge {
+    display: inline-block;
+    background: #f0f2f5;
+    color: #444;
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+/* De Blauwe Knop */
+.btn-primary { 
+    display: inline-block; 
+    background: var(--color-primary); 
+    color: #fff !important; 
+    padding: 14px 28px; 
+    border-radius: 50px; 
+    font-weight: 600; 
+    font-size: 1rem;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+    box-shadow: 0 4px 10px rgba(0, 103, 194, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 103, 194, 0.4);
+    background: #0056a3; 
+    text-decoration: none;
 }
 
 /* =========================================
-   5. SLIDER REPARATIE (CSS ONLY SCROLL)
+   6. SLIDER (CSS Only Scroll)
    ========================================= */
 .separator {
     width: 100%;
     margin: 40px 0;
-    overflow: hidden; /* Voorkom horizontale scrollbar op pagina */
+    overflow: hidden; 
 }
 
-/* Dit maakt de horizontale scroll */
 .featured-content-slider {
     display: flex;
-    overflow-x: auto; /* Horizontaal scrollen toegestaan */
-    gap: 20px;
-    padding: 20px var(--spacing) 40px; /* Ruimte onderin voor schaduw/scrollbar */
-    scroll-snap-type: x mandatory; /* Zorgt dat hij netjes stopt bij een kaartje */
+    overflow-x: auto; 
+    gap: 24px;
+    padding: 20px var(--spacing) 40px; 
+    scroll-snap-type: x mandatory; 
     
-    /* Verberg scrollbar (optioneel, voor mooiere look) */
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    /* Scrollbar Styling (Dun & Grijs) */
+    scrollbar-width: thin;          
+    scrollbar-color: #ddd transparent; 
 }
 
-.featured-content-slider::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
-}
+/* Scrollbar voor Chrome/Safari */
+.featured-content-slider::-webkit-scrollbar { height: 8px; }
+.featured-content-slider::-webkit-scrollbar-track { background: transparent; }
+.featured-content-slider::-webkit-scrollbar-thumb { background-color: #ddd; border-radius: 20px; }
 
-/* De individuele slide */
+/* De Kaarten in de slider */
 .slide {
-    flex: 0 0 300px; /* Vaste breedte: forceert ze naast elkaar */
-    height: 400px;   /* Vaste hoogte: repareert de "platte strip" */
+    flex: 0 0 300px;     /* Vaste breedte */
+    height: 400px;       /* Vaste hoogte */
     scroll-snap-align: center;
     border-radius: 16px;
     overflow: hidden;
     position: relative;
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     transition: transform 0.3s;
+    background: #333;
 }
+.slide:hover { transform: translateY(-5px); }
 
-.slide:hover {
-    transform: translateY(-5px);
-}
-
-.slide-link {
-    display: block;
-    width: 100%;
-    height: 100%;
-    text-decoration: none;
-}
+.slide-link { display: block; width: 100%; height: 100%; }
 
 .slide-item {
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: flex-end; /* Tekst onderin */
-    padding: 24px;
-    /* Gradient overlay zodat tekst leesbaar is */
+    width: 100%; height: 100%;
+    background-size: cover; background-position: center;
+    display: flex; align-items: flex-end; padding: 24px;
     background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
 }
 
 .slide-item h3 {
-    color: #fff;
-    margin: 0;
-    font-size: 1.25rem;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-    line-height: 1.3;
+    color: #fff; margin: 0; font-family: var(--font-serif);
+    font-size: 1.25rem; text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 
 /* =========================================
-   6. GRID CARDS (Home & Blog)
+   7. GRID CARDS (Knowledge Hub)
    ========================================= */
 .cards {
     display: grid;
@@ -186,73 +224,75 @@ nav {
 
 .card {
     background: #fff;
-    border: 1px solid #eee;
-    border-radius: 12px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.2s;
+    display: flex; flex-direction: column;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.08);
 }
 
 .card__image-container {
-    height: 180px;
-    width: 100%;
-    overflow: hidden;
+    height: 180px; width: 100%; overflow: hidden;
+    background-color: #f0f0f0;
 }
-.card__image-container img {
-    width: 100%; height: 100%; object-fit: cover;
-}
+.card__image-container img { width: 100%; height: 100%; object-fit: cover; }
 
-.card__content {
-    padding: 20px;
-    display: flex; flex-direction: column; flex: 1;
-}
+.card__content { padding: 20px; display: flex; flex-direction: column; flex: 1; }
 
 .card__title {
-    font-size: 1.1rem;
-    margin: 0 0 10px 0;
+    font-size: 1.15rem; margin: 0 0 10px 0; font-family: var(--font-serif);
 }
-.card__title a { color: #000; text-decoration: none; font-weight: 700; font-family: var(--font-serif); }
+.card__title a { color: var(--color-text); font-weight: 700; }
+.card__title a:hover { color: var(--color-primary); }
 
 .card__info {
-    margin-top: auto;
-    font-size: 0.85rem;
-    color: var(--color-text-light);
+    margin-top: auto; font-size: 0.85rem; color: var(--color-text-light);
 }
 
 /* =========================================
-   7. FOOTER
+   8. ARTIKELEN (Blog Posts)
+   ========================================= */
+.post-header { text-align: center; margin: 40px 0; }
+.post-title { font-size: 2.5rem; font-family: var(--font-serif); margin-bottom: 20px; }
+.post-intro { 
+    font-size: 1.25rem; color: #444; border-left: 4px solid var(--color-primary); 
+    padding-left: 20px; margin-bottom: 40px; 
+}
+.post-content { font-size: 1.1rem; }
+.post-content h2 { margin-top: 2.5rem; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+
+/* =========================================
+   9. FOOTER
    ========================================= */
 footer {
-    border-top: 1px solid #eee;
-    padding: 60px 0;
-    margin-top: 60px;
+    border-top: 1px solid var(--color-border);
+    padding: 60px 0; margin-top: 80px; font-size: 0.9rem;
 }
 .footer-inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: flex; justify-content: space-between; align-items: center;
 }
 .footer-socials { display: flex; gap: 15px; }
-.footer-socials img { width: 24px; opacity: 0.6; }
+.footer-socials img { width: 24px; opacity: 0.6; transition: 0.2s; }
+.footer-socials img:hover { opacity: 1; }
 
 /* =========================================
-   8. MOBIEL MENU LOGICA
+   10. MOBIEL MENU (Overlay)
    ========================================= */
 @media (max-width: 800px) {
-    /* Verberg normaal menu */
+    /* Layout aanpassingen */
+    nav { justify-content: space-between; }
     .hidemobile { display: none; }
     
-    /* Toon Hamburger knop */
-    #menuToggle { 
-        display: block; 
-        position: relative;
-        z-index: 101;
-    }
+    .intro h1 { font-size: 2rem; }
+    .cards { grid-template-columns: 1fr; }
+    .footer-inner { flex-direction: column; gap: 20px; text-align: center; }
+
+    /* Hamburger Zichtbaar maken */
+    #menuToggle { display: block; position: relative; z-index: 101; }
     
     #menuToggle input {
         display: block; width: 40px; height: 32px; position: absolute;
@@ -260,37 +300,6 @@ footer {
     }
 
     #menuToggle span {
-        display: block; width: 33px; height: 4px; margin-bottom: 5px;
+        display: block; width: 28px; height: 3px; margin-bottom: 5px;
         position: relative; background: #1d1d1f; border-radius: 3px; z-index: 1;
-        transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0), opacity 0.55s ease;
-    }
-
-    /* Kruisje animatie */
-    #menuToggle input:checked ~ span:nth-last-child(3) { opacity: 0; transform: rotate(0deg) scale(0.2, 0.2); }
-    #menuToggle input:checked ~ span:nth-last-child(2) { transform: rotate(-45deg) translate(0, -1px); }
-    #menuToggle input:checked ~ span { transform: rotate(45deg) translate(-2px, -1px); }
-
-    /* Het menu zelf (Fullscreen overlay) */
-    #menu {
-        position: fixed; width: 100vw; height: 100vh;
-        margin: 0; padding: 125px 0 0 0;
-        top: 0; left: 0;
-        background: rgba(255,255,255,0.98);
-        list-style-type: none;
-        text-align: center;
-        transform-origin: 0% 0%;
-        transform: translate(-100%, 0);
-        transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
-        display: flex; flex-direction: column; gap: 20px;
-    }
-
-    #menuToggle input:checked ~ ul { transform: none; }
-}
-
-/* TYPOGRAFIE UTILS */
-h1, h2, h3 { font-family: var(--font-serif); font-weight: 700; color: #000; }
-a { color: var(--color-primary); text-decoration: none; }
-.btn-primary { 
-    display: inline-block; background: #000; color: #fff; 
-    padding: 12px 24px; border-radius: 6px; font-weight: 600; 
-}
+        transition: transform 0
