@@ -9,8 +9,7 @@ from datetime import datetime
 # 1. Configureren
 client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 
-# 2. SEO Strategie: Search Intent Structures
-# We dwingen de AI om titels te maken waar mensen ÉCHT op zoeken.
+# 2. SEO Strategie
 seo_structures = [
     "Comparison: {tech} vs {tech} for Enterprise",
     "How to fix {tech} issues in 2026",
@@ -21,30 +20,28 @@ seo_structures = [
     "Implementing {tech}: A Technical Walkthrough"
 ]
 
-# De Tech Stack waar jij expert in bent (waar de AI uit mag grabbelen)
 tech_keywords = [
     "Selligent Marketing Cloud", "Deployteq", "Salesforce Marketing Cloud",
     "Liquid Scripting", "AMP for Email", "Dark Mode Email Coding",
     "BIMI and DMARC", "Email SQL Queries", "JSON-LD in Email",
     "CSS Grid for Email", "Outlook Rendering", "Email API Webhooks",
-    "Server-side Javascript (SSJS)", "mjml framework", "Litmus testing"
+    "Server-side Javascript (SSJS)", "MJML framework", "Litmus testing"
 ]
 
-# We combineren een structuur met een tech-onderwerp
+# Kies structuur en tech
 chosen_structure = random.choice(seo_structures)
 chosen_tech = random.choice(tech_keywords)
-# Als de structuur 2x {tech} nodig heeft (voor vergelijkingen), pakken we er nog een bij
+
 if "{tech} vs {tech}" in chosen_structure:
+    # Zorg voor 2 verschillende techs bij een vergelijking
     tech2 = random.choice([t for t in tech_keywords if t != chosen_tech])
-    base_prompt_theme = chosen_structure.format(tech=chosen_tech, tech2=tech2) # Foutje fix: tech=... werkt niet direct in format als naam niet matcht, ik los dit hieronder simpel op
-    # Simpele replace is veiliger hier:
-    base_prompt_theme = chosen_structure.replace("{tech}", chosen_tech, 1).replace("{tech}", random.choice([t for t in tech_keywords if t != chosen_tech]))
+    base_prompt_theme = chosen_structure.replace("{tech}", chosen_tech, 1).replace("{tech}", tech2)
 else:
     base_prompt_theme = chosen_structure.replace("{tech}", chosen_tech)
 
-print(f"🎯 SEO Doelwit voor vandaag: {base_prompt_theme}")
+print(f"🎯 SEO Doelwit: {base_prompt_theme}")
 
-# Functie: Titel Bedenken (STRENG!)
+# Functie: Strenge Titel Bedenken
 def get_strict_topic(theme):
     print(f"🧠 Titel optimaliseren voor Google...")
     prompt = f"""
@@ -70,15 +67,15 @@ def get_strict_topic(theme):
 topic = get_strict_topic(base_prompt_theme)
 print(f"💡 Definitieve Titel: {topic}")
 
-# Functie: Bestandsnaam schoonmaken
-def clean_filename(text):
+# Functie: Slug Schoonmaken (voor URL en Bestandsnaam)
+def clean_slug(text):
     text = text.lower()
-    text = re.sub(r'[^a-z0-9-]', '-', text)
-    text = re.sub(r'-+', '-', text)
+    text = re.sub(r'[^a-z0-9-]', '-', text) # Alleen letters/cijfers/streepjes
+    text = re.sub(r'-+', '-', text) # Geen dubbele streepjes
     text = text.strip('-')
-    return text[:50]
+    return text[:60] # Iets langer voor goede SEO URL
 
-safe_slug = clean_filename(topic)
+safe_slug = clean_slug(topic)
 date_str = datetime.now().strftime('%Y-%m-%d')
 
 # Paden
@@ -95,7 +92,6 @@ def download_image_robust(prompt_text, save_path):
     print(f"🎨 Afbeelding genereren...")
     try:
         short_prompt = prompt_text.replace("-", " ")
-        # We voegen 'SEO', 'Data', 'Tech' sfeer toe
         clean_prompt = f"abstract 3d tech visualization of {short_prompt}, data streams, code snippets style, minimalist, blue and purple gradient, 8k, no text"
         encoded_prompt = clean_prompt.replace(" ", "%20")
         seed = random.randint(0, 9999)
@@ -114,7 +110,7 @@ def download_image_robust(prompt_text, save_path):
 
 download_image_robust(safe_slug, image_filename)
 
-# 4. Content Genereren (SEO Focus)
+# 4. Content Genereren
 prompt = f"""
 Act as a Senior Technical Content Writer.
 Write a blog post about: '{topic}'.
@@ -156,15 +152,16 @@ for model_name in models_to_try:
     except Exception as e:
         time.sleep(1)
 
-# 5. Opslaan
+# 5. Opslaan (Met SEO Permalink Fix)
 if content_body:
+    # HIER IS DE WIJZIGING: permalink gebruikt nu {safe_slug}
     final_post = f"""---
 layout: post
 title: "{topic}"
 titleshort: "{topic[:30]}..."
 date: {date_str}
 label: development
-permalink: /generated-post-{date_str}-{random.randint(100,999)}
+permalink: /{safe_slug}
 tags: email, automation, tech, seo
 yearreview: false
 author: Jeffrey Overmeer
