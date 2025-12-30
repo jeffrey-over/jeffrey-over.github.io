@@ -2,14 +2,14 @@ import os
 import time
 import requests
 import random
-import re # Nodig voor schoonmaken bestandsnamen
+import re
 from google import genai
 from datetime import datetime
 
 # 1. Configureren
 client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 
-# 2. Thema's
+# 2. Thema's (Oneindige inspiratie)
 themes = [
     "Advanced HTML CSS techniques for Email Developers",
     "Technical Email Deliverability Protocols",
@@ -23,31 +23,45 @@ themes = [
 
 todays_theme = random.choice(themes)
 
-# Functie 1: Onderwerp Bedenken
-def get_ai_topic(theme):
+# Functie: Onderwerp Bedenken (STRENG!)
+def get_strict_topic(theme):
     print(f"🧠 Onderwerp bedenken voor: {theme}...")
-    # We vragen om een titel ZONDER gekke tekens voor de veiligheid
-    prompt = f"Generate a blog title about '{theme}'. Keep it professional. No colons (:), no questions marks (?). Just a statement."
+    # Instructie: Geen lijstjes, geen "Here is...", alleen de titel.
+    prompt = f"""
+    Create ONE single, professional blog title about '{theme}'.
+    The title must be under 60 characters.
+    Do NOT generate a list.
+    Do NOT write "Here is a title".
+    Output ONLY the title text.
+    """
     try:
         resp = client.models.generate_content(model="gemini-2.5-flash", contents=prompt)
-        return resp.text.strip().replace('"', '').replace(":", "")
+        text = resp.text.strip()
+        
+        # VEILIGHEID: Als de AI toch een lijst maakt (met enters), pakken we alleen regel 1
+        if "\n" in text:
+            text = text.split("\n")[0]
+            
+        # Verwijder quotes en dubbele punten voor de zekerheid
+        text = text.replace('"', '').replace(":", "").replace("*", "")
+        
+        # Verwijder nummering als AI dat doet (bijv "1. Titel")
+        text = re.sub(r'^\d+\.\s*', '', text)
+        
+        return text
     except:
-        return theme
+        return theme # Fallback
 
-topic = get_ai_topic(todays_theme)
-print(f"💡 Gekozen onderwerp: {topic}")
+topic = get_strict_topic(todays_theme)
+print(f"💡 Gekozen titel: {topic}")
 
-# Functie 2: Strenge Bestandsnaam Schoonmaak (Hufterproof)
+# Functie: Bestandsnaam schoonmaken
 def clean_filename(text):
-    # Alles naar kleine letters
     text = text.lower()
-    # Vervang spaties door streepjes
-    text = text.replace(" ", "-")
-    # Verwijder ALLES wat geen letter, cijfer of streepje is (dus weg met ?!@.:,)
-    text = re.sub(r'[^a-z0-9-]', '', text)
-    # Voorkom dubbele streepjes
-    text = re.sub(r'-+', '-', text)
-    return text[:50] # Max 50 tekens
+    text = re.sub(r'[^a-z0-9-]', '-', text) # Vervang alles wat geen letter/cijfer is door streepje
+    text = re.sub(r'-+', '-', text) # Geen dubbele streepjes
+    text = text.strip('-')
+    return text[:50]
 
 safe_slug = clean_filename(topic)
 date_str = datetime.now().strftime('%Y-%m-%d')
@@ -56,23 +70,30 @@ date_str = datetime.now().strftime('%Y-%m-%d')
 post_filename = f"_posts/{date_str}-{safe_slug}.md"
 image_folder = "images"
 image_filename = f"{image_folder}/{date_str}-{safe_slug}.jpg"
-# Let op: GitHub Pages wil vaak de relative path vanaf root
-image_public_path = f"/{image_filename}" 
+image_public_path = f"/{image_filename}"
 
 os.makedirs("_posts", exist_ok=True)
 os.makedirs(image_folder, exist_ok=True)
 
-# 3. Image Genereren
+# 3. Image Genereren (Zonder Tekst)
 def download_image_robust(prompt_text, save_path):
     print(f"🎨 Afbeelding genereren...")
     try:
-        clean_prompt = prompt_text.replace(" ", "%20")
+        # We gebruiken de slug in de prompt, die is korter en bevat geen leestekens
+        short_prompt = prompt_text.replace("-", " ")
+        
+        # PROMPT: Abstract, 3D, Gradient, Geen tekst
+        # We voegen 'abstract' en 'shapes' toe en 'text' in de seed logic
+        clean_prompt = f"abstract 3d tech shapes representing {short_prompt}, minimalist, gradient lighting, 8k render, no text, no letters"
+        encoded_prompt = clean_prompt.replace(" ", "%20")
+        
         seed = random.randint(0, 9999)
-        # Model 'flux' geeft vaak betere, schonere resultaten
-        url = f"https://image.pollinations.ai/prompt/abstract%20tech%203d%20{clean_prompt}?width=1200&height=630&nologo=true&seed={seed}&model=flux"
+        # Model 'flux' is het beste voor abstract
+        url = f"https://image.pollinations.ai/prompt/{encoded_prompt}?width=1200&height=630&nologo=true&seed={seed}&model=flux"
         
         headers = {'User-Agent': 'Mozilla/5.0'}
         response = requests.get(url, headers=headers, timeout=30)
+        
         if response.status_code == 200:
             with open(save_path, 'wb') as f:
                 f.write(response.content)
@@ -81,17 +102,14 @@ def download_image_robust(prompt_text, save_path):
     except:
         return False
 
-download_image_robust(topic, image_filename)
+download_image_robust(safe_slug, image_filename) # We gebruiken de slug voor de image prompt (korter = beter)
 
-# 4. Content Genereren (VEILIGE METHODE)
-# We laten Python de header schrijven, niet de AI.
-
+# 4. Content Genereren
 prompt = f"""
-Act as a Senior Email Campaign Developer.
-Write a blog post content about: '{topic}'.
+Act as a Senior Email Developer.
+Write a blog post about: '{topic}'.
 
-DO NOT write the Frontmatter (YAML). I will add that myself.
-Start directly with the Introduction.
+DO NOT write the Frontmatter. Start with the Introduction.
 
 REQUIREMENTS:
 1. Deep Dive Technical Content.
@@ -115,24 +133,24 @@ for model_name in models_to_try:
     try:
         response = client.models.generate_content(model=model_name, contents=prompt)
         content_body = response.text
-        # Soms doet AI toch eigenwijs de header erbij, die slopen we eruit
+        # Clean up als AI toch frontmatter start
         if "---" in content_body[:50]:
             parts = content_body.split("---")
             if len(parts) > 2:
-                content_body = parts[2].strip() # Pak alles NA de tweede ---
-        
+                content_body = parts[2].strip()
         print(f"✅ Gelukt met {model_name}")
         break 
     except Exception as e:
         time.sleep(1)
 
-# 5. Opslaan met Python-Generated Frontmatter (100% Veilig)
+# 5. Opslaan (Veilige Frontmatter)
 if content_body:
-    # Hier bouwen we de header zelf, zodat er geen syntax fouten in komen
+    # We bouwen de YAML handmatig en heel strikt op
+    # Let op de dubbele quotes rondom strings om YAML errors te voorkomen
     final_post = f"""---
 layout: post
 title: "{topic}"
-titleshort: "{topic[:40]}..."
+titleshort: "{topic[:30]}..."
 date: {date_str}
 label: development
 permalink: /generated-post-{date_str}-{random.randint(100,999)}
@@ -141,7 +159,7 @@ yearreview: false
 author: Jeffrey Overmeer
 published: true
 thumbnail: "{image_public_path}"
-description: "A technical deep-dive into {topic} for email developers."
+description: "A technical deep-dive into {topic}."
 ---
 
 {content_body}
