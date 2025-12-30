@@ -1,150 +1,140 @@
+/* =========================================
+   CUSTOM MOBILE MENU (Clean Material Style)
+   ========================================= */
+
+/* Desktop: Verberg de hamburger knop standaard */
 #menuToggle {
     display: none;
 }
 
+@media (max-width: 800px) {
+    
+    /* Zorg dat de navigatiebalk de ruimte heeft */
+    #navigation {
+        width: 90%; /* Matcht de base.scss width */
+        justify-content: space-between; /* Logo links, Hamburger rechts */
+    }
 
-@media (max-width: 800px){
+    /* De container van de hamburger knop */
+    #menuToggle {
+        display: block;
+        position: relative;
+        z-index: 101; /* Moet boven alles liggen */
+        -webkit-user-select: none;
+        user-select: none;
+        margin-right: -10px; /* Klein beetje correctie voor padding */
+    }
 
-  #navigation {width: 100%;}
-    #menuToggle
-{
-  display: block;
-  position: relative;
+    /* De onzichtbare checkbox die de klik opvangt */
+    #menuToggle input {
+        display: block;
+        width: 40px;
+        height: 32px;
+        position: absolute;
+        top: -5px;
+        left: -5px;
+        cursor: pointer;
+        opacity: 0; /* Verberg visueel, maar houd klikbaar */
+        z-index: 2; /* Bovenop de streepjes */
+        -webkit-touch-callout: none;
+    }
 
-  top: 3px;
-padding: 8px;
-  z-index: 1;
-  
-  -webkit-user-select: none;
-  user-select: none;
-}
+    /* * HAMBURGER ICON STYLING
+     * Strakker, dunner en moderner 
+     */
+    #menuToggle span {
+        display: block;
+        width: 28px;       /* Iets subtieler dan 33px */
+        height: 2px;       /* Dunner voor 'tech' look */
+        margin-bottom: 6px;
+        position: relative;
+        background: #1d1d1f; /* Apple zwart */
+        border-radius: 3px;
+        z-index: 1;
+        
+        transform-origin: 4px 0px;
+        transition: transform 0.4s cubic-bezier(0.77,0.2,0.05,1.0),
+                    background 0.4s cubic-bezier(0.77,0.2,0.05,1.0),
+                    opacity 0.4s ease;
+    }
 
-#menuToggle a
-{
-  text-decoration: none;
-  color: #232323;
-  
-  transition: color 0.3s ease;
-}
+    #menuToggle span:first-child {
+        transform-origin: 0% 0%;
+    }
 
-#menuToggle a:hover
-{
-  color: tomato;
-}
+    #menuToggle span:nth-last-child(2) {
+        transform-origin: 0% 100%;
+    }
 
+    /* * ANIMATIE NAAR KRUISJE (X)
+     */
+    #menuToggle input:checked ~ span {
+        opacity: 1;
+        transform: rotate(45deg) translate(-1px, -2px);
+        background: #1d1d1f;
+    }
 
-#menuToggle input
-{
-  display: block;
-  width: 40px;
-  height: 32px;
-  position: absolute;
-  top: -7px;
-  left: -5px;
-  
-  cursor: pointer;
-  
-  opacity: 0; /* hide this */
-  z-index: 2; /* and place it over the hamburger */
-  
-  -webkit-touch-callout: none;
-}
+    /* Verberg de middelste streep */
+    #menuToggle input:checked ~ span:nth-last-child(3) {
+        opacity: 0;
+        transform: rotate(0deg) scale(0.2, 0.2);
+    }
 
-/*
- * Just a quick hamburger
- */
-#menuToggle span
-{
-  display: block;
-  width: 33px;
-  height: 4px;
-  margin-bottom: 5px;
-  position: relative;
-  
-  background: #1D1D1F;
-  border-radius: 3px;
-  
-  z-index: 1;
-  
-  transform-origin: 4px 0px;
-  
-  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-              opacity 0.55s ease;
-}
+    /* Draai de onderste streep */
+    #menuToggle input:checked ~ span:nth-last-child(2) {
+        transform: rotate(-45deg) translate(-1px, 0px);
+    }
 
-#menuToggle span:first-child
-{
-  transform-origin: 0% 0%;
-}
+    /* * HET MENU ZELF (Overlay)
+     * Dit is de grote verandering: Full screen overlay 
+     */
+    #menu {
+        position: fixed;     /* Vastzetten op scherm */
+        top: -20px;          /* Compensatie voor navigatie padding */
+        right: -25px;        /* Compensatie voor navigatie padding */
+        
+        width: 100vw;        /* Volledige breedte */
+        height: 120vh;       /* Volledige hoogte (iets meer voor scroll bounce) */
+        
+        margin: 0;
+        padding: 120px 0 0 0; /* Ruimte aan bovenkant zodat tekst niet onder kruisje staat */
+        
+        background: rgba(255, 255, 255, 0.96); /* Bijna wit, heel licht doorzichtig */
+        backdrop-filter: blur(10px);           /* Glass effect */
+        -webkit-backdrop-filter: blur(10px);
+        
+        list-style-type: none;
+        -webkit-font-smoothing: antialiased;
+        text-align: center;  /* Alles centreren */
+        
+        transform-origin: 100% 0%; /* Groeit vanuit rechtsboven */
+        transform: translate(100%, 0); /* Verberg rechts buiten beeld */
+        transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+        
+        box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+    }
 
-#menuToggle span:nth-last-child(2)
-{
-  transform-origin: 0% 100%;
-}
+    /* Menu Items */
+    #menu li {
+        padding: 15px 0;
+        font-size: 20px;
+        font-weight: 600;
+        color: #1d1d1f;
+    }
 
-/* 
- * Transform all the slices of hamburger
- * into a crossmark.
- */
-#menuToggle input:checked ~ span
-{
-  opacity: 1;
-  transform: rotate(45deg) translate(-2px, -1px);
-  background: #232323;
-}
+    #menu a {
+        text-decoration: none;
+        color: #1d1d1f;
+        transition: color 0.3s ease;
+        display: block; /* Maak het hele vlak klikbaar */
+    }
 
-/*
- * But let's hide the middle one.
- */
-#menuToggle input:checked ~ span:nth-last-child(3)
-{
-  opacity: 0;
-  transform: rotate(0deg) scale(0.2, 0.2);
-}
+    #menu a:hover {
+        color: #0067c2; /* Je blauwe brand color */
+    }
 
-/*
- * Ohyeah and the last one should go the other direction
- */
-#menuToggle input:checked ~ span:nth-last-child(2)
-{
-  transform: rotate(-45deg) translate(0, -1px);
-}
-
-/*
- * Make this absolute positioned
- * at the top left of the screen
- */
-#menu
-{
-  position: absolute;
- width: calc(100% + 100px);;
-  left: 0;
-  margin: -100px 0 0 -50px;
-  padding: 50px;
-  padding-top: 125px;
-  background: #fff;
-  list-style-type: none;
-  -webkit-font-smoothing: antialiased;
-  /* to stop flickering of text in safari */
-  
-  transform-origin: 0% 0%;
-  transform: translate(-100%, 0);
-  
-  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
-}
-
-#menu li
-{
-  padding: 10px 0;
-  font-size: 22px;
-}
-
-/*
- * And let's slide it in from the left
- */
-#menuToggle input:checked ~ ul
-{
-  transform: none;
-}
+    /* Slide in animatie */
+    #menuToggle input:checked ~ ul {
+        transform: none; /* Zet terug op plek (0,0) */
+    }
 }
