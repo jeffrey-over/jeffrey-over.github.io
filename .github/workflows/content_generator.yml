@@ -17,7 +17,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11' # UPGRADE: Nodig voor de nieuwe SDK
+          python-version: '3.11'
 
       - name: Install dependencies
         run: pip install google-genai
@@ -31,6 +31,7 @@ jobs:
         run: |
           git config --global user.name 'AI Content Bot'
           git config --global user.email 'bot@jeffreyovermeer.com'
-          git add _posts/
-          git commit -m "Daily AI Content: New Post Generated" || echo "Geen wijzigingen"
+          # HIER ZIT DE FIX: We voegen nu ook de images map toe!
+          git add _posts/ images/
+          git commit -m "Daily AI Content: New Post & Image Generated" || echo "Geen wijzigingen"
           git push
