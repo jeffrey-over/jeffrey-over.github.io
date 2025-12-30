@@ -5,33 +5,51 @@ link: home
 
 <section class="intro container-narrow">
     <h1 class="animate__animated animate__slideInLeft">Learn Email Marketing Automation</h1>
-    <div class="badge" style="display:inline-block; background:#eee; padding:5px 15px; border-radius:50px; font-size:14px; font-weight:600; margin-bottom:20px;">
+    <div class="badge" style="display:inline-block; background:#f0f2f5; color:#555; padding:6px 16px; border-radius:50px; font-size:14px; font-weight:600; margin-bottom:20px;">
         Tips, Tools, and Strategies for Growth
     </div>
     
     <div style="margin-top: 20px;">
-        <a href="#" 
-   class="btn-primary" 
-   onclick="this.href='mailto:' + 'jeffrey.overmeer' + '@' + 'gmail.com'; return true;">
-    Hire me for your next project &rarr;
-</a>
+        <a href="javascript:void(0)" 
+           onclick="window.location.href = 'mailto:jeffrey.overmeer' + '@' + 'gmail.com'" 
+           class="btn-primary">
+            Hire me for your next project &rarr;
+        </a>
     </div>
 </section>
 
-<div class="separator">
-    <div class="featured-content-slider">
-        {% for post in site.posts %}
-        {% if post.featured == 1 %}
-        <div class="slide">
-            <a href="{{ post.url | prepend: site.baseurl }}" class="slide-link">
-                <div class="slide-item" style="background-image:linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0)), url('{{ post.thumbnail }}');">
-                    <h3>{% if post.titleshort %}{{ post.titleshort }}{% else %}{{ post.title }}{% endif %}</h3>
-                </div>
-            </a>
-        </div>
-        {% endif %}
-        {% endfor %}
+<div class="container" style="margin-bottom: 60px;">
+    <div style="text-align: center; margin-bottom: 30px;">
+        <h3>Featured Deep Dives</h3>
     </div>
+
+    <section class="cards">
+        {% assign featured_count = 0 %}
+        {% for post in site.posts %}
+            {% if post.featured == 1 %}
+                {% if featured_count < 3 %} <article class="card">
+                    <div class="card__image-container">
+                        <img src="{{ post.thumbnail }}" alt="{{ post.title }}" loading="lazy" />
+                    </div>
+                    <div class="card__content">
+                        <h2 class="card__title">
+                            <a href="{{ post.url | prepend: site.baseurl }}" title="{{ post.title }}">
+                                {% if post.titleshort %}{{ post.titleshort }}{% else %}{{ post.title }}{% endif %}
+                            </a>
+                        </h2>
+                        <div class="card__info">
+                            <p class="card__price">
+                                {{ post.date | date: "%b %d, %Y" }}
+                            </p>
+                        </div>
+                    </div>
+                </article>
+
+                {% assign featured_count = featured_count | plus: 1 %}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    </section>
 </div>
 
 <section style="background: #f8f9fa; padding: 80px 0; margin: 60px 0;">
@@ -56,8 +74,8 @@ link: home
 
 <div class="container">
     <div style="text-align: center; margin-bottom: 40px;">
-        <h3>Knowledge Hub</h3>
-        <p style="color: #666;">Latest insights on email marketing resources and developer tutorials.</p>
+        <h3>Latest Insights</h3>
+        <p style="color: #666;">Fresh content from the AI & Dev lab.</p>
     </div>
 
     <section class="cards">
@@ -94,6 +112,5 @@ link: home
         <h3>Resources</h3>
         <p style="color: #666;">Tools and templates for marketers and developers.</p>
     </div>
-    
     {% include projects.html %}
 </div>
