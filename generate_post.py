@@ -1,135 +1,134 @@
 import os
 import time
-import requests # Nieuwe, betere bibliotheek
+import requests
 from google import genai
 from datetime import datetime
 
 # 1. Configureren
 client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 
-# 2. Onderwerpen
+# 2. Onderwerpen: Deep Dives & Developer Focus
 topics = [
-    "Email Deliverability Best Practices 2026",
-    "Subject Line AI Generators vs Human Creativity",
-    "GDPR and Email Marketing: A 2026 Update",
-    "Segmenting Audiences for Higher Open Rates",
-    "The Psychology of the Click-Through Rate",
-    "Email Design Trends: Dark Mode & Interactivity",
-    "Automated Welcome Flows: The Ultimate Guide",
-    "Win-Back Campaigns: Re-engaging Dormant Users",
-    "Transactional vs Marketing Emails: The Differences",
-    "Integrating CRM with Email Automation Tools",
-    "A/B Testing Strategies for Newsletters",
-    "Mobile-First Email Design Strategies",
-    "Reducing Churn Rate via Email Automation",
-    "Cold Email Outreach: Does it still work?",
-    "Email Marketing KPIs you should track",
-    "Newsletter Monetization Strategies",
-    "Omnichannel Marketing: Email + SMS",
-    "Cleaning your Email List: Why and How",
-    "Hyper-personalization in Email Marketing",
-    "B2B vs B2C Email Marketing Strategies",
-    "The Impact of AI on Email Copywriting",
-    "Avoiding the Spam Folder: Technical Guide (SPF/DKIM)",
-    "Drip Campaigns for SaaS Onboarding",
-    "Holiday Email Marketing Calendars",
-    "User Generated Content in Emails",
-    "Interactive AMP Emails explained",
-    "Video in Email Marketing: Pros and Cons",
-    "Storytelling in Newsletters",
-    "Lead Magnets that grow your Email List",
-    "The Future of Email Marketing Automation"
+    # --- ESP Vergelijkingen & Tech ---
+    "Selligent Marketing Cloud vs Salesforce: A Developer's Perspective",
+    "Deployteq Data Model: Best Practices for Campaign Developers",
+    "Migrating from Mailchimp to Enterprise ESPs: Technical Pitfalls",
+    "Klaviyo vs Braze: Which one scales better for E-commerce?",
+    "Spotler vs Deployteq: A Technical Feature Showdown",
+    "The Hidden Features of Selligent Cortex every Developer should know",
+    "Marketing Cloud AMPScript vs Selligent Smart Content: A Comparison",
+    
+    # --- Coding & Development ---
+    "Advanced Liquid Scripting Hacks for Personalization",
+    "Dark Mode Email Coding: The Ultimate 2026 Cheat Sheet",
+    "Interactive Email with AMP: Building Forms inside Gmail",
+    "CSS Grid in Email: Is it safe to use yet?",
+    "Debugging HTML Emails: Tools & Techniques for Professionals",
+    "Mastering SQL for Advanced Segmentation in Marketing Automation",
+    "API Triggered Campaigns: A Technical Implementation Guide",
+    "Dynamic Content Blocks: Server-side vs Client-side Rendering",
+    
+    # --- Strategie & "Low Hanging Fruit" ---
+    "Low Hanging Fruit: Birthday Automations 2.0 (Beyond the coupon)",
+    "Win-Back Flows that actually convert: A Data-Driven Approach",
+    "The 'Abandoned Browse' Flow: Implementation Guide",
+    "Replenishment Campaigns: Calculating the perfect timing with Data",
+    "Loyalty Program Integration in Email: Technical Best Practices",
+    "Surprise & Delight: Automating Random Rewards safely",
+    
+    # --- Deliverability & Data ---
+    "BIMI & VMC Certificates: Is it worth the investment?",
+    "DMARC Enforcement: A Step-by-Step Guide for Marketers",
+    "Warm-up Strategies for Dedicated IP Addresses",
+    "Feedback Loops & Whitelisting: The Technical Details",
+    "Handling Hard Bounces: Automating List Hygiene via API",
+    
+    # --- Future & AI ---
+    "AI-Generated Subject Lines vs Human Creativity: A/B Test Results",
+    "Predictive Churn Modeling using Email Data",
+    "Hyper-Personalization at Scale: The role of AI in 2026",
+    "The End of Open Rates: New KPIs for Campaign Developers"
 ]
 
+# Kies random onderwerp op basis van de dag
 day_of_year = datetime.now().timetuple().tm_yday
 topic = topics[day_of_year % len(topics)]
 
-# 3. De Verbeterde Image Downloader
+# 3. Image Downloader (Abstract & Clean)
 def download_image_robust(prompt_text, save_path):
     print(f"🎨 Start genereren afbeelding voor: {prompt_text}")
     
-    # Pollinations URL constructie
-    # We gebruiken een 'seed' zodat het plaatje elke keer anders is, maar wel consistent per dag
-    clean_prompt = prompt_text.replace(" ", "%20")
-    url = f"https://image.pollinations.ai/prompt/futuristic%20minimal%20tech%20illustration%20{clean_prompt}?width=1200&height=630&nologo=true&seed={day_of_year}"
+    # Prompt: Abstract, Tech, Geen tekst
+    base_prompt = f"abstract 3d composition representing {prompt_text}, futuristic, clean, minimalist, iso, high quality, 8k, no text, blurred background"
+    clean_prompt = base_prompt.replace(" ", "%20")
+    
+    url = f"https://image.pollinations.ai/prompt/{clean_prompt}?width=1200&height=630&nologo=true&seed={day_of_year}&model=flux"
     
     try:
-        # We doen alsof we een browser zijn (User-Agent) om blokkades te voorkomen
-        headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'}
+        headers = {'User-Agent': 'Mozilla/5.0'}
         response = requests.get(url, headers=headers, timeout=30)
         
         if response.status_code == 200:
             with open(save_path, 'wb') as f:
                 f.write(response.content)
             
-            # CRUCIALE CHECK: Bestaat het bestand nu echt?
             if os.path.exists(save_path) and os.path.getsize(save_path) > 0:
-                print(f"✅ Afbeelding succesvol opgeslagen in: {save_path}")
+                print(f"✅ Afbeelding opgeslagen: {save_path}")
                 return True
-            else:
-                print(f"❌ Bestand lijkt leeg of niet aangemaakt: {save_path}")
-                return False
-        else:
-            print(f"❌ Server gaf foutmelding: {response.status_code}")
-            return False
+        print(f"❌ Server fout: {response.status_code}")
+        return False
             
     except Exception as e:
         print(f"❌ Fout bij downloaden: {e}")
         return False
 
-# 4. Paden instellen (In de ROOT images map)
+# 4. Paden
 safe_slug = topic.lower().replace(" ", "-").replace(":", "").replace("/", "")
 date_str = datetime.now().strftime('%Y-%m-%d')
 
-# Mapnamen
 post_filename = f"_posts/{date_str}-{safe_slug}.md"
-image_folder = "images" # Gewoon 'images' in de root
+image_folder = "images"
 image_filename = f"{image_folder}/{date_str}-{safe_slug}.jpg"
-image_public_path = f"/{image_filename}" # Dit komt in de HTML
+image_public_path = image_filename 
 
-# Zorg dat de mappen bestaan
 os.makedirs("_posts", exist_ok=True)
 os.makedirs(image_folder, exist_ok=True)
 
-# 5. EERST de afbeelding proberen
-success = download_image_robust(topic, image_filename)
+# 5. Download Image
+download_image_robust(topic, image_filename)
 
-if not success:
-    print("⚠️ LET OP: Afbeelding genereren mislukt. We gaan door, maar gebruiken een fallback of geen plaatje.")
-    # Optioneel: Je kunt hier 'exit(1)' doen als je wilt dat het script stopt zonder plaatje.
-    # Voor nu laten we hem doorgaan, maar check de logs!
-
-# 6. Tekst Genereren
+# 6. Content Genereren
 prompt = f"""
-Act as a World-Class SEO Copywriter.
-Write a blog post for Jeffrey Overmeer's blog about: '{topic}'.
+Act as a Senior Email Campaign Developer & Technical Marketer.
+Write a high-level, technical blog post for Jeffrey Overmeer's blog about: '{topic}'.
 
-TARGET AUDIENCE: Marketing Managers & SaaS Founders.
+TARGET AUDIENCE: Experienced Email Marketers, CRM Specialists, and Developers.
 LANGUAGE: Fluent American English.
-TONE: Professional, Authoritative, yet Accessible.
+TONE: Authoritative, Technical, Insightful (Show expertise).
 
 REQUIREMENTS:
-1.  **Structure**: Markdown. H2 (##) and H3 (###).
-2.  **Key Takeaways**: Start with a bulleted list of 3-5 key insights.
-3.  **Visuals**: Include at least one Markdown comparison table.
-4.  **FAQ**: Add a "Frequently Asked Questions" section at the end.
-5.  **Length**: 1000+ words.
+1.  **Deep Dive**: Go beyond basics. Discuss code, data structures, or strategy nuances.
+2.  **Comparison Table**: If applicable, compare tools/methods (e.g. "Pros/Cons" or "Feature Matrix").
+3.  **Code/Snippets**: If the topic allows, include a (pseudo)code block or SQL example.
+4.  **Key Takeaways**: Start with 3 bullet points for quick scanning.
+5.  **FAQ**: End with a technical FAQ section.
+6.  **Length**: 1000+ words.
 
 IMPORTANT: Start with this EXACT Frontmatter:
 ---
 layout: post
-title: "[Create a click-worthy title for {topic}]"
+title: "[Technical SEO Title for {topic}]"
 titleshort: "[Short title max 40 chars]"
 featured: 0
 date: {date_str}
-label: email, marketing, automation
+label: email, development, automation
 permalink: /generated-post-{date_str}
-tags: email, marketing, automation, ai, tech
+tags: email, marketing, development, selligent, deployteq, tech
 yearreview: false
 author: Jeffrey Overmeer
 published: true
 thumbnail: "{image_public_path}"
-description: "[Meta-description max 160 chars]"
+description: "[Technical meta-description max 160 chars]"
 ---
 
 After frontmatter, write the full post.
