@@ -38,7 +38,6 @@ layout: default
 
   {% if page.thumbnail and page.thumbnail != '' %}
   <figure class="post-thumbnail">
-    
     <img src="{{ page.thumbnail }}" alt="{{ page.title }}" itemprop="image">
   </figure>
   {% endif %}
@@ -51,17 +50,20 @@ layout: default
     {{ content }}
   </div>
 
-  {% if page.tags %}
-  <div class="post-tags">
-    <span>Tags:</span>
-    {{ page.tags | replace: ",", " " }}
+  {% if page.tags.size > 0 %}
+  <div class="post-footer">
+    <div class="tags-container">
+      {% for tag in page.tags %}
+        <span class="tag-pill">{{ tag }}</span>
+      {% endfor %}
+    </div>
   </div>
   {% endif %}
 
 </article>
 
-<div class="wrapper-narrow">
-  <section class="comments-section">
+<div class="wrapper-narrow" style="margin-top: 60px;">
+  <section class="comments-section" style="border-top: 1px solid #eee; padding-top: 40px;">
     <h3>Discussion</h3>
     <script src="https://utteranc.es/client.js"
         repo="jeffrey-over/jeffrey-over.github.io"
