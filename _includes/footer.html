@@ -1,50 +1,30 @@
 <footer>
-  <div class="footer-logo">
-      
-  </div>
-  <div class="footer-menu">
+    <div class="container">
+        <div class="footer-inner">
+            
+            <div class="footer-copy">
+                <p>&copy; {{ site.time | date: '%Y' }} Jeffrey Overmeer.</p>
+                <p class="footer-sub">Marigold Engage Expert & Front-end Developer.</p>
+            </div>
 
-  </div>
-  <div class="bottom container">
-     <div class="copy">
-      <p>&copy; 2024. Made by Jeffrey Overmeer. 
-      
-       </p>
-     </div>
-    <div class="icons">
-      <div class="socials" >
-        <a href="https://github.com/jeffrey-over/" class="" target="_BLANK" style=""><img src = "/images/Social_Icons/Github.png" class = "" alt = ""></a> 
-        <a href="https://www.linkedin.com/in/jeffreyovermeer/" target="_BLANK" class="" style=""><img src = "/images/Social_Icons/linkedin.png" class = "" alt = ""></a>
-        <a href="https://www.jeffreyovermeer.com/feed.xml" target="_BLANK" class="" style=""><img src = "/images/Social_Icons/Rss.png" class = "" alt = ""></a>
+            <div class="footer-socials">
+                <a href="https://github.com/jeffrey-over/" target="_blank" title="GitHub">
+                    <img src="/images/Social_Icons/Github.png" alt="GitHub">
+                </a>
+                <a href="https://www.linkedin.com/in/jeffreyovermeer/" target="_blank" title="LinkedIn">
+                    <img src="/images/Social_Icons/linkedin.png" alt="LinkedIn">
+                </a>
+                <a href="https://www.jeffreyovermeer.com/feed.xml" target="_blank" title="RSS Feed">
+                    <img src="/images/Social_Icons/Rss.png" alt="RSS">
+                </a>
+            </div>
+
+        </div>
     </div>
-    </div>
-  </div>
 </footer>
+
 <script async src="https://www.jeffreyovermeer.com/helder-css-framework/js/prism.js"></script>
 
-
-{% if page.link == "home" %}
-<script>
-  $(document).scroll(function() {    
-var scroll = $(this).scrollTop();
-if (scroll >= 500) {
-setTimeout('$(".hero").addClass("hfixed")',100);
-} else {setTimeout('$(".hero").removeClass("hfixed")',100);}
-});
-
-</script>
-{% endif %}
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-113733633-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  
-  gtag('config', 'UA-113733633-1');
-</script>
-<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JP9ZM8C036"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -53,24 +33,3 @@ setTimeout('$(".hero").addClass("hfixed")',100);
 
   gtag('config', 'G-JP9ZM8C036');
 </script>
-
-
-<script type="text/javascript">
-  $(document).ready(function(){
-      $('.featured-content-slider').slick({
-        dots: false,  // Verberg de stippen
-            arrows: false,  // Verberg de pijlen
-            infinite: true,
-            speed: 10000,  // Langzame scrollsnelheid
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            cssEase: 'linear',  // Zorgt voor continu scrollen
-            autoplay: true,
-            autoplaySpeed: 0, 
-          
-  centerMode: true,
-  variableWidth: true
-      });
-  });
-</script>
-
