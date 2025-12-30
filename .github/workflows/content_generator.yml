@@ -1,8 +1,8 @@
 name: Daily AI Content Generator
 on:
   schedule:
-    - cron: '0 7 * * *' # Elke dag om 08:00 NL tijd
-  workflow_dispatch: # Handmatige startknop
+    - cron: '0 7 * * *'
+  workflow_dispatch:
 
 jobs:
   write-and-publish:
@@ -20,7 +20,8 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install google-genai
+        # HIER IS DE WIJZIGING: We voegen 'requests' toe
+        run: pip install google-genai requests
 
       - name: Run AI Script
         env:
@@ -31,7 +32,7 @@ jobs:
         run: |
           git config --global user.name 'AI Content Bot'
           git config --global user.email 'bot@jeffreyovermeer.com'
-          # HIER ZIT DE FIX: We voegen nu ook de images map toe!
+          # We voegen expliciet de images map toe
           git add _posts/ images/
-          git commit -m "Daily AI Content: New Post & Image Generated" || echo "Geen wijzigingen"
+          git commit -m "Daily AI Content: New Post & Image" || echo "Geen wijzigingen"
           git push
