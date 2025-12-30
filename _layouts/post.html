@@ -1,93 +1,74 @@
 ---
 layout: default
 ---
-<div class="container">
-  
 
-<div class="post content-container">
-     
-   
-   <div class="tag1">{{ page.label }}</div>
-  <h2>{{ page.title }}</h2>
+<article class="wrapper-narrow post" itemscope itemtype="http://schema.org/BlogPosting">
 
-  
-   {% if page.thumbnail and page.thumbnail != '' %}        
-   <div style=""><img  class="thumb" src="{{ page.thumbnail }}" /></div>
-   {% endif %}
-
-
-
-
-
-   {% if page.author %}
-   <div class="flex author">
-      <img src="/images/ik.png" class="avatar">
-      
-      <div class="authorname"><span>{{ page.author }}</span><br />
-         <div class="date">
-
-            {% assign m = page.date | date: "%-m" %}
-                                 
-                                 {% case m %}
-                                 {% when '1' %}Jan
-                                 {% when '2' %}Feb
-                                 {% when '3' %}Mar
-                                 {% when '4' %}Apr
-                                 {% when '5' %}May
-                                 {% when '6' %}Jun
-                                 {% when '7' %}Jul
-                                 {% when '8' %}Aug
-                                 {% when '9' %}Sept
-                                 {% when '10' %}Oct
-                                 {% when '11' %}Nov
-                                 {% when '12' %}Dec
-                                 {% endcase %}
-                                 {{ page.date | date: "%-d" }}, 
-                                 {{ page.date | date: "%Y" }} 
-
-         </div>
-      </div>
-   </div>
-   {% endif %}   
-
-
-
-
-   <!--
-
-        <div class="readtime">
-       {% capture readtime %}{{ content | number_of_words | plus:91 | divided_by:180.0 | append:'.' | split:'.' | first }}{% endcapture %}
-         {% if readtime == '0' %} &lt; 1{% else %}- {{ readtime }}{% endif %} minute(s) reading time
-      </div>
-     
+  <header class="post-header">
     
--->
+    {% if page.label %}
+      <span class="post-label">{{ page.label }}</span>
+    {% endif %}
 
+    <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
 
-
-
-   <p class="intro">{{ page.description }}</p>
-
-  
-
-   {{ content }}
-</div>
-
-   <div class="section content-container comments">
-   	<section>
+    <div class="post-meta">
+      <img src="/images/ik.png" alt="Jeffrey Overmeer" class="author-avatar">
       
-              <h3>Comments</h3>
-                      
-              <script src="https://utteranc.es/client.js"
-              repo="jeffrey-over/jeffrey-over.github.io"
-              issue-term="title"
-              theme="github-light"
-              crossorigin="anonymous"
-              async>
-      </script>
-      
-   
-   	</section>
-   </div>
-     
+      <div class="meta-info">
+        <span class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <span itemprop="name">{% if page.author %}{{ page.author }}{% else %}Jeffrey Overmeer{% endif %}</span>
+        </span>
+        
+        <div class="meta-details">
+          <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+            {{ page.date | date: "%b %d, %Y" }}
+          </time>
+          <span class="separator">•</span>
+          
+          {% capture readtime %}{{ content | number_of_words | plus:91 | divided_by:180.0 | append:'.' | split:'.' | first }}{% endcapture %}
+          <span class="read-time">
+            {% if readtime == '0' %} < 1 min read{% else %}{{ readtime }} min read{% endif %}
+          </span>
+        </div>
+      </div>
+    </div>
+
+  </header>
+
+  {% if page.thumbnail and page.thumbnail != '' %}
+  <figure class="post-thumbnail">
+    
+    <img src="{{ page.thumbnail }}" alt="{{ page.title }}" itemprop="image">
+  </figure>
+  {% endif %}
+
+  {% if page.description %}
+    <p class="post-intro">{{ page.description }}</p>
+  {% endif %}
+
+  <div class="post-content" itemprop="articleBody">
+    {{ content }}
+  </div>
+
+  {% if page.tags %}
+  <div class="post-tags">
+    <span>Tags:</span>
+    {{ page.tags | replace: ",", " " }}
+  </div>
+  {% endif %}
+
+</article>
+
+<div class="wrapper-narrow">
+  <section class="comments-section">
+    <h3>Discussion</h3>
+    <script src="https://utteranc.es/client.js"
+        repo="jeffrey-over/jeffrey-over.github.io"
+        issue-term="title"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+    </script>
+  </section>
 </div>
