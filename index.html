@@ -2,63 +2,48 @@
 layout: defaulthome
 link: home
 ---
+
 <div id="wrapper">
-  
+
     <div class="intro container">
-      
-        <h1 class="animate__animated animate__slideInLeft">Learn Email Marketing Automation
-        </h1>
-
+        <h1 class="animate__animated animate__slideInLeft">Learn Email Marketing Automation</h1>
         <div class="badge">Tips, Tools, and Strategies for Growth</div>
-
-
-</div>
-
-<div class="separator">
-    <div class="featured-content-slider">
-
-
-
-        {% for post in site.posts %}
-        {% if post.featured == 1 %}
-
-
-        <div class="slide">
-            <a href="{{ post.url | prepend: site.baseurl }}" class="slide-link">
-                <div class="slide-item" style="background-image:linear-gradient(to top, rgba(245, 246, 252, 0.01), rgba(21, 21, 21, 0.73)),
-                url('{{ post.thumbnail }}');">
-                
-                    <h3>{% if post.titleshort %}{{ post.titleshort }}{% else %}{{ post.title }}{% endif %}</h3>
-                
-                </div>
-                </a>
-        </div>
-
-        {% endif %}
-        {% endfor %}
         
-      
+        <div style="margin-top: 30px;">
+            <a href="mailto:jeffrey.overmeer@gmail.com" class="btn-primary" style="padding: 12px 25px; border-radius: 4px; text-decoration: none; font-weight: 600;">
+                Hire me for your next project →
+            </a>
+        </div>
     </div>
-</div>
 
+    <div class="separator">
+        <div class="featured-content-slider">
+            {% for post in site.posts %}
+            {% if post.featured == 1 %}
+            <div class="slide">
+                <a href="{{ post.url | prepend: site.baseurl }}" class="slide-link">
+                    <div class="slide-item" style="background-image:linear-gradient(to top, rgba(245, 246, 252, 0.01), rgba(21, 21, 21, 0.73)), url('{{ post.thumbnail }}');">
+                        <h3>{% if post.titleshort %}{{ post.titleshort }}{% else %}{{ post.title }}{% endif %}</h3>
+                    </div>
+                </a>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
 
-
-<div class="intro fullcontainer" style="padding: 40px 0;
-margin: 150px 0 20px;
-
-background: rgb(239, 238, 229);"> 
+    <div class="intro fullcontainer" style="padding: 40px 0; margin: 150px 0 20px; background: rgb(239, 238, 229);">
         <div class="aboutme">
-            <img src="/images/ik.png" class="avatar">
-
+            <img src="/images/ik.png" class="avatar" alt="Jeffrey Overmeer">
             <h3>Hey there! 👋</h3>
             <p>
                 I'm Jeffrey, a campaign developer from the Netherlands specializing in email marketing automation. With years of experience in optimizing email campaigns, I help businesses increase engagement and drive results through advanced automation techniques.
-                
-                When I'm not working, I enjoy spending time with my family, especially my two young kids. 
+                When I'm not working, I enjoy spending time with my family, especially my two young kids.
             </p>
-                <p>Explore my <a href="/work/">work</a> page to see some of my projects, or check out my <a href="/blog/">Knowledge Hub</a> for guides and tutorials on email marketing automation and other topics. Feel free to <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#106;&#101;&#102;&#102;&#114;&#101;&#121;&#46;&#111;&#118;&#101;&#114;&#109;&#101;&#101;&#114;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">contact me</a> if you have any ideas for new projects or just want to chat about email marketing!
-                </p>
-            
+            <p>
+                Explore my <a href="/work/">work</a> page to see some of my projects, or check out my <a href="/blog/">Knowledge Hub</a> for guides and tutorials. Feel free to <a href="mailto:jeffrey.overmeer@gmail.com">contact me</a> if you have any ideas for new projects!
+            </p>
+
             <div class="socials">
                 <a href="https://github.com/jeffrey-over/" target="_BLANK"><img src="/images/Social_Icons/Github.png" alt="GitHub"></a>
                 <a href="https://www.linkedin.com/in/jeffreyovermeer/" target="_BLANK"><img src="/images/Social_Icons/linkedin.png" alt="LinkedIn"></a>
@@ -67,140 +52,69 @@ background: rgb(239, 238, 229);">
         </div>
     </div>
 
-    <!--    
-        <div class="key-sections">
-            <h2>Explore Our Resources</h2>
+    <div class="container">
+        <h3>Knowledge Hub</h3>
+        <p>Looking for some interesting reads? Check out my Knowledge Hub for the latest insights on email marketing resources and developer tutorials.</p>
+
+        <section class="cards">
+            {% for post in site.posts limit:6 %}
+            {% if post.yearreview == false and post.published == true %}
             
-            <div class="section">
-                <h3><a href="/knowledge-hub/">Knowledge Hub</a></h3>
-                <p>Find in-depth guides, tutorials, and articles on email marketing automation.</p>
+            <div class="card">
+                <div class="card__image-container">
+                    <img src="{{ post.thumbnail }}" alt="{{ post.title }}" loading="lazy" />
+                </div>
+                <div class="card__content">
+                    <p class="card__title text--medium">
+                        <a href="{{ post.url | prepend: site.baseurl }}" title="{{ post.title }}">
+                            {% if post.titleshort %}{{ post.titleshort }}{% else %}{{ post.title }}{% endif %}
+                        </a>
+                    </p>
+                    <div class="card__info">
+                        <p class="card__price">
+                            {% assign m = post.date | date: "%-m" %}
+                            {% case m %}
+                                {% when '1' %}Jan{% when '2' %}Feb{% when '3' %}Mar{% when '4' %}Apr
+                                {% when '5' %}May{% when '6' %}Jun{% when '7' %}Jul{% when '8' %}Aug
+                                {% when '9' %}Sept{% when '10' %}Oct{% when '11' %}Nov{% when '12' %}Dec
+                            {% endcase %}
+                            {{ post.date | date: "%-d" }}, {{ post.date | date: "%Y" }} •
+                            {% capture readtime %}{{ post.content | number_of_words | plus:91 | divided_by:180.0 | append:'.' | split:'.' | first }}{% endcapture %}
+                            {% if readtime == '0' %} < 1{% else %} {{ readtime }}{% endif %} min read
+                        </p>
+                    </div>
+                </div>
             </div>
-            
-            <div class="section">
-                <h3><a href="/tool-reviews/">Tool Reviews & Comparisons</a></h3>
-                <p>Read detailed reviews and comparisons of the best email marketing automation tools available.</p>
-            </div>
-            
-            <div class="section">
-                <h3><a href="/case-studies/">Case Studies & Success Stories</a></h3>
-                <p>Discover how businesses have successfully implemented email marketing automation to achieve their goals.</p>
-            </div>
-        </div>
+
+            {% endif %}
+            {% endfor %}
+        </section>
+    </div>
+
+    <div class="container">
+        <h3>Resources</h3>
+        <p>Are you a marketer, email developer, or creative looking for some helpful resources? Look no further!</p>
         
-    
--->
-
-
-   
-        <div class="container">
-            <h3>Knowledge Hub</h3>
-
-            <p>Looking for some interesting reads? Check out my Knowledge Hub for the latest insights on book summaries, productivity tips, email marketing resources, and developer tutorials. These are the topics I've been working on lately and I'm excited to share them with you.</p>
-            
-
-            <section class="cards">
-
-
-                {% for post in site.posts limit:5 %}
-                {% if post.yearreview == false and post.published == true %}
-                
-                    <div class="card">
-                        <div class="card__image-container">
-                          <img
-                            src=" {{ post.thumbnail }}"
-                          />
-                              </div>
-                        <div class="card__content">
-                          <p class="card__title text--medium">
-                            <a href="{{ post.url | prepend: site.baseurl }}" alt="{{ post.title }}">{% if post.titleshort %}{{ post.titleshort }}{% else %}{{ post.title }}{% endif %}</a>
-                          </p>
-                          <div class="card__info">
-                   
-                            <p class="card__price"> 
-                                {% assign m = post.date | date: "%-m" %}
-                               
-                                {% case m %}
-                                {% when '1' %}Jan
-                                {% when '2' %}Feb
-                                {% when '3' %}Mar
-                                {% when '4' %}Apr
-                                {% when '5' %}May
-                                {% when '6' %}Jun
-                                {% when '7' %}Jul
-                                {% when '8' %}Aug
-                                {% when '9' %}Sept
-                                {% when '10' %}Oct
-                                {% when '11' %}Nov
-                                {% when '12' %}Dec
-                                {% endcase %}
-                                {{ post.date | date: "%-d" }}, 
-                                {{ post.date | date: "%Y" }} • 
-                                {% capture readtime %}{{ post.content | number_of_words | plus:91 | divided_by:180.0 | append:'.' | split:'.' | first }}{% endcapture %}
-                                {% if readtime == '0' %} &lt; 1{% else %} {{ readtime }}{% endif %} minute(s) reading time</p>
-                        
-                          </div>
-                          
-                        </div>
-                      </div>
-                     <!-- <span class="icon">{{ post.label }}</span>-->
-                     
-                   
-                   {% endif %}
-                   {% endfor %}
-                
-              
-              
-              </section>
-             
-
-                
-          
-        </div>
-
-        <div class="container">
-       
-            
-            <h3>Resources</h3>
-            <p>Are you a marketer, email developer, or creative looking for some helpful resources? Look no further! I've got you covered with a ton of great stuff for you to check out. Whether you're just starting out in your career or you're a seasoned pro, there's something here for everyone. So go ahead and take a look around.</p>
-       
-            
-            {% include projects.html %}
+        {% include projects.html %}
         
-    </div>
-
-  
-<!--
-    <div class="showcase">  
-        <div class="flex">
-            <div>
-                <h5>Visual Studio Code</h5>
-                <h1>Wizza Theme</h1>
-            </div>
-            <div>
-
-                <a class="btn-primary" href="https://marketplace.visualstudio.com/items?itemName=JeffreyOvermeer.wizza" target="_BLANK">Download</a>
-
-            </div>
         </div>
-
-        <img src="https://www.jeffreyovermeer.com/images/screenshot-wizza-html.png" style="" />
-    </div>
-    <div class="showcase showcase-helder">
-        <div>
-            <h5>CSS Framework</h5>
-            <h1>Helder</h1>
-        </div>
-        <div>
-
-            <a class="btn-primary" href="https://www.jeffreyovermeer.com/helder-css-framework/" target="_BLANK">Download</a>
-
-        </div>
-    </div>
-
-
--->
-
-   
-  
 
 </div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+      $('.featured-content-slider').slick({
+        dots: true,           // Laat bolletjes zien (navigatie)
+        arrows: false,        // Pijltjes uit (cleaner op mobile)
+        infinite: true,
+        speed: 500,           // Normale slide snelheid
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        cssEase: 'ease-out',  // Natuurlijke beweging
+        autoplay: true,
+        autoplaySpeed: 4000,  // Wacht 4 seconden tussen slides
+        centerMode: true,
+        variableWidth: true
+      });
+  });
+</script>
