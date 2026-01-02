@@ -123,7 +123,6 @@ input[type="color"] {
     <br><br>
     <button id="btn-copy-code" class="btn-primary" style="cursor:pointer; padding: 10px 20px; background: #333; color: #fff; border: 0; border-radius: 5px;">Copy HTML to clipboard</button>
 </div>
-
 <script>
 (function() {
     // Select elements
@@ -147,13 +146,28 @@ input[type="color"] {
         var widthStyle = (width === 'auto' || width === '') ? 'auto' : width + 'px';
         var vmlWidth = (width === 'auto' || width === '') ? 'mso-width-alt:auto;' : 'width:' + width + 'px;';
 
+        // TRUC: We knippen de comments in stukjes zodat Jekyll/Minifiers ze niet verwijderen
+        var cStart = '<' + '!--'; 
+        var cEnd = '-' + '->';
+        var msoStart = cStart + '[if mso]>';
+        var msoEnd = '<![endif]' + cEnd;
+
         // THE BULLETPROOF HTML/VML CODE
-        // We gebruiken backticks (`) voor een template string
-        var code = `<div>
-<a href="${url}"
-style="background-color:${bgColor};color:${textColor};display:inline-block;font-family:sans-serif;font-size:16px;font-weight:bold;line-height:48px;text-align:center;text-decoration:none;width:${widthStyle};-webkit-text-size-adjust:none;mso-hide:all;border-radius:4px;">${text}</a>
-  </div>
-`;
+        var code = cEnd + ' Button Start ' + cStart + '\n' +
+'<div>\n' +
+msoStart + '\n' +
+'  <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="' + url + '" style="height:48px;v-text-anchor:middle;' + vmlWidth + '" arcsize="10%" stroke="f" fillcolor="' + bgColor + '">\n' +
+'    <w:anchorlock/>\n' +
+'    <center>\n' +
+'  ' + msoEnd + '\n' +
+'      <a href="' + url + '"\n' +
+'style="background-color:' + bgColor + ';color:' + textColor + ';display:inline-block;font-family:sans-serif;font-size:16px;font-weight:bold;line-height:48px;text-align:center;text-decoration:none;width:' + widthStyle + ';-webkit-text-size-adjust:none;mso-hide:all;border-radius:4px;">' + text + '</a>\n' +
+'  ' + msoStart + '\n' +
+'    </center>\n' +
+'  </v:roundrect>\n' +
+msoEnd + '\n' +
+'</div>\n' +
+cStart + ' Button End ' + cEnd;
 
         // Update Textarea
         outputArea.value = code;
