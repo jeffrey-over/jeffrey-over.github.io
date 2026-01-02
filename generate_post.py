@@ -87,14 +87,17 @@ image_public_path = f"/{image_filename}"
 os.makedirs("_posts", exist_ok=True)
 os.makedirs(image_folder, exist_ok=True)
 
-# 3. Image Genereren
+# 3. Image Genereren (Apple App Store Style)
 def download_image_robust(prompt_text, save_path):
     print(f"🎨 Afbeelding genereren...")
     try:
         short_prompt = prompt_text.replace("-", " ")
-        clean_prompt = f"abstract 3d tech visualization of {short_prompt}, data streams, code snippets style, minimalist, blue and purple gradient, 8k, no text"
+        # HIER IS DE NIEUWE PROMPT STIJL:
+        clean_prompt = f"3D render in Apple App Store editorial style of {short_prompt}. A clean high-quality composition, center stage glossy 3D icon relevant to topic, soft light airy gradient background white light blue soft grey, high fidelity, soft shadows, octane render, claymorphism elements, tech-minimalist aesthetic, no text"
+        
         encoded_prompt = clean_prompt.replace(" ", "%20")
         seed = random.randint(0, 9999)
+        # We gebruiken een grotere width/height ratio voor blog covers
         url = f"https://image.pollinations.ai/prompt/{encoded_prompt}?width=1200&height=630&nologo=true&seed={seed}&model=flux"
         
         headers = {'User-Agent': 'Mozilla/5.0'}
@@ -125,14 +128,16 @@ REQUIREMENTS:
 4. **FAQ**: Include "People Also Ask" style questions at the end.
 5. **Length**: 1000+ words.
 
+IMPORTANT TECHNICAL RULE:
+If you write code examples that contain Liquid or Jinja syntax (like `{{ variable }}` or `{{% if condition %}}`), you MUST wrap that specific code block in `{{% raw %}}` and `{{% endraw %}}` tags. Otherwise, the Jekyll build will fail.
+
 DO NOT write Frontmatter.
 """
 
 models_to_try = [
-    "gemini-3-pro-preview",
     "gemini-2.0-flash-exp",
-    "gemini-2.5-flash",
-    "gemini-flash-latest"
+    "gemini-1.5-flash-latest",
+    "gemini-1.5-pro-latest"
 ]
 
 content_body = None
@@ -150,11 +155,11 @@ for model_name in models_to_try:
         print(f"✅ Gelukt met {model_name}")
         break 
     except Exception as e:
+        print(f"⚠️ Fout met {model_name}: {e}")
         time.sleep(1)
 
 # 5. Opslaan (Met SEO Permalink Fix)
 if content_body:
-    # HIER IS DE WIJZIGING: permalink gebruikt nu {safe_slug}
     final_post = f"""---
 layout: post
 title: "{topic}"
@@ -177,4 +182,5 @@ description: "Learn about {topic} in this technical deep dive for email develope
         f.write(final_post)
     print(f"🎉 Opgeslagen: {post_filename}")
 else:
+    print("❌ Kon geen content genereren.")
     exit(1)
