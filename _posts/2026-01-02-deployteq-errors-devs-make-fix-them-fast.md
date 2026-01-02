@@ -20,10 +20,10 @@ The good news? Most common Deployteq errors stem from a predictable set of cause
 ### The High Stakes of Unresolved Deployteq Errors
 
 Before we dissect the problems, let's briefly acknowledge the impact. In a fast-paced marketing environment, every minute counts.
-*   **Campaign Failures:** An incorrect segment, a faulty personalization tag, or a delayed email can render an entire campaign ineffective.
-*   **Data Integrity Issues:** Mismatched fields or failed synchronizations lead to fragmented customer profiles and unreliable analytics.
-*   **Integration Bottlenecks:** Broken APIs or misconfigured webhooks cripple the flow of information between Deployteq and your other critical systems.
-*   **Developer Frustration & Burnout:** Constant firefighting distracts from innovation and strategic development.
+* **Campaign Failures:** An incorrect segment, a faulty personalization tag, or a delayed email can render an entire campaign ineffective.
+* **Data Integrity Issues:** Mismatched fields or failed synchronizations lead to fragmented customer profiles and unreliable analytics.
+* **Integration Bottlenecks:** Broken APIs or misconfigured webhooks cripple the flow of information between Deployteq and your other critical systems.
+* **Developer Frustration & Burnout:** Constant firefighting distracts from innovation and strategic development.
 
 Our goal here is to empower you to not just fix these issues, but to anticipate and prevent them, ensuring Deployteq remains a powerful asset, not a source of constant headaches.
 
@@ -36,22 +36,22 @@ Let's break down the typical culprits behind Deployteq woes, complete with their
 **Problem:** Your custom application or external service fails to connect with Deployteq, or requests are consistently rejected. Symptoms include `401 Unauthorized`, `403 Forbidden`, `429 Too Many Requests`, or general connection timeouts.
 
 **Root Cause:** This is often a multi-faceted issue.
-*   **Incorrect API Keys/Tokens:** Expired, revoked, or simply wrong credentials.
-*   **Insufficient Permissions:** The API key/token lacks the necessary scope to perform the requested action (e.g., trying to update data with a read-only token).
-*   **Rate Limiting:** Exceeding the number of API calls allowed within a specific timeframe.
-*   **Incorrect Endpoints/Protocols:** Typos in the API URL, using HTTP instead of HTTPS, or misconfigured port numbers.
+* **Incorrect API Keys/Tokens:** Expired, revoked, or simply wrong credentials.
+* **Insufficient Permissions:** The API key/token lacks the necessary scope to perform the requested action (e.g., trying to update data with a read-only token).
+* **Rate Limiting:** Exceeding the number of API calls allowed within a specific timeframe.
+* **Incorrect Endpoints/Protocols:** Typos in the API URL, using HTTP instead of HTTPS, or misconfigured port numbers.
 
 **Technical Solution (Code/Logic):**
 
-*   **Verify Credentials & Scope:**
-    *   **Action:** Double-check your API key/token directly within the Deployteq administrative interface. Ensure it's active and granted the exact permissions required for your operation (e.g., `contacts:write`, `campaigns:read`).
-    *   **Code Example (Pseudocode for API Call):**
+* **Verify Credentials & Scope:**
+    * **Action:** Double-check your API key/token directly within the Deployteq administrative interface. Ensure it's active and granted the exact permissions required for your operation (e.g., `contacts:write`, `campaigns:read`).
+    * **Code Example (Pseudocode for API Call):**
         ```python
         import requests
         import os
 
         DEPLOYTEQ_API_KEY = os.getenv("DEPLOYTEQ_API_KEY") # Load securely from environment
-        DEPLOYTEQ_BASE_URL = "https://api.deployteq.com/v1" # Verify correct base URL
+        DEPLOYTEQ_BASE_URL = "[https://api.deployteq.com/v1](https://api.deployteq.com/v1)" # Verify correct base URL
 
         headers = {
             "Authorization": f"Bearer {DEPLOYTEQ_API_KEY}",
@@ -78,9 +78,9 @@ Let's break down the typical culprits behind Deployteq woes, complete with their
         # if contact:
         #     print(contact)
         ```
-*   **Implement Robust Rate Limit Handling:**
-    *   **Action:** If you hit `429 Too Many Requests`, introduce exponential backoff or use a queueing mechanism to space out your API calls.
-    *   **Code Example (Pseudocode with Backoff):**
+* **Implement Robust Rate Limit Handling:**
+    * **Action:** If you hit `429 Too Many Requests`, introduce exponential backoff or use a queueing mechanism to space out your API calls.
+    * **Code Example (Pseudocode with Backoff):**
         ```python
         import time
         import random
@@ -108,7 +108,7 @@ Let's break down the typical culprits behind Deployteq woes, complete with their
             print("Failed after multiple retries.")
             return None
         ```
-*   **Verify Endpoint and Protocols:** Use cURL or Postman to test the exact endpoint with your credentials and payload before integrating into your application.
+* **Verify Endpoint and Protocols:** Use cURL or Postman to test the exact endpoint with your credentials and payload before integrating into your application.
 
 **Best Practice:** Store API keys securely (environment variables, secrets manager). Implement comprehensive error logging and monitoring for all API interactions. Regularly audit API token permissions.
 
@@ -117,16 +117,16 @@ Let's break down the typical culprits behind Deployteq woes, complete with their
 **Problem:** Data flowing between Deployteq and other systems (CRM, e-commerce, CDP) is incorrect, incomplete, or fails to synchronize. Symptoms include missing contact attributes, incorrect segment assignments, or failed data imports/exports.
 
 **Root Cause:**
-*   **Field Mismatch:** Discrepancies in field names (e.g., `email_address` vs `Email`) or data types (e.g., sending a string to a number field).
-*   **Missing Required Fields:** Attempting to create or update a record without providing values for mandatory Deployteq fields.
-*   **Incorrect Data Formats:** Dates in the wrong format, boolean values not `true`/`false`, or string length exceeding limits.
-*   **ID Conflicts:** Using the wrong unique identifier (e.g., internal database ID instead of Deployteq's contact ID).
+* **Field Mismatch:** Discrepancies in field names (e.g., `email_address` vs `Email`) or data types (e.g., sending a string to a number field).
+* **Missing Required Fields:** Attempting to create or update a record without providing values for mandatory Deployteq fields.
+* **Incorrect Data Formats:** Dates in the wrong format, boolean values not `true`/`false`, or string length exceeding limits.
+* **ID Conflicts:** Using the wrong unique identifier (e.g., internal database ID instead of Deployteq's contact ID).
 
 **Technical Solution (Logic/Configuration):**
 
-*   **Establish a Canonical Data Model:**
-    *   **Action:** Create a clear mapping document (spreadsheet, YAML config) that defines how each field in your source system maps to its corresponding Deployteq field, including data types and any required transformations.
-    *   **Example Mapping (Conceptual):**
+* **Establish a Canonical Data Model:**
+    * **Action:** Create a clear mapping document (spreadsheet, YAML config) that defines how each field in your source system maps to its corresponding Deployteq field, including data types and any required transformations.
+    * **Example Mapping (Conceptual):**
         ```yaml
         # Source System (e.g., CRM) to Deployteq Field Mapping
         Contact:
@@ -138,9 +138,9 @@ Let's break down the typical culprits behind Deployteq woes, complete with their
           IsMarketingOptIn: marketing_consent # Convert to true/false boolean
           CustomerTier: customer_segment # Ensure values match Deployteq dropdowns
         ```
-*   **Implement Data Validation & Transformation:**
-    *   **Action:** Before sending data to Deployteq, validate its format and transform it to match Deployteq's expectations. This is often done in your integration layer.
-    *   **Code Example (Python for pre-processing):**
+* **Implement Data Validation & Transformation:**
+    * **Action:** Before sending data to Deployteq, validate its format and transform it to match Deployteq's expectations. This is often done in your integration layer.
+    * **Code Example (Python for pre-processing):**
         ```python
         import datetime
 
@@ -186,7 +186,7 @@ Let's break down the typical culprits behind Deployteq woes, complete with their
         # except ValueError as e:
         #     print(f"Data preparation error: {e}")
         ```
-*   **Utilize External IDs:** Where possible, use Deployteq's `external_id` field to map to your system's unique identifier. This ensures idempotency and simplifies updates.
+* **Utilize External IDs:** Where possible, use Deployteq's `external_id` field to map to your system's unique identifier. This ensures idempotency and simplifies updates.
 
 **Best Practice:** Thoroughly test data synchronization with sample data covering all edge cases (missing values, invalid formats). Use Deployteq's own UI or API to inspect created/updated records and confirm data accuracy.
 
@@ -195,16 +195,16 @@ Let's break down the typical culprits behind Deployteq woes, complete with their
 **Problem:** Campaigns trigger incorrectly, reach the wrong audience, or automation steps fail to execute. Symptoms include emails sent to unsubscribed users, segments containing incorrect contacts, or workflows stopping prematurely.
 
 **Root Cause:**
-*   **Flawed Segmentation Rules:** Using `AND` instead of `OR`, incorrect value comparisons (e.g., `equals` instead of `contains`), or outdated data.
-*   **Incorrect Trigger Conditions:** Automation triggered by the wrong event or at the wrong time.
-*   **Logic Errors in Workflow Steps:** Missing conditions, incorrect delays, or branches that lead to unintended paths.
-*   **Data Latency:** Segmentation based on data that hasn't fully synchronized yet.
+* **Flawed Segmentation Rules:** Using `AND` instead of `OR`, incorrect value comparisons (e.g., `equals` instead of `contains`), or outdated data.
+* **Incorrect Trigger Conditions:** Automation triggered by the wrong event or at the wrong time.
+* **Logic Errors in Workflow Steps:** Missing conditions, incorrect delays, or branches that lead to unintended paths.
+* **Data Latency:** Segmentation based on data that hasn't fully synchronized yet.
 
 **Technical Solution (Logic/Configuration):**
 
-*   **Audit Segmentation Logic:**
-    *   **Action:** Manually review each segment's conditions. Break down complex segments into smaller, testable components. Use Deployteq's preview features to see who qualifies.
-    *   **Example (Conceptual Deployteq Segment UI/Logic):**
+* **Audit Segmentation Logic:**
+    * **Action:** Manually review each segment's conditions. Break down complex segments into smaller, testable components. Use Deployteq's preview features to see who qualifies.
+    * **Example (Conceptual Deployteq Segment UI/Logic):**
         ```
         Segment Name: "Engaged Customers - Past 30 Days"
         Conditions:
@@ -215,9 +215,9 @@ Let's break down the typical culprits behind Deployteq woes, complete with their
           - (Field: "Email Opens (Last 30 Days)" IS GREATER THAN OR EQUAL TO "3")
         ```
         *Self-correction:* Ensure `IS WITHIN` for date ranges is correctly configured for relative periods. Check that "Total Purchases" is an aggregation and updates correctly.
-*   **Validate Trigger Events:**
-    *   **Action:** Confirm the exact event (e.g., "Contact Created," "Custom Event 'Product Purchased'") that initiates an automation. Test the event emission from your source system to ensure it's reaching Deployteq.
-    *   **Code Example (Emitting a Custom Event to Deployteq API):**
+* **Validate Trigger Events:**
+    * **Action:** Confirm the exact event (e.g., "Contact Created," "Custom Event 'Product Purchased'") that initiates an automation. Test the event emission from your source system to ensure it's reaching Deployteq.
+    * **Code Example (Emitting a Custom Event to Deployteq API):**
         ```python
         def send_product_purchased_event(contact_email, product_name, order_id, purchase_amount):
             event_data = {
@@ -237,8 +237,8 @@ Let's break down the typical culprits behind Deployteq woes, complete with their
         # Example:
         # send_product_purchased_event("jane@example.com", "Premium Widget", "ORD-456", 99.99)
         ```
-*   **Step-by-Step Workflow Debugging:**
-    *   **Action:** For complex workflows, use Deployteq's internal testing tools (if available) or simulate contacts entering the flow. Review the "history" or "activity log" for individual contacts within the workflow to pinpoint where they exited or failed.
+* **Step-by-Step Workflow Debugging:**
+    * **Action:** For complex workflows, use Deployteq's internal testing tools (if available) or simulate contacts entering the flow. Review the "history" or "activity log" for individual contacts within the workflow to pinpoint where they exited or failed.
 
 **Best Practice:** Adopt a "fail fast" mentality for campaign logic. Test with small, isolated segments. Document complex segmentation rules and workflow decision points.
 
@@ -247,16 +247,17 @@ Let's break down the typical culprits behind Deployteq woes, complete with their
 **Problem:** Emails or messages display raw template code, missing values, or incorrect formatting. Symptoms include `{{contact.first_name}}` showing directly in an email, or default fallback values appearing unexpectedly.
 
 **Root Cause:**
-*   **Syntax Errors:** Incorrect Liquid (or similar templating language) syntax (e.g., missing closing tags `}}`, typos in variable names).
-*   **Non-existent Variables:** Attempting to access a variable (e.g., `contact.custom_field_x`) that doesn't exist for the contact or in the current context.
-*   **Data Type Issues:** Trying to perform operations (like arithmetic) on non-numeric data, or formatting a date field that isn't a date.
-*   **Scope Issues:** Variables only available in certain parts of a template (e.g., order item details only inside a loop).
+* **Syntax Errors:** Incorrect Liquid (or similar templating language) syntax (e.g., missing closing tags `}}`, typos in variable names).
+* **Non-existent Variables:** Attempting to access a variable (e.g., `contact.custom_field_x`) that doesn't exist for the contact or in the current context.
+* **Data Type Issues:** Trying to perform operations (like arithmetic) on non-numeric data, or formatting a date field that isn't a date.
+* **Scope Issues:** Variables only available in certain parts of a template (e.g., order item details only inside a loop).
 
 **Technical Solution (Code/Logic):**
 
-*   **Strict Syntax Adherence:**
-    *   **Action:** Use a syntax checker or linter for your templating language (if available for Deployteq's specific dialect). Double-check every brace and pipe.
-    *   **Example (Common Liquid/Jinja Errors):**
+* **Strict Syntax Adherence:**
+    * **Action:** Use a syntax checker or linter for your templating language (if available for Deployteq's specific dialect). Double-check every brace and pipe.
+    * **Example (Common Liquid/Jinja Errors):**
+        {% raw %}
         ```liquid
         Incorrect: Hello, {{ contact.first_name
         Correct:   Hello, {{ contact.first_name }}
@@ -267,9 +268,11 @@ Let's break down the typical culprits behind Deployteq woes, complete with their
         Incorrect: {{ product.price | format_currency }} # if format_currency filter doesn't exist
         Correct:   {{ product.price | money }} # if 'money' is the correct filter
         ```
-*   **Defensive Personalization with Fallbacks:**
-    *   **Action:** Always provide fallback values for potentially missing data. Use `default` filter or conditional blocks.
-    *   **Code Example (Liquid with Fallback):**
+        {% endraw %}
+* **Defensive Personalization with Fallbacks:**
+    * **Action:** Always provide fallback values for potentially missing data. Use `default` filter or conditional blocks.
+    * **Code Example (Liquid with Fallback):**
+        {% raw %}
         ```liquid
         Hello, {{ contact.first_name | default: 'there' }}!
 
@@ -279,9 +282,10 @@ Let's break down the typical culprits behind Deployteq woes, complete with their
             Check out our latest offers!
         {% endif %}
         ```
-*   **Inspect Contact Data Structure:**
-    *   **Action:** Use Deployteq's UI (contact profile) or API to retrieve the *exact* data structure for a test contact. This will reveal the correct field names and nested object structures you can reference in templates.
-    *   **Example (Conceptual Contact Data):**
+        {% endraw %}
+* **Inspect Contact Data Structure:**
+    * **Action:** Use Deployteq's UI (contact profile) or API to retrieve the *exact* data structure for a test contact. This will reveal the correct field names and nested object structures you can reference in templates.
+    * **Example (Conceptual Contact Data):**
         ```json
         {
           "id": "abc-123",
@@ -293,8 +297,8 @@ Let's break down the typical culprits behind Deployteq woes, complete with their
             "last_purchase_date": "2023-10-26"
           },
           "last_activity": {
-             "type": "email_open",
-             "timestamp": "2023-11-01T14:30:00Z"
+              "type": "email_open",
+              "timestamp": "2023-11-01T14:30:00Z"
           }
         }
         ```
@@ -307,19 +311,19 @@ Let's break down the typical culprits behind Deployteq woes, complete with their
 **Problem:** Real-time updates from Deployteq to your external systems fail to arrive or contain incorrect data. Symptoms include delayed notifications, missing data in your CRM, or broken internal workflows.
 
 **Root Cause:**
-*   **Incorrect Webhook URL:** Typos, wrong port, or using a local development URL that's not publicly accessible.
-*   **Invalid Payload Structure:** Your receiving endpoint expects a different JSON/XML structure than what Deployteq sends.
-*   **Security Mismatch:** Deployteq sends a signature, but your endpoint isn't verifying it, or vice versa, leading to rejection or security vulnerabilities.
-*   **Endpoint Downtime/Errors:** Your receiving server is down, overloaded, or returning HTTP errors (e.g., `500 Internal Server Error`).
+* **Incorrect Webhook URL:** Typos, wrong port, or using a local development URL that's not publicly accessible.
+* **Invalid Payload Structure:** Your receiving endpoint expects a different JSON/XML structure than what Deployteq sends.
+* **Security Mismatch:** Deployteq sends a signature, but your endpoint isn't verifying it, or vice versa, leading to rejection or security vulnerabilities.
+* **Endpoint Downtime/Errors:** Your receiving server is down, overloaded, or returning HTTP errors (e.g., `500 Internal Server Error`).
 
 **Technical Solution (Configuration/Code):**
 
-*   **Verify Webhook Configuration:**
-    *   **Action:** Carefully check the URL, HTTP method (GET/POST), and any security tokens configured in Deployteq's webhook settings.
-    *   **Tooling:** Use a service like [Webhook.site](https://webhook.site) or [RequestBin](https://requestbin.com) to capture the exact payload Deployteq sends. This helps you understand the structure and debug your receiving endpoint.
-*   **Robust Endpoint Error Handling:**
-    *   **Action:** Your receiving endpoint should always return a `200 OK` status code if the webhook was successfully *received* (even if processing fails internally). If your endpoint throws an error (e.g., `500`), Deployteq might retry, or mark the webhook as failed. Implement try-except blocks for processing.
-    *   **Code Example (Python Flask Endpoint):**
+* **Verify Webhook Configuration:**
+    * **Action:** Carefully check the URL, HTTP method (GET/POST), and any security tokens configured in Deployteq's webhook settings.
+    * **Tooling:** Use a service like [Webhook.site](https://webhook.site) or [RequestBin](https://requestbin.com) to capture the exact payload Deployteq sends. This helps you understand the structure and debug your receiving endpoint.
+* **Robust Endpoint Error Handling:**
+    * **Action:** Your receiving endpoint should always return a `200 OK` status code if the webhook was successfully *received* (even if processing fails internally). If your endpoint throws an error (e.g., `500`), Deployteq might retry, or mark the webhook as failed. Implement try-except blocks for processing.
+    * **Code Example (Python Flask Endpoint):**
         ```python
         from flask import Flask, request, jsonify
         import hmac
@@ -374,13 +378,13 @@ Let's break down the typical culprits behind Deployteq woes, complete with their
             except Exception as e:
                 print(f"Error processing webhook: {e}")
                 # Log the error and the payload for debugging
-                return jsonify({"message": "Internal Server Error"}), 500 # Return 500 only if truly unrecoverable failure
+                # return jsonify({"message": "Internal Server Error"}), 500 # Return 500 only if truly unrecoverable failure
 
         if __name__ == '__main__':
             app.run(port=5000, debug=True) # For local testing; use WSGI server for production
         ```
-*   **Acknowledge and Process Asynchronously:**
-    *   **Action:** To prevent timeouts and improve resilience, your webhook endpoint should quickly acknowledge receipt with a `200 OK` and then hand off the actual processing of the payload to an asynchronous background job or queue.
+* **Acknowledge and Process Asynchronously:**
+    * **Action:** To prevent timeouts and improve resilience, your webhook endpoint should quickly acknowledge receipt with a `200 OK` and then hand off the actual processing of the payload to an asynchronous background job or queue.
 
 **Best Practice:** Monitor your webhook endpoint's logs closely. Configure Deployteq to send test webhooks frequently during development.
 
@@ -430,9 +434,9 @@ A: This usually points to issues with segmentation or contact status:
 
 **Q: Can I use SQL to query Deployteq data directly for custom reporting?**
 A: This depends entirely on your Deployteq instance and any custom integrations.
-*   **Most standard Deployteq users** interact with data through the UI, API, or pre-built reporting tools. Direct SQL access to Deployteq's *internal* database is typically not available or supported due to security and architectural considerations.
-*   **For advanced users or custom enterprise setups**, Deployteq might offer an export functionality or a data warehousing connector that periodically pushes data to a separate database (e.g., a data lake or warehouse) where you *can* then use SQL for analysis.
-*   **If you *are* working with an external data warehouse** containing Deployteq data, ensure your SQL queries are optimized (using indexes, efficient joins) and reflect the specific schema of that warehouse. Bad SQL can cause performance issues and inaccurate reports.
+* **Most standard Deployteq users** interact with data through the UI, API, or pre-built reporting tools. Direct SQL access to Deployteq's *internal* database is typically not available or supported due to security and architectural considerations.
+* **For advanced users or custom enterprise setups**, Deployteq might offer an export functionality or a data warehousing connector that periodically pushes data to a separate database (e.g., a data lake or warehouse) where you *can* then use SQL for analysis.
+* **If you *are* working with an external data warehouse** containing Deployteq data, ensure your SQL queries are optimized (using indexes, efficient joins) and reflect the specific schema of that warehouse. Bad SQL can cause performance issues and inaccurate reports.
 
 **Q: How can I ensure data consistency between Deployteq and my CRM without constant manual checks?**
 A: Automating reconciliation and validation is key:
