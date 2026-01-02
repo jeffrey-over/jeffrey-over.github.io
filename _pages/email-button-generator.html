@@ -1,0 +1,192 @@
+---
+layout: page
+title: Bulletproof Email Button Generator
+permalink: /email-button-generator/
+link: Button Generator
+---
+
+<style>
+/* Hergebruik van je bestaande textarea stijl */
+#btn-output {
+    height: 300px;
+    font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+    font-size: 11px;
+    padding: 10px;
+    max-width: 100%;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px #999;
+    width: 100%;
+    min-height: 250px;
+    background-color: #fdfdfd;
+    color: #333;
+}
+
+/* Stijl voor de inputs */
+.input-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.input-wrapper {
+    flex: 1;
+    min-width: 200px;
+}
+
+label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+input[type="text"], input[type="color"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+input[type="color"] {
+    height: 45px;
+    padding: 2px;
+    cursor: pointer;
+}
+
+/* Preview Area styling */
+#btn-preview-container {
+    padding: 40px;
+    border: 2px dashed #e0e0e0;
+    background: #fafafa;
+    text-align: center;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+</style>
+
+<div class="section">
+    <h3>Bulletproof CTA Button Generator</h3>
+    <p>Generate email buttons that work everywhere, including Outlook (using VML).</p>
+
+    <div class="input-group">
+        <div class="input-wrapper">
+            <label>Button Text</label>
+            <input type="text" id="btn-text" value="Click Here">
+        </div>
+        <div class="input-wrapper">
+            <label>URL Link</label>
+            <input type="text" id="btn-url" value="https://jeffreyovermeer.com">
+        </div>
+    </div>
+
+    <div class="input-group">
+        <div class="input-wrapper" style="flex: 0 0 100px;">
+            <label>Background</label>
+            <input type="color" id="btn-bgcolor" value="#0067c2">
+        </div>
+        <div class="input-wrapper" style="flex: 0 0 100px;">
+            <label>Text Color</label>
+            <input type="color" id="btn-textcolor" value="#ffffff">
+        </div>
+        <div class="input-wrapper">
+            <label>Width (px or 'auto')</label>
+            <input type="text" id="btn-width" value="240">
+        </div>
+    </div>
+
+    <h4>Live Preview:</h4>
+    <div id="btn-preview-container">
+        </div>
+
+    <h4>HTML Code (Copy & Paste):</h4>
+    <textarea id="btn-output" readonly></textarea>
+    
+    <br><br>
+    <button id="btn-copy-code" class="btn-primary" style="cursor:pointer; padding: 10px 20px; background: #333; color: #fff; border: 0; border-radius: 5px;">Copy HTML to clipboard</button>
+</div>
+
+<script>
+(function() {
+    // Select elements
+    var inputs = ['btn-text', 'btn-url', 'btn-bgcolor', 'btn-textcolor', 'btn-width'];
+    var outputArea = document.getElementById('btn-output');
+    var previewArea = document.getElementById('btn-preview-container');
+
+    // Add event listeners to all inputs
+    inputs.forEach(function(id) {
+        document.getElementById(id).addEventListener('input', generateButton);
+    });
+
+    function generateButton() {
+        var text = document.getElementById('btn-text').value;
+        var url = document.getElementById('btn-url').value;
+        var bgColor = document.getElementById('btn-bgcolor').value;
+        var textColor = document.getElementById('btn-textcolor').value;
+        var width = document.getElementById('btn-width').value;
+        
+        // Ensure width is treated correctly (px vs auto)
+        var widthStyle = (width === 'auto' || width === '') ? 'auto' : width + 'px';
+        var vmlWidth = (width === 'auto' || width === '') ? 'mso-width-alt:auto;' : 'width:' + width + 'px;';
+
+        // THE BULLETPROOF HTML/VML CODE
+        // We gebruiken backticks (`) voor een template string
+        var code = `<div>
+<a href="${url}"
+style="background-color:${bgColor};color:${textColor};display:inline-block;font-family:sans-serif;font-size:16px;font-weight:bold;line-height:48px;text-align:center;text-decoration:none;width:${widthStyle};-webkit-text-size-adjust:none;mso-hide:all;border-radius:4px;">${text}</a>
+  </div>
+`;
+
+        // Update Textarea
+        outputArea.value = code;
+
+        // Update Preview 
+        // We strippen de VML voor de browser preview, omdat browsers dat niet snappen.
+        var parser = new DOMParser();
+        var doc = parser.parseFromString(code, 'text/html');
+        var anchor = doc.querySelector('a');
+        
+        previewArea.innerHTML = '';
+        if(anchor) {
+            // Even zorgen dat de preview link niet werkt als je klikt
+            anchor.onclick = function(e) { e.preventDefault(); };
+            previewArea.appendChild(anchor);
+        }
+    }
+
+    // Initialize on load
+    generateButton();
+
+    // Copy Function
+    document.getElementById('btn-copy-code').onclick = function() {
+        outputArea.select();
+        outputArea.setSelectionRange(0, 99999); // For mobile
+        document.execCommand("copy");
+        
+        // Feedback button text change
+        var originalText = this.innerText;
+        this.innerText = "Copied! ✅";
+        var btn = this;
+        setTimeout(function(){ btn.innerText = originalText; }, 2000);
+    };
+
+})();
+</script>
