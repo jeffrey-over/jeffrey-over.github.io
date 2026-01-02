@@ -46,6 +46,7 @@ Let's break down the typical culprits behind Deployteq woes, complete with their
 * **Verify Credentials & Scope:**
     * **Action:** Double-check your API key/token directly within the Deployteq administrative interface. Ensure it's active and granted the exact permissions required for your operation (e.g., `contacts:write`, `campaigns:read`).
     * **Code Example (Pseudocode for API Call):**
+        {% raw %}
         ```python
         import requests
         import os
@@ -73,9 +74,11 @@ Let's break down the typical culprits behind Deployteq woes, complete with their
                 print(f"An unexpected error occurred: {err}")
             return None
         ```
+        {% endraw %}
 * **Implement Robust Rate Limit Handling:**
     * **Action:** If you hit `429 Too Many Requests`, introduce exponential backoff or use a queueing mechanism to space out your API calls.
     * **Code Example (Pseudocode with Backoff):**
+        {% raw %}
         ```python
         import time
         import random
@@ -103,6 +106,7 @@ Let's break down the typical culprits behind Deployteq woes, complete with their
             print("Failed after multiple retries.")
             return None
         ```
+        {% endraw %}
 
 #### 2. Data Mapping & Synchronization Misfires
 
@@ -118,6 +122,7 @@ Let's break down the typical culprits behind Deployteq woes, complete with their
 * **Establish a Canonical Data Model:**
     * **Action:** Create a clear mapping document (spreadsheet, YAML config) that defines how each field in your source system maps to its corresponding Deployteq field, including data types and any required transformations.
     * **Example Mapping (Conceptual):**
+        {% raw %}
         ```yaml
         # Source System (e.g., CRM) to Deployteq Field Mapping
         Contact:
@@ -128,9 +133,11 @@ Let's break down the typical culprits behind Deployteq woes, complete with their
           SignUpDate: acquisition_date # Convert to YYYY-MM-DD
           IsMarketingOptIn: marketing_consent # Convert to true/false boolean
         ```
+        {% endraw %}
 * **Implement Data Validation & Transformation:**
     * **Action:** Before sending data to Deployteq, validate its format and transform it to match Deployteq's expectations. This is often done in your integration layer.
     * **Code Example (Python for pre-processing):**
+        {% raw %}
         ```python
         import datetime
 
@@ -162,6 +169,7 @@ Let's break down the typical culprits behind Deployteq woes, complete with their
 
             return deployteq_data
         ```
+        {% endraw %}
 
 #### 3. Campaign Logic & Segmentation Slip-ups
 
@@ -176,6 +184,7 @@ Let's break down the typical culprits behind Deployteq woes, complete with their
 * **Audit Segmentation Logic:**
     * **Action:** Manually review each segment's conditions. Break down complex segments into smaller, testable components. Use Deployteq's preview features to see who qualifies.
     * **Example (Conceptual Deployteq Segment UI/Logic):**
+        {% raw %}
         ```
         Segment Name: "Engaged Customers - Past 30 Days"
         Conditions:
@@ -185,9 +194,11 @@ Let's break down the typical culprits behind Deployteq woes, complete with their
           AND
           - (Field: "Email Opens (Last 30 Days)" IS GREATER THAN OR EQUAL TO "3")
         ```
+        {% endraw %}
 * **Validate Trigger Events:**
     * **Action:** Confirm the exact event (e.g., "Contact Created," "Custom Event 'Product Purchased'") that initiates an automation. Test the event emission from your source system to ensure it's reaching Deployteq.
     * **Code Example (Emitting a Custom Event to Deployteq API):**
+        {% raw %}
         ```python
         def send_product_purchased_event(contact_email, product_name, order_id, purchase_amount):
             event_data = {
@@ -203,63 +214,65 @@ Let's break down the typical culprits behind Deployteq woes, complete with their
             # Make API call to Deployteq's event tracking endpoint
             print(f"Sent 'product_purchased' event for {contact_email} (Order: {order_id})")
         ```
+        {% endraw %}
 
 #### 4. Template & Personalization Parsing Problems
 
-**Problem:** Emails or messages display raw template code, missing values, or incorrect formatting. Symptoms include `{{contact.first_name}}` showing directly in an email, or default fallback values appearing unexpectedly.
+**Problem:** Emails or messages display raw template code, missing values, or the entire layout breaks when logic is added. Symptoms include `{{$customer.firstname}}` showing directly in an email, loops not iterating over data, or table structures collapsing.
 
 **Root Cause:**
-* **Syntax Errors:** Incorrect Liquid (or similar templating language) syntax.
-* **Non-existent Variables:** Attempting to access a variable that doesn't exist.
-* **Scope Issues:** Variables only available in certain parts of a template.
+* **Deployteq vs. Standard Smarty Syntax:** Standard Smarty uses single curly braces `{...}`, but Deployteq requires **double curly braces** `{{...}}`. Using single braces causes the code to be treated as plain text.
+* **Scope Misconfiguration:** Using `$selection` (which relies on a specific campaign context/profile) when you meant `$customer` (all data for that ID), or vice versa.
+* **HTML Parsing Interference:** Placing logic tags (like `foreach` or `if`) directly inside HTML tables (`<table>`, `<tr>`) without HTML comments. Browsers or email clients often strip invalid HTML content, taking your logic tags with them.
 
 **Technical Solution (Code/Logic):**
 
-* **Strict Syntax Adherence:**
-    * **Action:** Use a syntax checker. Double-check every brace and pipe.
-    * **Example (Common Liquid/Jinja Errors):**
+* **Enforce Double-Brace Syntax:**
+    * **Action:** Ensure every variable, logic block, and modifier is wrapped in double curly braces.
+    * **Code Example (Standard vs. Deployteq):**
         {% raw %}
-        ```liquid
-        Incorrect: Hello, {{ contact.first_name
-        Correct:   Hello, {{ contact.first_name }}
+        ```smarty
+        Hello, {$customer.firstname}
+        {if $customer.gender eq 'M'}...{/if}
 
-        Incorrect: {% if contact.status = 'active' %}
-        Correct:   {% if contact.status == 'active' %}
-
-        Incorrect: {{ product.price | format_currency }} # if format_currency filter doesn't exist
-        Correct:   {{ product.price | money }} # if 'money' is the correct filter
+        Hello, {{$customer.firstname}}
+        {{if $customer.gender eq 'M'}}...{{/if}}
         ```
         {% endraw %}
-* **Defensive Personalization with Fallbacks:**
-    * **Action:** Always provide fallback values for potentially missing data. Use `default` filter or conditional blocks.
-    * **Code Example (Liquid with Fallback):**
-        {% raw %}
-        ```liquid
-        Hello, {{ contact.first_name | default: 'there' }}!
 
-        {% if contact.last_purchase_amount %}
-            Your last purchase was for {{ contact.last_purchase_amount | currency }}.
-        {% else %}
-            Check out our latest offers!
-        {% endif %}
+* **Mastering Scope (`$selection` vs `$customer`) & Filtering:**
+    * **Action:** When using loops, define the correct source. Use `$selection` if you are targeting a specific data model profile context (e.g., just the records triggering the campaign). Use `$customer` to iterate over *all* records linked to that customer. Use modifiers to filter data in real-time.
+    * **Code Example (Foreach with Filter Modifier):**
+        {% raw %}
+        ```smarty
+        {{foreach from=$customer.Orders|filter:'OrderSource':'Webshop' item='Orders_item'}}
+            Order Number: {{$Orders_item.OrderNumber}}
+            Date: {{$Orders_item.OrderDate}}
+        {{/foreach}}
         ```
         {% endraw %}
-* **Inspect Contact Data Structure:**
-    * **Action:** Retrieve the *exact* data structure for a test contact via API to ensure you are referencing the correct field names.
-    * **Example (Conceptual Contact Data):**
-        ```json
-        {
-          "id": "abc-123",
-          "email_address": "test@example.com",
-          "first_name": "Alice",
-          "last_name": "Smith",
-          "custom_fields": {
-            "customer_tier": "Gold",
-            "last_purchase_date": "2023-10-26"
-          }
-        }
+
+* **Protect Logic with HTML Comments:**
+    * **Action:** When placing logic inside complex HTML structures (like tables or the `<head>` section), wrap the Smarty tags in HTML comments. This prevents the browser/client from "fixing" your HTML by removing your code.
+    * **Code Example (Safe Table Logic):**
+        {% raw %}
+        ```html
+        <table>
+            <tr>
+                <td>{{$Orders_item.OrderNumber}}</td>
+            </tr>
+            </table>
         ```
-        Based on this, you'd access `contact.custom_fields.customer_tier`.
+        {% endraw %}
+
+* **Defensive Coding with Defaults:**
+    * **Action:** Always provide a fallback for personalizations to prevent awkward empty spaces.
+    * **Code Example:**
+        {% raw %}
+        ```smarty
+        Hi {{$customer.firstname|default:'Customer'}},
+        ```
+        {% endraw %}
 
 #### 5. Webhook & Event Handling Headaches
 
@@ -277,6 +290,7 @@ Let's break down the typical culprits behind Deployteq woes, complete with their
 * **Robust Endpoint Error Handling:**
     * **Action:** Your receiving endpoint should always return a `200 OK` status code if the webhook was successfully *received*.
     * **Code Example (Python Flask Endpoint):**
+        {% raw %}
         ```python
         from flask import Flask, request, jsonify
         import hmac
@@ -315,6 +329,7 @@ Let's break down the typical culprits behind Deployteq woes, complete with their
         if __name__ == '__main__':
             app.run(port=5000, debug=True)
         ```
+        {% endraw %}
 
 ### Common Deployteq Errors: Quick Fixes at a Glance
 
@@ -323,7 +338,7 @@ Let's break down the typical culprits behind Deployteq woes, complete with their
 | **API Integration** | `401/403` errors | Invalid API key, insufficient scope | Verify key permissions. | Store keys securely, audit tokens. |
 | **Data Mapping** | Missing attributes | Field mismatch, wrong types | Review mapping docs. | Use canonical data models. |
 | **Campaign Logic** | Wrong audience | Flawed segment rules | Inspect conditions. | Test with small segments. |
-| **Templating** | `{{variable}}` showing | Syntax error, missing var | Fix syntax, use fallbacks. | Use template preview. |
+| **Templating** | `{{variable}}` showing | Syntax error, missing var | Fix syntax, use double braces `{{}}`, use fallbacks. | Use template preview, HTML comments. |
 | **Webhooks** | Missing data, timeouts | Endpoint errors | Check logs, use webhook tools. | Process asynchronously. |
 
 ### Beyond the Fix: Proactive Error Prevention
