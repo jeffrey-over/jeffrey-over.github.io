@@ -5,19 +5,62 @@ import random
 import re
 from google import genai
 from datetime import datetime
-from google.genai import types
 
 # 1. Configureren
 client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 
-# LIJST MET MODELLEN (Van stabiel naar experimenteel)
-# We gebruiken specifieke versienummers (-002) om 404 errors te voorkomen.
-MODELS_TO_TRY = [
-    "gemini-1.5-flash-002",  # Nieuwste stabiele Flash
-    "gemini-1.5-flash-001",  # Vorige stabiele Flash
-    "gemini-1.5-pro-002",    # Nieuwste stabiele Pro
-    "gemini-2.0-flash-exp"   # Experimenteel (vaak rate limits)
-]
+# --- MODELLEN AUTOMATISCH OPHALEN ---
+def get_available_models():
+    """
+    Vraagt de API welke modellen beschikbaar zijn voor deze key
+    en sorteert ze op voorkeur.
+    """
+    print("🔍 Beschikbare modellen ophalen...")
+    try:
+        # Haal alle modellen op
+        all_models = list(client.models.list())
+        
+        # Filter: alleen modellen die content kunnen genereren
+        usable_models = []
+        for m in all_models:
+            if 'generateContent' in m.supported_generation_methods:
+                # Strip 'models/' prefix als die er is
+                name = m.name.replace('models/', '')
+                usable_models.append(name)
+        
+        # Sorteer logica: voorkeur voor 1.5, dan flash, dan pro
+        # We zetten onze favorieten vooraan in de lijst
+        priority_order = []
+        others = []
+        
+        for m in usable_models:
+            if "gemini-1.5-flash" in m and "exp" not in m: # Stabiele flash 1.5
+                priority_order.insert(0, m)
+            elif "gemini-1.5-pro" in m and "exp" not in m: # Stabiele pro 1.5
+                priority_order.append(m)
+            elif "gemini-2.0" in m: # Nieuwe 2.0 (vaak exp)
+                others.append(m)
+            elif "gemini-1.0" in m or "gemini-pro" == m: # Oude fallback
+                others.append(m)
+            else:
+                others.append(m)
+                
+        # Combineer: Prioriteit eerst, dan de rest
+        final_list = priority_order + others
+        
+        if not final_list:
+            print("⚠️ Geen geschikte modellen gevonden via list(). Falling back to hardcoded.")
+            return ["gemini-1.5-flash", "gemini-1.5-pro", "gemini-pro"]
+            
+        print(f"✅ Gevonden modellen (op volgorde): {final_list[:3]}...")
+        return final_list
+
+    except Exception as e:
+        print(f"⚠️ Kon modellen niet ophalen: {e}. Gebruik fallback.")
+        return ["gemini-1.5-flash", "gemini-1.5-pro", "gemini-pro"]
+
+# Haal de lijst 1x op bij start
+MODELS_TO_TRY = get_available_models()
 
 # 2. SEO Strategie
 seo_structures = [
@@ -53,7 +96,7 @@ print(f"🎯 SEO Doelwit: {base_prompt_theme}")
 # --- CENTRALE GENERATIE FUNCTIE ---
 def generate_content_robust(prompt_text, task_name="Content"):
     """
-    Probeert content te genereren met verschillende modellen en retry-logica.
+    Probeert content te genereren met beschikbare modellen en retry-logica.
     """
     print(f"🔄 Genereren: {task_name}...")
     
@@ -69,10 +112,11 @@ def generate_content_robust(prompt_text, task_name="Content"):
         except Exception as e:
             error_msg = str(e)
             
-            # Scenario 1: Rate Limit (429) -> Wacht en probeer ZELFDE model opnieuw
+            # Scenario 1: Rate Limit (429) -> Wacht LANGE tijd en probeer ZELFDE model
             if "429" in error_msg or "RESOURCE_EXHAUSTED" in error_msg:
-                print(f"⏳ Rate limit op {model}. Wachten 30 seconden...")
-                time.sleep(30)
+                wait_time = 60 # Verhoogd naar 60 seconden
+                print(f"⏳ Rate limit op {model}. Wachten {wait_time} seconden...")
+                time.sleep(wait_time)
                 try:
                     # Tweede poging op zelfde model
                     response = client.models.generate_content(
@@ -86,7 +130,7 @@ def generate_content_robust(prompt_text, task_name="Content"):
             
             # Scenario 2: Model niet gevonden (404) -> Ga direct door
             elif "404" in error_msg or "NOT_FOUND" in error_msg:
-                print(f"⚠️ Model {model} niet gevonden. Overslaan.")
+                # print(f"⚠️ Model {model} niet bruikbaar.") # Minder spam in logs
                 continue
                 
             # Scenario 3: Andere fout
