@@ -33,7 +33,6 @@ chosen_structure = random.choice(seo_structures)
 chosen_tech = random.choice(tech_keywords)
 
 if "{tech} vs {tech}" in chosen_structure:
-    # Zorg voor 2 verschillende techs bij een vergelijking
     tech2 = random.choice([t for t in tech_keywords if t != chosen_tech])
     base_prompt_theme = chosen_structure.replace("{tech}", chosen_tech, 1).replace("{tech}", tech2)
 else:
@@ -43,11 +42,10 @@ print(f"🎯 SEO Doelwit: {base_prompt_theme}")
 
 # Functie: Strenge Titel Bedenken
 def get_strict_topic(theme):
-    print(f"🧠 Titel optimaliseren voor Google...")
+    print(f"🧠 Titel optimaliseren...")
     prompt = f"""
     You are an SEO Specialist.
     Take this concept: "{theme}" and turn it into a high-ranking blog title.
-    
     Rules:
     1. Use a "Long-tail keyword" approach.
     2. Keep it under 60 characters.
@@ -55,25 +53,41 @@ def get_strict_topic(theme):
     4. NO lists, NO "Here is a title". Output ONLY the title text.
     """
     try:
-        resp = client.models.generate_content(model="gemini-2.5-flash", contents=prompt)
+        resp = client.models.generate_content(model="gemini-1.5-flash", contents=prompt)
         text = resp.text.strip()
         if "\n" in text: text = text.split("\n")[0]
         text = text.replace('"', '').replace(":", "").replace("*", "")
         text = re.sub(r'^\d+\.\s*', '', text)
         return text
-    except:
+    except Exception as e:
+        print(f"⚠️ Titel fallback: {e}")
         return theme
 
-topic = get_strict_topic(base_prompt_theme)
-print(f"💡 Definitieve Titel: {topic}")
+# NIEUWE FUNCTIE: Dynamische Tags
+def get_smart_tags(theme):
+    print(f"🏷️ Tags genereren...")
+    prompt = f"""
+    Generate 5 relevant, lowercase, comma-separated keywords/tags for a blog post about: "{theme}".
+    Output ONLY the tags (e.g.: email, automation, code). No numbering.
+    """
+    try:
+        resp = client.models.generate_content(model="gemini-1.5-flash", contents=prompt)
+        return resp.text.strip().lower()
+    except:
+        return "email, automation, tech, development"
 
-# Functie: Slug Schoonmaken (voor URL en Bestandsnaam)
+topic = get_strict_topic(base_prompt_theme)
+post_tags = get_smart_tags(topic) # Tags ophalen
+print(f"💡 Titel: {topic}")
+print(f"🏷️ Tags: {post_tags}")
+
+# Functie: Slug Schoonmaken
 def clean_slug(text):
     text = text.lower()
-    text = re.sub(r'[^a-z0-9-]', '-', text) # Alleen letters/cijfers/streepjes
-    text = re.sub(r'-+', '-', text) # Geen dubbele streepjes
+    text = re.sub(r'[^a-z0-9-]', '-', text)
+    text = re.sub(r'-+', '-', text)
     text = text.strip('-')
-    return text[:60] # Iets langer voor goede SEO URL
+    return text[:60]
 
 safe_slug = clean_slug(topic)
 date_str = datetime.now().strftime('%Y-%m-%d')
@@ -87,17 +101,15 @@ image_public_path = f"/{image_filename}"
 os.makedirs("_posts", exist_ok=True)
 os.makedirs(image_folder, exist_ok=True)
 
-# 3. Image Genereren (Apple App Store Style)
+# 3. Image Genereren
 def download_image_robust(prompt_text, save_path):
     print(f"🎨 Afbeelding genereren...")
     try:
         short_prompt = prompt_text.replace("-", " ")
-        # HIER IS DE NIEUWE PROMPT STIJL:
         clean_prompt = f"3D render in Apple App Store editorial style of {short_prompt}. A clean high-quality composition, center stage glossy 3D icon relevant to topic, soft light airy gradient background white light blue soft grey, high fidelity, soft shadows, octane render, claymorphism elements, tech-minimalist aesthetic, no text"
         
         encoded_prompt = clean_prompt.replace(" ", "%20")
         seed = random.randint(0, 9999)
-        # We gebruiken een grotere width/height ratio voor blog covers
         url = f"https://image.pollinations.ai/prompt/{encoded_prompt}?width=1200&height=630&nologo=true&seed={seed}&model=flux"
         
         headers = {'User-Agent': 'Mozilla/5.0'}
@@ -135,9 +147,9 @@ DO NOT write Frontmatter.
 """
 
 models_to_try = [
-    "gemini-2.0-flash-exp",
-    "gemini-1.5-flash-latest",
-    "gemini-1.5-pro-latest"
+    "gemini-1.5-flash", 
+    "gemini-1.5-pro",
+    "gemini-2.0-flash-exp"
 ]
 
 content_body = None
@@ -145,6 +157,7 @@ content_body = None
 print(f"📝 Start schrijven...")
 
 for model_name in models_to_try:
+    print(f"🔄 Proberen met model: {model_name}...")
     try:
         response = client.models.generate_content(model=model_name, contents=prompt)
         content_body = response.text
@@ -156,9 +169,13 @@ for model_name in models_to_try:
         break 
     except Exception as e:
         print(f"⚠️ Fout met {model_name}: {e}")
-        time.sleep(1)
+        if "429" in str(e):
+            print("⏳ Rate limit (429). Wachten 10 seconden...")
+            time.sleep(10)
+        else:
+            time.sleep(1)
 
-# 5. Opslaan (Met SEO Permalink Fix)
+# 5. Opslaan
 if content_body:
     final_post = f"""---
 layout: post
@@ -167,7 +184,7 @@ titleshort: "{topic[:30]}..."
 date: {date_str}
 label: development
 permalink: /{safe_slug}
-tags: email, automation, tech, seo
+tags: {post_tags}
 yearreview: false
 author: Jeffrey Overmeer
 published: true
@@ -182,5 +199,5 @@ description: "Learn about {topic} in this technical deep dive for email develope
         f.write(final_post)
     print(f"🎉 Opgeslagen: {post_filename}")
 else:
-    print("❌ Kon geen content genereren.")
+    print("❌ Kon geen content genereren. Check je API key quota.")
     exit(1)
