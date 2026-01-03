@@ -5,9 +5,19 @@ import random
 import re
 from google import genai
 from datetime import datetime
+from google.genai import types
 
 # 1. Configureren
 client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
+
+# LIJST MET MODELLEN (Van stabiel naar experimenteel)
+# We gebruiken specifieke versienummers (-002) om 404 errors te voorkomen.
+MODELS_TO_TRY = [
+    "gemini-1.5-flash-002",  # Nieuwste stabiele Flash
+    "gemini-1.5-flash-001",  # Vorige stabiele Flash
+    "gemini-1.5-pro-002",    # Nieuwste stabiele Pro
+    "gemini-2.0-flash-exp"   # Experimenteel (vaak rate limits)
+]
 
 # 2. SEO Strategie
 seo_structures = [
@@ -40,9 +50,54 @@ else:
 
 print(f"🎯 SEO Doelwit: {base_prompt_theme}")
 
+# --- CENTRALE GENERATIE FUNCTIE ---
+def generate_content_robust(prompt_text, task_name="Content"):
+    """
+    Probeert content te genereren met verschillende modellen en retry-logica.
+    """
+    print(f"🔄 Genereren: {task_name}...")
+    
+    for model in MODELS_TO_TRY:
+        try:
+            # Probeer request
+            response = client.models.generate_content(
+                model=model, 
+                contents=prompt_text
+            )
+            return response.text.strip()
+            
+        except Exception as e:
+            error_msg = str(e)
+            
+            # Scenario 1: Rate Limit (429) -> Wacht en probeer ZELFDE model opnieuw
+            if "429" in error_msg or "RESOURCE_EXHAUSTED" in error_msg:
+                print(f"⏳ Rate limit op {model}. Wachten 30 seconden...")
+                time.sleep(30)
+                try:
+                    # Tweede poging op zelfde model
+                    response = client.models.generate_content(
+                        model=model, 
+                        contents=prompt_text
+                    )
+                    return response.text.strip()
+                except Exception as e2:
+                    print(f"⚠️ Tweede poging mislukt op {model}: {e2}")
+                    continue # Ga naar volgende model in de lijst
+            
+            # Scenario 2: Model niet gevonden (404) -> Ga direct door
+            elif "404" in error_msg or "NOT_FOUND" in error_msg:
+                print(f"⚠️ Model {model} niet gevonden. Overslaan.")
+                continue
+                
+            # Scenario 3: Andere fout
+            else:
+                print(f"❌ Fout met {model}: {e}")
+                continue
+
+    return None
+
 # Functie: Strenge Titel Bedenken
 def get_strict_topic(theme):
-    print(f"🧠 Titel optimaliseren...")
     prompt = f"""
     You are an SEO Specialist.
     Take this concept: "{theme}" and turn it into a high-ranking blog title.
@@ -52,33 +107,33 @@ def get_strict_topic(theme):
     3. Make it clickable (High CTR).
     4. NO lists, NO "Here is a title". Output ONLY the title text.
     """
-    try:
-        resp = client.models.generate_content(model="gemini-1.5-flash", contents=prompt)
-        text = resp.text.strip()
+    result = generate_content_robust(prompt, "SEO Titel")
+    
+    if result:
+        text = result
         if "\n" in text: text = text.split("\n")[0]
         text = text.replace('"', '').replace(":", "").replace("*", "")
         text = re.sub(r'^\d+\.\s*', '', text)
         return text
-    except Exception as e:
-        print(f"⚠️ Titel fallback: {e}")
-        return theme
+    
+    return theme # Fallback
 
-# NIEUWE FUNCTIE: Dynamische Tags
+# Functie: Tags Genereren
 def get_smart_tags(theme):
-    print(f"🏷️ Tags genereren...")
     prompt = f"""
     Generate 5 relevant, lowercase, comma-separated keywords/tags for a blog post about: "{theme}".
     Output ONLY the tags (e.g.: email, automation, code). No numbering.
     """
-    try:
-        resp = client.models.generate_content(model="gemini-1.5-flash", contents=prompt)
-        return resp.text.strip().lower()
-    except:
-        return "email, automation, tech, development"
+    result = generate_content_robust(prompt, "Tags")
+    if result:
+        return result.lower()
+    return "email, automation, tech, development"
 
+# UITVOEREN
 topic = get_strict_topic(base_prompt_theme)
-post_tags = get_smart_tags(topic) # Tags ophalen
-print(f"💡 Titel: {topic}")
+post_tags = get_smart_tags(topic)
+
+print(f"💡 Definitieve Titel: {topic}")
 print(f"🏷️ Tags: {post_tags}")
 
 # Functie: Slug Schoonmaken
@@ -126,7 +181,7 @@ def download_image_robust(prompt_text, save_path):
 download_image_robust(safe_slug, image_filename)
 
 # 4. Content Genereren
-prompt = f"""
+body_prompt = f"""
 Act as a Senior Technical Content Writer.
 Write a blog post about: '{topic}'.
 
@@ -146,37 +201,15 @@ If you write code examples that contain Liquid or Jinja syntax (like `{{ variabl
 DO NOT write Frontmatter.
 """
 
-models_to_try = [
-    "gemini-1.5-flash", 
-    "gemini-1.5-pro",
-    "gemini-2.0-flash-exp"
-]
+content_body = generate_content_robust(body_prompt, "Blogpost Content")
 
-content_body = None
-
-print(f"📝 Start schrijven...")
-
-for model_name in models_to_try:
-    print(f"🔄 Proberen met model: {model_name}...")
-    try:
-        response = client.models.generate_content(model=model_name, contents=prompt)
-        content_body = response.text
-        if "---" in content_body[:50]:
-            parts = content_body.split("---")
-            if len(parts) > 2:
-                content_body = parts[2].strip()
-        print(f"✅ Gelukt met {model_name}")
-        break 
-    except Exception as e:
-        print(f"⚠️ Fout met {model_name}: {e}")
-        if "429" in str(e):
-            print("⏳ Rate limit (429). Wachten 10 seconden...")
-            time.sleep(10)
-        else:
-            time.sleep(1)
-
-# 5. Opslaan
 if content_body:
+    # Strip eventuele markdown formatting die per ongeluk mee komt
+    if "---" in content_body[:50]:
+        parts = content_body.split("---")
+        if len(parts) > 2:
+            content_body = parts[2].strip()
+
     final_post = f"""---
 layout: post
 title: "{topic}"
