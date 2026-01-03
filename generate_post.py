@@ -9,58 +9,14 @@ from datetime import datetime
 # 1. Configureren
 client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 
-# --- MODELLEN AUTOMATISCH OPHALEN ---
-def get_available_models():
-    """
-    Vraagt de API welke modellen beschikbaar zijn voor deze key
-    en sorteert ze op voorkeur.
-    """
-    print("🔍 Beschikbare modellen ophalen...")
-    try:
-        # Haal alle modellen op
-        all_models = list(client.models.list())
-        
-        # Filter: alleen modellen die content kunnen genereren
-        usable_models = []
-        for m in all_models:
-            if 'generateContent' in m.supported_generation_methods:
-                # Strip 'models/' prefix als die er is
-                name = m.name.replace('models/', '')
-                usable_models.append(name)
-        
-        # Sorteer logica: voorkeur voor 1.5, dan flash, dan pro
-        # We zetten onze favorieten vooraan in de lijst
-        priority_order = []
-        others = []
-        
-        for m in usable_models:
-            if "gemini-1.5-flash" in m and "exp" not in m: # Stabiele flash 1.5
-                priority_order.insert(0, m)
-            elif "gemini-1.5-pro" in m and "exp" not in m: # Stabiele pro 1.5
-                priority_order.append(m)
-            elif "gemini-2.0" in m: # Nieuwe 2.0 (vaak exp)
-                others.append(m)
-            elif "gemini-1.0" in m or "gemini-pro" == m: # Oude fallback
-                others.append(m)
-            else:
-                others.append(m)
-                
-        # Combineer: Prioriteit eerst, dan de rest
-        final_list = priority_order + others
-        
-        if not final_list:
-            print("⚠️ Geen geschikte modellen gevonden via list(). Falling back to hardcoded.")
-            return ["gemini-1.5-flash", "gemini-1.5-pro", "gemini-pro"]
-            
-        print(f"✅ Gevonden modellen (op volgorde): {final_list[:3]}...")
-        return final_list
-
-    except Exception as e:
-        print(f"⚠️ Kon modellen niet ophalen: {e}. Gebruik fallback.")
-        return ["gemini-1.5-flash", "gemini-1.5-pro", "gemini-pro"]
-
-# Haal de lijst 1x op bij start
-MODELS_TO_TRY = get_available_models()
+# GEBRUIK ALLEEN STABIELE MODELLEN MET HOGE LIMIETEN
+# We forceren hier gemini-1.5-flash varianten omdat die de hoogste quota hebben.
+MODELS_TO_TRY = [
+    "gemini-1.5-flash",
+    "gemini-1.5-flash-latest",
+    "gemini-1.5-flash-001",
+    "gemini-1.5-pro" # Alleen als fallback
+]
 
 # 2. SEO Strategie
 seo_structures = [
@@ -93,50 +49,43 @@ else:
 
 print(f"🎯 SEO Doelwit: {base_prompt_theme}")
 
-# --- CENTRALE GENERATIE FUNCTIE ---
-def generate_content_robust(prompt_text, task_name="Content"):
+# --- CENTRALE GENERATIE FUNCTIE MET EXPONENTIAL BACKOFF ---
+def generate_content_safe(prompt_text, task_name="Content"):
     """
-    Probeert content te genereren met beschikbare modellen en retry-logica.
+    Probeert content te genereren. Bij 429 errors wachten we exponentieel langer.
     """
     print(f"🔄 Genereren: {task_name}...")
     
     for model in MODELS_TO_TRY:
-        try:
-            # Probeer request
-            response = client.models.generate_content(
-                model=model, 
-                contents=prompt_text
-            )
-            return response.text.strip()
+        # We proberen max 3 keer per model als we rate limits hitten
+        for attempt in range(1, 4): 
+            try:
+                response = client.models.generate_content(
+                    model=model, 
+                    contents=prompt_text
+                )
+                # Als het lukt: even wachten om de API ademruimte te geven (Rate Limit preventie)
+                time.sleep(2) 
+                return response.text.strip()
             
-        except Exception as e:
-            error_msg = str(e)
-            
-            # Scenario 1: Rate Limit (429) -> Wacht LANGE tijd en probeer ZELFDE model
-            if "429" in error_msg or "RESOURCE_EXHAUSTED" in error_msg:
-                wait_time = 60 # Verhoogd naar 60 seconden
-                print(f"⏳ Rate limit op {model}. Wachten {wait_time} seconden...")
-                time.sleep(wait_time)
-                try:
-                    # Tweede poging op zelfde model
-                    response = client.models.generate_content(
-                        model=model, 
-                        contents=prompt_text
-                    )
-                    return response.text.strip()
-                except Exception as e2:
-                    print(f"⚠️ Tweede poging mislukt op {model}: {e2}")
-                    continue # Ga naar volgende model in de lijst
-            
-            # Scenario 2: Model niet gevonden (404) -> Ga direct door
-            elif "404" in error_msg or "NOT_FOUND" in error_msg:
-                # print(f"⚠️ Model {model} niet bruikbaar.") # Minder spam in logs
-                continue
+            except Exception as e:
+                error_msg = str(e)
                 
-            # Scenario 3: Andere fout
-            else:
-                print(f"❌ Fout met {model}: {e}")
-                continue
+                # 429 = Te snel / Quota op
+                if "429" in error_msg or "RESOURCE_EXHAUSTED" in error_msg:
+                    wait_time = attempt * 15 # 15s, 30s, 45s
+                    print(f"⏳ Rate limit ({model}, poging {attempt}). Wachten {wait_time}s...")
+                    time.sleep(wait_time)
+                    continue # Probeer zelfde model nog eens
+                
+                # 404 = Model naam bestaat niet (meer)
+                elif "404" in error_msg or "NOT_FOUND" in error_msg:
+                    # print(f"⚠️ {model} niet gevonden. Volgende model...")
+                    break # Stop retry loop, ga naar volgende model in lijst
+                
+                else:
+                    print(f"❌ Error ({model}): {e}")
+                    break # Andere error? Volgende model.
 
     return None
 
@@ -151,7 +100,7 @@ def get_strict_topic(theme):
     3. Make it clickable (High CTR).
     4. NO lists, NO "Here is a title". Output ONLY the title text.
     """
-    result = generate_content_robust(prompt, "SEO Titel")
+    result = generate_content_safe(prompt, "SEO Titel")
     
     if result:
         text = result
@@ -168,17 +117,21 @@ def get_smart_tags(theme):
     Generate 5 relevant, lowercase, comma-separated keywords/tags for a blog post about: "{theme}".
     Output ONLY the tags (e.g.: email, automation, code). No numbering.
     """
-    result = generate_content_robust(prompt, "Tags")
+    result = generate_content_safe(prompt, "Tags")
     if result:
         return result.lower()
     return "email, automation, tech, development"
 
-# UITVOEREN
+# UITVOEREN (Met extra pauzes tussen stappen)
 topic = get_strict_topic(base_prompt_theme)
-post_tags = get_smart_tags(topic)
-
 print(f"💡 Definitieve Titel: {topic}")
+
+time.sleep(5) # 5 seconden pauze om RPM limiet te resetten
+
+post_tags = get_smart_tags(topic)
 print(f"🏷️ Tags: {post_tags}")
+
+time.sleep(5) # 5 seconden pauze om RPM limiet te resetten
 
 # Functie: Slug Schoonmaken
 def clean_slug(text):
@@ -245,7 +198,7 @@ If you write code examples that contain Liquid or Jinja syntax (like `{{ variabl
 DO NOT write Frontmatter.
 """
 
-content_body = generate_content_robust(body_prompt, "Blogpost Content")
+content_body = generate_content_safe(body_prompt, "Blogpost Content")
 
 if content_body:
     # Strip eventuele markdown formatting die per ongeluk mee komt
