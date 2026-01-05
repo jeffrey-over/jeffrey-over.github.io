@@ -10,15 +10,14 @@ from datetime import datetime
 # 1. Configureren
 client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 
-# LIJST MET MOGELIJKE MODELLEN (Op volgorde van voorkeur)
-# We proberen ze één voor één tot er een werkt.
+# LIJST MET MODELLEN (Update: Oudere modellen toegevoegd voor zekerheid)
 CANDIDATE_MODELS = [
-    "gemini-1.5-flash-002",  # Nieuwste stabiele versie
-    "gemini-1.5-flash-001",  # Vorige stabiele versie
-    "gemini-1.5-flash",      # Algemene alias
-    "gemini-1.5-pro-002",    # Pro versie (stabiel)
-    "gemini-1.5-pro-001",    # Pro versie (oud)
-    "gemini-2.0-flash-exp"   # Experimenteel (als laatste redmiddel)
+    "gemini-2.0-flash-exp",  # Snelste, maar strenge limiet
+    "gemini-1.5-flash",      # Voorkeur
+    "gemini-1.5-flash-8b",   # Lichtgewicht variant
+    "gemini-1.5-pro",
+    "gemini-1.0-pro",        # OUDE STABIELE VERSIE (Werkt vaak wel als 1.5 faalt)
+    "gemini-pro"             # Alias voor 1.0
 ]
 
 # 2. SEO Strategie
@@ -86,7 +85,7 @@ def generate_full_post():
     for model_name in CANDIDATE_MODELS:
         print(f"👉 Proberen met model: {model_name}...")
         
-        # Retry logica per model (alleen voor rate limits)
+        # Retry logica per model
         for attempt in range(1, 3):
             try:
                 response = client.models.generate_content(
@@ -102,19 +101,18 @@ def generate_full_post():
             except Exception as e:
                 error_str = str(e)
                 
-                # CASE 1: Model bestaat niet (404) -> Direct door naar volgende model in lijst
+                # CASE 1: Model niet gevonden (404) -> Snel door
                 if "404" in error_str or "NOT_FOUND" in error_str:
                     print(f"⚠️ {model_name} niet gevonden (404).")
-                    break # Break de retry loop, ga naar volgende model
+                    break 
                 
-                # CASE 2: Rate Limit (429) -> Wachten en nog eens proberen
+                # CASE 2: Rate Limit (429) -> LANG WACHTEN
                 elif "429" in error_str or "RESOURCE_EXHAUSTED" in error_str:
-                    wait_time = attempt * 10
+                    wait_time = 60 + (attempt * 10) # Minimaal 60 seconden wachten
                     print(f"⏳ Rate limit op {model_name}. Wachten {wait_time}s...")
                     time.sleep(wait_time)
-                    continue # Probeer zelfde model nog eens
+                    continue 
                 
-                # CASE 3: Andere fout -> Loggen en volgende
                 else:
                     print(f"❌ Error met {model_name}: {e}")
                     break
@@ -125,10 +123,10 @@ def generate_full_post():
 raw_json = generate_full_post()
 
 if not raw_json:
-    print("❌ API Faalde volledig op ALLE modellen.")
+    print("❌ API Faalde volledig op ALLE modellen. Check of je API key geldig is voor de EU regio.")
     exit(1)
 
-# JSON Parsen en opruimen
+# JSON Parsen
 try:
     clean_json = raw_json.replace("```json", "").replace("```", "").strip()
     data = json.loads(clean_json)
@@ -143,10 +141,10 @@ try:
 
 except json.JSONDecodeError as e:
     print(f"❌ JSON Parse Error: {e}")
+    # Reddingspoging: Sla op wat we hebben
     with open("error_dump.txt", "w") as f:
         f.write(raw_json)
     exit(1)
-
 
 # 4. Afbeelding Genereren
 date_str = datetime.now().strftime('%Y-%m-%d')
