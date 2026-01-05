@@ -1,26 +1,24 @@
 import os
 import time
-import requests
 import random
 import json
+import requests
 from datetime import datetime
 from google import genai
-from google.genai import types
 
 # =========================
-# 1. CONFIGURATIE
+# 1. CONFIG
 # =========================
 
 if "GEMINI_API_KEY" not in os.environ:
-    raise RuntimeError("❌ GEMINI_API_KEY ontbreekt in environment variables")
+    raise RuntimeError("GEMINI_API_KEY ontbreekt")
 
 client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 
-# ✅ ENIGE GELDIGE & PUBLIEKE MODELLEN (EU-proof)
+# ✅ CORRECTE MODELNAMEN VOOR google.genai
 CANDIDATE_MODELS = [
-    "models/gemini-1.5-flash",  # snel & goedkoop
-    "models/gemini-1.5-pro",    # beste kwaliteit
-    "models/gemini-1.0-pro"     # zeer stabiele fallback
+    "gemini-1.5-flash",
+    "gemini-1.5-pro"
 ]
 
 # =========================
@@ -28,200 +26,150 @@ CANDIDATE_MODELS = [
 # =========================
 
 seo_structures = [
-    "Comparison: {tech} vs {tech} for Enterprise",
-    "How to fix {tech} issues in 2026",
-    "The Ultimate Guide to {tech} for Developers",
-    "Top 5 Mistakes Developers make with {tech}",
     "Advanced {tech} Tutorial: Step-by-Step",
     "Why {tech} is the future of Email Marketing",
-    "Implementing {tech}: A Technical Walkthrough"
+    "The Ultimate Guide to {tech} for Developers",
+    "Top 5 Mistakes Developers Make with {tech}"
 ]
 
 tech_keywords = [
-    "Selligent Marketing Cloud", "Deployteq", "Salesforce Marketing Cloud",
-    "Liquid Scripting", "AMP for Email", "Dark Mode Email Coding",
-    "BIMI and DMARC", "Email SQL Queries", "JSON-LD in Email",
-    "CSS Grid for Email", "Outlook Rendering", "Email API Webhooks",
-    "Server-side Javascript (SSJS)", "MJML framework", "Litmus testing"
+    "Salesforce Marketing Cloud",
+    "Liquid Scripting",
+    "AMP for Email",
+    "SSJS",
+    "Email SQL Queries"
 ]
 
-chosen_structure = random.choice(seo_structures)
-chosen_tech = random.choice(tech_keywords)
+structure = random.choice(seo_structures)
+tech = random.choice(tech_keywords)
+topic = structure.replace("{tech}", tech)
 
-if "{tech} vs {tech}" in chosen_structure:
-    tech2 = random.choice([t for t in tech_keywords if t != chosen_tech])
-    base_prompt_theme = chosen_structure.replace("{tech}", chosen_tech, 1).replace("{tech}", tech2)
-else:
-    base_prompt_theme = chosen_structure.replace("{tech}", chosen_tech)
-
-print(f"🎯 Strategie: {base_prompt_theme}")
+print(f"🎯 Strategie: {topic}")
 
 # =========================
 # 3. PROMPT
 # =========================
 
-full_prompt = f"""
+prompt = f"""
 Act as a Senior Technical Content Writer & SEO Specialist.
 
-Create a COMPLETE blog post for the topic:
-"{base_prompt_theme}"
+Create a COMPLETE blog post for:
+"{topic}"
 
-OUTPUT RULES (VERY IMPORTANT):
+OUTPUT RULES:
 - Output ONLY valid JSON
-- NO markdown wrappers
-- NO explanations
-- NO text outside JSON
+- No markdown fences
+- No explanations
 
-JSON STRUCTURE:
+JSON FORMAT:
 {{
-  "title": "SEO optimized title (max 60 chars)",
-  "slug": "url-friendly-kebab-case",
+  "title": "SEO title (max 60 chars)",
+  "slug": "kebab-case-slug",
   "description": "meta description (max 160 chars)",
-  "tags": "comma, separated, lowercase, tags",
-  "content": "FULL blog post in Markdown"
+  "tags": "comma, separated, lowercase",
+  "content": "Full blog post in Markdown"
 }}
 
-CONTENT REQUIREMENTS:
-1. Strong intro with problem definition
-2. Deep technical body (code, logic, SQL where relevant)
-3. MANDATORY comparison table
-4. FAQ / People Also Ask section at the end
-5. Minimum length: 1000 words
+CONTENT RULES:
+- 1000+ words
+- Mandatory comparison table
+- Technical deep dive
+- FAQ / People Also Ask section
 
-CRITICAL TECH RULE:
-If you include Liquid / Jinja syntax ({{{{ }}}}, {{% if %}}, etc),
-you MUST wrap those code blocks in {{% raw %}} and {{% endraw %}}.
+TECH RULE:
+Liquid / Jinja code MUST be wrapped in {{% raw %}} and {{% endraw %}}.
 """
 
 # =========================
-# 4. GENERATIE FUNCTIE
+# 4. GENERATIE
 # =========================
 
-def generate_full_post():
-    print("🚀 Start single-shot generatie...")
-
-    for model_name in CANDIDATE_MODELS:
-        print(f"👉 Proberen met model: {model_name}")
-
-        for attempt in range(1, 3):
-            try:
-                response = client.models.generate_content(
-                    model=model_name,
-                    contents=[
-                        {
-                            "role": "user",
-                            "parts": [{"text": full_prompt}]
-                        }
-                    ],
-                    config=types.GenerateContentConfig(
-                        temperature=0.6,
-                        max_output_tokens=8192,
-                        response_mime_type="application/json"
-                    )
-                )
-
-                print(f"✅ Gelukt met {model_name}")
-                return response.text
-
-            except Exception as e:
-                err = str(e)
-
-                if "429" in err or "RESOURCE_EXHAUSTED" in err:
-                    wait_time = 30 * attempt
-                    print(f"⏳ Rate limit ({model_name}) → wachten {wait_time}s")
-                    time.sleep(wait_time)
-                    continue
-
-                if "404" in err or "NOT_FOUND" in err:
-                    print(f"⚠️ Model niet gevonden: {model_name}")
-                    break
-
-                print(f"❌ Error met {model_name}: {err}")
-                break
+def generate():
+    for model in CANDIDATE_MODELS:
+        print(f"👉 Proberen met model: {model}")
+        try:
+            response = client.models.generate_content(
+                model=model,
+                contents=prompt,
+                config={
+                    "temperature": 0.6,
+                    "max_output_tokens": 8192,
+                    "response_mime_type": "application/json"
+                }
+            )
+            print(f"✅ Gelukt met {model}")
+            return response.text
+        except Exception as e:
+            print(f"⚠️ Fout met {model}: {e}")
+            time.sleep(10)
 
     return None
 
-# =========================
-# 5. CONTENT GENEREREN
-# =========================
-
-raw_json = generate_full_post()
-
-if not raw_json:
+raw = generate()
+if not raw:
     raise RuntimeError("❌ API faalde op alle modellen")
 
+# =========================
+# 5. JSON PARSE
+# =========================
+
 try:
-    data = json.loads(raw_json)
-except json.JSONDecodeError as e:
-    with open("error_dump.txt", "w", encoding="utf-8") as f:
-        f.write(raw_json)
-    raise RuntimeError(f"❌ JSON parse error: {e}")
+    data = json.loads(raw)
+except json.JSONDecodeError:
+    with open("error_dump.txt", "w") as f:
+        f.write(raw)
+    raise RuntimeError("❌ JSON parsing faalde")
 
-title = data.get("title", base_prompt_theme)
-slug = data.get("slug", "blog-post")
-description = data.get("description", "")
-tags = data.get("tags", "email,marketing")
-body = data.get("content", "")
-
-print(f"✅ Content geparsed: {title}")
+title = data["title"]
+slug = data["slug"]
+description = data["description"]
+tags = data["tags"]
+content = data["content"]
 
 # =========================
-# 6. AFBEELDING GENEREREN
+# 6. IMAGE
 # =========================
 
-def download_image(prompt_text, save_path):
-    print("🎨 Afbeelding genereren...")
-    try:
-        clean_prompt = (
-            f"3D render in Apple App Store editorial style of {prompt_text}, "
-            "glossy 3D icon, soft gradient background, no text"
-        )
-        encoded = clean_prompt.replace(" ", "%20")
-        seed = random.randint(0, 9999)
+def download_image(prompt, path):
+    seed = random.randint(0, 9999)
+    url = (
+        "https://image.pollinations.ai/prompt/"
+        f"{prompt.replace(' ', '%20')}"
+        f"?width=1200&height=630&seed={seed}&model=flux&nologo=true"
+    )
+    r = requests.get(url, timeout=30)
+    if r.status_code == 200:
+        with open(path, "wb") as f:
+            f.write(r.content)
 
-        url = (
-            f"https://image.pollinations.ai/prompt/{encoded}"
-            f"?width=1200&height=630&seed={seed}&nologo=true&model=flux"
-        )
-
-        r = requests.get(url, timeout=30)
-        if r.status_code == 200:
-            with open(save_path, "wb") as f:
-                f.write(r.content)
-            return True
-    except Exception:
-        pass
-    return False
-
-date_str = datetime.now().strftime("%Y-%m-%d")
-
+date = datetime.now().strftime("%Y-%m-%d")
 os.makedirs("_posts", exist_ok=True)
 os.makedirs("images", exist_ok=True)
 
-image_filename = f"images/{date_str}-{slug}.jpg"
-download_image(slug.replace("-", " "), image_filename)
+image_path = f"images/{date}-{slug}.jpg"
+download_image(slug.replace("-", " "), image_path)
 
 # =========================
-# 7. OPSLAAN ALS JEKYLL POST
+# 7. OPSLAAN
 # =========================
 
-final_post = f"""---
+post = f"""---
 layout: post
 title: "{title}"
-date: {date_str}
+date: {date}
 permalink: /{slug}
 tags: {tags}
 author: Jeffrey Overmeer
 published: true
-thumbnail: "/{image_filename}"
+thumbnail: "/{image_path}"
 description: "{description}"
 ---
 
-{body}
+{content}
 """
 
-post_path = f"_posts/{date_str}-{slug}.md"
+post_path = f"_posts/{date}-{slug}.md"
 with open(post_path, "w", encoding="utf-8") as f:
-    f.write(final_post)
+    f.write(post)
 
-print(f"🎉 Klaar! Post opgeslagen: {post_path}")
+print(f"🎉 Succes! Post opgeslagen: {post_path}")
