@@ -10,8 +10,16 @@ from datetime import datetime
 # 1. Configureren
 client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 
-# We gebruiken Flash omdat die grote context (input/output) goedkoop en snel aankan
-MODEL_NAME = "gemini-1.5-flash"
+# LIJST MET MOGELIJKE MODELLEN (Op volgorde van voorkeur)
+# We proberen ze één voor één tot er een werkt.
+CANDIDATE_MODELS = [
+    "gemini-1.5-flash-002",  # Nieuwste stabiele versie
+    "gemini-1.5-flash-001",  # Vorige stabiele versie
+    "gemini-1.5-flash",      # Algemene alias
+    "gemini-1.5-pro-002",    # Pro versie (stabiel)
+    "gemini-1.5-pro-001",    # Pro versie (oud)
+    "gemini-2.0-flash-exp"   # Experimenteel (als laatste redmiddel)
+]
 
 # 2. SEO Strategie
 seo_structures = [
@@ -73,34 +81,55 @@ Inside the "content" field, if you write code examples with Liquid/Jinja syntax 
 """
 
 def generate_full_post():
-    print(f"🚀 Start 'Single-Shot' generatie met {MODEL_NAME}...")
+    print(f"🚀 Start 'Single-Shot' generatie...")
     
-    # Retry logica
-    for attempt in range(1, 4):
-        try:
-            response = client.models.generate_content(
-                model=MODEL_NAME,
-                contents=full_prompt,
-                config={
-                    'response_mime_type': 'application/json' # Forceer JSON modus
-                }
-            )
-            return response.text
-        except Exception as e:
-            print(f"⚠️ Poging {attempt} mislukt: {e}")
-            time.sleep(10 * attempt)
+    for model_name in CANDIDATE_MODELS:
+        print(f"👉 Proberen met model: {model_name}...")
+        
+        # Retry logica per model (alleen voor rate limits)
+        for attempt in range(1, 3):
+            try:
+                response = client.models.generate_content(
+                    model=model_name,
+                    contents=full_prompt,
+                    config={
+                        'response_mime_type': 'application/json' 
+                    }
+                )
+                print(f"✅ Gelukt met {model_name}!")
+                return response.text
+                
+            except Exception as e:
+                error_str = str(e)
+                
+                # CASE 1: Model bestaat niet (404) -> Direct door naar volgende model in lijst
+                if "404" in error_str or "NOT_FOUND" in error_str:
+                    print(f"⚠️ {model_name} niet gevonden (404).")
+                    break # Break de retry loop, ga naar volgende model
+                
+                # CASE 2: Rate Limit (429) -> Wachten en nog eens proberen
+                elif "429" in error_str or "RESOURCE_EXHAUSTED" in error_str:
+                    wait_time = attempt * 10
+                    print(f"⏳ Rate limit op {model_name}. Wachten {wait_time}s...")
+                    time.sleep(wait_time)
+                    continue # Probeer zelfde model nog eens
+                
+                # CASE 3: Andere fout -> Loggen en volgende
+                else:
+                    print(f"❌ Error met {model_name}: {e}")
+                    break
+                    
     return None
 
 # Voer de call uit
 raw_json = generate_full_post()
 
 if not raw_json:
-    print("❌ API Faalde volledig.")
+    print("❌ API Faalde volledig op ALLE modellen.")
     exit(1)
 
 # JSON Parsen en opruimen
 try:
-    # Soms zet de AI er toch ```json omheen, dit filteren we
     clean_json = raw_json.replace("```json", "").replace("```", "").strip()
     data = json.loads(clean_json)
     
@@ -110,17 +139,16 @@ try:
     tags = data.get("tags", "email, tech")
     body = data.get("content", "")
     
-    print(f"✅ Data succesvol ontvangen: {title}")
+    print(f"✅ Data geparsed: {title}")
 
 except json.JSONDecodeError as e:
     print(f"❌ JSON Parse Error: {e}")
-    # Fallback: sla de ruwe tekst op zodat je het handmatig kunt redden
     with open("error_dump.txt", "w") as f:
         f.write(raw_json)
     exit(1)
 
 
-# 4. Afbeelding Genereren (op basis van de nieuwe titel)
+# 4. Afbeelding Genereren
 date_str = datetime.now().strftime('%Y-%m-%d')
 image_folder = "images"
 image_filename = f"{image_folder}/{date_str}-{slug}.jpg"
@@ -130,12 +158,12 @@ os.makedirs("_posts", exist_ok=True)
 os.makedirs(image_folder, exist_ok=True)
 
 def download_image(prompt_text, save_path):
-    print(f"🎨 Afbeelding genereren voor: {prompt_text}")
+    print(f"🎨 Afbeelding genereren...")
     try:
         clean_prompt = f"3D render in Apple App Store editorial style of {prompt_text}. clean high-quality composition, glossy 3D icon, soft light gradient background, no text"
         encoded = clean_prompt.replace(" ", "%20")
         seed = random.randint(0, 9999)
-        url = f"[https://image.pollinations.ai/prompt/](https://image.pollinations.ai/prompt/){encoded}?width=1200&height=630&nologo=true&seed={seed}&model=flux"
+        url = f"https://image.pollinations.ai/prompt/{encoded}?width=1200&height=630&nologo=true&seed={seed}&model=flux"
         
         resp = requests.get(url, timeout=30)
         if resp.status_code == 200:
@@ -147,7 +175,7 @@ def download_image(prompt_text, save_path):
 
 download_image(slug.replace("-", " "), image_filename)
 
-# 5. Opslaan als Jekyll Post
+# 5. Opslaan
 final_post_content = f"""---
 layout: post
 title: "{title}"
