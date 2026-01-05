@@ -4,7 +4,7 @@ import random
 import json
 import requests
 from datetime import datetime
-from google import genai
+import google.generativeai as genai
 
 # =========================
 # 1. CONFIG
@@ -13,12 +13,11 @@ from google import genai
 if "GEMINI_API_KEY" not in os.environ:
     raise RuntimeError("GEMINI_API_KEY ontbreekt")
 
-client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
+genai.configure(api_key=os.environ["GEMINI_API_KEY"])
 
-# ✅ CORRECTE MODELNAMEN VOOR google.genai
+# ✅ ENIGE STABIELE MODELLEN HIER
 CANDIDATE_MODELS = [
-    "gemini-1.5-flash",
-    "gemini-1.5-pro"
+    "gemini-pro"
 ]
 
 # =========================
@@ -26,23 +25,21 @@ CANDIDATE_MODELS = [
 # =========================
 
 seo_structures = [
-    "Advanced {tech} Tutorial: Step-by-Step",
-    "Why {tech} is the future of Email Marketing",
     "The Ultimate Guide to {tech} for Developers",
-    "Top 5 Mistakes Developers Make with {tech}"
+    "Advanced {tech} Tutorial: Step-by-Step",
+    "Why {tech} is the future of Email Marketing"
 ]
 
 tech_keywords = [
+    "Email SQL Queries",
     "Salesforce Marketing Cloud",
     "Liquid Scripting",
-    "AMP for Email",
-    "SSJS",
-    "Email SQL Queries"
+    "SSJS"
 ]
 
-structure = random.choice(seo_structures)
-tech = random.choice(tech_keywords)
-topic = structure.replace("{tech}", tech)
+topic = random.choice(seo_structures).replace(
+    "{tech}", random.choice(tech_keywords)
+)
 
 print(f"🎯 Strategie: {topic}")
 
@@ -53,7 +50,7 @@ print(f"🎯 Strategie: {topic}")
 prompt = f"""
 Act as a Senior Technical Content Writer & SEO Specialist.
 
-Create a COMPLETE blog post for:
+Write a COMPLETE blog post about:
 "{topic}"
 
 OUTPUT RULES:
@@ -74,43 +71,41 @@ CONTENT RULES:
 - 1000+ words
 - Mandatory comparison table
 - Technical deep dive
-- FAQ / People Also Ask section
+- FAQ section
 
 TECH RULE:
 Liquid / Jinja code MUST be wrapped in {{% raw %}} and {{% endraw %}}.
 """
 
 # =========================
-# 4. GENERATIE
+# 4. GENERATE
 # =========================
 
 def generate():
-    for model in CANDIDATE_MODELS:
-        print(f"👉 Proberen met model: {model}")
+    for model_name in CANDIDATE_MODELS:
         try:
-            response = client.models.generate_content(
-                model=model,
-                contents=prompt,
-                config={
+            print(f"👉 Proberen met model: {model_name}")
+            model = genai.GenerativeModel(model_name)
+            response = model.generate_content(
+                prompt,
+                generation_config={
                     "temperature": 0.6,
-                    "max_output_tokens": 8192,
-                    "response_mime_type": "application/json"
+                    "max_output_tokens": 8192
                 }
             )
-            print(f"✅ Gelukt met {model}")
+            print("✅ Gelukt")
             return response.text
         except Exception as e:
-            print(f"⚠️ Fout met {model}: {e}")
+            print(f"⚠️ Fout: {e}")
             time.sleep(10)
-
     return None
 
 raw = generate()
 if not raw:
-    raise RuntimeError("❌ API faalde op alle modellen")
+    raise RuntimeError("❌ API faalde")
 
 # =========================
-# 5. JSON PARSE
+# 5. PARSE JSON
 # =========================
 
 try:
@@ -118,7 +113,7 @@ try:
 except json.JSONDecodeError:
     with open("error_dump.txt", "w") as f:
         f.write(raw)
-    raise RuntimeError("❌ JSON parsing faalde")
+    raise RuntimeError("JSON parsing faalde")
 
 title = data["title"]
 slug = data["slug"]
@@ -150,7 +145,7 @@ image_path = f"images/{date}-{slug}.jpg"
 download_image(slug.replace("-", " "), image_path)
 
 # =========================
-# 7. OPSLAAN
+# 7. SAVE
 # =========================
 
 post = f"""---
@@ -168,8 +163,8 @@ description: "{description}"
 {content}
 """
 
-post_path = f"_posts/{date}-{slug}.md"
-with open(post_path, "w", encoding="utf-8") as f:
+path = f"_posts/{date}-{slug}.md"
+with open(path, "w", encoding="utf-8") as f:
     f.write(post)
 
-print(f"🎉 Succes! Post opgeslagen: {post_path}")
+print(f"🎉 Succes! Post opgeslagen: {path}")
