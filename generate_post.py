@@ -2,25 +2,31 @@ import os
 import time
 import requests
 import random
-import re
 import json
-from google import genai
 from datetime import datetime
+from google import genai
+from google.genai import types
 
-# 1. Configureren
+# =========================
+# 1. CONFIGURATIE
+# =========================
+
+if "GEMINI_API_KEY" not in os.environ:
+    raise RuntimeError("❌ GEMINI_API_KEY ontbreekt in environment variables")
+
 client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 
-# LIJST MET MODELLEN (Update: Oudere modellen toegevoegd voor zekerheid)
+# ✅ ENIGE GELDIGE & PUBLIEKE MODELLEN (EU-proof)
 CANDIDATE_MODELS = [
-    "gemini-2.0-flash-exp",  # Snelste, maar strenge limiet
-    "gemini-1.5-flash",      # Voorkeur
-    "gemini-1.5-flash-8b",   # Lichtgewicht variant
-    "gemini-1.5-pro",
-    "gemini-1.0-pro",        # OUDE STABIELE VERSIE (Werkt vaak wel als 1.5 faalt)
-    "gemini-pro"             # Alias voor 1.0
+    "models/gemini-1.5-flash",  # snel & goedkoop
+    "models/gemini-1.5-pro",    # beste kwaliteit
+    "models/gemini-1.0-pro"     # zeer stabiele fallback
 ]
 
-# 2. SEO Strategie
+# =========================
+# 2. SEO STRATEGIE
+# =========================
+
 seo_structures = [
     "Comparison: {tech} vs {tech} for Enterprise",
     "How to fix {tech} issues in 2026",
@@ -39,7 +45,6 @@ tech_keywords = [
     "Server-side Javascript (SSJS)", "MJML framework", "Litmus testing"
 ]
 
-# Kies structuur en tech
 chosen_structure = random.choice(seo_structures)
 chosen_tech = random.choice(tech_keywords)
 
@@ -51,141 +56,164 @@ else:
 
 print(f"🎯 Strategie: {base_prompt_theme}")
 
-# 3. De Alles-in-één Prompt
+# =========================
+# 3. PROMPT
+# =========================
+
 full_prompt = f"""
 Act as a Senior Technical Content Writer & SEO Specialist.
-I need a complete blog post based on the topic: "{base_prompt_theme}".
 
-Output MUST be valid JSON only. Do not add markdown formatting like ```json ... ```. 
-Just the raw JSON object.
+Create a COMPLETE blog post for the topic:
+"{base_prompt_theme}"
 
-Structure the JSON as follows:
+OUTPUT RULES (VERY IMPORTANT):
+- Output ONLY valid JSON
+- NO markdown wrappers
+- NO explanations
+- NO text outside JSON
+
+JSON STRUCTURE:
 {{
-    "title": "The optimized, high-CTR blog title (max 60 chars)",
-    "slug": "url-friendly-kebab-case-slug",
-    "description": "SEO meta description (max 160 chars)",
-    "tags": "comma, separated, lowercase, list, of, 5, tags",
-    "content": "The full blog post content in Markdown format..."
+  "title": "SEO optimized title (max 60 chars)",
+  "slug": "url-friendly-kebab-case",
+  "description": "meta description (max 160 chars)",
+  "tags": "comma, separated, lowercase, tags",
+  "content": "FULL blog post in Markdown"
 }}
 
 CONTENT REQUIREMENTS:
-1. **Intro**: Problem definition.
-2. **Body**: Technical deep dive (Code, SQL, Logic).
-3. **Structure**: Comparison Table is MANDATORY.
-4. **FAQ**: "People Also Ask" section at end.
-5. **Length**: 1000+ words.
+1. Strong intro with problem definition
+2. Deep technical body (code, logic, SQL where relevant)
+3. MANDATORY comparison table
+4. FAQ / People Also Ask section at the end
+5. Minimum length: 1000 words
 
-IMPORTANT TECHNICAL RULE:
-Inside the "content" field, if you write code examples with Liquid/Jinja syntax (like {{{{ variable }}}} or {{% if %}}), you MUST wrap that code block in {{% raw %}} and {{% endraw %}} tags.
+CRITICAL TECH RULE:
+If you include Liquid / Jinja syntax ({{{{ }}}}, {{% if %}}, etc),
+you MUST wrap those code blocks in {{% raw %}} and {{% endraw %}}.
 """
 
+# =========================
+# 4. GENERATIE FUNCTIE
+# =========================
+
 def generate_full_post():
-    print(f"🚀 Start 'Single-Shot' generatie...")
-    
+    print("🚀 Start single-shot generatie...")
+
     for model_name in CANDIDATE_MODELS:
-        print(f"👉 Proberen met model: {model_name}...")
-        
-        # Retry logica per model
+        print(f"👉 Proberen met model: {model_name}")
+
         for attempt in range(1, 3):
             try:
                 response = client.models.generate_content(
                     model=model_name,
-                    contents=full_prompt,
-                    config={
-                        'response_mime_type': 'application/json' 
-                    }
+                    contents=[
+                        {
+                            "role": "user",
+                            "parts": [{"text": full_prompt}]
+                        }
+                    ],
+                    config=types.GenerateContentConfig(
+                        temperature=0.6,
+                        max_output_tokens=8192,
+                        response_mime_type="application/json"
+                    )
                 )
-                print(f"✅ Gelukt met {model_name}!")
+
+                print(f"✅ Gelukt met {model_name}")
                 return response.text
-                
+
             except Exception as e:
-                error_str = str(e)
-                
-                # CASE 1: Model niet gevonden (404) -> Snel door
-                if "404" in error_str or "NOT_FOUND" in error_str:
-                    print(f"⚠️ {model_name} niet gevonden (404).")
-                    break 
-                
-                # CASE 2: Rate Limit (429) -> LANG WACHTEN
-                elif "429" in error_str or "RESOURCE_EXHAUSTED" in error_str:
-                    wait_time = 60 + (attempt * 10) # Minimaal 60 seconden wachten
-                    print(f"⏳ Rate limit op {model_name}. Wachten {wait_time}s...")
+                err = str(e)
+
+                if "429" in err or "RESOURCE_EXHAUSTED" in err:
+                    wait_time = 30 * attempt
+                    print(f"⏳ Rate limit ({model_name}) → wachten {wait_time}s")
                     time.sleep(wait_time)
-                    continue 
-                
-                else:
-                    print(f"❌ Error met {model_name}: {e}")
+                    continue
+
+                if "404" in err or "NOT_FOUND" in err:
+                    print(f"⚠️ Model niet gevonden: {model_name}")
                     break
-                    
+
+                print(f"❌ Error met {model_name}: {err}")
+                break
+
     return None
 
-# Voer de call uit
+# =========================
+# 5. CONTENT GENEREREN
+# =========================
+
 raw_json = generate_full_post()
 
 if not raw_json:
-    print("❌ API Faalde volledig op ALLE modellen. Check of je API key geldig is voor de EU regio.")
-    exit(1)
+    raise RuntimeError("❌ API faalde op alle modellen")
 
-# JSON Parsen
 try:
-    clean_json = raw_json.replace("```json", "").replace("```", "").strip()
-    data = json.loads(clean_json)
-    
-    title = data.get("title", base_prompt_theme)
-    slug = data.get("slug", "blog-post").lower()
-    description = data.get("description", "")
-    tags = data.get("tags", "email, tech")
-    body = data.get("content", "")
-    
-    print(f"✅ Data geparsed: {title}")
-
+    data = json.loads(raw_json)
 except json.JSONDecodeError as e:
-    print(f"❌ JSON Parse Error: {e}")
-    # Reddingspoging: Sla op wat we hebben
-    with open("error_dump.txt", "w") as f:
+    with open("error_dump.txt", "w", encoding="utf-8") as f:
         f.write(raw_json)
-    exit(1)
+    raise RuntimeError(f"❌ JSON parse error: {e}")
 
-# 4. Afbeelding Genereren
-date_str = datetime.now().strftime('%Y-%m-%d')
-image_folder = "images"
-image_filename = f"{image_folder}/{date_str}-{slug}.jpg"
-image_public_path = f"/{image_filename}"
+title = data.get("title", base_prompt_theme)
+slug = data.get("slug", "blog-post")
+description = data.get("description", "")
+tags = data.get("tags", "email,marketing")
+body = data.get("content", "")
 
-os.makedirs("_posts", exist_ok=True)
-os.makedirs(image_folder, exist_ok=True)
+print(f"✅ Content geparsed: {title}")
+
+# =========================
+# 6. AFBEELDING GENEREREN
+# =========================
 
 def download_image(prompt_text, save_path):
-    print(f"🎨 Afbeelding genereren...")
+    print("🎨 Afbeelding genereren...")
     try:
-        clean_prompt = f"3D render in Apple App Store editorial style of {prompt_text}. clean high-quality composition, glossy 3D icon, soft light gradient background, no text"
+        clean_prompt = (
+            f"3D render in Apple App Store editorial style of {prompt_text}, "
+            "glossy 3D icon, soft gradient background, no text"
+        )
         encoded = clean_prompt.replace(" ", "%20")
         seed = random.randint(0, 9999)
-        url = f"https://image.pollinations.ai/prompt/{encoded}?width=1200&height=630&nologo=true&seed={seed}&model=flux"
-        
-        resp = requests.get(url, timeout=30)
-        if resp.status_code == 200:
-            with open(save_path, 'wb') as f:
-                f.write(resp.content)
-            return True
-    except:
-        return False
 
+        url = (
+            f"https://image.pollinations.ai/prompt/{encoded}"
+            f"?width=1200&height=630&seed={seed}&nologo=true&model=flux"
+        )
+
+        r = requests.get(url, timeout=30)
+        if r.status_code == 200:
+            with open(save_path, "wb") as f:
+                f.write(r.content)
+            return True
+    except Exception:
+        pass
+    return False
+
+date_str = datetime.now().strftime("%Y-%m-%d")
+
+os.makedirs("_posts", exist_ok=True)
+os.makedirs("images", exist_ok=True)
+
+image_filename = f"images/{date_str}-{slug}.jpg"
 download_image(slug.replace("-", " "), image_filename)
 
-# 5. Opslaan
-final_post_content = f"""---
+# =========================
+# 7. OPSLAAN ALS JEKYLL POST
+# =========================
+
+final_post = f"""---
 layout: post
 title: "{title}"
-titleshort: "{title[:30]}..."
 date: {date_str}
-label: development
 permalink: /{slug}
 tags: {tags}
-yearreview: false
 author: Jeffrey Overmeer
 published: true
-thumbnail: "{image_public_path}"
+thumbnail: "/{image_filename}"
 description: "{description}"
 ---
 
@@ -194,6 +222,6 @@ description: "{description}"
 
 post_path = f"_posts/{date_str}-{slug}.md"
 with open(post_path, "w", encoding="utf-8") as f:
-    f.write(final_post_content)
+    f.write(final_post)
 
-print(f"🎉 Succes! Post opgeslagen: {post_path}")
+print(f"🎉 Klaar! Post opgeslagen: {post_path}")
